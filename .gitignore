@@ -1,4 +1,4 @@
-# ì—ë””í„° ì„¤ì • íŒŒì¼ ì œì™¸
+# ¿¡µğÅÍ ¼³Á¤ ÆÄÀÏ Á¦¿Ü
 .metadata
 bin/
 tmp/
@@ -20,7 +20,7 @@ local.properties
 .springBeans
 .recommenders/
 
-# intellij íŒŒì¼ ì œì™¸
+# intellij ÆÄÀÏ Á¦¿Ü
 target/
 pom.xml
 .idea
@@ -32,24 +32,24 @@ out/
 !**/src/test/**/out/
 
 
-# ì„œë²„ ì œì™¸
+# ¼­¹ö Á¦¿Ü
 Servers/
 
-# jarì••ì¶•í• ì¼ ì—†ìŒ
+# jar¾ĞÃàÇÒÀÏ ¾øÀ½
 MANIFEST.mf
 
-# ì™¸ë¶€ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì œì™¸
+# ¿ÜºÎ ¶óÀÌºê·¯¸® Á¦¿Ü
 /WEB-INF/lib
 *.jar
 
-# VSCODE ì‹¤í–‰ ì‹œ ì„¤ì • íŒŒì¼ ì œì™¸
+# VSCODE ½ÇÇà ½Ã ¼³Á¤ ÆÄÀÏ Á¦¿Ü
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# ì‹¤í–‰íŒŒì¼ ì œì™¸
+# ½ÇÇàÆÄÀÏ Á¦¿Ü
 *.dll
 *.exe
 *.o
@@ -57,18 +57,24 @@ MANIFEST.mf
 *.com
 *.class
 
-# ë¡œê·¸íŒŒì¼ ì œì™¸
+# ·Î±×ÆÄÀÏ Á¦¿Ü
 *.log
 logs/
 
-# íŒ¨í‚¤ì§€ íŒŒì¼ ì œì™¸
+# ÆĞÅ°Áö ÆÄÀÏ Á¦¿Ü
 *.dmg
 *.iso
 *.tar
 *.zip
 *.gz
 
-# osìš© ì‹œìŠ¤í…œ íŒŒì¼ ì œì™¸
+# os¿ë ½Ã½ºÅÛ ÆÄÀÏ Á¦¿Ü
 .Trashes
 .Thumbs.db
 .ehthumbs.db
+
+# ÅÏ ÇÁ·ÎÁ§Æ®Á¦¿Ü
+.tern-project
+
+#MANIFEST Á¦¿Ü
+MANIFEST.MF
