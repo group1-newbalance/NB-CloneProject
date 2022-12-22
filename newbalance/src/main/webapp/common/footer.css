@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import '/newbalance/common/common.css'; 
+
 body{
   margin: 0;
 }

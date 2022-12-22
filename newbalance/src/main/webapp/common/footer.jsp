@@ -10,9 +10,6 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	 <link rel="stylesheet" href="/newbalance/common/footer.css" /> 
 <style>
-@charset "utf-8";
-@import 'reset.css';
-@import 'font.css';
 
 </style>
 </head>
