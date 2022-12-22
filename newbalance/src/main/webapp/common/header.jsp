@@ -2788,7 +2788,222 @@ var parallax = {
 
 
 
+/* product - list =============================================================== */
+// filter
+function filter () {
+	var title = $('.filter_title');
+	var filterBox = $('.filter_group');
+	filterBox.hide();
 
+	title.find('li a').each(function(i) {
+		$(this).on('click focusein', function() {
+			if ($(this).parent('li').hasClass('on')) {
+				title.find('li').removeClass('on');
+				filterBox.hide();
+				filterBox.find('> div').removeClass('on');
+			} else {
+				title.find('li').removeClass('on');
+				filterBox.find('> div').removeClass('on');
+				filterBox.show();
+				$(this).parent('li').addClass('on');
+				filterBox.find('> div').eq(i).addClass('on');
+			}
+		});
+	});
+}
+
+// gathering
+function gatClick () {
+	$('.gathering ul > li > a').on('click', function() {
+		$('.gathering ul > li').removeClass('on');
+		$(this).parent('li').addClass('on');
+	});
+}
+
+// 비교하기 토글
+function compareChk () {
+	$('.goods_com .btn_ty_compare').on('click', function() {
+		$(this).toggleClass('on');
+		$('.inner_box').toggleClass('on');
+	});
+}
+
+// quick view
+function quickV () {
+	var list = $('.goods_list02');
+	var qView = list.find('.quick_view.on');
+
+	list.find('li').on('mouseover', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');
+		$(this).find('.pro_area').addClass('on');
+		$(this).find('.quick_view').addClass('on');
+	});
+	list.find('li').on('mouseout', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');;
+	});
+}
+
+// black friday - quick view
+function quickVBf () {
+	var list = $('.bfgoods_list');
+	var qView = list.find('.quick_view.on');
+
+	list.find('li').on('mouseover', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');
+		$(this).find('.pro_area').addClass('on');
+		$(this).find('.quick_view').addClass('on');
+	});
+	list.find('li').on('mouseout', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');;
+	});
+}
+
+// event - quick view
+function quickVEvt (eventProdList) {
+	var list = $('.' + eventProdList);
+	var qView = list.find('.quick_view.on');
+
+	list.find('li').on('mouseover', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');
+		$(this).find('.pro_area').addClass('on');
+		$(this).find('.quick_view').addClass('on');
+	});
+	list.find('li').on('mouseout', function() {
+		$('.pro_area').removeClass('on');
+		$('.quick_view').removeClass('on');;
+	});
+}
+
+/* payment =============================================================== */
+// 결제 방법 라디오 버튼 선택 시, 내용 보기
+function payOpt (i) {
+	var list = $('.pay_opt input');
+	var box = $('.pay_option_group > div');
+
+	list.each(function(i) {
+		$(this).on('click', function() {
+			box.removeClass('on');
+			box.eq(i).addClass('on');
+		});
+	});
+}
+
+/* my =============================================================== */
+// 반송 정보 입력란 - 택배사 라디오버튼 선택
+function parcelOpt () {
+	var box = $('.parcel_company');
+	var radioCh = $('.parcel_company .chk input');
+	var radioNum = radioCh.length;
+
+	radioCh.each(function(numCh) {
+		$(this).on('click', function() {
+			if ($(this).index(numCh)) {
+				box.find('.select_box').removeClass('disabled');
+				box.find('select').removeAttr('disabled');
+			} else {
+				box.find('.select_box').addClass('disabled');
+				box.find('select').attr('disabled','');
+			}
+		});
+	});
+}
+
+/* NB 런칭 캘린더 =============================================================== */
+// 캘린더 알림 - 체크박스 버튼 선택 시, 텍스트&이미지 교체
+function calNoti () {
+	$('.cal_noti . input').on('click', function() {
+		if ($('.cal_noti . input').prop('checked')) {
+			$('.cal_noti .top_box').addClass('on');
+			$('.cal_noti .top_box p').html('알림취소 시 <span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림이 제공되지 않습니다.');
+			$('.cal_noti . label').text('캘린더 알림취소');
+		} else {
+			$('.cal_noti .top_box').removeClass('on');
+			$('.cal_noti .top_box p').html('<span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림을 받을 수 있습니다.');
+			$('.cal_noti . label').text('캘린더 알림받기');
+		}
+	});
+}
+
+/* =============================================================== */
+;(function($){
+    $(function () {
+        //ie9 placeholder
+        isPlaceholder = ('placeholder' in document.createElement('input'));
+        if (!isPlaceholder) {
+            $("[placeholder]").focus(function () {
+                if ($(this).val() == $(this).attr("placeholder")) $(this).val("").css('color','#141414');
+            }).blur(function () {
+                if ($(this).val() == "") $(this).val($(this).attr("placeholder")).css('color','#777');
+            }).blur();
+            $("[placeholder]").parents("form").submit(function () {
+                $(this).find('[placeholder]').each(function() {
+                    if ($(this).val() == $(this).attr("placeholder")) {
+                        $(this).val("");
+                        //console.log("입력값이 placeholder값과 같습니다.");
+                    }
+                });
+            });
+        }
+        //my > 사용가능매장 || 펼쳐보기
+        $(".btn_store_use").click(function(){
+            if($(".icon_arrow").hasClass("on")){
+                $(".list_store_use").removeClass("on");
+                $(".icon_arrow").removeClass("on");
+            }else{
+                $(".list_store_use").addClass("on");
+                $(".icon_arrow").addClass("on");
+            }
+        });
+        //su > 세탁 및 손질 방법 안내 || 페이지 앵커
+        $(".info_trim_shoes .btn_list li").mouseup(function(){
+            setTimeout(function(){
+                $(window).scrollTop($(window).scrollTop()-110)
+            },10)
+        })
+    });
+})(jQuery);
+//ie checkbox radio bugfix
+$(window).load(function(){
+    var agent = navigator.userAgent.toLowerCase();
+    if ( (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
+        $("input[type='checkbox']+label, input[type='radio']+label").each(function(){
+            var str = $(this).html();
+            $(this).html(str);
+        });
+    }
+});
+//couponpopup 20180918			
+function wrapWindowByMask(){
+	var maskHeight = $(document).height();
+	var maskWidth = $(window).width();
+
+	$('.coupondimm').css({'width':maskWidth,'height':maskHeight});
+
+	$('.coupondimm').fadeIn();
+
+	var left = ( $(window).scrollLeft() + ( $(window).width() - $('.coupon_wrap').width()) / 2 );
+	var top = ( $(window).scrollTop() + ( $(window).height() - $('.coupon_wrap').height()) / 2 );
+
+	$('.coupon_wrap').css({'left':left,'top':top, 'position':'absolute'});
+	$('.coupon_wrap').show();
+}
+
+$(document).ready(function(){
+	$('.open').click(function(e){
+		e.preventDefault();
+		wrapWindowByMask();
+	});
+
+	$('.coupon_wrap .close').click(function (e) {
+		e.preventDefault();
+		$('.coupondimm, .coupon_wrap').hide();
+	});
+});
 
 /* slide swiper =============================================================== 20220224 수정*/
 function slideSwiper(scrollSlide) {
