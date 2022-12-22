@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<div class = "hhh">
 	<div class="header on">
 	
 	
@@ -1869,7 +1870,7 @@
 					<a href="javascript:;" class="btn_srch" data-gtag-idx="fo_common_4_1">검색</a>
 					<div class="category_box" style="display: none;">
 						<div class="srch_area srch_area-renewal">
-							<span class="select_box select_box-srch">
+							<span class="sselect_box select_box-srch">
 								<select name="prodPart" id="prodPart">
 									<option value="">전체</option>
 									<option value="M">MEN</option>
@@ -2118,6 +2119,7 @@
 		</div>
 	</div>
 	<!-- // gnb -->
+</div>
 </div>
 <div class="dimm_gnb" style="display: none;"></div>
 <script type="text/javascript">
@@ -2674,15 +2676,15 @@ function parcelOpt () {
 /* NB 런칭 캘린더 =============================================================== */
 // 캘린더 알림 - 체크박스 버튼 선택 시, 텍스트&이미지 교체
 function calNoti () {
-	$('.cal_noti .btn_area input').on('click', function() {
-		if ($('.cal_noti .btn_area input').prop('checked')) {
+	$('.cal_noti . input').on('click', function() {
+		if ($('.cal_noti . input').prop('checked')) {
 			$('.cal_noti .top_box').addClass('on');
 			$('.cal_noti .top_box p').html('알림취소 시 <span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림이 제공되지 않습니다.');
-			$('.cal_noti .btn_area label').text('캘린더 알림취소');
+			$('.cal_noti . label').text('캘린더 알림취소');
 		} else {
 			$('.cal_noti .top_box').removeClass('on');
 			$('.cal_noti .top_box p').html('<span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림을 받을 수 있습니다.');
-			$('.cal_noti .btn_area label').text('캘린더 알림받기');
+			$('.cal_noti . label').text('캘린더 알림받기');
 		}
 	});
 }
@@ -2864,6 +2866,7 @@ function listHover(){
 	});
 }
 /* 20210721 리스트 호버 추가 :: E */ 
+
 
 
 </script>
