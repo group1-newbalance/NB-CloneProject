@@ -1018,57 +1018,57 @@ input.ip_text.xl {
 	min-width: 100px !important;
 }
 
-.btn_ty_rface, .btn_ty_rface:hover {
+.srch_area>.btn_ty_rface, .btn_ty_rface:hover {
 	border: 2px solid #cf0a2c;
 	background: #cf0a2c;
 	color: #fff;
 }
 
-.btn_ty_rline, .btn_ty_rline:hover {
+.srch_area>.btn_ty_rline, .btn_ty_rline:hover {
 	border: 2px solid #cf0a2c;
 	color: #cf0a2c;
 }
 
-.btn_ty_bface, .btn_ty_bface:hover {
+.srch_area>.btn_ty_bface, .btn_ty_bface:hover {
 	border: 2px solid #141414;
 	background: #141414;
 	color: #fff;
 }
 
-.btn_ty_bline, .btn_ty_bline:hover {
+.srch_area>.btn_ty_bline, .btn_ty_bline:hover {
 	border: 2px solid #444;
 	color: #141414;
 }
 
-.btn_ty_bline1, .btn_ty_bline1:hover {
+.srch_area>.btn_ty_bline1, .btn_ty_bline1:hover {
 	border: 1px solid #141414;
 	color: #141414;
 }
 
-.btn_ty_gface, .btn_ty_gface:hover {
+.srch_area>.btn_ty_gface, .btn_ty_gface:hover {
 	border: 2px solid #444;
 	background: #444;
 	color: #fff;
 }
 
-.btn_ty_gface2, .btn_ty_gface2:hover {
+.srch_area>.btn_ty_gface2, .btn_ty_gface2:hover {
 	border: 2px solid #eaeaea;
 	background: #eaeaea;
 	color: #141414;
 }
 
-.btn_ty_form {
+.srch_area>.btn_ty_form {
 	min-width: 100px;
 	padding: 16px 22px 15px;
 	background: #737B82;
 	color: #fff;
 }
 
-.btn_ty_form:hover {
+.srch_area>.btn_ty_form:hover {
 	color: #fff;
 }
 
-.btn_ty_more, .btn_ty_more:hover {
+.srch_area>.btn_ty_more, .btn_ty_more:hover {
 	padding: 5px 20px 5px 0;
 	background:
 		url('https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png')
@@ -1078,55 +1078,55 @@ input.ip_text.xl {
 	letter-spacing: -0.045em;
 }
 
-.btn_ty_bline.xs {
+.srch_area>.btn_ty_bline.xs {
 	border-color: #000;
 }
 
-.btn_ty_bline1.sm {
+.srch_area>.btn_ty_bline1.sm {
 	min-width: 100px;
 	padding: 15px 21px 14px;
 }
 
-.btn_ty_form.xs {
+.srch_area>.btn_ty_form.xs {
 	padding: 12px 13px 11px;
 	border: 0;
 }
 
-.btn_ty_compare, .btn_ty_compare:hover {
+.srch_area>.btn_ty_compare, .btn_ty_compare:hover {
 	background: #141414;
 	color: #fff;
 }
 
-.btn_ty_compare span {
+.srch_area>.btn_ty_compare span {
 	padding-left: 21px;
 	background:
 		url('https://image.nbkorea.com/NBRB_PC/common/bg_toggle_up.png')
 		no-repeat 0 52%;
 }
 
-.btn_ty_compare.on span {
+.srch_area>.btn_ty_compare.on span {
 	background:
 		url('https://image.nbkorea.com/NBRB_PC/common/bg_toggle_down.png')
 		no-repeat 0 52%;
 }
 
-.btn_line {
+.srch_area>.btn_line {
 	display: inline-block;
 	padding-bottom: 3px;
 	border-bottom: 1px solid #777;
 	color: #000;
-	letter-spacing: -0.04em;
+	letter-spacing: -0.04em;    
 	line-height: 1;
 }
 
-.btn_ty_rface.disabled, .btn_ty_bface.disabled, .btn_ty_gface.disabled,
+.srch_area>.btn_ty_rface.disabled, .btn_ty_bface.disabled, .btn_ty_gface.disabled,
 	.btn_ty_gface2.disabled {
 	border-color: #eaeaea !important;
 	background-color: #eaeaea;
 	color: #aeaeae;
 }
 
-.btn_ty_rline.disabled, .btn_ty_bline.disabled, .btn_ty_bline1.disabled
+.srch_area>.btn_ty_rline.disabled, .btn_ty_bline.disabled, .btn_ty_bline1.disabled
 	{
 	border-color: #efefef !important;
 	color: #aeaeae;
