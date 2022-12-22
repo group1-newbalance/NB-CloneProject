@@ -8,10 +8,283 @@
 <title>뉴발란스 공식 온라인스토어</title>
 <link rel="icon" type="image/x-icon"
 	href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
-<link rel="stylesheet" href="/newbalance/common/header.css">
+	<link rel="stylesheet" href="header.css">
 	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	var pre_idx = null;
+	var pre_label = null;
+	
+	$(document).ready(function() {
+		
+		$('div.top_search #schWord').on('keydown', function (event) {
+	        if (event.which == 13) {
+	            event.preventDefault();            
+	            
+	            var schWord = $('#schWord').val();
+				/* var replaceSchWord = schWord.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@#$%&\\\=\(\'\"]/gi, "");
+				
+				if($.trim(replaceSchWord) != "") {
+					//풀스캔 방지
+					fnIntegratedSearch(schWord);
+				} */
+				fnIntegratedSearch(schWord);
+	        }
+	    });
+		
+		
+		$('div.top_search #btnProdSch').on('click', function () {           
+            var schWord = $('#schWord').val();
+			/* var replaceSchWord = schWord.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@#$%&\\\=\(\'\"]/gi, "");
+			
+			if($.trim(replaceSchWord) != "") {
+				//풀스캔 방지
+				fnIntegratedSearch(schWord);
+			} */
+			fnIntegratedSearch(schWord);
+	    });
+		
+		
+		fnIntegratedSearch = function(schWord) {
+			if($.trim(schWord) == "NB" || $.trim(schWord) == "nb") {
+				alert("해당 검색어는 사용하실 수 없습니다.");
+				return;
+			} else if($.trim(schWord) == "") {
+				alert("상품검색어를 입력해 주세요.");
+				return;
+			} else {
+				schWord = $.trim(schWord);
+				fnAddRecentSearchWord(schWord);
+				var schEncWord = encodeURI(encodeURIComponent(schWord));
+				var prodPart = $("#prodPart").val();
+				var schUrl = "/product/searchResult.action?schWord=" + schEncWord + (prodPart == "" ? "" : "&prodPart=" + prodPart);
+				document.location.replace(schUrl);
+				
+			}
+		}
+		
+		
+		document.title = "뉴발란스 공식 온라인스토어";
+				
+		
+		$("head").append("<meta name='keywords' content='뉴발란스,뉴발란스 신상품, 뉴발란스키즈,뉴발,뉴발란스키즈 신상품, 뉴발란스 키즈 운동화, 뉴발란스 운동화, 뉴발란스327, 뉴발란스992, 뉴발란스530' />");
+		$("head").append("<meta name='description' content='WE GOT NOW. 한정상품 발매 정보와 가입시 5,000원 혜택까지' />");
+	    
+	    
+		$('[data-gtag-idx]').on('click', function () {
+			var gtagIdx 		= $(this).data("gtagIdx");
+			var gtagCategory 	= $(this).data("gtagCate");			
+			var gtagEventName 	= $(this).data("gtagEventName");
+			var gtagLabel 		= $(this).data("gtagLabel");
+			var categoryName	= $(this).data("categoryName");
+			var label			= null;
+			
+			if(nb_gtag_data[gtagIdx]) {
+				gtagEventName = gtagEventName == undefined ? '' : gtagEventName;
+				gtagLabel = gtagLabel == undefined ? '' : gtagLabel;
+				categoryName = categoryName == undefined ? '' : (categoryName + '_');
+				
+				
+				if(nb_gtag_data[gtagIdx].event_info.is_ref == true){
+					gtagLabel = $("#" + $(this).data("gtagRef")).val();
+				}
+				
+				// 동적 데이터를 세팅하는 경우 (GNB 카테고리)
+				if(gtagCategory) {
+					nb_gtag_data[gtagIdx].event_name += gtagEventName;
+					nb_gtag_data[gtagIdx].event_info.event_category += gtagCategory;				
+					nb_gtag_data[gtagIdx].event_info.event_label = gtagLabel;
+				} else {
+					if(gtagLabel) {
+						gtagLabel = (categoryName + gtagLabel);
+						nb_gtag_data[gtagIdx].event_info.event_label += gtagLabel;
+						
+						// GNB 2depth 세팅하는 경우
+						if(categoryName){
+							nb_gtag_data[gtagIdx].event_name += $(this).data("categoryName");
+						}
+					}
+				}				
+				
+				label = nb_gtag_data[gtagIdx].event_info.event_label;
+				
+				// 동일 gtagIdx, label 값을 클릭 했을 경우 GA_태그 이벤트 발송 제외
+				if(!(pre_label == label && pre_idx == gtagIdx)){
+					gtag("event", nb_gtag_data[gtagIdx].event_name, nb_gtag_data[gtagIdx].event_info);
+					pre_idx	= gtagIdx;
+					pre_label = label;
+				}				
+				// 해당 링크가 새창으로 열릴경우, 이벤트 라벨명이 뉴락되는 현상 방지
+				if(gtagLabel) {
+					nb_gtag_data[gtagIdx].event_info.event_label = "";
+				}				
+			}
+	    });	    
+	    
+				
+		fnDrawRecentWordArea();
+		
+		$('.category_box').hover(function() {
+            $('.ip_text').click(function() {
+                $('.srch_list_area').show();
+                $('.category_box').addClass('open');
+            });
+            
+        }, function() {
+            $('.srch_list_area').hide();
+            $('.category_box').removeClass('open');
+        });
+        
+        $("#btnRecentWordRemoveAll").on('click', function() {        	
+        	NbStorage.remove();
+        	fnDrawRecentWordArea();
+        });
+        
+        
+        $("#recentSearch").on('click', "ul li span[name='btnRecentWordRemove']", function () {        	
+        	var idx = $(this).data("key");
+        	
+        	var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+    		var recentSearchWordReNew = {};
+    		if(recentSearchWordDataJSON && JSON.parse(recentSearchWordDataJSON)) {
+    			
+    			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+    			var removeWord = recentSearchWordList[idx];
+    			var ordNo = 1;
+    			
+    			for (var i in recentSearchWordList) {
+    				var itemWord = recentSearchWordList[i];
+    				
+    				
+    				if(unescape(itemWord) != unescape(removeWord)) {
+    					recentSearchWordReNew[ordNo] = itemWord;
+    					ordNo ++;
+    				}
+    			}
+    		}
+    		
+    		NbStorage.set("recentSearchWordData", JSON.stringify(recentSearchWordReNew));
+    		fnDrawRecentWordArea();    		
+        });
+        
+    	
+        $("#recentSearch").on('click', "ul li a[name='btnRecentWordSearch']", function () {
+        	var schWord 	= $(this).data("word");
+        	fnAddRecentSearchWord(schWord);
+			var schEncWord = encodeURI(encodeURIComponent(schWord));
+			document.location.replace("/product/searchResult.action?schWord=" + schEncWord);
+        });
+        
+	});
+	
+	
+	function fnAddRecentSearchWord(schWord) {
+		var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+		var recentSearchWordAdded = {};
+		
+		schWord = schWord.toString().replace(/[<>@#$%&\\\=\(\'\"]/ig,"");
+		schWord = escape(schWord);
+		recentSearchWordAdded[0] = schWord;
+		
+		if(recentSearchWordDataJSON) {
+			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+			var ordNo = 1;
+
+			for (var i in recentSearchWordList) {
+				if(recentSearchWordList[i] != schWord) {
+					recentSearchWordAdded[ordNo]  = recentSearchWordList[i];
+					if(ordNo >= 9) break;
+					ordNo++;				
+				}
+			}
+		}
+		
+		NbStorage.set("recentSearchWordData", JSON.stringify(recentSearchWordAdded));		
+	}
+	
+	
+	function fnDrawRecentWordArea() {
+		
+		var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+		var recentSearchWordItem = new StringBuilder();
+		
+		if(JSON.stringify(recentSearchWordDataJSON) && (JSON.stringify(recentSearchWordDataJSON) == "\"{}\"") == false) {
+			
+			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+			recentSearchWordItem.append("<ul>");			
+			for (var i in recentSearchWordList) {
+				recentSearchWordItem.append("<li>");				
+				recentSearchWordItem.append("<a class=\"srch_txt\" href=\"javascript:;\" name=\"btnRecentWordSearch\" data-word=\"" + unescape(recentSearchWordList[i]) + "\" data-gtag-idx=\"fo_common_5_1\" data-gtag-label=\"" + unescape(recentSearchWordList[i]) + "\"><span>" + unescape(recentSearchWordList[i]) + "</span></a>");
+				recentSearchWordItem.append("<span class=\"del\" href=\"javascript:;\" name=\"btnRecentWordRemove\" data-key=\"" + i + "\"><img src=\"https://image.nbkorea.com/NBRB_PC/common/btn_delete_15x15.jpg\"></span>"); 
+				recentSearchWordItem.append("</li>");
+			}
+			recentSearchWordItem.append("</ul>");
+		} else {
+			recentSearchWordItem.append("<p class=\"no_result\">최근 검색어 내역이<br /> 없습니다.</p>");
+		}
+		
+		$("#recentSearch").html(recentSearchWordItem.toString());
+		
+		// $("#recentSearch").on('click', "ul li a[name='btnRecentWordSearch']", gaTag);
+	}
+	
+	
+	
+	
+	
+	
+	
+		
+	function gaTag(){
+		var gtagIdx 		= $(this).data("gtagIdx");
+		var gtagCategory 	= $(this).data("gtagCate");			
+		var gtagEventName 	= $(this).data("gtagEventName");
+		var gtagLabel 		= $(this).data("gtagLabel");
+		var schWord 		= $(this).data("word");			//최근 검색어
+		var label			= null;
+		
+		if(nb_gtag_data[gtagIdx]) {
+			gtagEventName = gtagEventName == undefined ? '' : gtagEventName;
+			gtagLabel = gtagLabel == undefined ? '' : gtagLabel;
+			schWord = schWord == undefined ? '' : schWord;
+			
+			
+			if(nb_gtag_data[gtagIdx].event_info.is_ref == true){
+				gtagLabel = $("#" + $(this).data("gtagRef")).val();
+			} 
+			
+			if(schWord){
+				nb_gtag_data[gtagIdx].event_info.event_label += schWord;
+			}
+			
+			
+			if(gtagCategory) {
+				nb_gtag_data[gtagIdx].event_name += gtagEventName;
+				nb_gtag_data[gtagIdx].event_info.event_category += gtagCategory;				
+				nb_gtag_data[gtagIdx].event_info.event_label = gtagLabel;
+			} else {
+				if(gtagLabel) {
+					nb_gtag_data[gtagIdx].event_info.event_label += gtagLabel;
+				}
+			}
+			label = nb_gtag_data[gtagIdx].event_info.event_label;
+			
+			// 동일 gtagIdx, label 값을 클릭 했을 경우 GA_태그 이벤트 발송 제외
+			if(!(pre_label == label && pre_idx == gtagIdx)){
+				gtag("event", nb_gtag_data[gtagIdx].event_name, nb_gtag_data[gtagIdx].event_info);
+				pre_idx	= gtagIdx;
+				pre_label = label;
+			}			
+			
+			
+			if(gtagLabel) {
+				nb_gtag_data[gtagIdx].event_info.event_label = "";
+			}			
+		}	   
+	}
+</script>
 <style>
 </style>
 </head>
@@ -2513,257 +2786,9 @@ var parallax = {
 	}
 }
 
-/* detail - fixed =============================================================== */
-function detailFixed(){
-	var browserH = $(window).height();
-	var fixedSection1 = $('.detail .detail_wrap');
-	var fixedSection2 = $('.detail .detail_bottom');
-	var setSection1 = fixedSection1.offset().top;
-	var setSection2 = fixedSection2.offset().top;
-	var intScrollTop = $(window).scrollTop();
-	var stickyTabH = $('.sticky_wrap .tab_box').height()
 
-	var tabbox = $('.tab_box li');
-	tabbox.each(function(n){
-		$(this).find('a').click(function(){
-			$(this).parent().addClass('active').siblings().removeClass('active');
-		});
-	});
 
-	if(intScrollTop > setSection1 ) {
-		fixedSection1.find('.sticky_wrap').css({'top':0});
-		fixedSection1.addClass('fixed');
-	}
-	else if(intScrollTop < setSection1 ){
-		fixedSection1.find('.sticky_wrap').css({'top':0});
-		fixedSection1.removeClass('fixed');
-	}
 
-	if(intScrollTop > setSection2-browserH ) {
-		var topN = intScrollTop -(setSection2-browserH);
-		fixedSection1.find('.sticky_wrap').css({'top':-topN});
-	}
-
-	var secScroll = browserH -1 -($('.sticky_wrap .sec_prices').innerHeight()) - stickyTabH;
-	$('.sticky_wrap .option_wrap .sec_scroll').css('height',secScroll);
-}
-
-/* product - list =============================================================== */
-// filter
-function filter () {
-	var title = $('.filter_title');
-	var filterBox = $('.filter_group');
-	filterBox.hide();
-
-	title.find('li a').each(function(i) {
-		$(this).on('click focusein', function() {
-			if ($(this).parent('li').hasClass('on')) {
-				title.find('li').removeClass('on');
-				filterBox.hide();
-				filterBox.find('> div').removeClass('on');
-			} else {
-				title.find('li').removeClass('on');
-				filterBox.find('> div').removeClass('on');
-				filterBox.show();
-				$(this).parent('li').addClass('on');
-				filterBox.find('> div').eq(i).addClass('on');
-			}
-		});
-	});
-}
-
-// gathering
-function gatClick () {
-	$('.gathering ul > li > a').on('click', function() {
-		$('.gathering ul > li').removeClass('on');
-		$(this).parent('li').addClass('on');
-	});
-}
-
-// 비교하기 토글
-function compareChk () {
-	$('.goods_com .btn_ty_compare').on('click', function() {
-		$(this).toggleClass('on');
-		$('.inner_box').toggleClass('on');
-	});
-}
-
-// quick view
-function quickV () {
-	var list = $('.goods_list02');
-	var qView = list.find('.quick_view.on');
-
-	list.find('li').on('mouseover', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');
-		$(this).find('.pro_area').addClass('on');
-		$(this).find('.quick_view').addClass('on');
-	});
-	list.find('li').on('mouseout', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');;
-	});
-}
-
-// black friday - quick view
-function quickVBf () {
-	var list = $('.bfgoods_list');
-	var qView = list.find('.quick_view.on');
-
-	list.find('li').on('mouseover', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');
-		$(this).find('.pro_area').addClass('on');
-		$(this).find('.quick_view').addClass('on');
-	});
-	list.find('li').on('mouseout', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');;
-	});
-}
-
-// event - quick view
-function quickVEvt (eventProdList) {
-	var list = $('.' + eventProdList);
-	var qView = list.find('.quick_view.on');
-
-	list.find('li').on('mouseover', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');
-		$(this).find('.pro_area').addClass('on');
-		$(this).find('.quick_view').addClass('on');
-	});
-	list.find('li').on('mouseout', function() {
-		$('.pro_area').removeClass('on');
-		$('.quick_view').removeClass('on');;
-	});
-}
-
-/* payment =============================================================== */
-// 결제 방법 라디오 버튼 선택 시, 내용 보기
-function payOpt (i) {
-	var list = $('.pay_opt input');
-	var box = $('.pay_option_group > div');
-
-	list.each(function(i) {
-		$(this).on('click', function() {
-			box.removeClass('on');
-			box.eq(i).addClass('on');
-		});
-	});
-}
-
-/* my =============================================================== */
-// 반송 정보 입력란 - 택배사 라디오버튼 선택
-function parcelOpt () {
-	var box = $('.parcel_company');
-	var radioCh = $('.parcel_company .chk input');
-	var radioNum = radioCh.length;
-
-	radioCh.each(function(numCh) {
-		$(this).on('click', function() {
-			if ($(this).index(numCh)) {
-				box.find('.select_box').removeClass('disabled');
-				box.find('select').removeAttr('disabled');
-			} else {
-				box.find('.select_box').addClass('disabled');
-				box.find('select').attr('disabled','');
-			}
-		});
-	});
-}
-
-/* NB 런칭 캘린더 =============================================================== */
-// 캘린더 알림 - 체크박스 버튼 선택 시, 텍스트&이미지 교체
-function calNoti () {
-	$('.cal_noti . input').on('click', function() {
-		if ($('.cal_noti . input').prop('checked')) {
-			$('.cal_noti .top_box').addClass('on');
-			$('.cal_noti .top_box p').html('알림취소 시 <span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림이 제공되지 않습니다.');
-			$('.cal_noti . label').text('캘린더 알림취소');
-		} else {
-			$('.cal_noti .top_box').removeClass('on');
-			$('.cal_noti .top_box p').html('<span class="en">NB</span> 런칭캘린더에 등록되는<br />신규 상품과 기획전에 대한 알림을 받을 수 있습니다.');
-			$('.cal_noti . label').text('캘린더 알림받기');
-		}
-	});
-}
-
-/* =============================================================== */
-;(function($){
-    $(function () {
-        //ie9 placeholder
-        isPlaceholder = ('placeholder' in document.createElement('input'));
-        if (!isPlaceholder) {
-            $("[placeholder]").focus(function () {
-                if ($(this).val() == $(this).attr("placeholder")) $(this).val("").css('color','#141414');
-            }).blur(function () {
-                if ($(this).val() == "") $(this).val($(this).attr("placeholder")).css('color','#777');
-            }).blur();
-            $("[placeholder]").parents("form").submit(function () {
-                $(this).find('[placeholder]').each(function() {
-                    if ($(this).val() == $(this).attr("placeholder")) {
-                        $(this).val("");
-                        //console.log("입력값이 placeholder값과 같습니다.");
-                    }
-                });
-            });
-        }
-        //my > 사용가능매장 || 펼쳐보기
-        $(".btn_store_use").click(function(){
-            if($(".icon_arrow").hasClass("on")){
-                $(".list_store_use").removeClass("on");
-                $(".icon_arrow").removeClass("on");
-            }else{
-                $(".list_store_use").addClass("on");
-                $(".icon_arrow").addClass("on");
-            }
-        });
-        //su > 세탁 및 손질 방법 안내 || 페이지 앵커
-        $(".info_trim_shoes .btn_list li").mouseup(function(){
-            setTimeout(function(){
-                $(window).scrollTop($(window).scrollTop()-110)
-            },10)
-        })
-    });
-})(jQuery);
-//ie checkbox radio bugfix
-$(window).load(function(){
-    var agent = navigator.userAgent.toLowerCase();
-    if ( (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
-        $("input[type='checkbox']+label, input[type='radio']+label").each(function(){
-            var str = $(this).html();
-            $(this).html(str);
-        });
-    }
-});
-//couponpopup 20180918			
-function wrapWindowByMask(){
-	var maskHeight = $(document).height();
-	var maskWidth = $(window).width();
-
-	$('.coupondimm').css({'width':maskWidth,'height':maskHeight});
-
-	$('.coupondimm').fadeIn();
-
-	var left = ( $(window).scrollLeft() + ( $(window).width() - $('.coupon_wrap').width()) / 2 );
-	var top = ( $(window).scrollTop() + ( $(window).height() - $('.coupon_wrap').height()) / 2 );
-
-	$('.coupon_wrap').css({'left':left,'top':top, 'position':'absolute'});
-	$('.coupon_wrap').show();
-}
-
-$(document).ready(function(){
-	$('.open').click(function(e){
-		e.preventDefault();
-		wrapWindowByMask();
-	});
-
-	$('.coupon_wrap .close').click(function (e) {
-		e.preventDefault();
-		$('.coupondimm, .coupon_wrap').hide();
-	});
-});
 
 /* slide swiper =============================================================== 20220224 수정*/
 function slideSwiper(scrollSlide) {
