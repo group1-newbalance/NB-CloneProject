@@ -7,7 +7,7 @@
 <title>뉴발란스 공식 온라인스토어</title>
 <link rel="icon" type="image/x-icon"
    href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/newbalance/css/customer/loginForm.css">
 </head>
 <body>
@@ -16,21 +16,21 @@
 	<!-- container -->
 	<div class="lfcontainer" style="padding-top: 0px;">
         <div class="contents">
-            <h2 class="h2_title_img">LOG IN</h2>
-			<div class="con_login">
-				<input type="text" name="id" class="ip_text" maxlength="50" placeholder="아이디">
-				<input type="password" name="password" class="ip_text" maxlength="20" placeholder="비밀번호">
-				<div class="etc_box">
+            <h2 class="loginH2Title">LOG IN</h2>
+			<div class="loginForm">
+				<input type="text" name="id" class="loginFormInput" maxlength="50" placeholder="아이디">
+				<input type="password" name="password" class="loginFormInput" maxlength="20" placeholder="비밀번호">
+				<div class="loginFormEtcBox">
 					<p class="save_id"><input type="checkbox" id="saveId" name="saveId" class="ip_chekbox" checked="checked"><label for="saveId">아이디 저장하기</label></p>
 					<ul>
-						<li><a href="/customer/direct.FindID.action">아이디/비밀번호 찾기</a></li>
+						<li><a href="/newbalance/customer/findId.action">아이디/비밀번호 찾기</a></li>
 					</ul>
 				</div>
-				<div class="btn_area">
-					<a href="javascript:;" id="btnLogin" class="btn_ty_bface">로그인</a>
-					<a href="javascript:;" id="btnKakaoLogin" class="btn_ty_kakao">카카오 로그인</a>
-					<a href="javascript:;" id="btnNaverLogin" class="btn_ty_naver">네이버 로그인</a>		
-					<a href="javascript:;" id="appleid-signin" class="btn_ty_apple">Apple 로그인</a><!--20220811 추가-->			
+				<div class="btnGrp">
+					<a href="javascript:;" id="btnLogin" class=loginBtn>로그인</a>
+					<a href="javascript:;" id="btnKakaoLogin" class="kkoBtn">카카오 로그인</a>
+					<a href="javascript:;" id="btnNaverLogin" class="nvrBtn">네이버 로그인</a>		
+					<a href="javascript:;" id="appleid-signin" class="appleBtn">Apple 로그인</a><!--20220811 추가-->			
 				</div>
 				
 				<!-- 20201130 추가 :: S -->
@@ -42,8 +42,8 @@
 				<img src="https://image.nbkorea.com/NBRB_PC/common/logo_NB.png" alt="NB">
 				<p class="txt1">온라인 스토어 회원만의 특별한 혜택</p>
 				<p class="txt2" style="line-height:20px;">5,000원 온라인 쿠폰지급 + 기념일 축하 1만원 할인 쿠폰 지급 +<br>6%마일리지 적립 + 온오프 마일리지 통합</p>
-				<div class="btn_area center">
-					<a href="/customer/direct.Join.action" class="btn_ty_rface">회원가입</a>
+				<div class="btnGrp center">
+					<a href="/newbalance/customer/joinn.action" class="btn_ty_rface">회원가입</a>
 				</div>
 			</div>
 			

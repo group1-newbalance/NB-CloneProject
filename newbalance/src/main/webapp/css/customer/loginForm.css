@@ -10,7 +10,7 @@
     margin: 0 auto;
 }
 
-.h2_title_img {
+.loginH2Title {
     text-align: center;
     margin-top: 100px;
     font-family: 'DidotLTPro';
@@ -20,13 +20,13 @@
     line-height: 1;
 }
 
-.con_login {
+.loginForm {
     width: 338px;
     margin: 60px auto 0 auto;
     
 }
 
-.ip_text{
+.loginFormInput{
 	box-sizing: border-box;
 	width:100%; 
 	height:45px;
@@ -34,33 +34,33 @@
 	padding:5px 0px 5px 10px;
 	border: 1px solid #dbdbdb;
 }
-.ip_text:focus{
+.loginFormInput:focus{
 	outline:none;
 }
-.con_login .etc_box ul{
+.loginForm .loginFormEtcBox ul{
 	list-style-type: none;
 	padding:0;
 }
-.con_login .etc_box ul li a {
+.loginForm .loginFormEtcBox ul li a {
     color: #777;
     font-size: 12px;
     text-decoration: none;
 }
 
-.etc_box{
+.loginFormEtcBox{
 	display:flex;
 	justify-content: space-between;
 	margin-top:10px;
 }
 
-.btn_area{
+.btnGrp{
 	text-align:center;
 	line-height: 60px;
 	width:100%;
 	margin-top:40px;
 }
 
-.btn_area a{
+.btnGrp a{
 	display:block;
 	margin:auto;
 	height:60px;
@@ -69,15 +69,17 @@
 	font-weight:500;
 }
 
-.btn_ty_bface{
+.loginBtn, .loginBtn:hover{
 	border: 2px solid #141414;
     background: #141414;
     color: #fff;
     font-size: 16px;
     margin-top:20px;
+    font-weight:500;
 }
 
-.btn_ty_kakao::before {
+
+.kkoBtn::before {
     content: '';
     display: inline-block;
     background: url(https://image.nbkorea.com/NBRB_PC/common/icon_kakao.jpg) no-repeat center;
@@ -87,23 +89,26 @@
     background-size: contain;
     vertical-align: middle;
 }
-.btn_ty_kakao{
+.kkoBtn,.kkoBtn:hover{
 	    background: #fee500;
 	    font-size:14px;
 	    color:#141414;
+	    font-weight:500;
 }
 
-.btn_ty_naver{
+.nvrBtn,.nvrBtn:hover{
 	    background: #1ec800;
 	      font-size:14px;
 	      color:white;
+	      font-weight:500;
 }
 
-.btn_ty_apple{
+.appleBtn,.appleBtn:hover{
 	    border: 1px solid #141414;
 	    color:#141414;
+	    font-weight:500;
 }
-.btn_ty_apple::before {
+.appleBtn::before {
     content: '';
     display: inline-block;
     background: url(https://image.nbkorea.com/NBRB_PC/common/icon_apple.png) no-repeat center;
@@ -176,6 +181,3 @@ input.ip_chekbox + label {
     cursor: pointer;
 }
 
-.lfcontainer .btn_area a{
-
-}
