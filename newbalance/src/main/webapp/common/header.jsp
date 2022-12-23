@@ -8,10 +8,283 @@
 <title>뉴발란스 공식 온라인스토어</title>
 <link rel="icon" type="image/x-icon"
 	href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
-<link rel="stylesheet" href="/newbalance/common/header.css">
+	<link rel="stylesheet" href="/newbalance/common/header.css">
 	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	var pre_idx = null;
+	var pre_label = null;
+	
+	$(document).ready(function() {
+		
+		$('div.top_search #schWord').on('keydown', function (event) {
+	        if (event.which == 13) {
+	            event.preventDefault();            
+	            
+	            var schWord = $('#schWord').val();
+				/* var replaceSchWord = schWord.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@#$%&\\\=\(\'\"]/gi, "");
+				
+				if($.trim(replaceSchWord) != "") {
+					//풀스캔 방지
+					fnIntegratedSearch(schWord);
+				} */
+				fnIntegratedSearch(schWord);
+	        }
+	    });
+		
+		
+		$('div.top_search #btnProdSch').on('click', function () {           
+            var schWord = $('#schWord').val();
+			/* var replaceSchWord = schWord.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@#$%&\\\=\(\'\"]/gi, "");
+			
+			if($.trim(replaceSchWord) != "") {
+				//풀스캔 방지
+				fnIntegratedSearch(schWord);
+			} */
+			fnIntegratedSearch(schWord);
+	    });
+		
+		
+		fnIntegratedSearch = function(schWord) {
+			if($.trim(schWord) == "NB" || $.trim(schWord) == "nb") {
+				alert("해당 검색어는 사용하실 수 없습니다.");
+				return;
+			} else if($.trim(schWord) == "") {
+				alert("상품검색어를 입력해 주세요.");
+				return;
+			} else {
+				schWord = $.trim(schWord);
+				fnAddRecentSearchWord(schWord);
+				var schEncWord = encodeURI(encodeURIComponent(schWord));
+				var prodPart = $("#prodPart").val();
+				var schUrl = "/product/searchResult.action?schWord=" + schEncWord + (prodPart == "" ? "" : "&prodPart=" + prodPart);
+				document.location.replace(schUrl);
+				
+			}
+		}
+		
+		
+		document.title = "뉴발란스 공식 온라인스토어";
+				
+		
+		$("head").append("<meta name='keywords' content='뉴발란스,뉴발란스 신상품, 뉴발란스키즈,뉴발,뉴발란스키즈 신상품, 뉴발란스 키즈 운동화, 뉴발란스 운동화, 뉴발란스327, 뉴발란스992, 뉴발란스530' />");
+		$("head").append("<meta name='description' content='WE GOT NOW. 한정상품 발매 정보와 가입시 5,000원 혜택까지' />");
+	    
+	    
+		$('[data-gtag-idx]').on('click', function () {
+			var gtagIdx 		= $(this).data("gtagIdx");
+			var gtagCategory 	= $(this).data("gtagCate");			
+			var gtagEventName 	= $(this).data("gtagEventName");
+			var gtagLabel 		= $(this).data("gtagLabel");
+			var categoryName	= $(this).data("categoryName");
+			var label			= null;
+			
+			if(nb_gtag_data[gtagIdx]) {
+				gtagEventName = gtagEventName == undefined ? '' : gtagEventName;
+				gtagLabel = gtagLabel == undefined ? '' : gtagLabel;
+				categoryName = categoryName == undefined ? '' : (categoryName + '_');
+				
+				
+				if(nb_gtag_data[gtagIdx].event_info.is_ref == true){
+					gtagLabel = $("#" + $(this).data("gtagRef")).val();
+				}
+				
+				// 동적 데이터를 세팅하는 경우 (GNB 카테고리)
+				if(gtagCategory) {
+					nb_gtag_data[gtagIdx].event_name += gtagEventName;
+					nb_gtag_data[gtagIdx].event_info.event_category += gtagCategory;				
+					nb_gtag_data[gtagIdx].event_info.event_label = gtagLabel;
+				} else {
+					if(gtagLabel) {
+						gtagLabel = (categoryName + gtagLabel);
+						nb_gtag_data[gtagIdx].event_info.event_label += gtagLabel;
+						
+						// GNB 2depth 세팅하는 경우
+						if(categoryName){
+							nb_gtag_data[gtagIdx].event_name += $(this).data("categoryName");
+						}
+					}
+				}				
+				
+				label = nb_gtag_data[gtagIdx].event_info.event_label;
+				
+				// 동일 gtagIdx, label 값을 클릭 했을 경우 GA_태그 이벤트 발송 제외
+				if(!(pre_label == label && pre_idx == gtagIdx)){
+					gtag("event", nb_gtag_data[gtagIdx].event_name, nb_gtag_data[gtagIdx].event_info);
+					pre_idx	= gtagIdx;
+					pre_label = label;
+				}				
+				// 해당 링크가 새창으로 열릴경우, 이벤트 라벨명이 뉴락되는 현상 방지
+				if(gtagLabel) {
+					nb_gtag_data[gtagIdx].event_info.event_label = "";
+				}				
+			}
+	    });	    
+	    
+				
+		fnDrawRecentWordArea();
+		
+		$('.category_box').hover(function() {
+            $('.ip_text').click(function() {
+                $('.srch_list_area').show();
+                $('.category_box').addClass('open');
+            });
+            
+        }, function() {
+            $('.srch_list_area').hide();
+            $('.category_box').removeClass('open');
+        });
+        
+        $("#btnRecentWordRemoveAll").on('click', function() {        	
+        	NbStorage.remove();
+        	fnDrawRecentWordArea();
+        });
+        
+        
+        $("#recentSearch").on('click', "ul li span[name='btnRecentWordRemove']", function () {        	
+        	var idx = $(this).data("key");
+        	
+        	var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+    		var recentSearchWordReNew = {};
+    		if(recentSearchWordDataJSON && JSON.parse(recentSearchWordDataJSON)) {
+    			
+    			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+    			var removeWord = recentSearchWordList[idx];
+    			var ordNo = 1;
+    			
+    			for (var i in recentSearchWordList) {
+    				var itemWord = recentSearchWordList[i];
+    				
+    				
+    				if(unescape(itemWord) != unescape(removeWord)) {
+    					recentSearchWordReNew[ordNo] = itemWord;
+    					ordNo ++;
+    				}
+    			}
+    		}
+    		
+    		NbStorage.set("recentSearchWordData", JSON.stringify(recentSearchWordReNew));
+    		fnDrawRecentWordArea();    		
+        });
+        
+    	
+        $("#recentSearch").on('click', "ul li a[name='btnRecentWordSearch']", function () {
+        	var schWord 	= $(this).data("word");
+        	fnAddRecentSearchWord(schWord);
+			var schEncWord = encodeURI(encodeURIComponent(schWord));
+			document.location.replace("/product/searchResult.action?schWord=" + schEncWord);
+        });
+        
+	});
+	
+	
+	function fnAddRecentSearchWord(schWord) {
+		var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+		var recentSearchWordAdded = {};
+		
+		schWord = schWord.toString().replace(/[<>@#$%&\\\=\(\'\"]/ig,"");
+		schWord = escape(schWord);
+		recentSearchWordAdded[0] = schWord;
+		
+		if(recentSearchWordDataJSON) {
+			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+			var ordNo = 1;
+
+			for (var i in recentSearchWordList) {
+				if(recentSearchWordList[i] != schWord) {
+					recentSearchWordAdded[ordNo]  = recentSearchWordList[i];
+					if(ordNo >= 9) break;
+					ordNo++;				
+				}
+			}
+		}
+		
+		NbStorage.set("recentSearchWordData", JSON.stringify(recentSearchWordAdded));		
+	}
+	
+	
+	function fnDrawRecentWordArea() {
+		
+		var recentSearchWordDataJSON = NbStorage.get("recentSearchWordData");
+		var recentSearchWordItem = new StringBuilder();
+		
+		if(JSON.stringify(recentSearchWordDataJSON) && (JSON.stringify(recentSearchWordDataJSON) == "\"{}\"") == false) {
+			
+			var recentSearchWordList = JSON.parse(recentSearchWordDataJSON);
+			recentSearchWordItem.append("<ul>");			
+			for (var i in recentSearchWordList) {
+				recentSearchWordItem.append("<li>");				
+				recentSearchWordItem.append("<a class=\"srch_txt\" href=\"javascript:;\" name=\"btnRecentWordSearch\" data-word=\"" + unescape(recentSearchWordList[i]) + "\" data-gtag-idx=\"fo_common_5_1\" data-gtag-label=\"" + unescape(recentSearchWordList[i]) + "\"><span>" + unescape(recentSearchWordList[i]) + "</span></a>");
+				recentSearchWordItem.append("<span class=\"del\" href=\"javascript:;\" name=\"btnRecentWordRemove\" data-key=\"" + i + "\"><img src=\"https://image.nbkorea.com/NBRB_PC/common/btn_delete_15x15.jpg\"></span>"); 
+				recentSearchWordItem.append("</li>");
+			}
+			recentSearchWordItem.append("</ul>");
+		} else {
+			recentSearchWordItem.append("<p class=\"no_result\">최근 검색어 내역이<br /> 없습니다.</p>");
+		}
+		
+		$("#recentSearch").html(recentSearchWordItem.toString());
+		
+		// $("#recentSearch").on('click', "ul li a[name='btnRecentWordSearch']", gaTag);
+	}
+	
+	
+	
+	
+	
+	
+	
+		
+	function gaTag(){
+		var gtagIdx 		= $(this).data("gtagIdx");
+		var gtagCategory 	= $(this).data("gtagCate");			
+		var gtagEventName 	= $(this).data("gtagEventName");
+		var gtagLabel 		= $(this).data("gtagLabel");
+		var schWord 		= $(this).data("word");			//최근 검색어
+		var label			= null;
+		
+		if(nb_gtag_data[gtagIdx]) {
+			gtagEventName = gtagEventName == undefined ? '' : gtagEventName;
+			gtagLabel = gtagLabel == undefined ? '' : gtagLabel;
+			schWord = schWord == undefined ? '' : schWord;
+			
+			
+			if(nb_gtag_data[gtagIdx].event_info.is_ref == true){
+				gtagLabel = $("#" + $(this).data("gtagRef")).val();
+			} 
+			
+			if(schWord){
+				nb_gtag_data[gtagIdx].event_info.event_label += schWord;
+			}
+			
+			
+			if(gtagCategory) {
+				nb_gtag_data[gtagIdx].event_name += gtagEventName;
+				nb_gtag_data[gtagIdx].event_info.event_category += gtagCategory;				
+				nb_gtag_data[gtagIdx].event_info.event_label = gtagLabel;
+			} else {
+				if(gtagLabel) {
+					nb_gtag_data[gtagIdx].event_info.event_label += gtagLabel;
+				}
+			}
+			label = nb_gtag_data[gtagIdx].event_info.event_label;
+			
+			// 동일 gtagIdx, label 값을 클릭 했을 경우 GA_태그 이벤트 발송 제외
+			if(!(pre_label == label && pre_idx == gtagIdx)){
+				gtag("event", nb_gtag_data[gtagIdx].event_name, nb_gtag_data[gtagIdx].event_info);
+				pre_idx	= gtagIdx;
+				pre_label = label;
+			}			
+			
+			
+			if(gtagLabel) {
+				nb_gtag_data[gtagIdx].event_info.event_label = "";
+			}			
+		}	   
+	}
+</script>
 <style>
 </style>
 </head>
@@ -2513,40 +2786,7 @@ var parallax = {
 	}
 }
 
-/* detail - fixed =============================================================== */
-function detailFixed(){
-	var browserH = $(window).height();
-	var fixedSection1 = $('.detail .detail_wrap');
-	var fixedSection2 = $('.detail .detail_bottom');
-	var setSection1 = fixedSection1.offset().top;
-	var setSection2 = fixedSection2.offset().top;
-	var intScrollTop = $(window).scrollTop();
-	var stickyTabH = $('.sticky_wrap .tab_box').height()
 
-	var tabbox = $('.tab_box li');
-	tabbox.each(function(n){
-		$(this).find('a').click(function(){
-			$(this).parent().addClass('active').siblings().removeClass('active');
-		});
-	});
-
-	if(intScrollTop > setSection1 ) {
-		fixedSection1.find('.sticky_wrap').css({'top':0});
-		fixedSection1.addClass('fixed');
-	}
-	else if(intScrollTop < setSection1 ){
-		fixedSection1.find('.sticky_wrap').css({'top':0});
-		fixedSection1.removeClass('fixed');
-	}
-
-	if(intScrollTop > setSection2-browserH ) {
-		var topN = intScrollTop -(setSection2-browserH);
-		fixedSection1.find('.sticky_wrap').css({'top':-topN});
-	}
-
-	var secScroll = browserH -1 -($('.sticky_wrap .sec_prices').innerHeight()) - stickyTabH;
-	$('.sticky_wrap .option_wrap .sec_scroll').css('height',secScroll);
-}
 
 /* product - list =============================================================== */
 // filter
