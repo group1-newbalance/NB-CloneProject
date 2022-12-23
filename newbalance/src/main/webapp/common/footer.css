@@ -218,14 +218,14 @@ body{
   display:none;
 }
 
-.layer_pop{
+.policyPopUp{
   position: absolute;
   left: 0px;
   width: auto;
   z-index: 100;
 display:none;
 }
-.layer_pop .pop_inner{
+.policyPopUp .policyPopUpInner{
   background-color: white;
   position: absolute;
   width: 700px;
@@ -235,7 +235,7 @@ display:none;
   z-index: 100;
 }
 
-.pop_inner .header strong {
+.policyPopUpInner .policyPopUpHeader strong {
   display: block;
   color: #121212;
   font-size: 24px;
@@ -243,19 +243,19 @@ display:none;
   line-height: 1;
 }
 
-.pop_inner .header{
+.policyPopUpInner .policyPopUpHeader{
   padding-bottom: 18px;
   border-bottom: 2px solid #121212;
 }
 
-.content_type .text{
+.policyPopUpCntType .policyPopUpText{
   list-style-type: none;
   padding:0;
   font-size: 14px;
   color:#121212
 }
 
-.content_type .comp_txt2{
+.policyPopUpCntType .policyPopUpText2{
   color:#777;
   font-size: 14px;
 }
@@ -264,14 +264,14 @@ display:none;
   font-weight: 700;
 }
 
-.content_type .text {
+.policyPopUpCntType .policyPopUpText {
   padding-top: 190px;
   background: url(https://image.nbkorea.com/NBRB_PC/common/bg_content.png) no-repeat center 50px/89px;
   padding-bottom: 28px;
   font-family: 'Noto Sans KR',sans-serif;
 }
 
-.layer_pop .close {
+.policyPopUp .policyPopUpClose {
   position: absolute;
   right: 50px;
   top: 50px;

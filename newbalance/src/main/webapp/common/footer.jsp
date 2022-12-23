@@ -308,18 +308,18 @@
         </div>
       </div>
     </div>
-    <div class="layer_pop" id="contentsPolicyPop">
-      <div class="pop_inner">
-        <div class="header">
+    <div class="policyPopUp" id="contentsPolicyPop">
+      <div class="policyPopUpInner">
+        <div class="policyPopUpHeader">
           <strong>콘텐츠산업진흥법에 의한 표시</strong>
         </div>
-        <div class="content_type">
-          <ul class="text">
+        <div class="policyPopUpCntType">
+          <ul class="policyPopUpText">
             <li>1. 콘텐츠의 명칭 : 상품정보 및 이벤트 정보 등</li>
             <li>2. 제작연월일 : 개별콘텐츠의 개시일 또는 갱신일</li>
             <li>3. 제작자 : ㈜이랜드월드패션사업부</li>
           </ul>
-          <p class="comp_txt2">
+          <p class="policyPopUpText2">
             뉴발란스 공식 온라인스토어내의 모든 콘텐츠는
             <span class="point_b">[콘텐츠산업 진흥법]</span>에 따라 제작일 또는
             그 갱신일로부터<br />
@@ -328,7 +328,7 @@
         </div>
         <button
           type="button"
-          class="close"
+          class="policyPopUpClose"
           onclick="fnLayerPopCloseForContentsPolicy()"
         >
           <img
