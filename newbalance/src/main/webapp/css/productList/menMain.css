@@ -1,0 +1,362 @@
+@charset "utf-8";
+@import '/newbalance/common/common.css'; 
+
+.container {
+    min-width: 1200px;
+    padding-top: 106px;
+    padding-bottom: 200px;
+}
+
+.sub_header {
+    width: 1208px;
+    margin: 0 auto;
+}
+.sub_header h2 {
+    padding: 54px 0 49px 0;
+    color: #121212;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/*  */
+
+.sub_header .sub_menu {
+    display: block;
+    margin-bottom: 35px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+}
+
+.sub_header .sub_menu li {
+    display: inline-block;					
+    padding-left: 1px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_line_2x17.png) no-repeat 0 50%;
+    margin-bottom: 20px;
+    -webkit-box-sizing: border-box;
+}
+
+.sub_header .sub_menu li:first-child {
+    padding-left: 0;
+    background: none;
+}
+
+.sub_header .sub_menu li a {
+    padding: 0 36px 0 40px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+
+/* 큰 배너 */
+/* .pro_big_banner{
+	width:1200px;
+} */
+
+.main_visual {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+.sub_main .pro_big_banner .main_visual {
+    height: 320px;
+    margin-bottom: 80px;
+}
+.main_visual li{
+	  animation-name: opacityUp;
+      animation-duration: 5s;
+      animation-delay: 3s;
+      animation-iteration-count: infinite;
+}
+@keyframes opacityUp {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+}
+
+.main_visual li a, .main_visual li {
+	width: 100%;
+    height: 840px;
+
+}
+.sub_main .pro_big_banner .main_visual li a {
+    display: block;
+    width: 100%;
+    height: 320px;
+    font-size: 0;
+    overflow: hidden;
+}
+
+
+
+.main_visual .bx-pager {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    z-index: 2;
+}
+.main_visual .bx-pager .bx-pager-item {
+    display: inline-block;
+    padding: 0 8px;
+}
+
+.main_visual .bx-controls-direction a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -24px;
+    width: 48px;
+    height: 48px;
+    text-indent: -999em;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.main_visual .bx-pager .bx-pager-item a {		/* 사진에 동그라미 */
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/btn_pager.png) no-repeat 0 0;
+    text-indent: -999em;
+    overflow: hidden;
+    background-position: 0 bottom;
+    opacity:1;
+    transition: all 1s;
+}
+
+.main_visual .bx-controls-direction .bx-prev {
+    left: 10px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_left5.png) no-repeat 0 0;
+    margin-top: -128px;
+}
+
+
+.main_visual .bx-controls-direction .bx-next {
+    right: 10px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_next5.png) no-repeat 0 0;
+    margin-top: -128px;
+}
+
+
+
+
+/* 작은 배너 */
+
+.container .contents {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.sub_main .pro_small_banner {
+    margin-bottom: 111px;
+}
+.sub_main .pro_small_banner ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.sub_main .pro_small_banner li {
+    float: left;
+    width: 590px;
+    margin-left: 20px;
+}
+
+.sub_main .pro_small_banner li:first-child {
+    margin-left: 0;
+}
+
+.sub_main .pro_small_banner .pro_img {
+    width: 590px;
+    height: 413px;
+    overflow: hidden;
+}
+
+.sub_main .pro_small_banner .pro_img a {
+    display: block;
+    position: relative;
+    transition: .2s ease-in-out;
+}
+
+.sub_main .pro_small_banner .pro_img a img {
+    width: 100%;
+}
+
+.sub_main .pro_small_banner .pro_txt {
+    display: table;
+    width: 590px;
+    height: 176px;
+}
+
+
+.sub_main .pro_small_banner .pro_txt a {
+    display: table-cell;
+    padding: 0 100px 0 60px;
+    vertical-align: middle;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_arrow_collection.png) no-repeat right 50%;
+}
+
+.sub_main .pro_small_banner .pro_txt a strong {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 38px;
+}
+
+.sub_main .pro_small_banner .pro_txt a span {
+    display: block;
+    margin-top: 14px;
+    font-size: 18px;
+    font-family: 'Noto Sans KR';
+    line-height: 26px;
+    letter-spacing: -0.04em;
+}
+
+
+/* 상품 쪽 */
+
+.sub_main .goods {
+    margin-bottom: 159px;
+    width: 100%;
+}
+
+.title_goods {
+    margin-bottom: 34px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: -0.07em;
+}
+
+.goods_list01 .pro_area {
+    display: block;
+    width: 240px;
+    padding: 30px;
+}
+.goods_list01 li {
+    float: left;
+    margin-left: 80px;
+}
+
+.goods_list01 li:nth-child(4n-3) {
+    margin-left: 0;
+}
+
+.goods_list01:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.pro_area {
+    position: relative;
+}
+
+.goods_list01 .img_goods {
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+.goods_list01 .trade_name {
+    height: 42px;
+    margin: 20px 0 3px;
+    line-height: 20px;
+}
+
+.goods_list01 .price {
+    margin-bottom: 18px;
+}
+.goods_list01 .price p {
+    display: inline-block;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.goods_list01 .price p span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.btn_area {
+    display: block;
+    text-align: center;
+}
+.btn_area.center {
+    text-align: center;
+}
+.goods .btn_area {
+    margin-top: 43px;
+}
+
+.goods .btn_area a{
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.btn_ty_rface, .btn_ty_rface:hover {
+    border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+}
+
+.goods .btn_area a {
+    min-width: 120px;
+    padding: 16px 20px;
+    font-size: 14px;
+}
+.goods .btn_area .btn_ty_rface {
+    font-size: 16px;
+}
+
+
+
+
+
+/* itemList */
+.sub_main .item_list:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.sub_main .item_list > div {
+    float: left;
+    width: 330px;
+    margin-left: 105px;
+}
+.sub_main .item_list > div:first-child {
+    margin-left: 0;
+}
+.sub_main .item_list h3 {
+    padding: 0 0 14px 9px;
+    border-bottom: 3px solid #141414;
+    color: #141414;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.sub_main .item_list ul {
+    padding: 30px 0 0 9px;
+}
+.sub_main .item_list li {
+    padding-bottom: 8px;
+    color: #141414;
+    letter-spacing: -0.025em;
+}
+
+
+
+
