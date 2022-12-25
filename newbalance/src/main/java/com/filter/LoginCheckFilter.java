@@ -17,8 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginCheckFilter
  */
-@WebFilter(dispatcherTypes = {DispatcherType.REQUEST }
-					, urlPatterns = { "/days10/board/*" })
+
 public class LoginCheckFilter implements Filter {
 
 

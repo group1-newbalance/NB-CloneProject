@@ -8,7 +8,8 @@ import java.util.Date;
 import javax.naming.NamingException;
 
 import jdbc.connection.ConnectionProvider;
-import member.dao.MemberImpl;
+import member.dao.MemberDAO;
+import member.domain.MemberDTO;
 
 public class LoginService {
 	private static LoginService instance = null;
@@ -22,17 +23,23 @@ public class LoginService {
 		return instance;
 	}
 	
-	public User login(String id, String password) throws NamingException  {
+	public UserDTO login(String id, String password) throws NamingException  {
 		try ( Connection conn = ConnectionProvider.getConnection()) {
-			MemberImpl memberDao = MemberImpl.getInstance();
-			User user = memberDao.selectById(conn, id);
-			if ( user == null) {
+			MemberDAO memberDao = MemberDAO.getInstance();
+			
+			MemberDTO member = memberDao.selectMemberById(conn, id);
+			if ( member == null) {
 				throw new LoginFailException();
 			}
-			if ( !user.matchPassword(password)) {
+			if ( !member.matchPassword(password)) {
 				throw new LoginFailException();
 			}
-			return new User(user.getId());
+			int rowCount = memberDao.updateLastLoginDate(conn, member.getUserCode());
+			if(rowCount < 1) {
+				throw new UpdateLastLoginDateException();
+			}
+			
+			return new UserDTO(member.getUserId(),member.getUserCode());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -40,7 +47,7 @@ public class LoginService {
 	
 	public String findId(String custName, String cellNo) throws NamingException {
 		try ( Connection conn = ConnectionProvider.getConnection()) {
-			MemberImpl memberDao = MemberImpl.getInstance();
+			MemberDAO memberDao = MemberDAO.getInstance();
 			String id = memberDao.selectIdtByHp(conn, custName, cellNo);
 			if ( id == null) {
 				throw new FindIdFailException();
@@ -55,7 +62,7 @@ public class LoginService {
 		int rowCount = 0;
 		String imsiPwd = getRandomPassword(10);
 		try ( Connection conn = ConnectionProvider.getConnection()) {
-			MemberImpl memberDao = MemberImpl.getInstance();
+			MemberDAO memberDao = MemberDAO.getInstance();
 			rowCount = memberDao.updatePwdById(conn, custId, imsiPwd);
 		
 			if(rowCount == 0) {

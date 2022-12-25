@@ -556,9 +556,7 @@
 	top: -4px;
 }
 
-.header .gnb .customer .cart.none_count a span.count {
-	display: none;
-} /*20220414 추가*/
+
 .header .gnb .menu>ul>li:nth-child(4) a {
 	color: #cf0a2c;
 } /*20180225 수정*/
