@@ -2374,17 +2374,28 @@
 					</div>
 				</div>
 				<div class="mymenu">
-					
-						
-							<a href="/customer/direct.Login.action" data-gtag-idx="fo_common_4_4">로그인</a>
-							<a href="/customer/direct.Join.action" data-gtag-idx="fo_common_4_5">회원가입</a>
+					<c:choose>
+						<c:when test="${not empty member}">
+							<a href="/customer/direct.Login.action" data-gtag-idx="fo_common_4_2">마이페이지</a>
+						</c:when>
+						<c:otherwise>
+							<a href="/newbalance/customer/login.action" data-gtag-idx="fo_common_4_4">로그인</a>
+							<a href="/newbalance/customer/joinn.action" data-gtag-idx="fo_common_4_5">회원가입</a>
+						</c:otherwise>
+					</c:choose>
+							
+							
+							
 						
 						
 					
 				</div>
 				<div class="cart none_count">
 					<a href="/noncustomer/cartList.action" data-gtag-idx="fo_common_4_3">
-						<span class="blind"></span><span class="count">0</span>
+						<span class="blind"></span>
+						<c:if test="${cartCount != 0 }">
+							<span class="count">${cartCount}</span>					
+						</c:if>
 					</a>
 				</div>
 			</div>

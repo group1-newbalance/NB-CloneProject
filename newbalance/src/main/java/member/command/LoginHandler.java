@@ -3,13 +3,14 @@ package member.command;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.service.CartService;
 import member.service.LoginFailException;
 import member.service.LoginService;
-import member.service.User;
+import member.service.UpdateLastLoginDateException;
+import member.service.UserDTO;
 import mvc.command.CommandHandler;
 
 public class LoginHandler implements CommandHandler{
@@ -49,16 +50,23 @@ public class LoginHandler implements CommandHandler{
 		}
 		
 		try {
+			CartService cartService = CartService.getInstance();
 			LoginService loginService = LoginService.getInstance();
-			User user = loginService.login(id, password);
-			System.out.println(user.toString());
+			UserDTO user = loginService.login(id, password);
+			
+			int cartCount = cartService.getCartCount(user.getUserCode());
 			request.getSession().setAttribute("member", user);
+			request.getSession().setAttribute("cartCount", cartCount);
+			
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
-			return null;
+			
 		} catch( LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
+		} catch(UpdateLastLoginDateException e) {
+			System.out.println("마지막 방문일 업데이트 실패");
 		}
+		return null;
 	}
 	private String trim(String str) {
 		return str == null? null : str.trim();
