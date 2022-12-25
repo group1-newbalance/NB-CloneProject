@@ -1,0 +1,109 @@
+
+
+.container {
+    min-width: 1200px;
+    padding-top: 106px;
+    padding-bottom: 200px;
+}
+
+.imc_area>div {
+    position: relative;
+}
+
+.imc_list {
+    max-width: 1400px;
+    margin: 68px auto;
+    overflow: hidden;
+}
+.imc_list li {
+    width: 20%;
+    float: left;
+}
+.imc_list li.list1 a {
+    background-image: url(https://image.nbkorea.com/NBRB_PC/event/imc/classicjogger2/img_list1.jpg);
+}
+.imc_list li a .list_txt {
+    display: block;
+    width: 100%;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'DidotLTPro';
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 11%;
+}
+
+.imc_list li.list2 a {
+    background-image: url(https://image.nbkorea.com/NBRB_PC/event/imc/classicjogger2/img_list2.jpg);
+}
+.imc_list li.list3 a {
+    background-image: url(https://image.nbkorea.com/NBRB_PC/event/imc/classicjogger2/img_list3.jpg);
+}
+.imc_list li.list4 a {
+    background-image: url(https://image.nbkorea.com/NBRB_PC/event/imc/classicjogger2/img_list4.jpg);
+}
+.imc_list li.list5 a {
+    background-image: url(https://image.nbkorea.com/NBRB_PC/event/imc/classicjogger2/img_list5.jpg);
+}
+
+/* 구매하기 더 알아보기 영역 */
+.imc_area>div {
+    position: relative;
+}
+.imc_area>div img {
+    width: 100%;
+    vertical-align: middle;
+}
+.imc_btn {
+    display: block;
+    width: 7.3%;
+    height: 6.6%;
+    position: absolute;
+    left: 53.3%;
+}
+.imc_btn1 {
+    bottom: 15.1%;
+    left: 61.1%;
+}
+
+.blind {
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.imc_btn6 {
+    bottom: 15.1%;
+}
+
+span.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.imc_btn2 {
+    bottom: 22.8%;
+}
+.imc_btn3 {
+    bottom: 11.7%;
+}
+
+.imc_btn4 {
+    bottom: 20.3%;
+}
+
+.imc_btn5 {
+    bottom: 8%;
+}
+
+
+
+
+
