@@ -59,7 +59,7 @@
 				fnAddRecentSearchWord(schWord);
 				var schEncWord = encodeURI(encodeURIComponent(schWord));
 				var prodPart = $("#prodPart").val();
-				var schUrl = "/product/searchResult.action?schWord=" + schEncWord + (prodPart == "" ? "" : "&prodPart=" + prodPart);
+				var schUrl = "/newbalance/product/searchResult.action?schWord=" + schEncWord + "&prodPart=" + prodPart);
 				document.location.replace(schUrl);
 				
 			}
@@ -2145,7 +2145,7 @@
 						<div class="srch_area srch_area-renewal">
 							<span class="sselect_box select_box-srch">
 								<select name="prodPart" id="prodPart">
-									<option value="">전체</option>
+									<option value="A">전체</option>
 									<option value="M">MEN</option>
 									<option value="W">WOMEN</option>
 									<option value="K">KIDS</option>
@@ -2376,7 +2376,7 @@
 				<div class="mymenu">
 					<c:choose>
 						<c:when test="${not empty member}">
-							<a href="/customer/direct.Login.action" data-gtag-idx="fo_common_4_2">마이페이지</a>
+							<a href="/newbalance/customer/myMain.jsp" data-gtag-idx="fo_common_4_2">마이페이지</a>
 						</c:when>
 						<c:otherwise>
 							<a href="/newbalance/customer/login.action" data-gtag-idx="fo_common_4_4">로그인</a>
@@ -2393,7 +2393,7 @@
 				<div class="cart none_count">
 					<a href="/noncustomer/cartList.action" data-gtag-idx="fo_common_4_3">
 						<span class="blind"></span>
-						<c:if test="${cartCount != 0 }">
+						<c:if test="${cartCount != 0 && not empty cartCount}">
 							<span class="count">${cartCount}</span>					
 						</c:if>
 					</a>
