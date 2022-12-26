@@ -20,14 +20,14 @@ public class ProductListService {
 		return instance;
 	}
 	
-	public List<ProductListDTO> select(String cIdx, String gender){//,sorttype
+	public List<ProductListDTO> select(String cIdx, String gender ,String searchWord){//,sorttype
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			List<ProductListDTO> list = null;
-			list = dao.selectProductList(con, cIdx, gender);
+			list = dao.selectProductList(con, cIdx, gender,searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productlist.service() 에러:" + e.toString());

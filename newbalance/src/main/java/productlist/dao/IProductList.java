@@ -15,10 +15,10 @@ import productlist.domain.ProductSizeStockDTO;
 public interface IProductList {
 	
 	//1. 상품테이블 조회
-	List<ProductListDTO> selectProductList(Connection conn, String category_code, String gender) throws SQLException;
+	List<ProductListDTO> selectProductList(Connection conn, String category_code, String gender, String searchWord) throws SQLException;
 	
 	//2. 상품이미지 조회
-	LinkedHashMap< ProductListDTO, ArrayList<ProductImgDTO> > seletProductImg(Connection conn, String category_code, String gender ) throws SQLException;
+	LinkedHashMap< ProductListDTO, ArrayList<ProductImgDTO> > seletProductImg(Connection conn, String category_code, String gender, String searchWord ) throws SQLException;
 	
 	//3. 상품 사이즈에 대한 재고
 	LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> selectProductSizeStock(Connection conn, String category_code, String gender) throws SQLException;

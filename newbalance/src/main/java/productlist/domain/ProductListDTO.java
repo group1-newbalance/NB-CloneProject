@@ -10,13 +10,22 @@ public class ProductListDTO {
 	private int pd_memberonly;
 	private int pd_mincount;
 	private String pd_feet;
+	private int out_count;
 	
 	
+	
+	
+	@Override
+	public String toString() {
+		return "ProductListDTO [pd_code=" + pd_code + ", color=" + color + ", category_code=" + category_code
+				+ ", pd_name=" + pd_name + ", pd_price=" + pd_price + ", pd_memberonly=" + pd_memberonly
+				+ ", pd_mincount=" + pd_mincount + ", pd_feet=" + pd_feet + ", out_count=" + out_count + "]";
+	}
 	
 	
 	
 	public ProductListDTO(String pd_code, String color, String category_code, String pd_name, int pd_price,
-			int pd_memberonly, int pd_mincount, String pd_feet) {
+			int pd_memberonly, int pd_mincount, String pd_feet, int out_count) {
 		super();
 		this.pd_code = pd_code;
 		this.color = color;
@@ -26,8 +35,8 @@ public class ProductListDTO {
 		this.pd_memberonly = pd_memberonly;
 		this.pd_mincount = pd_mincount;
 		this.pd_feet = pd_feet;
+		this.out_count = out_count;
 	}
-
 	public String getPd_code() {
 		return pd_code;
 	}
@@ -76,6 +85,14 @@ public class ProductListDTO {
 	public void setPd_feet(String pd_feet) {
 		this.pd_feet = pd_feet;
 	}
+	public int getOut_count() {
+		return out_count;
+	}
+	public void setOut_count(int out_count) {
+		this.out_count = out_count;
+	}
+	
+	
 
 	
 	
