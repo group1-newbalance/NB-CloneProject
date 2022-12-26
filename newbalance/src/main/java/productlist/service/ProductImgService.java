@@ -22,7 +22,7 @@ public class ProductImgService {
 		return instance;
 	}
 	
-	public LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> seletProductImg(String category_code, String gender ){
+	public LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> seletProductImg(String category_code, String gender, String searchWord ){
 		Connection con = null;
 		
 		try {
@@ -34,7 +34,7 @@ public class ProductImgService {
 			// All함수
 			
 			//3자리 넘어오면 			
-			list = (LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>>) dao.seletProductImg(con, category_code, gender);
+			list = (LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>>) dao.seletProductImg(con, category_code, gender, searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productimg.service() 에러:" + e.toString());

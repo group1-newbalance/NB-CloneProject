@@ -14,6 +14,14 @@ public class ProductImgDTO {
 	}
 	
 	
+	
+	@Override
+	public String toString() {
+		return "ProductImgDTO [imgRowNumber=" + imgRowNumber + ", pd_code=" + pd_code + ", img_url=" + img_url + "]";
+	}
+
+
+
 	public int getImgRowNumber() {
 		return imgRowNumber;
 	}

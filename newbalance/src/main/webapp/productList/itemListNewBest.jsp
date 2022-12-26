@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
+<% String contextPath = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +24,18 @@
     <!-- header -->
     <div class="listTop">
         <div class="category_title">            
-            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">Women</a></span>        
-            <h3 data-cidx="1320">New</h3>
-            							<!-- 파라미터 값으로 읽어와야함 -->
+            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">Women</a></span>  
+            <!-- 파라미터 값으로 읽어와야함 -->      
+            <h3 data-cidx="1320">
+            	<c:choose>
+	            	<c:when test="${param.cIdx == 'new'}">
+	            		New
+	            	</c:when>
+	            	<c:when test="${param.cateGrpCode == 'best'}">
+	            		Best
+	            	</c:when>
+	            </c:choose>
+            </h3>					
         </div>
         
         <div class="fliterList">
@@ -34,10 +47,9 @@
             <div class="dropdown">
                 <a href="javascript:;" class="dropdown_tit">신상품순</a>
                 <ul class="dropdown_list">
+                	<!-- 여기 href 바꿔야함 -->
                     <li class="on"><a href="javascript:;" data-value="01">신상품순</a></li>
                     <li><a href="javascript:;" data-value="02">베스트상품순</a></li>
-                    <li><a href="javascript:;" data-value="03">높은 가격순</a></li>
-                    <li><a href="javascript:;" data-value="04">낮은 가격순</a></li>
                 </ul>
             </div>					
             <div class="filter">
@@ -48,192 +60,107 @@
             </div>		
         </div>
     </div>
-    
-    
-    
-    
-    <!-- 밑에 -->
-    <div class="listContent viewB" style="min-height: 1070px;">
-        <div class="listLeft">
-            <div class="inner">
-                <!-- filter에서 남자(신발부분,의류,용품,언더 목록들)-->
-                <div class="allList">
-                    <div class="allList_tit"><a href="#">전체보기</a></div>
-                    <ul class="allList_list">
-                        <li><a href="#">신발</a></li>
-                        <li><a href="#">의류</a></li>
-                        <li><a href="#">스포츠용품</a></li>
-                    </ul>
-                </div>               
-            </div>
-        </div>
-        
-        
-	<!-- 상품쪽 -->
-       <div class="listRight">
-           <ul class="productList" id="prodList" style>
+
+    <!-- 왼쪽 -->
+	 <div class="listContent viewB" style="min-height: 1070px;">
+	        <div class="listLeft">
+	            <div class="inner">
+	                <!-- filter에서 남자(신발부분,의류,용품,언더 목록들)-->
+	                <div class="allList">
+	                    <div class="allList_tit"><a href="#">전체보기</a></div>
+	                    <ul class="allList_list">
+	                        <li><a href="#">신발</a></li>
+	                        <li><a href="#">의류</a></li>
+	                        <li><a href="#">스포츠용품</a></li>
+	    	             </ul>
+		            </div>               
+		        </div>
+		    </div>
+ 
+      <div class="listRight">
+           <ul class="productList" id="prodList">
+   <c:forEach items="${pImgNewBestMap}" var="map">
               <li class="memberOnly">
                <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
                   <div class="pro_thumbNail">
-                     <a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="NBP7DS141G" data-color="15" data-cidx="1287" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">
-                        <img id="selGoods" src="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" alt="ML2002RC" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221213/NB20221213105544756001.jpg" style="display: inline-block;">                  
-                              <span class="img_tag"></span>
+                     	<a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="${ map.key.pd_code}" data-color="${map.key.color } " data-cidx="${map.key.category_code }" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">   
+                        <%-- 	${map.value.img_url} --%>
+                        	<img id="selGoods" src="${map.value.get(0).img_url}" alt="ML2002RC" class="img_goods" data-base-img="${map.value.get(0).img_url}" data-hover-img="${fn:length(map.value) < 2 ? map.value.get(0).img_url : map.value.get(1).img_url}" style="display: inline-block;">                    	
+                              			<span class="img_tag"></span>
                                        <span class="icon_nbg_s "></span>
-                                       <span class="img_made"></span>                                    
-                                       <div class="soldOut soldOut-L">
-                                          <p>SOLD OUT</p>
-                                       </div>                           
-                     </a>
-                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p><!--20210820-1 퀵뷰-->
+                                       <span class="img_made"></span>      
+<%-- 
+	                                    <!-- 재고가 없으면 넣고 있으면 안넣기 -->   
+	                                   <c:set value="0" var="count"/>
+	                                   <c:forEach items="${ pStockNewBestMap.get(map.key.pd_code)}" var="list">
+											<c:if test="${list.stock_count != 0}">
+													<c:set value="${count+1 }" var="count"/>
+											</c:if>	                                   
+	                                   </c:forEach>                             
+	                                   <c:if test="${count == 0}">
+	                                       <div class="soldOut soldOut-L">
+	                                          <p>SOLD OUT</p>
+	                                       </div>
+	                                   </c:if>
+                                                       --%>
+                     	</a>
+                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p>
                                                                      
-                                    
-                                    <!-- 회원전용상품 아이콘 -->
-                     <span class="icon_nbg_s icon_nbg_s-mb" style="display:block;">                                    
-                        <img class="" alt="member only" src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png">                                    
-                     </span>
-                                    
-                                    <!-- 회원전용상품아이콘 호버상황 -->
-                     <span class="ico_mb"><img src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png" alt="member only"></span>                  
+                      	<c:if test="${map.key.pd_memberonly == 1}">              
+                                    <!-- 회원전용상품 아이콘 productList안에 memberonly가 1이면 없앰-->
+		                     <span class="icon_nbg_s icon_nbg_s-mb" style="display:block;">                                    
+		                        <img class="" alt="member only" src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png">                                    
+		                     </span>
+		                                    <!-- 회원전용상품아이콘 호버상황 -->
+		                     <span class="ico_mb"><img src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png" alt="member only"></span>
+		                </c:if>     
+		                                       
                   </div>
                   <div class="pro_info">
                      <div class="badge">
                         <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png">
                         <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png">               
                      </div>
-                     <p class="prdName_name">ML2002RC</p>
+                     	<p class="prdName_name">${map.key.pd_name}</p>
                      <div class="prdName">
-                                    <p class="prdDetail">NBP7DS141G</p>
+                                    <p class="prdDetail">${map.key.pd_code}</p>
                                     <div class="prdName_price">                  
-                                       <p>149,000<span>원</span></p>
+                                       <p><fmt:formatNumber value="${map.key.pd_price}" pattern="#,###"/><span>원</span></p>
                                     </div>
                      </div>
                      <div class="star_style03 star_score">
                      	<!-- 별점, 리뷰수 -->
+                     	<!-- 1점 단위로 별점 1개 0.1~0.9까지는 별 반 개 -->
+						<span class="star_point">
+						   <i class="fa-solid fa-star fa-xs"></i>
+						   <i class="fa-solid fa-star fa-xs"></i>
+						   <i class="fa-solid fa-star fa-xs"></i>
+						   <i class="fa-solid fa-star fa-xs"></i>
+						   <i class="fa-solid fa-star-half fa-xs"></i>
+						    <b>4.5</b>/5 <span>(33)</span>
+						</span>
+                     	<!-- (각 리뷰의 평점합) / 상품에 대한 전체 리뷰수    ( 상품에 대한 전체 리뷰수 )-->
                      </div>
-                     <div class="prdColor">
-                     	<div class="prdColor-txt">1 Color</div>
-                     		<div class=""></div>
-                     </div>
+		                     <div class="prdSize">
+								<ul class="prdSize_list">
+<%-- 
+		  							<c:forEach items="${pStockNewBestMap.get(map.key.pd_code)}" var="list">
+		 									 <c:if test="${list.stock_count != 0}">
+													<li>${list.sz}</li>
+											</c:if>
+									</c:forEach>
+ --%>
+								</ul>
+							</div>
                   </div>
                </div>
             </li>
-            <!-- 상품2 -->
-            <li class="memberOnly">
-               <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
-                  <div class="pro_thumbNail">
-                     <a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="NBP7DS141G" data-color="15" data-cidx="1287" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">
-                        <img id="selGoods" src="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" alt="ML2002RC" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221213/NB20221213105544756001.jpg" style="display: inline-block;">                  
-                              <span class="img_tag"></span>		<!--  ↑ 처음 이미지 부분  -->																																																		<!-- hover 풀리면 이미지 -->																															<!--  hover 이미지 -->
-                                       <span class="icon_nbg_s "></span>
-                                       <span class="img_made"></span>                                    
-                                       <div class="soldOut soldOut-L">
-                                          <p>SOLD OUT</p>
-                                       </div>                           
-                     </a>
-                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p><!--20210820-1 퀵뷰-->
-                                                                     
-                                    
-                                    <!-- 회원전용상품 아이콘 -->
-                     <span class="icon_nbg_s icon_nbg_s-mb" style="display:block;">                                    
-                        <img class="" alt="member only" src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png">                                    
-                     </span>
-                                    
-                                    <!-- 회원전용상품아이콘 호버상황 -->
-                     <span class="ico_mb"><img src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png" alt="member only"></span>                  
-                  </div>
-                  <div class="pro_info">
-                     <div class="badge">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png">               
-                     </div>
-                     <p class="prdName_name">ML2002RC</p>
-                     <div class="prdName">
-                                    <p class="prdDetail">NBP7DS141G</p>
-                                    <div class="prdName_price">                  
-                                       <p>149,000<span>원</span></p>
-                                    </div>
-                     </div>
-                  </div>
-               </div>
-            </li>
-            <!-- 상품3 -->
-            <li class="memberOnly">
-               <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
-                  <div class="pro_thumbNail">
-                     <a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="NBP7DS141G" data-color="15" data-cidx="1287" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">
-                        <img id="selGoods" src="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" alt="ML2002RC" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221212/NB20221212182957207001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221213/NB20221213105544756001.jpg" style="display: inline-block;">                  
-                              <span class="img_tag"></span>
-                                       <span class="icon_nbg_s "></span>
-                                       <span class="img_made"></span>                                    
-                                       <div class="soldOut soldOut-L">
-                                          <p>SOLD OUT</p>
-                                       </div>                           
-                     </a>
-                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p><!--20210820-1 퀵뷰-->
-                                                                     
-                                    
-                                    <!-- 회원전용상품 아이콘 -->
-                     <span class="icon_nbg_s icon_nbg_s-mb" style="display:block;">                                    
-                        <img class="" alt="member only" src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png">                                    
-                     </span>
-                                    
-                                    <!-- 회원전용상품아이콘 호버상황 -->
-                     <span class="ico_mb"><img src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png" alt="member only"></span>                  
-                  </div>
-                  <div class="pro_info">
-                     <div class="badge">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png">               
-                     </div>
-                     <p class="prdName_name">ML2002RC</p>
-                     <div class="prdName">
-                                    <p class="prdDetail">NBP7DS141G</p>
-                                    <div class="prdName_price">                  
-                                       <p>149,000<span>원</span></p>
-                                    </div>
-                     </div>
-                  </div>
-               </div>
-            </li>
-            <!-- 상품4 -->
-            <li class="memberOnly">
-               <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
-                  <div class="pro_thumbNail">
-                     <a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="NBP7DS141G" data-color="15" data-cidx="1287" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">
-                        <img id="selGoods" src="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" alt="ML2002RC" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091533235001.jpg" style="display: inline-block;">                  
-                              <span class="img_tag"></span>
-                                       <span class="icon_nbg_s "></span>
-                                       <span class="img_made"></span>                                                              
-                     </a>
-                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p><!--20210820-1 퀵뷰-->
-                                                                     
-                                    
-                                    <!-- 회원전용상품 아이콘 -->
-                     <span class="icon_nbg_s icon_nbg_s-mb" style="display:block;">                                    
-                        <img class="" alt="member only" src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png">                                    
-                     </span>          
-                                    <!-- 회원전용상품아이콘 호버상황 -->
-                     <span class="ico_mb"><img src="https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png" alt="member only"></span>                  
-                  </div>
-                  <div class="pro_info">
-                     <div class="badge">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png">
-                        <img src="https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png">               
-                     </div>
-                     <p class="prdName_name">ML2002RC</p>
-                     <div class="prdName">
-                                    <p class="prdDetail">NBP7DS141G</p>
-                                    <div class="prdName_price">                  
-                                       <p>149,000<span>원</span></p>
-                                    </div>
-                     </div>
-                  </div>
-               </div><!-- pro_area -->
-            </li>
+	</c:forEach>
            </ul>
-        </div><!--listRight  -->
+        </div><!--listRight  -->       
     </div><!-- listContent -->
-</div><!--container  -->
+</div>
+
 
  <jsp:include page="/common/footer.jsp" flush="false" />
 
