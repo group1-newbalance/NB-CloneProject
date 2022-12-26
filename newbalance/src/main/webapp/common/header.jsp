@@ -59,7 +59,7 @@
 				fnAddRecentSearchWord(schWord);
 				var schEncWord = encodeURI(encodeURIComponent(schWord));
 				var prodPart = $("#prodPart").val();
-				var schUrl = "/newbalance/product/searchResult.action?schWord=" + schEncWord + "&prodPart=" + prodPart);
+				var schUrl = "/newbalance/product/searchResult.action?schWord=" + schEncWord + "&prodPart=" + prodPart;
 				document.location.replace(schUrl);
 				
 			}
@@ -2376,7 +2376,7 @@
 				<div class="mymenu">
 					<c:choose>
 						<c:when test="${not empty member}">
-							<a href="/newbalance/customer/myMain.jsp" data-gtag-idx="fo_common_4_2">마이페이지</a>
+							<a href="/newbalance/my/main.action" data-gtag-idx="fo_common_4_2">마이페이지</a>
 						</c:when>
 						<c:otherwise>
 							<a href="/newbalance/customer/login.action" data-gtag-idx="fo_common_4_4">로그인</a>

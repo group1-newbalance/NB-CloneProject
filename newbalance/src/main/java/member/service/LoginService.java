@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import member.dao.MemberDAO;
 import member.domain.MemberDTO;
+import member.domain.UserDTO;
 
 public class LoginService {
 	private static LoginService instance = null;
