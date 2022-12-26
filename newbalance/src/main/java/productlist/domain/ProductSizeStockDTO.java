@@ -7,6 +7,15 @@ public class ProductSizeStockDTO {
 	private int stock_count;
 	private String sz;
 
+	
+	
+
+	@Override
+	public String toString() {
+		return "ProductSizeStockDTO [pd_code=" + pd_code + ", size_code=" + size_code + ", stock_count=" + stock_count
+				+ ", sz=" + sz + "]";
+	}
+
 
 	public ProductSizeStockDTO(String pd_code, int size_code, int stock_count, String sz) {
 		super();

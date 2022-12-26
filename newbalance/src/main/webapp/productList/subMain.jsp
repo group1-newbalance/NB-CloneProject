@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String contextPath = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,74 +122,13 @@
 						</a>
 					</li>
 					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBGCDSS204" data-color="19" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="New_상품상세" data-gtag-label="Simple Square Messenger bag_NBGCDSS20419">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091947950001.jpg" alt="Simple Square Messenger bag" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091947950001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091950297001.jpg">
-							<p class="trade_name">Simple Square Messenger bag</p>
-							<div class="price">
-								<p>79,900<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBNCC4A013" data-color="19" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="New_상품상세" data-gtag-label="헤리티지 버튼 플리스_NBNCC4A01319">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221031/NB20221031134210885001.jpg" alt="헤리티지 버튼 플리스" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221031/NB20221031134210885001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221031/NB20221031134222316001.jpg">
-							<p class="trade_name">헤리티지 버튼 플리스</p>
-							<div class="price">
-								<p>79,900<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBPDDS164G" data-color="15" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="New_상품상세" data-gtag-label="MR530CB_NBPDDS164G15">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" alt="MR530CB" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091533235001.jpg">
-							<p class="trade_name">MR530CB</p>
-							<div class="price">
-								<p>129,000<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
 				</ul>
-				<div class="btn_area center"><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1269" class="btn_ty_rface md" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="New_전체보기">전체보기</a></div>
+				<div class="btn_area center"><a href="/product/featuredList.action?cateGrpCode=${param.cateGrpCode }&cIdx=new" class="btn_ty_rface md" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="New_전체보기">전체보기</a></div>
 			</div>				
 			
 			<div class="goods">
 				<h3 class="title_goods">Best</h3>
 				<ul class="goods_list01" id="prodList1">
-					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBPDDS430W" data-color="10" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_상품상세" data-gtag-label="MS327FE (SEA SALT)_NBPDDS430W10">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221214/NB20221214084329004001.jpg" alt="MS327FE (SEA SALT)" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221214/NB20221214084329004001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221214/NB20221214084344076001.jpg">
-							<p class="trade_name">MS327FE (SEA SALT)</p>
-							<div class="price">
-								<p>119,000<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBPDDS164G" data-color="15" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_상품상세" data-gtag-label="MR530CB_NBPDDS164G15">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" alt="MR530CB" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091514597001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091533235001.jpg">
-							<p class="trade_name">MR530CB</p>
-							<div class="price">
-								<p>129,000<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
-					<li>
-						<a href="javascript:;" class="pro_area" data-style="NBPDDS164B" data-color="19" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_상품상세" data-gtag-label="MR530CC_NBPDDS164B19">
-							<img src="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091310046001.jpg" alt="MR530CC" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091310046001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221215/NB20221215091328829001.jpg">
-							<p class="trade_name">MR530CC</p>
-							<div class="price">
-								<p>129,000<span>원</span></p>
-							</div>
-						</a>
-					</li>
-					
 					<li>
 						<a href="javascript:;" class="pro_area" data-style="NBPDDS160G" data-color="15" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_상품상세" data-gtag-label="MR530KMW_NBPDDS160G15">
 							<img src="https://image.nbkorea.com/NBRB_Product/20221208/NB20221208103051616001.jpg" alt="MR530KMW" class="img_goods" data-base-img="https://image.nbkorea.com/NBRB_Product/20221208/NB20221208103051616001.jpg" data-hover-img="https://image.nbkorea.com/NBRB_Product/20221208/NB20221208103108097001.jpg">
@@ -199,7 +140,7 @@
 					</li>
 					
 				</ul>
-				<div class="btn_area center"><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1385" class="btn_ty_rface md" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_전체보기">전체보기</a></div>
+				<div class="btn_area center"><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=${param.cateGrpCode }&cIdx=best" class="btn_ty_rface md" data-gtag-idx="fo_sub_7" data-gtag-cate="MEN" data-gtag-event-name="Best_전체보기">전체보기</a></div>
 			</div>				
 			
 			

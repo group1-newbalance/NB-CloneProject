@@ -99,7 +99,7 @@
                     	</c:forEach>
                     </ul>
                 </div>
-<!-- cIdx가 substring(param.cIdx,1,1) 가 F일 때 발볼을 띄우고 싶다..... --> cIdx = F01 
+<!-- cIdx가 substring(param.cIdx,1,1) 가 F일 때 발볼을 띄우고 싶다..... -->
 		                <!-- 남자발볼 -->
 		                <div class="accd filterWidth">
 		                    <div class="accordionTit on"><a href="javascript:">발볼(${param.cateGrpCode=='M'?'남':'여' })</a></div>
@@ -308,6 +308,8 @@ $("#btnLayerPopupClose").click(function() {
 		$(this).addClass('on');
 		$(".dropdown").toggleClass('on');
 		$(".dropdown_tit").text($(this).text());
+		location.href="/newbalance/productList/itemListNewBest.jsp";
+		
 		
 		// scroll height 초기화
 		$('html').scrollTop(0);

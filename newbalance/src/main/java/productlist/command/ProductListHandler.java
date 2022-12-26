@@ -26,22 +26,26 @@ public class ProductListHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String searchWord= request.getParameter("searchWord")==null?"":request.getParameter("searchWord");
+	
+		
 		String gender = request.getParameter("cateGrpCode");
 		String cIdx = request.getParameter("cIdx");
 		
 		// product
 		ProductListService productlistService = ProductListService.getIinstance();
-		List<ProductListDTO> productList = productlistService.select(cIdx, gender);//filter(color=? or feet=?-> 이건 where문으로), sorttype( 01 02 이건 -> order by) 안넘어 오면 -1//,sorttype
+		List<ProductListDTO> productList = productlistService.select(cIdx, gender,searchWord);//filter(color=? or feet=?-> 이건 where문으로), sorttype( 01 02 이건 -> order by) 안넘어 오면 -1//,sorttype
 		
 		//product image
 		ProductImgService productImgService = ProductImgService.getIinstance();
-		LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> pImgMap = productImgService.seletProductImg(cIdx, gender);
+		LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> pImgMap = productImgService.seletProductImg(cIdx, gender,searchWord);
 		
 		//sizeStock 사이즈별 상품재고
 		ProductSizeStockService pSizeStockService = ProductSizeStockService.getIinstance();
 		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> pSizeStockMap = pSizeStockService.seletProductSizeStock(cIdx, gender);
 								//pd_code
 		//카테고리명
+		System.out.println("5");
 		CategoryListService clistservice = CategoryListService.getIinstance();
 		List<CategoryDTO> categoryList = clistservice.select(cIdx, gender);
 		

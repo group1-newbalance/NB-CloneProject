@@ -39,22 +39,39 @@ public class ProductListDAO implements IProductList {
 	
 	// 상품테이블
 	@Override
-	public List<ProductListDTO> selectProductList(Connection conn, String category_code, String gender)
+	public List<ProductListDTO> selectProductList(Connection conn, String category_code, String gender, String searchWord)
 			throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		
 		String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
-				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code "
-				+ " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
 
-		
-		
+				if(searchWord == "") {
+					System.out.println("1");
+					if(category_code.equals("F")) {
+						System.out.println("2");
+						productSQL += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+					}else {
+						System.out.println("3");
+						productSQL += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+					}
+				}else {
+					System.out.println("4");
+					productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+				}
 		try {
 			pstmt = conn.prepareStatement(productSQL);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
+			
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -69,7 +86,7 @@ public class ProductListDAO implements IProductList {
 					int mincount = rs.getInt("pd_mincount");
 					String pd_feet = rs.getString("pd_feet");
 
-					ProductListDTO plist = new ProductListDTO(pdcode, color, categoryCode, pdname, price, memberonly, mincount, pd_feet);
+					ProductListDTO plist = new ProductListDTO(pdcode, color, categoryCode, pdname, price, memberonly, mincount, pd_feet,0);
 					productlist.add(plist);
 
 				} while (rs.next());
@@ -91,27 +108,47 @@ public class ProductListDAO implements IProductList {
 
 	// 상품이미지
 	@Override
-	public LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> seletProductImg(Connection conn, String category_code,
-			String gender) throws SQLException {
+	public LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> seletProductImg(Connection conn, String category_code, String gender
+											, String searchWord) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 
-		// 상품 dto : key
-		String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
-				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code "
-				+ " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
-
 		LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> imgMap = null;
 		ProductListDTO pdto = null;
 		ArrayList<ProductImgDTO> imglist = null;
-
+		
+		
+		// 상품 dto : key
+		String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
+				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code " ;
+		
+				if(searchWord == "") {
+					System.out.println("1");
+					if(category_code.length() == 1 ) {
+						System.out.println("2");
+						productSQL += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+					}else {
+						System.out.println("3");
+						productSQL += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+					}
+				}else {
+					System.out.println("4");
+					productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+				}
 		try {
 			pstmt = conn.prepareStatement(productSQL);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
+			
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -126,7 +163,7 @@ public class ProductListDAO implements IProductList {
 					int mincount = rs.getInt("pd_mincount");
 					String pd_feet = rs.getString("pd_feet");
 
-					pdto = new ProductListDTO(pdcode, color, categoryCode, pdname, price, memberonly, mincount, pd_feet);
+					pdto = new ProductListDTO(pdcode, color, categoryCode, pdname, price, memberonly, mincount, pd_feet,0);
 
 					// 상품코드에 맞는 이미지 가져오기
 					String imgSQL = 
@@ -191,8 +228,14 @@ public class ProductListDAO implements IProductList {
 
 		// 상품 dto : key
 		String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
-				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code "
-				+ " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
+				if(category_code.length() == 1 ) {
+					System.out.println("2");
+					productSQL += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}else {
+					System.out.println("3");
+					productSQL += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}
 
 		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> sizeStockMap = null;
 		ArrayList<ProductSizeStockDTO> sizestockList = null;
@@ -262,7 +305,7 @@ public class ProductListDAO implements IProductList {
 		ResultSet rs = null;
 		
 		String sql = "SELECT DISTINCT(Minor_sort) categoryName,  category.category_code categoryCode "
-				+ " FROM category join product on product.category_code = category.category_code "
+				+ " FROM category join product on product.category_code = category.category_code "			
 				+ " WHERE substr(category.category_code,1,1) = substr( ? , 1,1) AND ( substr(pd_code,1,1) = 'U' OR substr(pd_code,1,1) = ? ) "
 				+ " ORDER BY category.category_code ";
 		
@@ -305,9 +348,15 @@ public class ProductListDAO implements IProductList {
 		
 		String sql = "SELECT DISTINCT(sz) sz "
 				+ "FROM  product join product_stock on product.pd_code = product_stock.pd_code "
-				+ "            join size_list on product_stock.size_code = size_list.size_code "
-				+ "WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) "
-				+ "ORDER BY sz ";
+				+ "            join size_list on product_stock.size_code = size_list.size_code ";
+				if(category_code.length() == 1 ) {
+					System.out.println("2");
+					sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}else {
+					System.out.println("3");
+					sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}
+				sql +=  "ORDER BY sz ";
 		
 		List<ProductSizeStockDTO> sizeList = null;
 		ProductSizeStockDTO dto =null;
@@ -344,8 +393,14 @@ public class ProductListDAO implements IProductList {
 		ResultSet rs = null;
 		
 		String sql = "SELECT Distinct(pd_feet) "
-				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code "
-				+ " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ? ) ";
+				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
+				if(category_code.length() == 1 ) {
+					System.out.println("2");
+					sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}else {
+					System.out.println("3");
+					sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}
 		
 		List<ProductListDTO> feetList = null;
 		ProductListDTO dto =null;
@@ -361,7 +416,7 @@ public class ProductListDAO implements IProductList {
 				do {
 					String pd_feet = rs.getString("pd_feet");
 					
-					dto = new ProductListDTO(null, null, null, null, 0, 0, 0, pd_feet);
+					dto = new ProductListDTO(null, null, null, null, 0, 0, 0, pd_feet,0);
 					feetList.add(dto);
 				}while(rs.next());
 			}//if
@@ -383,9 +438,15 @@ public class ProductListDAO implements IProductList {
 		
 		String sql = " SELECT DISTINCT( TO_NUMBER(substr(product.pd_code,9,2))) color_code, color_url "
 				+ " FROM product join product_image on product.pd_code = product_image.pd_code "
-				+ "            join color on product_image.color_code = color.color_code "
-				+ " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) "
-				+ " ORDER BY color_code";
+				+ "            join color on product_image.color_code = color.color_code ";
+				if(category_code.length() == 1 ) {
+					System.out.println("2");
+					sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}else {
+					System.out.println("3");
+					sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
+				}
+				sql += " ORDER BY color_code";
 		
 		List<ProductColorDTO> colorList = null;
 		ProductColorDTO dto =null;
@@ -415,7 +476,7 @@ public class ProductListDAO implements IProductList {
 		}
 		return null;
 	}
-	
+
 	
 	
 	
