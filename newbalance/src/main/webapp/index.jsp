@@ -14,17 +14,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 
 <link rel="stylesheet" type="text/css" href="/newbalance/css/main/common.css">
-<link rel="stylesheet" type="text/css" href="/newbalance/css/main/style1.css">
+<link rel="stylesheet" type="text/css" href="/newbalance/css/main/index.css">
 <link rel="stylesheet" type="text/css" href="/newbalance/css/main/jquery-ui-1.12.1.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet" href="/newbalance/css/main/jquery.bxslider.css">
 <link rel="stylesheet" href="/newbalance/css/main/main.css">
 
-<script async="" src="https://assets3.cre.ma/widgets/assets/pc-546a21d1560d4307307b127694a01f26b12f0c3b241c0cc51f5cc8c4bd9ce7b7.js" id="crema-jssdk" charset="UTF-8"></script>
-<script async="" src="//fs.bizspring.net/fs4/logger.v4.1.js"></script>
-<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-1FSXM06HW8&amp;l=dataLayer&amp;cx=c"></script>
-<script id="crema-jssdk" async="" src="//widgets.cre.ma/nbkorea.com/init.js"></script>
 <script src="/newbalance/css/main/jquery-1.12.4.min.js"></script>
 
 <script src="/newbalance/css/main/jquery-ui-1.12.1.js"></script>
@@ -35,7 +31,6 @@
 <script src="https://www.nbkorea.com/js/NbStorage.js"></script>
 <script src="https://www.nbkorea.com/js/jquery.listCapture.js"></script>
 <script src="/newbalance/css/main/jquery.rwdImageMaps.min.js"></script>
-<script src="https://www.nbkorea.com/js/nbgatag.js"></script>
 <script src="https://www.nbkorea.com/js/nb.history.js"></script>
 <script src="https://www.nbkorea.com/js/jquery.lazy.min.js"></script>
 <script src="/newbalance/css/main/jquery.bxslider.js"></script>
