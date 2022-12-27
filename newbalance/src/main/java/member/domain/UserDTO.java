@@ -1,4 +1,4 @@
-package member.service;
+package member.domain;
 
 public class UserDTO {
 	private String id;

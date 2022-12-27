@@ -40,11 +40,11 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginCheckFilter</filter-name>
-		<url-pattern>/login.action</url-pattern>
-
+		<url-pattern>/my/*</url-pattern>
 	</filter-mapping>
 	
 	
+	<!--  컨트롤러 서블릿 등록 -->
 	<servlet>
 		<description>ajax 핸들러 등록</description>
 		<servlet-name>ajaxRequest</servlet-name>
@@ -60,6 +60,7 @@
 		<servlet-name>ajaxRequest</servlet-name>
 		<url-pattern>*.ajx</url-pattern>
 	</servlet-mapping>
+	
 	
 	<!--  컨트롤러 서블릿 등록 -->
 	<servlet>
