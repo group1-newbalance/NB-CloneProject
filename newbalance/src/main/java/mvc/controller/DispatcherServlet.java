@@ -32,7 +32,7 @@ public class DispatcherServlet extends HttpServlet {
     	String path = this.getInitParameter("path"); 
     	String realPath = this.getServletContext().getRealPath(path);
     	
-    	System.out.println("realPath : " + realPath);
+    	System.out.println("dispatcher realPath : " + realPath);
     	
     	Properties prop = new Properties();
     	try( FileReader reader = new FileReader(realPath)) {

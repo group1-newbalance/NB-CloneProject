@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.text.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="/common/header.jsp" flush="false" />
+
 
 <div class="myPageContainer">
 		<div class="myPagecontents">
@@ -27,7 +30,8 @@
 					</div>
 					<ul class="info">
 						<li><strong>쿠폰</strong><a href="/newbalance/my/couponList.action" data-gtag-idx="fo_mypage_1">${myData.couponCnt}</a></li>
-						<li><strong>마일리지</strong><a href="/newbalance/my/customer/memberMileageInfo.action" data-gtag-idx="fo_mypage_2">${myData.mileageAmount}</a></li>
+						<li><strong>마일리지</strong><a href="/newbalance/my/customer/memberMileageInfo.action" data-gtag-idx="fo_mypage_2">
+							<fmt:formatNumber type = "number"  maxFractionDigits = "10" value = "${myData.mileageAmount}" /></a></li>
 						<li><strong>관심상품</strong><a href="/newbalance/my/product/orderWishList.action" data-gtag-idx="fo_mypage_3">${myData.wishCnt}</a></li>
 						<li><strong>주문/배송</strong><a href="/newbalance/my/order/orderList.action" data-gtag-idx="fo_mypage_4">${myData.orderCnt}</a></li>
 					</ul>
@@ -51,7 +55,7 @@
 						<strong class="cTitle">계정관리</strong>
 						<ul>
 							<li><a href="/newbalance/my/customer/memberModifyDetail.action" data-gtag-idx="fo_mypage_12">회원정보확인/수정</a></li>
-							<li><a href="/newbalance/my/customer/memberDeliveryInfo.action" data-gtag-idx="fo_mypage_13">배송지 관리</a></li>
+							<li><a href="/newbalance/my/memberDeliveryInfo.action" data-gtag-idx="fo_mypage_13">배송지 관리</a></li>
 							<li><a href="/newbalance/my/customer/memberRefundAccountInfo.action" data-gtag-idx="fo_mypage_14">환불계좌 관리</a></li>
 						</ul>
 					</div>

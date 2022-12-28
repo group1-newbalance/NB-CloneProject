@@ -8,6 +8,8 @@
 <link rel="icon" type="image/x-icon"
    href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/newbalance/common/header.css">
+<link rel="stylesheet" href="/newbalance/common/footer.css">
 <link rel="stylesheet" type="text/css" href="/newbalance/css/customer/loginForm.css">
 </head>
 <body>
@@ -42,8 +44,8 @@
 				<img src="https://image.nbkorea.com/NBRB_PC/common/logo_NB.png" alt="NB">
 				<p class="txt1">온라인 스토어 회원만의 특별한 혜택</p>
 				<p class="txt2" style="line-height:20px;">5,000원 온라인 쿠폰지급 + 기념일 축하 1만원 할인 쿠폰 지급 +<br>6%마일리지 적립 + 온오프 마일리지 통합</p>
-				<div class="btnGrp center">
-					<a href="/newbalance/customer/joinn.action" class="btn_ty_rface">회원가입</a>
+				<div class="btnGrpCenter">
+					<a href="/newbalance/customer/joinn.action" class="btnTyRface">회원가입</a>
 				</div>
 			</div>
 			

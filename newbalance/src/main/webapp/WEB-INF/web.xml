@@ -51,8 +51,8 @@
 		<servlet-class>mvc.controller.AjaxServlet</servlet-class>
 		<init-param>
 			<description>요청 URL과 Handler 매핑 정보를 가지고 있는 파일의 경로</description>
-			<param-name>path</param-name>
-			<param-value>/WEB-INF/commandHandler.properties</param-value>
+			<param-name>ajaxPath</param-name>
+			<param-value>/WEB-INF/ajaxHandler.properties</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -72,7 +72,7 @@
 			<param-name>path</param-name>
 			<param-value>/WEB-INF/commandHandler.properties</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>

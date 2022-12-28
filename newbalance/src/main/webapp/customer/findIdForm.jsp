@@ -9,8 +9,9 @@
 	href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/newbalance/css/customer/findIdForm.css" />
-
+	<link rel="stylesheet" href="/newbalance/common/header.css">
+	<link rel="stylesheet" href="/newbalance/common/footer.css">
+	<link rel="stylesheet" href="/newbalance/css/customer/findIdForm.css" />
 </head>
 <body>
 	<jsp:include page="/common/header.jsp" flush="false" />
@@ -59,8 +60,8 @@
 									<input type="text" id="cellNo03" name="cellNo03" value="" class="endNum" title="휴대전화 마지막 번호" maxlength="4"> 
 									<input type="hidden" name="authCode" /> 
 									<input type="hidden" name="cellNo" /> 
-									<a href="javascript:;" class="btn_ty_form" id="btnAuthNumberRequest">인증번호 요청</a> 
-									<a href="javascript:;" class="btn_ty_form" id="btnAuthNumberRequestAgain">인증번호 재요청</a>
+									<a href="javascript:;" class="btnAuthNumberRequest" id="btnAuthNumberRequest">인증번호 요청</a> 
+									<a href="javascript:;" class="btnAuthNumberRequest" id="btnAuthNumberRequestAgain">인증번호 재요청</a>
 								<!-- 인증번호 요청 후 -->
 							</div>
 							<!-- 인증번호 요청 후 -->

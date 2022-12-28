@@ -391,3 +391,17 @@ div#smsCertInputArea{display: none;}
     vertical-align: top;
     box-sizing: border-box;
 }
+
+.btnAuthNumberRequest, .btnAuthNumberRequest:hover {
+    min-width: 100px;
+    padding: 16px 22px 15px;
+    background: #737B82;
+    color: #fff;
+    display: inline-block;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    box-sizing: border-box;
+}

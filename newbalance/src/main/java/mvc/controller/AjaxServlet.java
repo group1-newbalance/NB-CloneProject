@@ -28,10 +28,10 @@ public class AjaxServlet extends HttpServlet{
     @Override
     public void init() throws ServletException {
     	
-    	String path = this.getInitParameter("path"); 
+    	String path = this.getInitParameter("ajaxPath"); 
     	String realPath = this.getServletContext().getRealPath(path);
     	
-    	System.out.println("realPath : " + realPath);
+    	System.out.println("ajax realPath : " + realPath);
     	
     	Properties prop = new Properties();
     	try( FileReader reader = new FileReader(realPath)) {
