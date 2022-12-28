@@ -60,6 +60,10 @@
 	margin-top:40px;
 }
 
+.btnGrpCenter{
+	text-align:center;
+}
+
 .btnGrp a{
 	display:block;
 	margin:auto;
@@ -93,20 +97,24 @@
 	    background: #fee500;
 	    font-size:14px;
 	    color:#141414;
-	    font-weight:500;
+	    font-weight:600;
+	    font-family: 'Noto Sans KR',sans-serif;
 }
 
 .nvrBtn,.nvrBtn:hover{
 	    background: #1ec800;
 	      font-size:14px;
 	      color:white;
-	      font-weight:500;
+	      font-weight:400;
+	      font-family: 'Noto Sans KR',sans-serif;
 }
 
-.appleBtn,.appleBtn:hover{
-	    border: 1px solid #141414;
-	    color:#141414;
-	    font-weight:500;
+.appleBtn, .appleBtn:hover{
+	font-size: 16px;	
+    border: 1px solid #141414;
+    color:#141414;
+    font-family: 'Noto Sans KR',sans-serif;
+    font-weight:500;
 }
 .appleBtn::before {
     content: '';
@@ -143,6 +151,7 @@
 .login_benefit .txt1 {
     color: #444;
     font-size: 24px;
+    padding: 36px 0 7px;
     font-weight: 700;
     line-height: 46px;
     letter-spacing: -0.02em;
@@ -153,14 +162,20 @@
     letter-spacing: -0.02em;
 }
 
-.btn_ty_rface{
+.btnTyRface{
+	display: inline-block;
 	width: 120px;
 	box-sizing:border-box;
     font-size: 14px;
     border: 1px solid #cf0a2c;
     background: #cf0a2c;
     color: #fff;
-    margin:auto 0;
+    min-width: 120px;
+    padding: 14px 16px 13px;
+}
+
+.btnTyRface:hover{
+    color: #fff;
 }
 
 .login_benefit .txt2{
