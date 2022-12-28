@@ -9,11 +9,10 @@ import java.util.Map;
 import javax.naming.NamingException;
 
 import jdbc.connection.ConnectionProvider;
+import jdbc.connection.JdbcUtil;
 import my.dao.MyDAO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
-
-
 
 public class MyPageService {
 private static MyPageService instance = null;
@@ -28,13 +27,13 @@ private static MyPageService instance = null;
 	}
 	
 	public MyMainDTO getMyMainMenuInfo(String userCode) throws NamingException {
-		MyMainDTO myData;
+		MyMainDTO myData = null;
 		try ( Connection conn = ConnectionProvider.getConnection()) {
 			MyDAO myDao = MyDAO.getInstance();
 			myData = myDao.getMyMainMenuInfo(conn, userCode);
 		
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
 		return myData;
 		
@@ -50,8 +49,72 @@ private static MyPageService instance = null;
 			myData.put("myData", deliveryInfoList);
 
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
 		return myData;
+	}
+	
+	public int insertMemberDeliveryInfo(MyDeliveryInfoDTO dto) throws NamingException{
+		int rowCount = 0;
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			MyDAO myDao = MyDAO.getInstance();
+			
+			if(myDao.checkDuplicateDeliveryInfo(conn, dto)) {
+				rowCount = -1;
+			}else {
+				conn.setAutoCommit(false);
+				if(dto.getMaDefault() == 1) {
+					myDao.updateMaDefault(conn, dto.getUserCode());
+				}
+				rowCount = myDao.insertMemberDeliveryInfo(conn, dto);
+				conn.commit();
+			}
+
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
+		}
+		return rowCount;
+	}
+	
+
+	
+	public int updateMemberDeliveryInfo(MyDeliveryInfoDTO dto) throws NamingException{
+		int rowCount = 0;
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			MyDAO myDao = MyDAO.getInstance();
+			
+			conn.setAutoCommit(false);
+			if(dto.getMaDefault() == 1) {
+				myDao.updateMaDefault(conn, dto.getUserCode());
+			}
+			rowCount = myDao.updateMemberDeliveryInfo(conn, dto);
+			conn.commit();
+
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
+		}
+		return rowCount;
+	}
+	
+	public int deleteMemberDeliveryInfo(int maSeq) throws NamingException{
+		int rowCount = 0;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			rowCount = myDao.deleteMemberDeliveryInfo(conn, maSeq);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowCount;
 	}
 }
