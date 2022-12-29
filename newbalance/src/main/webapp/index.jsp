@@ -9,6 +9,9 @@
 	
 <title>뉴발란스 공식 온라인스토어</title>
 
+<link rel="stylesheet" href="/newbalance/common/header.css">
+<link rel="stylesheet" href="/newbalance/common/footer.css">
+
 <script src="/newbalance/css/main/jquery-2.2.4.min.js"></script>
 <link rel="icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
