@@ -62,9 +62,9 @@
 					<div class="categoryMenu">
 						<strong class="cTitle">구매내역</strong>
 						<ul>
-							<li><a href="/newbalance/my/order/orderList.action" data-gtag-idx="fo_mypage_15">주문/배송 조회</a></li>
-							<li><a href="/newbalance/my/order/orderCRCList.action" data-gtag-idx="fo_mypage_16">취소/교환/반품 내역</a></li>
-							<li><a href="/newbalance/my/order/searchOrderReviewList.action" data-gtag-idx="fo_mypage_17">상품리뷰</a></li>
+							<li><a href="/newbalance/my/orderList.action" data-gtag-idx="fo_mypage_15">주문/배송 조회</a></li>
+							<li><a href="/newbalance/my/orderCRCList.action" data-gtag-idx="fo_mypage_16">취소/교환/반품 내역</a></li>
+							<li><a href="/newbalance/my/searchOrderReviewList.action" data-gtag-idx="fo_mypage_17">상품리뷰</a></li>
 						</ul>
 					</div>
 					<div class="categoryMenu">
