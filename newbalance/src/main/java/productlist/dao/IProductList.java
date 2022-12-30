@@ -10,6 +10,7 @@ import productlist.domain.CategoryDTO;
 import productlist.domain.ProductColorDTO;
 import productlist.domain.ProductImgDTO;
 import productlist.domain.ProductListDTO;
+import productlist.domain.ProductReviewDTO;
 import productlist.domain.ProductSizeStockDTO;
 
 public interface IProductList {
@@ -27,7 +28,7 @@ public interface IProductList {
 	List<CategoryDTO> category(Connection conn, String category_code, String gender) throws SQLException;
 	
 	//5. 평점
-	
+	LinkedHashMap< String, ProductReviewDTO > selectProductReview(Connection conn, String category_code,String gender) throws SQLException;
 	
 	//6. 카테고리에서 사이즈
 	List<ProductSizeStockDTO> selectSizeCategory(Connection conn, String category_code, String gender) throws SQLException;

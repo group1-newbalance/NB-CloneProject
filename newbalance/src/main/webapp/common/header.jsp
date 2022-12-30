@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<% String contextPath = request.getContextPath(); %>
 <script
 zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -318,96 +318,14 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									<strong class="tit">Featured</strong>
 									<ul>
 									
-																				
-												
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1269" data-gtag-idx="fo_common_gbn_1" data-gtag-label="New" data-category-name="Featured" style="color: #141414;">New</a></li>
-											
-											
-											
-											
-											
-											
-											
-										
-									
-																				
-												
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1385" data-gtag-idx="fo_common_gbn_1" data-gtag-label="Best" data-category-name="Featured" style="color: #141414;">Best</a></li>
-											
-											
-											
-											
-											
-											
-											
-										
-									
-																				
-												
-											
-											
-											
-											
-											
-											
-											
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=M&cIdx=new" data-gtag-idx="fo_common_gbn_1" data-gtag-label="New" data-category-name="Featured" style="color: #141414;">New</a></li>
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=M&cIdx=best" data-gtag-idx="fo_common_gbn_1" data-gtag-label="Best" data-category-name="Featured" style="color: #141414;">Best</a></li>
 												<li class=""><a href="https://www.nbkorea.com/product/subMain.action?cIdx=1279" data-gtag-idx="fo_common_gbn_1" data-gtag-label="남성 메인" data-category-name="Featured" style="color: #141414;">남성 메인</a></li>
-											
-										
-									
-																				
-												
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/nbrunning.action" data-gtag-idx="fo_common_gbn_1" data-gtag-label="NB 러닝" data-category-name="Featured" style="color: #141414;">NB 러닝</a></li>
-											
-										
-									
-																				
-												
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/classicjogger.action" data-gtag-idx="fo_common_gbn_1" data-gtag-label="Classic Jogger" data-category-name="Featured" style="color: #141414;">Classic Jogger</a></li>
-											
-										
-									
-																				
-												
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/iu22fw1.action" data-gtag-idx="fo_common_gbn_1" data-gtag-label="NB with IU" data-category-name="Featured" style="color: #141414;">NB with IU</a></li>
-											
-										
-									
-																				
-												
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/launchingCalendar/list.action" data-gtag-idx="fo_common_gbn_1" data-gtag-label="런칭캘린더" data-category-name="Featured" style="color: ;">런칭캘린더</a></li>
 											
-										
 																		
 									</ul>
 								</div>
@@ -429,102 +347,20 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">신발</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1280" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>
-																				
-											
-																				
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1287" data-gtag-idx="fo_common_gbn_1" data-gtag-label="라이프스타일" data-category-name="신발">라이프스타일</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1564" data-gtag-idx="fo_common_gbn_1" data-gtag-label="클래식조거" data-category-name="신발">클래식조거</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1283" data-gtag-idx="fo_common_gbn_1" data-gtag-label="Made in USA/UK" data-category-name="신발">Made in USA/UK</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1288" data-gtag-idx="fo_common_gbn_1" data-gtag-label="러닝" data-category-name="신발">러닝</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1377" data-gtag-idx="fo_common_gbn_1" data-gtag-label="워킹" data-category-name="신발">워킹</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1641" data-gtag-idx="fo_common_gbn_1" data-gtag-label="트레일러닝" data-category-name="신발">트레일러닝</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1292" data-gtag-idx="fo_common_gbn_1" data-gtag-label="샌들/슬라이드" data-category-name="신발">샌들/슬라이드</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1499" data-gtag-idx="fo_common_gbn_1" data-gtag-label="농구" data-category-name="신발">농구</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1289" data-gtag-idx="fo_common_gbn_1" data-gtag-label="축구" data-category-name="신발">축구</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1290" data-gtag-idx="fo_common_gbn_1" data-gtag-label="야구/테니스" data-category-name="신발">야구/테니스</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1291" data-gtag-idx="fo_common_gbn_1" data-gtag-label="스케이트보딩" data-category-name="신발">스케이트보딩</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1611" data-gtag-idx="fo_common_gbn_1" data-gtag-label="골프" data-category-name="신발">골프</a></li>
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=F" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=F01" data-gtag-idx="fo_common_gbn_1" data-gtag-label="라이프스타일" data-category-name="신발">라이프스타일</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F02" data-gtag-idx="fo_common_gbn_1" data-gtag-label="클래식조거" data-category-name="신발">클래식조거</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F03" data-gtag-idx="fo_common_gbn_1" data-gtag-label="Made in USA/UK" data-category-name="신발">Made in USA/UK</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F04" data-gtag-idx="fo_common_gbn_1" data-gtag-label="러닝" data-category-name="신발">러닝</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F05" data-gtag-idx="fo_common_gbn_1" data-gtag-label="워킹" data-category-name="신발">워킹</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F06" data-gtag-idx="fo_common_gbn_1" data-gtag-label="트레일러닝" data-category-name="신발">트레일러닝</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F07" data-gtag-idx="fo_common_gbn_1" data-gtag-label="샌들/슬라이드" data-category-name="신발">샌들/슬라이드</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F08" data-gtag-idx="fo_common_gbn_1" data-gtag-label="농구" data-category-name="신발">농구</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F09" data-gtag-idx="fo_common_gbn_1" data-gtag-label="축구" data-category-name="신발">축구</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F10" data-gtag-idx="fo_common_gbn_1" data-gtag-label="야구/테니스" data-category-name="신발">야구/테니스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F11" data-gtag-idx="fo_common_gbn_1" data-gtag-label="스케이트보딩" data-category-name="신발">스케이트보딩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&amp;cIdx=F12" data-gtag-idx="fo_common_gbn_1" data-gtag-label="골프" data-category-name="신발">골프</a></li>
+							
 											
 										
 									</ul>
@@ -569,95 +405,16 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">의류</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1281" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1284" data-gtag-idx="fo_common_gbn_1" data-gtag-label="다운 자켓/베스트" data-category-name="의류">다운 자켓/베스트</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1576" data-gtag-idx="fo_common_gbn_1" data-gtag-label="플리스" data-category-name="의류">플리스</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1293" data-gtag-idx="fo_common_gbn_1" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1294" data-gtag-idx="fo_common_gbn_1" data-gtag-label="후드티/맨투맨" data-category-name="의류">후드티/맨투맨</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1296" data-gtag-idx="fo_common_gbn_1" data-gtag-label="롱팬츠" data-category-name="의류">롱팬츠</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1295" data-gtag-idx="fo_common_gbn_1" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1297" data-gtag-idx="fo_common_gbn_1" data-gtag-label="숏팬츠" data-category-name="의류">숏팬츠</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1298" data-gtag-idx="fo_common_gbn_1" data-gtag-label="타이즈" data-category-name="의류">타이즈</a></li>
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C01" data-gtag-idx="fo_common_gbn_1" data-gtag-label="다운 자켓/베스트" data-category-name="의류">다운 자켓/베스트</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C02" data-gtag-idx="fo_common_gbn_1" data-gtag-label="플리스" data-category-name="의류">플리스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C03" data-gtag-idx="fo_common_gbn_1" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C04" data-gtag-idx="fo_common_gbn_1" data-gtag-label="후드티/맨투맨" data-category-name="의류">후드티/맨투맨</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C05" data-gtag-idx="fo_common_gbn_1" data-gtag-label="롱팬츠" data-category-name="의류">롱팬츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C06" data-gtag-idx="fo_common_gbn_1" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C07" data-gtag-idx="fo_common_gbn_1" data-gtag-label="숏팬츠" data-category-name="의류">숏팬츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=C08" data-gtag-idx="fo_common_gbn_1" data-gtag-label="타이즈" data-category-name="의류">타이즈</a></li>
+					
 										
 									</ul>
 									</div>
@@ -693,89 +450,13 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">용품</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1282" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1379" data-gtag-idx="fo_common_gbn_1" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1299" data-gtag-idx="fo_common_gbn_1" data-gtag-label="가방" data-category-name="용품">가방</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1301" data-gtag-idx="fo_common_gbn_1" data-gtag-label="양말" data-category-name="용품">양말</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1300" data-gtag-idx="fo_common_gbn_1" data-gtag-label="모자" data-category-name="용품">모자</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1302" data-gtag-idx="fo_common_gbn_1" data-gtag-label="기타" data-category-name="용품">기타</a></li>
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T01" data-gtag-idx="fo_common_gbn_1" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T02" data-gtag-idx="fo_common_gbn_1" data-gtag-label="가방" data-category-name="용품">가방</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T03" data-gtag-idx="fo_common_gbn_1" data-gtag-label="양말" data-category-name="용품">양말</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T04" data-gtag-idx="fo_common_gbn_1" data-gtag-label="모자" data-category-name="용품">모자</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=T05" data-gtag-idx="fo_common_gbn_1" data-gtag-label="기타" data-category-name="용품">기타</a></li>
+		
 										
 									</ul>
 									</div>
@@ -805,83 +486,10 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">언더웨어</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1589" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="언더웨어">전체보기</a></li>
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
-																				
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=U" data-gtag-idx="fo_common_gbn_1" data-gtag-label="전체보기" data-category-name="언더웨어">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=U01" data-gtag-idx="fo_common_gbn_1" data-gtag-label="드로즈" data-category-name="언더웨어">드로즈</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=M&cIdx=U02" data-gtag-idx="fo_common_gbn_1" data-gtag-label="릴랙서" data-category-name="언더웨어">릴랙서</a></li>
 										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1591" data-gtag-idx="fo_common_gbn_1" data-gtag-label="드로즈" data-category-name="언더웨어">드로즈</a></li>
-											
-																				
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1636" data-gtag-idx="fo_common_gbn_1" data-gtag-label="릴랙서" data-category-name="언더웨어">릴랙서</a></li>
-											
-																				
-											
-																				
-											
-																				
-											
-																				
-											
 										
 									</ul>
 									</div>
@@ -943,95 +551,14 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									<ul>
 									
 										
-														
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1272" data-gtag-idx="fo_common_gbn_2" data-gtag-label="New" data-category-name="Featured" style="color: ;">New</a></li>
-											
-											
-											
-											
-											
-											
-											
-										
-									
-										
-														
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1273" data-gtag-idx="fo_common_gbn_2" data-gtag-label="Best" data-category-name="Featured" style="color: #141414;">Best</a></li>
-											
-											
-											
-											
-											
-											
-											
-										
-									
-										
-														
-											
-											
-											
-											
-											
-											
-											
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=W&cIdx=new" data-gtag-idx="fo_common_gbn_2" data-gtag-label="New" data-category-name="Featured" style="color: ;">New</a></li>
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=W&cIdx=best" data-gtag-idx="fo_common_gbn_2" data-gtag-label="Best" data-category-name="Featured" style="color: #141414;">Best</a></li>
 												<li class=""><a href="https://www.nbkorea.com/product/subMain.action?cIdx=1285" data-gtag-idx="fo_common_gbn_2" data-gtag-label="여성 메인" data-category-name="Featured" style="color: #141414;">여성 메인</a></li>
-											
-										
-									
-										
-														
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/nbrunning.action" data-gtag-idx="fo_common_gbn_2" data-gtag-label="NB 러닝" data-category-name="Featured" style="color: #141414;">NB 러닝</a></li>
-											
-										
-									
-										
-														
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/classicjogger.action" data-gtag-idx="fo_common_gbn_2" data-gtag-label="Classic Jogger" data-category-name="Featured" style="color: #141414;">Classic Jogger</a></li>
-											
-										
-									
-										
-														
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/collection/iu22fw1.action" data-gtag-idx="fo_common_gbn_2" data-gtag-label="NB with IU" data-category-name="Featured" style="color: #141414;">NB with IU</a></li>
-											
-										
-									
-										
-														
-											
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/launchingCalendar/list.action" data-gtag-idx="fo_common_gbn_2" data-gtag-label="런칭캘린더" data-category-name="Featured" style="color: ;">런칭캘린더</a></li>
-											
-										
+									
 									
 									</ul>
 								</div>
@@ -1050,101 +577,18 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">신발</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1320" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>
-										
-											
-										
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1325" data-gtag-idx="fo_common_gbn_2" data-gtag-label="라이프스타일" data-category-name="신발">라이프스타일</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1578" data-gtag-idx="fo_common_gbn_2" data-gtag-label="클래식조거" data-category-name="신발">클래식조거</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1324" data-gtag-idx="fo_common_gbn_2" data-gtag-label="Made in USA/UK" data-category-name="신발">Made in USA/UK</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1326" data-gtag-idx="fo_common_gbn_2" data-gtag-label="러닝" data-category-name="신발">러닝</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1380" data-gtag-idx="fo_common_gbn_2" data-gtag-label="워킹" data-category-name="신발">워킹</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1642" data-gtag-idx="fo_common_gbn_2" data-gtag-label="트레일러닝" data-category-name="신발">트레일러닝</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1329" data-gtag-idx="fo_common_gbn_2" data-gtag-label="샌들/슬라이드" data-category-name="신발">샌들/슬라이드</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1327" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스튜디오/테니스" data-category-name="신발">스튜디오/테니스</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1328" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스케이트보딩" data-category-name="신발">스케이트보딩</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1612" data-gtag-idx="fo_common_gbn_2" data-gtag-label="골프" data-category-name="신발">골프</a></li>
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F01" data-gtag-idx="fo_common_gbn_2" data-gtag-label="라이프스타일" data-category-name="신발">라이프스타일</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F02" data-gtag-idx="fo_common_gbn_2" data-gtag-label="클래식조거" data-category-name="신발">클래식조거</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F03" data-gtag-idx="fo_common_gbn_2" data-gtag-label="Made in USA/UK" data-category-name="신발">Made in USA/UK</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F04" data-gtag-idx="fo_common_gbn_2" data-gtag-label="러닝" data-category-name="신발">러닝</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F05" data-gtag-idx="fo_common_gbn_2" data-gtag-label="워킹" data-category-name="신발">워킹</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F06" data-gtag-idx="fo_common_gbn_2" data-gtag-label="트레일러닝" data-category-name="신발">트레일러닝</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F07" data-gtag-idx="fo_common_gbn_2" data-gtag-label="샌들/슬라이드" data-category-name="신발">샌들/슬라이드</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F13" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스튜디오/테니스" data-category-name="신발">스튜디오/테니스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F11" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스케이트보딩" data-category-name="신발">스케이트보딩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=F12" data-gtag-idx="fo_common_gbn_2" data-gtag-label="골프" data-category-name="신발">골프</a></li>
+							
 										
 									</ul>
 								</div>
@@ -1181,101 +625,18 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">의류</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1321" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1330" data-gtag-idx="fo_common_gbn_2" data-gtag-label="다운 자켓/베스트" data-category-name="의류">다운 자켓/베스트</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1577" data-gtag-idx="fo_common_gbn_2" data-gtag-label="플리스" data-category-name="의류">플리스</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1331" data-gtag-idx="fo_common_gbn_2" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1332" data-gtag-idx="fo_common_gbn_2" data-gtag-label="후드티/맨투맨" data-category-name="의류">후드티/맨투맨</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1334" data-gtag-idx="fo_common_gbn_2" data-gtag-label="롱팬츠" data-category-name="의류">롱팬츠</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1333" data-gtag-idx="fo_common_gbn_2" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1537" data-gtag-idx="fo_common_gbn_2" data-gtag-label="숏팬츠" data-category-name="의류">숏팬츠</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1336" data-gtag-idx="fo_common_gbn_2" data-gtag-label="레깅스" data-category-name="의류">레깅스</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1381" data-gtag-idx="fo_common_gbn_2" data-gtag-label="슬리브리스/브라탑" data-category-name="의류">슬리브리스/브라탑</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1554" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스커트/원피스" data-category-name="의류">스커트/원피스</a></li>
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C01" data-gtag-idx="fo_common_gbn_2" data-gtag-label="다운 자켓/베스트" data-category-name="의류">다운 자켓/베스트</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C02" data-gtag-idx="fo_common_gbn_2" data-gtag-label="플리스" data-category-name="의류">플리스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C03" data-gtag-idx="fo_common_gbn_2" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C04" data-gtag-idx="fo_common_gbn_2" data-gtag-label="후드티/맨투맨" data-category-name="의류">후드티/맨투맨</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C05" data-gtag-idx="fo_common_gbn_2" data-gtag-label="롱팬츠" data-category-name="의류">롱팬츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C06" data-gtag-idx="fo_common_gbn_2" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C07" data-gtag-idx="fo_common_gbn_2" data-gtag-label="숏팬츠" data-category-name="의류">숏팬츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C09" data-gtag-idx="fo_common_gbn_2" data-gtag-label="레깅스" data-category-name="의류">레깅스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C10" data-gtag-idx="fo_common_gbn_2" data-gtag-label="슬리브리스/브라탑" data-category-name="의류">슬리브리스/브라탑</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=C11" data-gtag-idx="fo_common_gbn_2" data-gtag-label="스커트/원피스" data-category-name="의류">스커트/원피스</a></li>
+					
 										
 									</ul>
 								</div>
@@ -1312,90 +673,12 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">용품</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1322" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1382" data-gtag-idx="fo_common_gbn_2" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1337" data-gtag-idx="fo_common_gbn_2" data-gtag-label="가방" data-category-name="용품">가방</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1339" data-gtag-idx="fo_common_gbn_2" data-gtag-label="양말" data-category-name="용품">양말</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1338" data-gtag-idx="fo_common_gbn_2" data-gtag-label="모자" data-category-name="용품">모자</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1340" data-gtag-idx="fo_common_gbn_2" data-gtag-label="기타" data-category-name="용품">기타</a></li>
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>		
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T01" data-gtag-idx="fo_common_gbn_2" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T02" data-gtag-idx="fo_common_gbn_2" data-gtag-label="가방" data-category-name="용품">가방</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T03" data-gtag-idx="fo_common_gbn_2" data-gtag-label="양말" data-category-name="용품">양말</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T04" data-gtag-idx="fo_common_gbn_2" data-gtag-label="모자" data-category-name="용품">모자</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=T05" data-gtag-idx="fo_common_gbn_2" data-gtag-label="기타" data-category-name="용품">기타</a></li>
 											
 										
 									</ul>
@@ -1423,85 +706,11 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">언더웨어</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1648" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="언더웨어">전체보기</a></li>
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1653" data-gtag-idx="fo_common_gbn_2" data-gtag-label="브라/캐미솔" data-category-name="언더웨어">브라/캐미솔</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1654" data-gtag-idx="fo_common_gbn_2" data-gtag-label="팬티/드로즈" data-category-name="언더웨어">팬티/드로즈</a></li>
-											
-										
-										
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1655" data-gtag-idx="fo_common_gbn_2" data-gtag-label="릴랙서" data-category-name="언더웨어">릴랙서</a></li>
-											
-										
-											
-										
-											
-										
-											
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=U" data-gtag-idx="fo_common_gbn_2" data-gtag-label="전체보기" data-category-name="언더웨어">전체보기</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=U03" data-gtag-idx="fo_common_gbn_2" data-gtag-label="브라/캐미솔" data-category-name="언더웨어">브라/캐미솔</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=U04" data-gtag-idx="fo_common_gbn_2" data-gtag-label="팬티/드로즈" data-category-name="언더웨어">팬티/드로즈</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=W&cIdx=U01" data-gtag-idx="fo_common_gbn_2" data-gtag-label="릴랙서" data-category-name="언더웨어">릴랙서</a></li>
+									
 										
 											
 										
@@ -1563,115 +772,17 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									<strong class="tit">Featured</strong>									
 									<ul>
 									
-										
-											
-											
-											
-											
-											
-											
-												<li class=""><a href="https://www.nbkorea.com/product/subMain.action?cIdx=1286" data-gtag-idx="fo_common_gbn_3" data-gtag-label="키즈 메인" data-category-name="Featured" style="color: #141414;">키즈 메인</a></li>
-											
-										
-									
-										
-											
-											
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1386" data-gtag-idx="fo_common_gbn_3" data-gtag-label="New" data-category-name="Featured" style="color: #141414;">New</a></li>
-											
-											
-											
-											
-										
-									
-										
-											
-											
-											
-												<li class=""><a href="/product/featuredList.action?cateGrpCode=250100&amp;cIdx=1387" data-gtag-idx="fo_common_gbn_3" data-gtag-label="베스트" data-category-name="Featured" style="color: #141414;">베스트</a></li>
-											
-											
-											
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
+										<li class=""><a href="https://www.nbkorea.com/product/subMain.action?cIdx=1286" data-gtag-idx="fo_common_gbn_3" data-gtag-label="키즈 메인" data-category-name="Featured" style="color: #141414;">키즈 메인</a></li>
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=K&cIdx=new" data-gtag-idx="fo_common_gbn_3" data-gtag-label="New" data-category-name="Featured" style="color: #141414;">New</a></li>
+												<li class=""><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=K&cIdx=new" data-gtag-idx="fo_common_gbn_3" data-gtag-label="베스트" data-category-name="Featured" style="color: #141414;">베스트</a></li>							
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4705" data-gtag-idx="fo_common_gbn_3" data-gtag-label="NBgC (NB girls CLUB)" data-category-name="Featured" style="color: #ff57ae;">NBgC (NB girls CLUB)</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4893" data-gtag-idx="fo_common_gbn_3" data-gtag-label="2023 신학기 책가방" data-category-name="Featured" style="color: #141414;">2023 신학기 책가방</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4863" data-gtag-idx="fo_common_gbn_3" data-gtag-label="NEWKIMO DOWN" data-category-name="Featured" style="color: #141414;">NEWKIMO DOWN</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4844" data-gtag-idx="fo_common_gbn_3" data-gtag-label="WE LOVE WINTER" data-category-name="Featured" style="color: #000000;">WE LOVE WINTER</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4606" data-gtag-idx="fo_common_gbn_3" data-gtag-label="KIDS 878 Collection" data-category-name="Featured" style="color: #000000;">KIDS 878 Collection</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4634" data-gtag-idx="fo_common_gbn_3" data-gtag-label="KIDS 327 Collection" data-category-name="Featured" style="color: #141414;">KIDS 327 Collection</a></li>
-											
-										
-									
-										
-											
-											
-											
-											
-											
-											
 												<li class=""><a href="https://www.nbkorea.com/etc/collection.action?collectionIdx=4798" data-gtag-idx="fo_common_gbn_3" data-gtag-label="LITTLE 530" data-category-name="Featured" style="color: #000000;">LITTLE 530</a></li>
 											
-										
 																			
 									</ul>
 								</div>
@@ -1689,103 +800,14 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">신발</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1353" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>
-										
-											
-										
-										
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1629" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(110~130mm)" data-category-name="신발">운동화(110~130mm)</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1356" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(130~160mm)" data-category-name="신발">운동화(130~160mm)</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1357" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(170~220mm)" data-category-name="신발">운동화(170~220mm)</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1358" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(225~240mm)" data-category-name="신발">운동화(225~240mm)</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1583" data-gtag-idx="fo_common_gbn_3" data-gtag-label="방한화(120~240mm)" data-category-name="신발">방한화(120~240mm)</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1656" data-gtag-idx="fo_common_gbn_3" data-gtag-label="슬라이드 (160~210mm)" data-category-name="신발">슬라이드 (160~210mm)</a></li>
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="신발">전체보기</a></li>				
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F14" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(110~130mm)" data-category-name="신발">운동화(110~130mm)</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F15" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(130~160mm)" data-category-name="신발">운동화(130~160mm)</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F16" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(170~220mm)" data-category-name="신발">운동화(170~220mm)</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F17" data-gtag-idx="fo_common_gbn_3" data-gtag-label="운동화(225~240mm)" data-category-name="신발">운동화(225~240mm)</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F18" data-gtag-idx="fo_common_gbn_3" data-gtag-label="방한화(120~240mm)" data-category-name="신발">방한화(120~240mm)</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=F19" data-gtag-idx="fo_common_gbn_3" data-gtag-label="슬라이드 (160~210mm)" data-category-name="신발">슬라이드 (160~210mm)</a></li>
+					
 										
 									</ul>
 								</div>
@@ -1813,112 +835,20 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">의류</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1354" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1646" data-gtag-idx="fo_common_gbn_3" data-gtag-label="헤비다운" data-category-name="의류">헤비다운</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1514" data-gtag-idx="fo_common_gbn_3" data-gtag-label="경량다운" data-category-name="의류">경량다운</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1658" data-gtag-idx="fo_common_gbn_3" data-gtag-label="스키복" data-category-name="의류">스키복</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1573" data-gtag-idx="fo_common_gbn_3" data-gtag-label="플리스/덤블/패딩" data-category-name="의류">플리스/덤블/패딩</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1360" data-gtag-idx="fo_common_gbn_3" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1563" data-gtag-idx="fo_common_gbn_3" data-gtag-label="맨투맨 세트" data-category-name="의류">맨투맨 세트</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1384" data-gtag-idx="fo_common_gbn_3" data-gtag-label="트레이닝 세트" data-category-name="의류">트레이닝 세트</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1647" data-gtag-idx="fo_common_gbn_3" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1361" data-gtag-idx="fo_common_gbn_3" data-gtag-label="후드티 / 맨투맨" data-category-name="의류">후드티 / 맨투맨</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1363" data-gtag-idx="fo_common_gbn_3" data-gtag-label="긴바지 / 레깅스" data-category-name="의류">긴바지 / 레깅스</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1369" data-gtag-idx="fo_common_gbn_3" data-gtag-label="원피스 / 스커트" data-category-name="의류">원피스 / 스커트</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1640" data-gtag-idx="fo_common_gbn_3" data-gtag-label="홈웨어" data-category-name="의류">홈웨어</a></li>
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="의류">전체보기</a></li>											
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=KcIdx=C12" data-gtag-idx="fo_common_gbn_3" data-gtag-label="헤비다운" data-category-name="의류">헤비다운</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C13" data-gtag-idx="fo_common_gbn_3" data-gtag-label="경량다운" data-category-name="의류">경량다운</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C14" data-gtag-idx="fo_common_gbn_3" data-gtag-label="스키복" data-category-name="의류">스키복</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C15" data-gtag-idx="fo_common_gbn_3" data-gtag-label="플리스/덤블/패딩" data-category-name="의류">플리스/덤블/패딩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C03" data-gtag-idx="fo_common_gbn_3" data-gtag-label="바람막이/자켓" data-category-name="의류">바람막이/자켓</a></li>								
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C16" data-gtag-idx="fo_common_gbn_3" data-gtag-label="맨투맨 세트" data-category-name="의류">맨투맨 세트</a></li>								
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C17" data-gtag-idx="fo_common_gbn_3" data-gtag-label="트레이닝 세트" data-category-name="의류">트레이닝 세트</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C06" data-gtag-idx="fo_common_gbn_3" data-gtag-label="티셔츠" data-category-name="의류">티셔츠</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C04" data-gtag-idx="fo_common_gbn_3" data-gtag-label="후드티 / 맨투맨" data-category-name="의류">후드티 / 맨투맨</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C18" data-gtag-idx="fo_common_gbn_3" data-gtag-label="긴바지 / 레깅스" data-category-name="의류">긴바지 / 레깅스</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C11" data-gtag-idx="fo_common_gbn_3" data-gtag-label="원피스 / 스커트" data-category-name="의류">원피스 / 스커트</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=C19" data-gtag-idx="fo_common_gbn_3" data-gtag-label="홈웨어" data-category-name="의류">홈웨어</a></li>
+	
 										
 											
 										
@@ -1961,101 +891,13 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 									
 									<strong class="tit">용품</strong>
 									<ul>
-										<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1355" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1366" data-gtag-idx="fo_common_gbn_3" data-gtag-label="신학기 책가방" data-category-name="용품">신학기 책가방</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1371" data-gtag-idx="fo_common_gbn_3" data-gtag-label="모자" data-category-name="용품">모자</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1367" data-gtag-idx="fo_common_gbn_3" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1406" data-gtag-idx="fo_common_gbn_3" data-gtag-label="가방" data-category-name="용품">가방</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1372" data-gtag-idx="fo_common_gbn_3" data-gtag-label="양말" data-category-name="용품">양말</a></li>
-											
-										
-										
-																					
-											<li><a href="/product/productList.action?cateGrpCode=250110&amp;cIdx=1580" data-gtag-idx="fo_common_gbn_3" data-gtag-label="장갑/넥워머" data-category-name="용품">장갑/넥워머</a></li>
+										<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T" data-gtag-idx="fo_common_gbn_3" data-gtag-label="전체보기" data-category-name="용품">전체보기</a></li>																
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T06" data-gtag-idx="fo_common_gbn_3" data-gtag-label="신학기 책가방" data-category-name="용품">신학기 책가방</a></li>								
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T04" data-gtag-idx="fo_common_gbn_3" data-gtag-label="모자" data-category-name="용품">모자</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T01" data-gtag-idx="fo_common_gbn_3" data-gtag-label="백팩" data-category-name="용품">백팩</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T02" data-gtag-idx="fo_common_gbn_3" data-gtag-label="가방" data-category-name="용품">가방</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T03" data-gtag-idx="fo_common_gbn_3" data-gtag-label="양말" data-category-name="용품">양말</a></li>
+											<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=K&cIdx=T07" data-gtag-idx="fo_common_gbn_3" data-gtag-label="장갑/넥워머" data-category-name="용품">장갑/넥워머</a></li>
 											
 										
 										

@@ -14,7 +14,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/64abd09342.js" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/a335022766.js" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="/newbalance/common/header.css">
+<link rel="stylesheet" href="/newbalance/common/footer.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss1.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss2.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss3.css">
@@ -23,7 +24,7 @@
 </style>
 <body>
 <h3></h3>
-<%-- <jsp:include page="/common/header.jsp" flush="false" /> --%>
+<jsp:include page="/common/header.jsp" flush="false" />
 <div class="container" style="padding-top: 0px;">
     <!-- header -->
     <div class="listTop">
@@ -45,7 +46,7 @@
 			<h3 data-cidx="1320">
 					<c:set value="${param.cIdx }" var="cidx"/>
 					<c:forEach items="${categoryList}" var="cList">
-						<c:if test="${cList.category_code== cidx }">
+						<c:if test="${cList.category_code == cidx }">
 								${cList.minor_sort }
 						</c:if>
 					</c:forEach>
@@ -62,10 +63,10 @@
             <div class="dropdown">
                 <a href="javascript:;" class="dropdown_tit">신상품순</a>
                 <ul class="dropdown_list">
-                    <li class="on"><a href="javascript:;" data-value="01">신상품순</a></li>
-                    <li><a href="javascript:;" data-value="02">베스트상품순</a></li>
-                    <li><a href="javascript:;" data-value="03">높은 가격순</a></li>
-                    <li><a href="javascript:;" data-value="04">낮은 가격순</a></li>
+                    <li class="on"><a href="javascript:;" data-value="Q01">신상품순</a></li>
+                    <li><a href="javascript:;" data-value="Q02">베스트상품순</a></li>
+                    <li><a href="javascript:;" data-value="Q03">높은 가격순</a></li>
+                    <li><a href="javascript:;" data-value="Q04">낮은 가격순</a></li>
                 </ul>
             </div>					
             <div class="filter">
@@ -76,10 +77,11 @@
             </div>		
         </div>
     </div>
+    
     <!-- body -->
     <div class="listContent viewB" style="min-height: 1070px;">
         <div class="listLeft">
-            <div class="inner">
+        <div class="inner">
                 <!-- filter에서 남자(신발부분,의류,용품,언더 목록들)-->
                 <div class="allList">
                     <ul class="allList_list">
@@ -95,11 +97,19 @@
                     <div class="accordionTit on"><a href="javascript:">사이즈</a></div><!--  -->
                     <ul class="accordionList accordionList-border">
                     	<c:forEach items="${csizeList}" var="csizelist" >
-                        	<li><span class="inputBox"><input type="checkBox" name="sizeCode" id="${csizelist.sz}" class="ip_chk ip_chk-boxBg" value="${csizelist.sz}"/><label for="${csizelist.sz}"><span>${csizelist.sz}</span></label></span></li>			
+                        	<li><span class="inputBox"><input type="checkbox" name="sizeCode" id="${csizelist.sz}" class="ip_chk ip_chk-boxBg" value="${csizelist.sz}"/><label for="${csizelist.sz}"><span>${csizelist.sz}</span></label></span></li>			
                     	</c:forEach>
                     </ul>
                 </div>
-<!-- cIdx가 substring(param.cIdx,1,1) 가 F일 때 발볼을 띄우고 싶다..... -->
+<%--
+${ fn:substring(param.cIdx, 0,1) }
+<br>
+
+<c:if test="${ fn:substring(param.cIdx, 0,1) eq 'C' }">O</c:if>
+<c:if test="${ fn:substring(param.cIdx, 0,1) ne 'C' }">X</c:if> 
+--%>
+
+				<c:if test="${ fn:substring(param.cIdx, 0,1) == 'K' }">
 		                <!-- 남자발볼 -->
 		                <div class="accd filterWidth">
 		                    <div class="accordionTit on"><a href="javascript:">발볼(${param.cateGrpCode=='M'?'남':'여' })</a></div>
@@ -109,6 +119,7 @@
 		                    </c:forEach>
 		                    </ul>
 		                </div>
+		         </c:if>       
 		 <%--                <!-- 여자발볼 -->
 		                <div class="accd filterWidth">
 		                    <div class="accordionTit on"><a href="javascript:">발볼(여)</a></div>
@@ -126,7 +137,7 @@
                     <div class="accordionTit on"><a href="javascript:">색상</a></div>
                     <ul class="accordionList accordionList-list accordionList-color all-color">
                     	<c:forEach items="${cColorlist }" var="colorlist">
-                        		<li><span class="inputBox"><input type="checkbox" class="ip_chk ip_chk-color color01" name="colorCode" id="${colorlist.color_code }" value="02"><label for="${colorlist.color_code}"><img src="${colorlist.color_url }" alt="Black"><span class="blind"></span></label></span></li>
+                        		<li><span class="inputBox"><input type="checkbox" class="ip_chk ip_chk-color color01" name="colorCode" id="${colorlist.color_code }" value="${colorlist.color_code}"><label for="${colorlist.color_code}"><img src="${colorlist.color_url }" alt="Black"><span class="blind"></span></label></span></li>
                     	</c:forEach>
                     </ul>
                 </div>
@@ -137,10 +148,22 @@
                     <div class="accordionTit on"><a href="javascript:">카테고리</a></div>
                     <ul class="accordionList accordionList-list">
 	                    <c:forEach items="${categoryList}" var="categoryList">
-	                        <li><span class="inputBox"><input type="checkbox" id="${categoryList.category_code }" name="subCateIdx" class="ip_chekbox blackBg" value="${categoryList.category_code }" ><label for="${categoryList.category_code }">${categoryList.minor_sort}</label></span></li>
+	                        <li><span class="inputBox"><input type="checkbox" id="${categoryList.category_code }" name="subCateIdx" class="ip_chekbox blackBg" value="${categoryList.category_code}" ><label for="${categoryList.category_code }">${categoryList.minor_sort}</label></span></li>
                     	</c:forEach>
                     </ul>
                 </div>
+                <script>
+               		if('${param.cIdx}'.length == 1){
+               			//$(":checkbox[name='subCateIdx']").each(function(index){
+               			//	index.prop("checked",true);
+               			//})
+               			$(":checkbox[name='subCateIdx']").prop("checked", true);
+
+               		}else{
+				     	$(":checkbox[name='subCateIdx'][value='${ param.cIdx}']").prop("checked", true);
+               		}
+				</script>
+                
                 <!-- 가격 -->
                 <div class="accd" id="filterPrice">
                     <div class="accordionTit on"><a href="javascript:">가격</a></div>
@@ -156,16 +179,20 @@
                     <a href="javascript:;" class="btn_ty_bface listBtn" name="btnAllFilterRemove">전체 선택 취소</a>
                 </div>
             </div>
-        </div>
+        </div>      
         
+<!-- 전체 보기일 때 모든 accd input[type=check] check 되게 하기 -->
         
+
        <div class="listRight">
            <ul class="productList" id="prodList">
+   <c:choose>      
+           <c:when test="${not empty pImgMap}">
    <c:forEach items="${pImgMap}" var="map">
               <li class="memberOnly">
                <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
                   <div class="pro_thumbNail">
-                     	<a href="javascript:;" id="selDetail" data-emphasis="Y" data-style="${ map.key.pd_code}" data-color="${map.key.color } " data-cidx="${map.key.category_code }" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">   
+                     	<a href="/product/productDetail.action?pdCode=${map.key.pd_code}" id="selDetail" data-emphasis="Y" data-style="${ map.key.pd_code}" data-color="${map.key.color } " data-cidx="${map.key.category_code }" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">   
                         <img id="selGoods" src="${map.value.get(0).img_url}" alt="ML2002RC" class="img_goods" data-base-img="${map.value.get(0).img_url}" data-hover-img="${map.value.get(1).img_url}" style="display: inline-block;">                    	
                               <span class="img_tag"></span>
                                        <span class="icon_nbg_s "></span>
@@ -213,12 +240,13 @@
                      	<!-- 별점, 리뷰수 -->
                      	<!-- 1점 단위로 별점 1개 0.1~0.9까지는 별 반 개 -->
 						<span class="star_point">
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star-half fa-xs"></i>
-						    <b>4.5</b>/5 <span>(33)</span>
+							<%-- <c:set value="${ pReview.get(map.key.pd_code) }" var="revdto"/>
+							<c:forEach items="${revdto.avgReview == 0 ? '': revdto.avgReview}" var="avgRev">
+								   <i class="fa-solid fa-star fa-xs"></i>
+						   </c:forEach> --%>
+
+						   <c:set value="${ pReview.get(map.key.pd_code) }" var="revdto"/>
+						    <b>별점 ${empty revdto.avgReview? 0 : revdto.avgReview}</b> <span>( ${empty revdto.countPOfReview? 0 : revdto.countPOfReview} 개)</span>
 						</span>
                      	<!-- (각 리뷰의 평점합) / 상품에 대한 전체 리뷰수    ( 상품에 대한 전체 리뷰수 )-->
                      </div>
@@ -236,7 +264,14 @@
                   </div>
                </div>
             </li>
-	</c:forEach>
+            </c:forEach>
+            </c:when>
+            <c:otherwise>
+	            <div class="no_filter" id="noDataList" style="display: block;">
+						<p class="txt01">다른 카테고리나 다른 필터 조건을 이용해 보세요.</p>
+				</div>
+			</c:otherwise>
+	</c:choose>  
            </ul>
         </div><!--listRight  -->       
     </div><!-- listContent -->
@@ -308,9 +343,8 @@ $("#btnLayerPopupClose").click(function() {
 		$(this).addClass('on');
 		$(".dropdown").toggleClass('on');
 		$(".dropdown_tit").text($(this).text());
-		location.href="/newbalance/productList/itemListNewBest.jsp";
-		
-		
+		//location.href="/newbalance/productList/itemListNewBest.jsp";
+
 		// scroll height 초기화
 		$('html').scrollTop(0);
 	});
@@ -398,8 +432,306 @@ $("#btnLayerPopupClose").click(function() {
 
 
 
+
+
+
+
+<!-- 카테고리 클릭 시 input 동적 생성. ajax -->
+<script>
+
+
+
+//1.  $(drplist  a )click    -> categoryForm ->기본(신상품순으로..)하고, 다 지우고 클릭 한 거만 집어넣기 input  -> 아래 checkbox 이벤트랑 ajax 똑같이 코딩
+$(".dropdown_list a").on("click", function(){
+    	$("input[name=sortProducts]").remove();
+		categoryForm.append(  $("<input/>"
+						, {type:'hidden', name:"sortProducts" , value:$(this).data("value") }) );
+		
+		var params = $("form[name=categoryAjax]").serialize();
+		console.log(params);
+	    $.ajax({
+		   url:"/newbalance/product/productAjaxFilter.ajx",
+		   dataType:"json",
+		   type:"POST",
+		   data:params,
+		   cache:false,
+		   success:function(data, testStatus, jqXHR){
+			   if(data){
+				   console.log(data);
+				   $(".productList").empty();//초기화
+				   
+				   
+				   
+					//	   												key			value
+					//console.log("productInfoList.MF01aaak41.pd_code : ", productInfoList.MF01aaak41.pd_code);//상품코드
+	/*
+					[key값 전체 출력]
+					for(const key in productInfoList){
+						console.log( key +" : " + productInfoList[key].color+" : " + productInfoList[key].pd_feet  )
+					}
+	*/	 
+	var productInfoList = data[0];//상품정보 arraylist
+	var productImgList = data[1];//상품이미지 arraylist
+	var productSizeStockList = data[2];//상품재고 arraylist
+	var productReviewList = data[3];//리뷰 arraylist
+	var content="";
+
+					
+	for(const key in productInfoList){
+		if(productInfoList[key]==null){
+			content+="<div class='no_filter' id='noDataList' style='display: block;'>"
+			content+="<p class='txt01'>다른 카테고리나 다른 필터 조건을 이용해 보세요.</p>";
+			content+="</div>";
+			
+		}else{
+		
+		content+="<li class='memberOnly'>";
+		content+="<div class='pro_area pro_soldOut'>";
+		
+		//이미지
+		content+="<div class='pro_thumbNail'>";
+		content+="<a href='/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
+		
+		content+="<img id='selGoods' src='"+productImgList[key][0].img_url+"' alt='' class='img_goods' data-base-img='"+productImgList[key][0].img_url+"' data-hover-img='"+productImgList[key][0].img_url+"' style='display: inline-block;'>";
+		content+="<span class='img_tag'></span>";
+		content+="<span class='icon_nbg_s'></span>";
+		content+="<span class='img_made'></span>";
+		    
+		var count = 0;
+		var sizeArray =  productSizeStockList[key] ;
+		for (var i = 0; i < sizeArray.length; i++) {//재고
+			if(sizeArray[i].stock_count != 0){
+				count = count + 1
+			}//if
+		}//for
+		if(count == 0){
+			content+="<div class='soldOut soldOut-L'>";
+			content+="<p>SOLD OUT</p>";
+			content+="</div>";	
+		}//if
+		content+="";
+		content+="</a>";
+		content+="<p class='quick_view'><a href='javascript:;' id='btnQuickView'>Quick View</a></p>";
+		
+		if(productImgList[key][0].img_url == 1){//맴버면? 자물쇠 이미지
+			content+="<span class='icon_nbg_s icon_nbg_s-mb' style='display:block;'>";
+			content+="<img class='' alt='member only' src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png'>";
+			content+="</span>";
+			content+="<span class='ico_mb'><img src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png' alt='member only'></span>";
+		}//if
+		content+="</div>";//thumbNail
+		
+		//상품정보
+		content+="<div class='pro_info'>";
+		content+="<div class='badge'>";
+		content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png'>";
+		content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png'>";
+		content+="</div>";//badge
+		content+="<p class='prdName_name'>"+productInfoList[key].pd_name+"</p>";
+		content+="<div class='prdName'>";
+		content+="<p class='prdDetail'>"+productInfoList[key].pd_code+"</p>";
+		content+="<div class='prdName_price'>";
+		var pdPrice = productInfoList[key].pd_price;
+		content+="<p>"+pdPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"<span>원</span></p>"
+		content+="</div>";//prdName_price
+		content+="</div>";//prdName
+		
+		//리뷰
+		content+="<div class='star_style03 star_score'>";
+		content+="<span class='star_point'>"
+		if(productReviewList[key] == null){
+			content+="<b>별점</b><span>0개</span>";
+		}else{
+			content+="<b>별점"+productReviewList[key].avgReview+"</b><span>"+productReviewList[key].countPOfReview+"개</span>";
+		}
+		content+="</span>";//star_point
+		content+="</div>";//star_style03
+		
+		
+		//사이즈들
+		content+="<div class='prdSize'>";
+		content+="<ul class='prdSize_list'>";
+		for (var i = 0; i < sizeArray.length; i++) {
+			if(sizeArray[i].stock_count != 0){
+				content+="<li>"+sizeArray[i].size_code+"</li>";
+			}//if
+		}//for
+		content+="</ul>";//prdSize_list
+		content+="</div>";//prdSize
+		
+		content+="</div>";//pro_info
+		content+="</li>";//memberOnly;
+		}
+
+	}//처음꺼 for 
+	$(".productList").append(content);				   
+				   
+			   }//if
+		   }//success
+	   }) 
+});
+
+
+//카테고리 클릭하면 form 태그
+var categoryForm = $('<form name=categoryAjax></form>');
+/* http://localhost/newbalance/product/productList.action?cateGrpCode=W&cIdx=F01 */
+categoryForm.append($("<input/>", {type:'hidden', name:"cateGrpCode", value:"${param.cateGrpCode}" } ) );                         
+categoryForm.append($("<input/>", {type:'hidden', name:"cIdx", value:"${param.cIdx}" } ) );
+categoryForm.append($("<input/>", {type:'hidden', name:"sortProducts", value:"Q01" } ) );
+categoryForm.append($("<input/>", {type:'hidden', name:"subCateIdx", value:"${param.cIdx}" } ) );
+categoryForm.appendTo('body');
+
+//전체취소버튼
+$("#btnAllFilterRemove").on("click",function(){
+	$("#categoryAjax input[type=checkbox]").remove();
+});
+
+
+//2. input[type=checkbox] 태그 클릭 했을 때
+$(":checkbox").on("click", function (){
+  
+	   var isChecked =  $(this).prop("checked");  // 
+	   var inputValue = $(this).val();
+	   console.log("inputValue : ", inputValue);
+	   if( isChecked ){
+	      categoryForm.append(  $("<input/>", {type:'hidden', name:$(this).prop("name") , value:$(this).val() } ) );
+	   }else{
+	      $("form input[value='"+inputValue+"']").remove();   
+	  
+	   }
+	
+	   var params = $("form[name=categoryAjax]").serialize();
+	   console.log(params);
+	    $.ajax({
+		   url:"/newbalance/product/productAjaxFilter.ajx",
+		   dataType:"json",
+		   type:"POST",
+		   data:params,
+		   cache:false,
+		   success:function(data, testStatus, jqXHR){
+			   if(data){
+				   console.log(data)
+				   $(".productList").empty();//초기화
+				   
+				   
+				//	   												key			value
+				//console.log("productInfoList.MF01aaak41.pd_code : ", productInfoList.MF01aaak41.pd_code);//상품코드
+/*
+				[key값 전체 출력]
+				for(const key in productInfoList){
+					console.log( key +" : " + productInfoList[key].color+" : " + productInfoList[key].pd_feet  )
+				}
+*/	 
+var productInfoList = data[0];//상품정보 arraylist
+var productImgList = data[1];//상품이미지 arraylist
+var productSizeStockList = data[2];//상품재고 arraylist
+var productReviewList = data[3];//리뷰 arraylist
+var content="";
+
+				
+for(const key in productInfoList){
+	if(productInfoList[key]==null){
+		content+="<div class='no_filter' id='noDataList' style='display: block;'>"
+		content+="<p class='txt01'>다른 카테고리나 다른 필터 조건을 이용해 보세요.</p>";
+		content+="</div>";
+		
+	}else{
+	
+	content+="<li class='memberOnly'>";
+	content+="<div class='pro_area pro_soldOut'>";
+	
+	//이미지
+	content+="<div class='pro_thumbNail'>";
+	content+="<a href='/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
+	
+	content+="<img id='selGoods' src='"+productImgList[key][0].img_url+"' alt='' class='img_goods' data-base-img='"+productImgList[key][0].img_url+"' data-hover-img='"+productImgList[key][0].img_url+"' style='display: inline-block;'>";
+	content+="<span class='img_tag'></span>";
+	content+="<span class='icon_nbg_s'></span>";
+	content+="<span class='img_made'></span>";
+	    
+	var count = 0;
+	var sizeArray =  productSizeStockList[key] ;
+	for (var i = 0; i < sizeArray.length; i++) {//재고
+		if(sizeArray[i].stock_count != 0){
+			count = count + 1
+		}//if
+	}//for
+	if(count == 0){
+		content+="<div class='soldOut soldOut-L'>";
+		content+="<p>SOLD OUT</p>";
+		content+="</div>";	
+	}//if
+	content+="";
+	content+="</a>";
+	content+="<p class='quick_view'><a href='javascript:;' id='btnQuickView'>Quick View</a></p>";
+	
+	if(productImgList[key][0].img_url == 1){//맴버면? 자물쇠 이미지
+		content+="<span class='icon_nbg_s icon_nbg_s-mb' style='display:block;'>";
+		content+="<img class='' alt='member only' src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png'>";
+		content+="</span>";
+		content+="<span class='ico_mb'><img src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png' alt='member only'></span>";
+	}//if
+	content+="</div>";//thumbNail
+	
+	//상품정보
+	content+="<div class='pro_info'>";
+	content+="<div class='badge'>";
+	content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png'>";
+	content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png'>";
+	content+="</div>";//badge
+	content+="<p class='prdName_name'>"+productInfoList[key].pd_name+"</p>";
+	content+="<div class='prdName'>";
+	content+="<p class='prdDetail'>"+productInfoList[key].pd_code+"</p>";
+	content+="<div class='prdName_price'>";
+	var pdPrice = productInfoList[key].pd_price;
+	content+="<p>"+pdPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"<span>원</span></p>"
+	content+="</div>";//prdName_price
+	content+="</div>";//prdName
+	
+	//리뷰
+	content+="<div class='star_style03 star_score'>";
+	content+="<span class='star_point'>"
+	if(productReviewList[key] == null){
+		content+="<b>별점</b><span>0개</span>";
+	}else{
+		content+="<b>별점"+productReviewList[key].avgReview+"</b><span>"+productReviewList[key].countPOfReview+"개</span>";
+		console.log(productReviewList[key].avgReview);
+	}
+	content+="</span>";//star_point
+	content+="</div>";//star_style03
+	
+	
+	//사이즈들
+	content+="<div class='prdSize'>";
+	content+="<ul class='prdSize_list'>";
+	for (var i = 0; i < sizeArray.length; i++) {
+		if(sizeArray[i].stock_count != 0){
+			content+="<li>"+sizeArray[i].size_code+"</li>";
+		}//if
+	}//for
+	content+="</ul>";//prdSize_list
+	content+="</div>";//prdSize
+	
+	content+="</div>";//pro_info
+	content+="</li>";//memberOnly;
+	}
+
+}//처음꺼 for 
+$(".productList").append(content);
+
+
+			   }//if
+		   }//success
+	   }) 
+});
+
+
+</script>
+
+
+
  
- 
+
  
  
  

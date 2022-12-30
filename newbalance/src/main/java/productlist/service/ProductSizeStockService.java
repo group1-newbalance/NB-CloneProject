@@ -34,7 +34,7 @@ public class ProductSizeStockService {
 			list = dao.selectProductSizeStock(con, category_code, gender);
 			return list;
 		} catch (Exception e) {
-			System.out.println(">productimg.service() 에러:" + e.toString());
+			System.out.println(">productstock.service() 에러:" + e.toString());
 		}finally {
 			JdbcUtil.close(con);
 		}

@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import productlist.service.ProductImgService;
 import productlist.service.ProductListService;
+import productlist.service.ProductReivewService;
 import productlist.service.ProductSizeStockService;
 import productlist.domain.CategoryDTO;
 import productlist.domain.ProductColorDTO;
 import productlist.domain.ProductImgDTO;
 import productlist.domain.ProductListDTO;
+import productlist.domain.ProductReviewDTO;
 import productlist.domain.ProductSizeStockDTO;
 import productlist.service.CategorColorService;
 import productlist.service.CategoryFeetService;
@@ -45,11 +47,15 @@ public class ProductListHandler implements CommandHandler{
 		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> pSizeStockMap = pSizeStockService.seletProductSizeStock(cIdx, gender);
 								//pd_code
 		//카테고리명
-		System.out.println("5");
 		CategoryListService clistservice = CategoryListService.getIinstance();
 		List<CategoryDTO> categoryList = clistservice.select(cIdx, gender);
 		
 		//F01, M // F,  M 왼쪽 카테고리명들
+		
+		//리뷰
+		ProductReivewService previewservice = ProductReivewService.getIinstance();
+		LinkedHashMap<String, ProductReviewDTO> pReview = previewservice.selectProductReview(cIdx, gender);
+		
 		
 		//카테고리 사이즈
 		CategorySizeService csizeservice = CategorySizeService.getIinstance();
@@ -68,6 +74,7 @@ public class ProductListHandler implements CommandHandler{
 		request.setAttribute("pImgMap", pImgMap);
 		request.setAttribute("pSizeStockMap", pSizeStockMap);
 		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("pReview", pReview);
 		request.setAttribute("csizeList", csizeList);
 		request.setAttribute("cfeetList", cfeetList);
 		request.setAttribute("cColorlist", cColorlist);
