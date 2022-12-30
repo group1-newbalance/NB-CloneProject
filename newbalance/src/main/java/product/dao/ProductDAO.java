@@ -264,7 +264,7 @@ public class ProductDAO implements IProduct {
 		
 		// 현재 상품의 컬러
 		@Override
-		public ProductColorDTO selectColor(Connection conn, String pdCode, String userCode) throws SQLException {
+		public ProductColorDTO getPdColor(Connection conn, String pdCode, String userCode) throws SQLException {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
