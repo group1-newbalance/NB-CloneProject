@@ -29,7 +29,7 @@ public interface IProduct {
 	ArrayList<ProductColorDTO> diffColorProduct(Connection conn, String pdCode, String userCode) throws SQLException;
 
 	// 현재 상품의 컬러 정보
-	ProductColorDTO selectColor(Connection conn, String pdCode, String userCode) throws SQLException;
+	ProductColorDTO getPdColor(Connection conn, String pdCode, String userCode) throws SQLException;
 
 	// 관심상품 추가
 	int addWishlist(Connection conn, WishlistDTO dto) throws SQLException;
