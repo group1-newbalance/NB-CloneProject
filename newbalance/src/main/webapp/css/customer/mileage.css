@@ -1,0 +1,577 @@
+@charset "utf-8";
+
+@import '/newbalance/common/common.css'; 
+
+/* === MY (MY) ==================================================================== */
+.my_wrap {
+	padding-top: 80px;
+	overflow: hidden;
+}
+
+.my_wrap:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.my_wrap h2 {
+	margin-top: -7px;
+	font-size: 38px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.my_wrap .lnb {
+	float: left;
+	width: 300px;
+}
+
+.my_wrap .lnb * {
+	line-height: 1;
+}
+
+.my_wrap .lnb h2+.category {
+	margin-top: 20px;
+}
+
+.my_wrap .lnb .category {
+	margin-top: 40px;
+}
+
+.my_wrap .lnb .category .tit {
+	display: block;
+	padding-bottom: 2px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.my_wrap .lnb .category ul li {
+	margin-top: 14px;
+}
+
+.my_wrap .lnb .category ul li a {
+	display: inline-block;
+	color: #555;
+}
+
+.my_wrap .lnb .category ul li a:hover {
+	color: #cf0a2c;
+}
+
+.my_wrap .lnb .category ul li.on a {
+	color: #cf0a2c;
+}
+
+.my_wrap .my_cont {
+	float: right;
+	width: 900px;
+}
+
+.my_wrap .my_cont .title_area {
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.my_wrap .my_cont .title_area .page_tit {
+	font-size: 28px;
+}
+
+.my_wrap .my_cont .title_area .page_txt_info {
+	padding-top: 15px;
+	color: #777;
+	line-height: 24px;
+	letter-spacing: -0.04em;
+}
+
+.my_wrap .my_cont .title_area .page_txt_info .point {
+	color: #141414;
+	font-weight: 700;
+}
+
+.my_wrap .my_cont .order_info_area li {
+	display: inline-block;
+	position: relative;
+	padding: 0 20px 20px 10px;
+	color: #777;
+	line-height: 1;
+}
+
+.my_wrap .my_cont .order_info_area li:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 6px;
+	width: 2px;
+	height: 2px;
+	background: #777;
+}
+
+.my_wrap .my_cont .btn_area {
+	margin-top: 30px;
+}
+
+.my_wrap .my_cont .desc_bottom_list+.btn_area {
+	margin-top: 60px;
+}
+
+.my_cont .tt_step {
+	top: 13px;
+	overflow: hidden;
+}
+
+.my_cont .tt_step span {
+	float: left;
+	display: block;
+	padding-bottom: 0;
+	margin-right: 29px;
+	font-size: 16px;
+	letter-spacing: -0.04em;
+}
+
+.my_cont .tt_step span:after {
+	right: -17px;
+	width: 6px;
+	height: 6px;
+	background-size: 6px auto;
+}
+
+.my_cont .tt_step span.current {
+	border-bottom: 0;
+	color: #141414;
+}
+
+.my_cont .tt_step span.current:after {
+	background-position: 0 0;
+}
+
+.my_cont .tt_step span:last-child {
+	margin-right: 0;
+}
+
+.my_cont .tt_step span:last-child:after {
+	display: none;
+}
+
+.my_prinfo .tbl_y {
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.my_prinfo .tbl_y thead th {
+	border-bottom: 0;
+}
+
+.my_prinfo .tbl_y tbody td {
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 0;
+}
+
+.my_prinfo .tbl_y tbody .cancel td {
+	border-top: 0;
+}
+
+/* tab_list */
+.tab_list {
+	overflow: hidden;
+}
+
+.tab_list:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.tab_list ul {
+	position: relative;
+	overflow: hidden
+}
+
+.tab_list ul:after {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	clear: both;
+	background: #000;
+}
+
+.tab_list ul>li {
+	float: left;
+	border: solid #dbdbdb;
+	border-width: 1px 1px 0 0;
+	box-sizing: border-box;
+}
+
+.tab_list ul>li:first-child {
+	border-left: 1px solid #dbdbdb;
+}
+
+.tab_list ul>li>a {
+	display: block;
+	padding: 20px 1px 23px;
+	color: #121212;
+	font-size: 16px;
+	line-height: 1;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.tab_list ul>li.active {
+	border-color: #141414;
+	border-width: 2px 2px 0 2px;
+}
+
+.tab_list ul>li.active>a {
+	position: relative;
+	padding: 19px 0 23px;
+	border-color: #141414;
+	background: #fff;
+	font-weight: 700;
+	z-index: 1;
+}
+
+.tab_list ul.col8 li {
+	width: 12.5%;
+}
+
+.tab_list ul.col5 li {
+	width: 20%;
+}
+
+.tab_list ul.col4 li {
+	width: 25%;
+}
+
+.tab_list ul.col3 li {
+	width: 33%;
+}
+
+.tab_list ul.col3 li:first-child {
+	width: 34%;
+}
+
+.tab_list ul.col2 li {
+	width: 50%;
+}
+
+.tab_cont .cont {
+	display: none;
+	padding-top: 98px;
+}
+
+.tab_cont .cont.active {
+	display: block;
+}
+
+/* 공통 */
+.table_type1 {
+	color: #141414;
+	font-size: 14px;
+	border-top: 1px solid #121212;
+	text-align: center;
+	line-height: 1.4;
+	margin-top: 20px;
+}
+
+.table_type1 thead th {
+	background-color: #f4f4f4;
+	padding: 23px 0;
+	border-left: 1px solid #dbdbdb;
+}
+
+.table_type1 thead th:first-child {
+	border-left: none;
+}
+
+.table_type1 tbody th, .table_type1 tbody td {
+	border: 1px solid #dbdbdb;
+}
+
+.table_type1 tbody th {
+	border-left: none;
+	padding: 23px 0 23px 20px;
+	text-align: left;
+}
+
+.table_type1 tbody tr td {
+	padding-top: 23px;
+	padding-bottom: 23px;
+}
+
+.table_type1 tbody tr th+td {
+	padding: 23px 0 23px 20px;
+	text-align: left;
+}
+
+.table_type1 tbody tr td:last-child {
+	border-right: none;
+}
+
+.table_type1 tbody tr:first-child th, .table_type1 tbody tr:first-child td
+	{
+	border-top: none;
+}
+
+.table_type1.border_left tr td:first-child {
+	border-left: none;
+}
+
+.desc_type1 h4 {
+	font-size: 24px;
+	font-weight: 700;
+	color: #141414;
+	letter-spacing: -0.04em;
+	line-height: 1;
+	margin-top: 75px;
+}
+
+.desc_type1 h4:first-child {
+	margin-top: 60px;
+}
+
+.desc_type1 .lists1 {
+	margin-top: 16px;
+}
+
+.desc_type1 .lists1 li {
+	color: #001414;
+	font-size: 14px;
+	line-height: 1.75;
+	letter-spacing: -0.04em;
+}
+
+.desc_type1 .lists2 {
+	margin-top: 14px;
+}
+
+.desc_type1 .lists2 li {
+	color: #555;
+	font-size: 14px;
+	line-height: 1.7;
+	letter-spacing: -0.04em;
+	padding-left: 12px;
+	position: relative;
+}
+
+.desc_type1 .lists2 li:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 1px;
+	top: 11px;
+	width: 2px;
+	height: 2px;
+	background: #444;
+}
+
+.desc_type1 .txt_table {
+	color: #555;
+	font-size: 14px;
+	font-weight: 700;
+	margin-top: 30px;
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+.desc_type1 .p_list1 {
+	color: #141414;
+	font-size: 14px;
+	line-height: 1.7;
+	letter-spacing: -0.04em;
+	margin-top: 17px;
+}
+
+.desc_type1 .p_list2 {
+	color: #555;
+	font-size: 14px;
+	line-height: 1.7;
+	letter-spacing: -0.04em;
+	margin-top: 14px;
+}
+
+.desc_type1 .lists3 {
+	color: #555;
+	font-size: 14px;
+	line-height: 2;
+	letter-spacing: -0.04em;
+	margin-top: 14px;
+}
+/* 통합 마일리지 안내 > 마일리지 적립/사용 (su_05_01) */
+.info_mileage_use .table_type1 {
+	padding-bottom: 15px;
+}
+
+/* 통합 마일리지 안내 > 온오프 통합 마일리지 (su_05_02) */
+.info_mileage_onoff .p_list1_1 {
+	padding-bottom: 10px;
+}
+
+.info_mileage_onoff .btn_area_1 {
+	text-align: left;
+	margin-top: 25px;
+	padding-bottom: 10px;
+}
+
+.info_mileage_onoff .btn_area .btn_ty_rface {
+	margin-bottom: 10px;
+}
+
+.info_mileage_onoff .btn_ty_bline, .info_mileage_onoff .btn_ty_bline:hover
+	{
+	border: 2px solid #000;
+	width: 165px;
+}
+
+.info_mileage_onoff .step_mileage_use {
+	margin-top: 30px;
+}
+
+.info_mileage_onoff .txt_table_1 {
+	padding-top: 10px;
+}
+
+.info_mileage_onoff .txt_table_2 {
+	padding-top: 22px;
+}
+
+.info_mileage_onoff .txt_table_3 {
+	padding-top: 22px;
+}
+
+/* 통합 마일리지 안내 > 마일리지 소멸(su_05_03) */
+.info_mileage_delete .lists3_1 {
+	padding-top: 10px;
+}
+
+.info_mileage_delete .table_type1 {
+	margin: 10px 0 25px;
+}
+
+/* 통합 마일리지 안내 > 마일리지 기타(su_05_04) */
+.info_mileage_etc h4 {
+	padding-bottom: 13px;
+}
+
+.info_mileage_etc .p_list1 {
+	line-height: 2;
+	margin-top: 7px;
+}
+
+.info_mileage_etc .lists2 {
+	margin-top: 6px;
+}
+
+.info_mileage_etc .p_list1_2 {
+	padding-top: 30px;
+}
+
+.step_mileage_use {
+	background-color: #f4f4f4;
+	width: 900px;
+	height: 307px;
+	position: relative;
+	text-align: center;
+}
+
+.step_mileage_use ol {
+	background:
+		url('https://image.nbkorea.com/NBRB_PC/common/step_mileage_use.png')
+		113px 77px no-repeat scroll;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.step_mileage_use ol li {
+	width: 300px;
+	float: left;
+	margin-top: 167px;
+}
+
+.step_mileage_use ol li .title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #141414;
+	margin-bottom: 7px;
+}
+
+.step_mileage_use ol li .txt {
+	font-size: 14px;
+	color: #141414;
+	line-height: 1.5;
+	letter-spacing: -0.04em;
+}
+
+.step_guide {
+	position: relative;
+	width: 900px;
+	margin-top: 25px;
+	padding: 80px 0;
+	border-top: 2px solid #121212;
+	border-bottom: 1px solid #dbdbdb;
+	box-sizing: border-box;
+}
+
+.step_guide h5 {
+	position: absolute;
+	top: 80px;
+	left: 0;
+	padding-top: 91px;
+	background: url('https://image.nbkorea.com/NBRB_PC/common/bg_step.png')
+		no-repeat 2px 3px;
+	color: #555;
+	font-size: 36px;
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -0.045em;
+}
+
+.step_guide h5.bg_change {
+	background: url('https://image.nbkorea.com/NBRB_PC/common/bg_step2.png')
+		no-repeat 2px 3px;
+}
+
+.step_guide h5 .txt1 {
+	display: block;
+	margin-top: 0px;
+	font-size: 38px;
+	line-height: 1;
+	letter-spacing: -0.05em;
+}
+
+.step_guide ol {
+	margin-left: 320px;
+	padding-left: 109px;
+	border-left: 1px solid #efefef;
+}
+
+.step_guide ol li {
+	display: table;
+}
+
+.step_guide ol li span:first-child {
+	display: table-cell;
+	width: 52px;
+	padding-top: 25px;
+	font: 42px 'DidotLTPro';
+	line-height: 1;
+	vertical-align: middle;
+}
+
+.step_guide ol li span:last-child {
+	display: table-cell;
+	padding-top: 25px;
+	line-height: 24px;
+	vertical-align: middle;
+}
+
+.step_guide ol li span.align {
+	vertical-align: top;
+}
+
+.step_guide ol li:first-child span {
+	margin-top: -5px;
+	padding-top: 0;
+}

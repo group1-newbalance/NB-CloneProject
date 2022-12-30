@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+@import '/newbalance/common/common.css'; 
+
+
+/* === MEMBER (ME) ==================================================================== */
+/* member common */
+.h2_title_img{text-align:center;margin-top:100px;font-family:'DidotLTPro';font-weight:700;font-size:48px;color:#121212;line-height:1;}
+.txt_note{font-size:12px;color: #777;margin-top:20px;line-height:1.7;}
+.con_etc, .con_find, .con_agree, .con_benefit, .con_join, .con_protector, .con_mem_com, .con_check_join{width:980px;margin:0 auto;}
+
+
+/* E :: 20190620 추가 */
+/* benefit */
+.con_benefit{margin-top:100px; width:1200px!important;} /* 20190109 수정 */
+.con_benefit h3{border-top:2px solid #000;border-bottom:1px solid #000;line-height:1;padding:60px 0;text-align:center;color:#141414;font-size:24px;}
+.con_benefit h3 strong{font-weight:700;}
+/* 20190109 수정 및 삭제 S */
+.con_benefit .img_con{border-bottom:1px solid #dbdbdb;background:url('https://image.nbkorea.com/NBRB_PC/member/bg_benefit.png') center 80px no-repeat scroll;position:relative;width:1200px;height:490px;font-size: 0;} /* 20220623 수정 */
+.con_benefit .img_con dl{display:inline-block;vertical-align: top;width:300px; min-height:100px; margin:210px 0 50px 0; text-align:center;}/* 20220623 수정 */
+/*.con_benefit .img_con dl:last-child{float:right;width:436px;margin:250px 54px 0 0;text-align:center;}*/
+/* 20190109 수정 및 삭제 E */
+.con_benefit .img_con dt{margin-bottom:15px;line-height:1;font-size:18px;color:#141414;}
+.con_benefit .img_con dl{font-size:14px;color:#777;}
+.con_benefit .img_con dd{line-height:1.4;}
+.con_benefit h4{margin-top:45px;font-size:18px;color:#777;line-height:1.4;text-align:center;}
+.con_benefit p{font-size:14px;color:#777;line-height:1.4;text-align:center;}
+.con_benefit .btn_area{margin-top:25px;text-align:center;}
+/* 20220623 추가 :: S */
+.con_benefit-store{width: 980px !important;}
+.con_benefit-store .img_con{width: 980px;text-align: center;background: url('https://image.nbkorea.com/NBRB_PC/member/bg_benefit_offline.png') no-repeat center 96px;}
+.con_benefit-store .img_con dl{width: 368px;margin-top: 230px;}
+/* 20201120 추가 :: S */
+.kakao_box{text-align: center;padding:50px 0 60px;border-bottom: 1px solid #444;margin-bottom: 10px;}
+.con_benefit .sign_notice_txt{margin-top: 50px;}
+[class*="btn_ty_"].btn_ty_kakao-st02{display: inline-block;width: auto;min-width: 210px;padding: 16px 20px;margin-top: 0;font-weight: 400;text-align: center;}
+[class*="btn_ty_"].btn_ty_kakao-st02::before{vertical-align: text-bottom;}
+.chk_right-cancle{text-align: right;margin: 10px 0;}/*20201110 추가*/
+.kakao_box .find_txt{font-size: 24px;line-height: 1.2;margin-bottom: 28px;}
+/* 20201120 추가 :: E */
+
+/*20201105 추가 :: S*/
+.btn_ty_kakao{width: 100%;display: block;margin-top: 20px;background: #fee500;margin-left: 0;font-family: 'Noto Sans KR',sans-serif;font-weight: 600;font-size: 14px !important;}
+.btn_ty_kakao:hover{font-weight:600}
+.btn_ty_kakao::before{content: '';display: inline-block;background: url('https://image.nbkorea.com/NBRB_PC/common/icon_kakao.jpg') no-repeat center;width: 18px;height: 18px;margin-right: 10px;background-size: contain;vertical-align: middle;}
+/*20201105 추가 :: E*/
+/* step */
+.sign_up_step{width:616px;margin:55px auto 0 auto;padding-bottom:20px;background: transparent;}
+.sign_up_step:after {content: '';display: block;clear: both;}
+.sign_up_step li{width:154px;position:relative;float:left;}
+.sign_up_step .cir{width:60px;height:60px;border-radius:50%;background-color:#f4f4f4;color:#777;font-size:16px;text-align:center;line-height:60px;margin:0 auto;}
+.sign_up_step .txt{margin-top:15px;color:#aeaeae;font-weight:400;text-align:center;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_step_off.png') 100% 6px no-repeat scroll;}
+.sign_up_step .current .cir{background-color:#141414;color:#fff;}
+.sign_up_step .current .txt{color:#141414;font-weight:700;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_step_on.png') 100% 6px no-repeat scroll;}
+.sign_up_step li:last-child .txt{background:none;}
+
+/* btn */
+.btn_area {text-align:right;}
+.btn_area.left {text-align:left;}
+.btn_area.center {text-align:center;}
+.btn_area.wid140 [class*="btn_ty_"] {min-width:140px;}
+
+[class*="btn_ty_"] {display:inline-block;margin-left:7px;border:none;text-align:center;line-height:1;letter-spacing:-0.04em;cursor:pointer;vertical-align:top;box-sizing:border-box;}
+[class*="btn_ty_"]:first-child {margin-left:0;}
+[class*="btn_ty_"].lg {min-width:140px;padding:20px 18px;font-size:16px;}
+[class*="btn_ty_"].md {min-width:120px;padding:16px 20px;font-size:14px;}
+[class*="btn_ty_"].sm {min-width:120px;padding:14px 16px 13px;font-size:14px;}
+[class*="btn_ty_"].xs {min-width:80px;padding:11px 15px 10px;border-width:1px !important;font-size:12px;}
+[class*="btn_ty_"].comp {min-width:90px;padding:14px 20px 15px 18px;font-size:16px;}
+[class*="btn_ty_"].w80 {min-width:80px !important;}
+[class*="btn_ty_"].w100 {min-width:100px !important;}
+
+.btn_ty_rface,.btn_ty_rface:hover {border:2px solid #cf0a2c;background:#cf0a2c;color:#fff;}
+.btn_ty_rline,.btn_ty_rline:hover {border:2px solid #cf0a2c;color:#cf0a2c;}
+.btn_ty_bface,.btn_ty_bface:hover {border:2px solid #141414;background:#141414;color:#fff;}
+.btn_ty_bline,.btn_ty_bline:hover {border:2px solid #444;color:#141414;}
+.btn_ty_bline1,.btn_ty_bline1:hover {border:1px solid #141414;color:#141414;}
+.btn_ty_gface,.btn_ty_gface:hover {border:2px solid #444;background:#444;color:#fff;}
+.btn_ty_gface2,.btn_ty_gface2:hover {border:2px solid #eaeaea;background:#eaeaea;color:#141414;}
+.btn_ty_form {min-width:100px;padding:16px 22px 15px;background:#737B82;color:#fff;}
+.btn_ty_form:hover {color:#fff;}
+.btn_ty_more,.btn_ty_more:hover {padding:5px 20px 5px 0;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png') no-repeat 100% 52%;color:#333;font-size:16px;letter-spacing:-0.045em;}
+.btn_ty_bline.xs {border-color:#000;}
+.btn_ty_bline1.sm {min-width:100px;padding:15px 21px 14px;}
+.btn_ty_form.xs {padding:12px 13px 11px;border:0;}
+.btn_ty_compare,.btn_ty_compare:hover {background:#141414;color:#fff;}
+.btn_ty_compare span {padding-left:21px;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_toggle_up.png') no-repeat 0 52%;}
+.btn_ty_compare.on span{background:url('https://image.nbkorea.com/NBRB_PC/common/bg_toggle_down.png') no-repeat 0 52%;}
+.btn_line {display:inline-block;padding-bottom:3px;border-bottom:1px solid #777;color:#000;letter-spacing:-0.04em;line-height:1;}
+
+.btn_ty_rface.disabled, .btn_ty_bface.disabled, .btn_ty_gface.disabled, .btn_ty_gface2.disabled {border-color:#eaeaea !important;background-color:#eaeaea;color:#aeaeae;}
+.btn_ty_rline.disabled, .btn_ty_bline.disabled, .btn_ty_bline1.disabled {border-color:#efefef !important;color:#aeaeae;}
+
+/* === MEMBER (ME) ==================================================================== */
+/* member common */
+.h2_title_img{text-align:center;margin-top:100px;font-family:'DidotLTPro';font-weight:700;font-size:48px;color:#121212;line-height:1;}
+.txt_note{font-size:12px;color: #777;margin-top:20px;line-height:1.7;}
+.con_etc, .con_find, .con_agree, .con_benefit, .con_join, .con_protector, .con_mem_com, .con_check_join{width:980px;margin:0 auto;}
+
+/* container */
+.container {min-width:1200px;padding-top:106px;padding-bottom:200px;} /*20220328 gnb 개편 */
+.container.npb {padding-bottom:0;}
+.container .contents {width:1200px;margin:0 auto;}
+
+
+/* benefit */
+.con_benefit{margin-top:100px; width:1200px!important;} /* 20190109 수정 */
+.con_benefit h3{border-top:2px solid #000;border-bottom:1px solid #000;line-height:1;padding:60px 0;text-align:center;color:#141414;font-size:24px;}
+.con_benefit h3 strong{font-weight:700;}
+/* 20190109 수정 및 삭제 S */
+.con_benefit .img_con{border-bottom:1px solid #dbdbdb;background:url('https://image.nbkorea.com/NBRB_PC/member/bg_benefit.png') center 80px no-repeat scroll;position:relative;width:1200px;height:490px;font-size: 0;} /* 20220623 수정 */
+.con_benefit .img_con dl{display:inline-block;vertical-align: top;width:300px; min-height:100px; margin:210px 0 50px 0; text-align:center;}/* 20220623 수정 */
+/*.con_benefit .img_con dl:last-child{float:right;width:436px;margin:250px 54px 0 0;text-align:center;}*/
+/* 20190109 수정 및 삭제 E */
+.con_benefit .img_con dt{margin-bottom:15px;line-height:1;font-size:18px;color:#141414;}
+.con_benefit .img_con dl{font-size:14px;color:#777;}
+.con_benefit .img_con dd{line-height:1.4;}
+.con_benefit h4{margin-top:45px;font-size:18px;color:#777;line-height:1.4;text-align:center;}
+.con_benefit p{font-size:14px;color:#777;line-height:1.4;text-align:center;}
+.con_benefit .btn_area{margin-top:25px;text-align:center;}
+/* 20220623 추가 :: S */
+.con_benefit-store{width: 980px !important;}
+.con_benefit-store .img_con{width: 980px;text-align: center;background: url('https://image.nbkorea.com/NBRB_PC/member/bg_benefit_offline.png') no-repeat center 96px;}
+.con_benefit-store .img_con dl{width: 368px;margin-top: 230px;}
+/* 20220623 추가 :: E */

@@ -1,0 +1,88 @@
+@charset "utf-8";
+@import '/newbalance/common/common.css'; 
+
+.page_tit {font-size:33px;color:#121212;font-weight:700;letter-spacing:-0.04em;line-height:1;}
+
+/* skipnavi */
+#skipnavi {position:absolute; top:0; left:0; z-index:500; width:100%; height:0;}
+#skipnavi a {display:block;position:absolute;top:-1000px;left:0;width:100%;height:1px;overflow:hidden;z-index:99999999;}
+#skipnavi a:focus, #skipnavi a:hover, #skipnavi a:active {top:0px;left:0;background-color:#e9e9e9;padding:7px 0 5px;height:auto;color:#000;font-weight:bold;text-align:center;text-decoration:none;}
+
+/* container */
+.container {min-width:1200px;padding-top:106px;padding-bottom:200px;} /*20220328 gnb 개편 */
+.container.npb {padding-bottom:0;}
+.container .contents {width:1200px;margin:0 auto;}
+
+/* === MY (MY) ==================================================================== */
+.my_wrap {padding-top:80px;overflow:hidden;}
+.my_wrap:after {content:'';display:block;clear:both;}
+.my_wrap h2 {margin-top:-7px;font-size:38px;font-weight:700;line-height:1;}
+.my_wrap .lnb {float:left;width:300px;}
+.my_wrap .lnb * {line-height:1;}
+.my_wrap .lnb h2 + .category {margin-top:20px;}
+.my_wrap .lnb .category {margin-top:40px;}
+.my_wrap .lnb .category .tit {display:block;padding-bottom:2px;font-size:18px;font-weight:700;}
+.my_wrap .lnb .category ul li {margin-top:14px;}
+.my_wrap .lnb .category ul li a {display:inline-block;color:#555;}
+.my_wrap .lnb .category ul li a:hover {color:#cf0a2c;}
+.my_wrap .lnb .category ul li.on a {color:#cf0a2c;}
+.my_wrap .my_cont {float:right;width:900px;}
+.my_wrap .my_cont .title_area {position:relative;margin-bottom:50px;}
+.my_wrap .my_cont .title_area .page_tit {font-size:28px;}
+.my_wrap .my_cont .title_area .page_txt_info {padding-top:15px;color:#777;line-height:24px;letter-spacing:-0.04em;}
+.my_wrap .my_cont .title_area .page_txt_info .point {color:#141414;font-weight:700;}
+.my_wrap .my_cont .order_info_area li {display:inline-block;position:relative;padding:0 20px 20px 10px;color:#777;line-height:1;}
+.my_wrap .my_cont .order_info_area li:before {content:'';display:block;position:absolute;left:0px;top:6px;width:2px;height:2px;background:#777;}
+.my_wrap .my_cont .btn_area {margin-top:30px;}
+.my_wrap .my_cont .desc_bottom_list + .btn_area {margin-top:60px;}
+
+.my_cont .tt_step {top:13px;overflow:hidden;}
+.my_cont .tt_step span {float:left;display:block;padding-bottom:0;margin-right:29px;font-size:16px;letter-spacing:-0.04em;}
+.my_cont .tt_step span:after {right:-17px;width:6px;height:6px;background-size:6px auto;}
+.my_cont .tt_step span.current {border-bottom:0;color:#141414;}
+.my_cont .tt_step span.current:after {background-position:0 0;}
+.my_cont .tt_step span:last-child {margin-right:0;}
+.my_cont .tt_step span:last-child:after {display:none;}
+
+.my_prinfo .tbl_y {border-bottom:1px solid #dbdbdb;}
+.my_prinfo .tbl_y thead th {border-bottom:0;}
+.my_prinfo .tbl_y tbody td {border-top:1px solid #dbdbdb;border-bottom:0;}
+.my_prinfo .tbl_y tbody .cancel td {border-top:0;}
+.tbl_count {position:relative;}
+.tbl_count .count {margin-bottom:18px;font-size:18px;line-height:1;}
+.tbl_count .count strong {color:#cf0a2c;font-size:20px;font-weight:700;}
+.tbl_count .count strong.absence {color:#141414;}
+.tbl_count h3 {margin-bottom:20px;color:#121212;font-size:24px;font-weight:700;letter-spacing:-0.075em;}
+.tbl_count .txt_info {position:absolute;bottom:0;right:0;}
+.tbl_count .txt_info .txt_order {color:#aeaeae;}
+.tbl_count .txt_info .txt_order em {display:inline-block;margin-left:14px;color:#000;font-size:16px;}
+.tbl_y {border-top:2px solid #444;}
+.tbl_y thead th {height:61px;border-bottom:1px solid #dbdbdb;}
+.tbl_y tbody td {border-bottom:1px solid #dbdbdb;}
+.tbl_y tbody td.title {padding-left:20px;padding-right:20px;text-align:left !important;word-break:break-all;}
+.tbl_y02 {padding:26px 0;border-top:2px solid #444;border-bottom:1px solid #dbdbdb;}
+/* 회원 전용 서비스 제공 */
+.tbl_y.memberOnly_notice .qna_list {margin-top: 0;}
+.tbl_y.memberOnly_notice .qna_list .row_q {padding: 38px 0 38px 20px;}
+.tbl_y.memberOnly_notice .qna_list .row_q a {line-height: normal; letter-spacing: -0.025em;}
+.tbl_y.memberOnly_notice .qna_list .row_q a span {font-size: 16px; font-weight: bold; color: #141414;}
+.tbl_y.memberOnly_notice .qna_list .row_q:hover a span {border-bottom: 1px solid #141414;}
+.tbl_y.memberOnly_notice .qna_list .row_q::before, .tbl_y.memberOnly_notice .qna_list .row_a .board_a::before {display: none;}
+.tbl_y.memberOnly_notice .qna_list .row_q::after {right: 34px;}
+.tbl_y.memberOnly_notice .qna_list .row_a {border-bottom: 1px solid #dbdbdb; padding: 5px 0;}
+.tbl_y.memberOnly_notice .qna_list .row_a .board_a {margin: 0 40px; letter-spacing: -0.025em; padding: 25px 0;}
+/* 20220523 MEMBERS ONLY SERVICE 추가 :: E */
+/* MyNB NB FAQs*/
+.qna_list {margin-top:20px;}
+.qna_list .row_q {position:relative;padding:33px 57px;border-bottom:1px solid #dbdbdb;}
+.qna_list .row_q:before {content:'Q';display:block;position:absolute;left:20px;top:33px;color:#555;font-size:24px;line-height:1;}
+.qna_list .row_q:after {content:'';display:block;position:absolute;right:40px;top:43px;width:8px;height:7px;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_bullet_qna.png') no-repeat 0 0;}
+.qna_list .row_q a {display:block;color:#555;line-height:24px;}
+.qna_list .row_q a span {color:#555;font-weight:700;}
+.qna_list .row_a {display:none;padding:5px 0 13px;background:#f4f4f4;}
+.qna_list .row_a .board_a {position:relative;margin:0 92px;padding:29px 0 20px;color:#555;line-height:24px}
+.qna_list .row_a .board_a:before {content:'A';display:block;position:absolute;left:-35px;top:32px;color:#aeaeae;font-size:24px;line-height:1;}
+.qna_list .open .row_q {border-bottom:0;}
+.qna_list .open .row_q:after {background-position:0 bottom;}
+.qna_list .open .row_q a {color:#141414;font-weight:700;}
+.qna_list + .btn_area {margin-top:60px !important;}

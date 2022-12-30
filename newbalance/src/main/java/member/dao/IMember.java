@@ -16,4 +16,8 @@ public interface IMember {
 	public int updatePwdById(Connection conn, String custId, String pwd) throws SQLException;
 	
 	public int getCartCount(Connection conn, String userCode) throws SQLException;
+
+	public int insert(Connection conn , MemberDTO mem) throws SQLException;
+
+	public int update(Connection con, MemberDTO mem) throws SQLException;
 }
