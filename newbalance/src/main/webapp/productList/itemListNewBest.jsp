@@ -13,7 +13,8 @@
 <link rel="icon" type="image/x-icon"
    href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<link rel="stylesheet" href="/newbalance/common/header.css">
+<link rel="stylesheet" href="/newbalance/common/footer.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListNewBest.css">
 </head>
 <style>
@@ -24,14 +25,26 @@
     <!-- header -->
     <div class="listTop">
         <div class="category_title">            
-            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">Women</a></span>  
+            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">
+				<c:choose>
+	            	<c:when test="${param.cateGrpCode == 'M'}">
+	            		Men
+	            	</c:when>
+	            	<c:when test="${param.cateGrpCode == 'W'}">
+	            		Women
+	            	</c:when>
+	            	<c:when test="${param.cateGrpCode == 'K'}">
+	            		Kids
+	            	</c:when>
+	            </c:choose>
+			</a></span>  
             <!-- 파라미터 값으로 읽어와야함 -->      
             <h3 data-cidx="1320">
             	<c:choose>
 	            	<c:when test="${param.cIdx == 'new'}">
 	            		New
 	            	</c:when>
-	            	<c:when test="${param.cateGrpCode == 'best'}">
+	            	<c:when test="${param.cIdx == 'best'}">
 	            		Best
 	            	</c:when>
 	            </c:choose>
@@ -47,9 +60,8 @@
             <div class="dropdown">
                 <a href="javascript:;" class="dropdown_tit">신상품순</a>
                 <ul class="dropdown_list">
-                	<!-- 여기 href 바꿔야함 -->
-                    <li class="on"><a href="javascript:;" data-value="01">신상품순</a></li>
-                    <li><a href="javascript:;" data-value="02">베스트상품순</a></li>
+                    <li><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=M&cIdx=new" data-value="01">신상품순</a></li>
+                    <li><a href="<%=contextPath %>/product/featuredList.action?cateGrpCode=M&cIdx=best" data-value="02">베스트상품순</a></li>
                 </ul>
             </div>					
             <div class="filter">
@@ -89,7 +101,7 @@
                               			<span class="img_tag"></span>
                                        <span class="icon_nbg_s "></span>
                                        <span class="img_made"></span>      
-<%-- 
+ 
 	                                    <!-- 재고가 없으면 넣고 있으면 안넣기 -->   
 	                                   <c:set value="0" var="count"/>
 	                                   <c:forEach items="${ pStockNewBestMap.get(map.key.pd_code)}" var="list">
@@ -102,7 +114,7 @@
 	                                          <p>SOLD OUT</p>
 	                                       </div>
 	                                   </c:if>
-                                                       --%>
+   
                      	</a>
                      <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p>
                                                                      
@@ -132,24 +144,21 @@
                      	<!-- 별점, 리뷰수 -->
                      	<!-- 1점 단위로 별점 1개 0.1~0.9까지는 별 반 개 -->
 						<span class="star_point">
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star fa-xs"></i>
-						   <i class="fa-solid fa-star-half fa-xs"></i>
-						    <b>4.5</b>/5 <span>(33)</span>
+							
+						    <c:set value="${ pReviewNewBest.get(map.key.pd_code) }" var="revdto"/>
+						    <b>별점 ${empty revdto.avgReview? 0 : revdto.avgReview}</b> <span>( ${empty revdto.countPOfReview? 0 : revdto.countPOfReview} 개)</span>
 						</span>
                      	<!-- (각 리뷰의 평점합) / 상품에 대한 전체 리뷰수    ( 상품에 대한 전체 리뷰수 )-->
                      </div>
 		                     <div class="prdSize">
 								<ul class="prdSize_list">
-<%-- 
+ 
 		  							<c:forEach items="${pStockNewBestMap.get(map.key.pd_code)}" var="list">
 		 									 <c:if test="${list.stock_count != 0}">
 													<li>${list.sz}</li>
 											</c:if>
 									</c:forEach>
- --%>
+
 								</ul>
 							</div>
                   </div>

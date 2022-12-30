@@ -167,7 +167,7 @@
     display: table-cell;
     vertical-align: middle;
 }
-.ip_chk-boxBg:checked+label {
+.accd .ip_chk-boxBg:checked+label {
     display: table;
     width: 100%;
     padding: 10px 0;

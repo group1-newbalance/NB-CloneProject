@@ -29,11 +29,7 @@ public class ProductImgService {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>> list = null;
-			
-			//1자리 넘어오면
-			// All함수
-			
-			//3자리 넘어오면 			
+		
 			list = (LinkedHashMap<ProductListDTO, ArrayList<ProductImgDTO>>) dao.seletProductImg(con, category_code, gender, searchWord);
 			return list;
 		} catch (Exception e) {

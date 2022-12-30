@@ -12,8 +12,7 @@ public class ProductListDTO {
 	private String pd_feet;
 	private int out_count;
 	
-	
-	
+
 	
 	@Override
 	public String toString() {

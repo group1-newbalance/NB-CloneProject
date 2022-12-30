@@ -529,7 +529,56 @@ a, a:active, a:hover {
     font-size: 15px;
 }
 
+/* 별점 */
+.star_point{
+   display: inline-block;
+}
+.star_point i{
+   width: 11px;
+}
 
+
+
+.productList .prdSize {
+    position: absolute;
+    bottom: 0;
+    min-height: 32px;
+    left: 0;
+    display: none;
+}
+
+.productList li.on .prdSize{
+	display:block;
+}
+
+.prdSize_list {
+    margin-left: 4px;
+}
+
+.prdSize_list > li {
+    display: inline-block;
+    margin-left: -4px;
+    vertical-align: top;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    text-align: center;
+    width: 30px;
+}
+
+.sub_list .no_filter {
+    padding: 0 0 250px 0;
+    text-align: center;
+}
+
+.listRight .no_filter .txt01 {
+    padding: 202px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation2.png) no-repeat 50% 97px;
+    color: #777;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+}
 
 
 
