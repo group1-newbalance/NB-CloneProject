@@ -1,0 +1,1825 @@
+
+@charset "utf-8";
+@import '/newbalance/common/common.css'; 
+
+.page_tit {font-size:33px;color:#121212;font-weight:700;letter-spacing:-0.04em;line-height:1;}
+
+/* skipnavi */
+#skipnavi {position:absolute; top:0; left:0; z-index:500; width:100%; height:0;}
+#skipnavi a {display:block;position:absolute;top:-1000px;left:0;width:100%;height:1px;overflow:hidden;z-index:99999999;}
+#skipnavi a:focus, #skipnavi a:hover, #skipnavi a:active {top:0px;left:0;background-color:#e9e9e9;padding:7px 0 5px;height:auto;color:#000;font-weight:bold;text-align:center;text-decoration:none;}
+
+/* container */
+.container {min-width:1200px;padding-top:106px;padding-bottom:200px;} /*20220328 gnb 개편 */
+.container.npb {padding-bottom:0;}
+.container .contents {width:1200px;margin:0 auto;}
+@charset "utf-8";
+
+
+/* 리뉴얼 이 후 추가 반영 style */
+
+/* my_02*/
+.evt_gobtn {margin-top: 17px; font-size: 12px;  display: inline-block;}
+.evt_gobtn > a{color: #000;}
+.evt_gobtn:after{display:block; content: ""; border-bottom: 1px solid #ccc; }
+
+
+/* 연관상품 20181204 */
+.r_goods_area { padding-top:50px; }
+.r_goods_area > h2 {font-size:18px; font-family:'Noto Sans KR'; font-weight:400; text-align:center;letter-spacing:-0.07em;margin-bottom:25px;}
+/* ul.related_goods {width:440px; display:;} */
+ul.related_goods {width:440px;}
+
+ul.related_goods li { width:210px; height:210px; float:left; margin:0 10px 10px 0; border:1px solid #dbdbdb; box-sizing:border-box; }
+ul.related_goods li img { width:200px; height:200px; }
+ul.related_goods li:nth-child(2n) { margin-right:0; }
+ul.related_goods li a {position:relative;display:block;width:200px;height:200px;overflow:hidden; padding:5px;}
+ul.related_goods li a dl.r_price {display:none;position:absolute;left:0;top:0;width:207px;height:131px;background:rgba(255,255,255,0.8);font-family:'ProximaNova', 'Noto Sans KR', Dotum, "돋움", sans-serif; text-align:center;line-height:1; padding-top:77px;}
+ul.related_goods li a dl.r_price dt { font-size:14px; font-weight:400; }
+ul.related_goods li a dl.r_price dd { font-size:16px; color:#000; font-weight:700; padding:5px 0; line-height:1; }
+ul.related_goods li a dl.r_price dd span { text-decoration:line-through; color:#ababab; font-weight:400; margin-right:5px;}
+ul.related_goods li a dl.r_price dd.bf_discount { color:#dd1835; }
+ul.related_goods li a:hover dl.r_price, ul.related_goods li dl.r_price:focus span {display:block;}
+
+
+/* NB GUIDE 아이콘 추가 20181227 */
+/*20210201 수정 및 추가 :: S*/
+.icon_nbg_s { position:absolute; top:20px; right:20px; width:46px; height:30px; display:block;z-index: 1}
+.icon_nbg_b { position:absolute; top:20px; right:20px; width:78px; height:50px; display:block;z-index: 1
+}
+.icon_nbg_b + .icon_nbg_b { position:absolute; top:100px; right:20px; width:78px; height:50px; display:block;z-index: 1}
+.icon_nbg_s +.icon_nbg_s{ position:absolute; top:70px; right:20px; width:46px; height:37px; display:block;z-index: 1}
+.icon_nbg_s-3d img{width: 100%;}
+.nbg_logo { height:58px; background:url('https://image.nbkorea.com/NBRB_PC/common/icon_nbg90.png') 0 0 no-repeat; background-size:90px 58px; display:inline-block; line-height:55px!important; vertical-align:middle; padding-left:110px; margin-bottom:20px; z-index: 1}
+/* .icon_3d { position:absolute; top:20px; right:20px; width:78px; height:63px; display:block;z-index: 1} */
+
+/*20210201 수정 및 추가 :: E*/
+
+.sizeGuide-kids + .sizeGuide-kids{margin-top: 30px;}
+
+/* 주문서 관련 버튼 패딩 클래스 추가20190111 */
+.pd_w { padding:11px 7px 10px !important; }
+
+/* 배송지관리 삭제버튼 추가 20190122 */
+.con_list_info .btn_modify .btn_ty_bline {position: relative; top:-12px; left:-7px;}
+
+
+/* 20190129 프로모션 페이지 생성 */
+.sports_top_bnr { position:relative; width:100%; display:table; } 
+
+.bnr_football { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/men/football/top_bnr.jpg') center 0 no-repeat; }
+.bnr_running { width:100%; height:800px; background:url('https://image.nbkorea.com/NBRB_PC/product/men/running/top_bnr.jpg') center 0 no-repeat; }
+.bnr_training { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/men/training/top_bnr.jpg') center 0 no-repeat; }
+.m_bnr_run { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/men/running/bnr.jpg') center 0 no-repeat; }
+
+.bnr_womens { width:100%; height:800px; background:url('https://image.nbkorea.com/NBRB_PC/product/women/nbwomen/top_bnr.jpg') center 0 no-repeat;  }
+.bnr_w_running { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/women/running/top_bnr.jpg') center 0 no-repeat; }
+.bnr_nbwomen { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/women/nbwomen/bnr.jpg') center 0 no-repeat; }
+.bnr_w_training { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/women/training/top_bnr.jpg') center 0 no-repeat; }
+.w_bnr_run { width:100%; height:700px; background:url('https://image.nbkorea.com/NBRB_PC/product/men/running/bnr.jpg') center 0 no-repeat; }
+
+/* top mov */
+.wrap-mov .mov_box {
+  position: relative;
+  width: 100%;
+  height:100%;
+  margin: 0 auto;
+  margin-top:-4px;
+  background:#fff;
+}
+.video-container {
+	position:relative;
+	padding-bottom:56.25%;
+	height:0;
+} 
+.video-container iframe,.video-container object,.video-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+.sports_txt_box { width:1200px;  text-align:center; padding:50px 0 110px; border-bottom:1px solid #e8e8e8; margin:0 auto 50px;}
+.sports_txt_box > h2 { font-family:'ProximaNova', 'Noto Sans KR', Dotum, "돋움", sans-serif; font-size:44px; font-weight:700; line-height:27px; }
+.sports_txt_box > h3, .pd_guide_area > h3 { font-size:28px; font-family:'Noto Sans KR', sans-serif; color:#141414; line-height:0; font-weight:700;  }
+.sports_txt_box > p { font-size:18px; font-family:'Noto Sans KR', sans-serif; color:#141414; line-height:27px; font-weight:400; margin:20px 0 30px; }
+.bb_non { border-bottom:0 }
+
+
+.pd_guide_list { width:100%; height:540px; margin-top:50px; }
+.pd_guide_list:after {content:'';display:block;clear:both;}
+.pd_guide_list > li { position:relative; width:380px; height:540px; float:left; display:block; margin-right:30px; border:1px solid #fff;  box-sizing:border-box}
+.pd_guide_list > li:last-child { margin-right:0; }
+.pd_guide_list > li > .pd_pic { position:relative; width:340px; height:340px; border-bottom:2px solid #444; margin:0 auto; text-align:center; }
+.pd_guide_list > li > .pd_pic > a { display:block }
+.pd_guide_list > li > .pd_pic span { position:absolute; bottom:10px; left:0; width:330px; font-size:28px; font-family:'DidotLTPro'; text-align:center; font-weight:bold; color:#000; padding:0 5px; z-index:1; }
+.pd_guide_list > li:hover { border:1px solid #141414;}
+.pd_guide_list > li > .btn_ty_bface { display:none; }
+.pd_guide_list > li:hover .btn_ty_bface { position:absolute; bottom:40px; left:130px; display:block; z-index:5; }
+
+.pd_guide_area { width:1200px; text-align:center; padding-top:50px; margin:0 auto; }
+ul.pd_buy_bnr { width:100%; height:460px; margin-top:72px; }
+ul.pd_buy_bnr li { width:380px; height:460px; float:left; display:block; margin-right:30px; }
+ul.pd_buy_bnr li p { width:380px; height:380px; background:#000; }
+ul.pd_buy_bnr li p img { opacity: 1.0; filter: alpha(opacity=100); }
+ul.pd_buy_bnr li p img:hover { opacity: 0.7; filter: alpha(opacity=70)  }
+ul.pd_buy_bnr li:last-child { margin-right:0; }
+ul.pd_buy_bnr li span { font-size:18px; font-family:'Noto Sans KR', sans-serif; color:#141414; font-weight:700; display:inline-block; padding:25px 0 5px; }
+ul.pd_buy_bnr li:hover span { border-bottom:5px solid #141414; padding:25px 5px 5px; }
+.buy_txt { font-size:15px; font-family:'Noto Sans KR', sans-serif; color:#141414; font-weight:400; line-height:25px; margin-top: 15px;}
+.buy_txt span { font-weight:700;}
+
+
+.store_cs .type1.non_bt {border-top:0;padding-top:60px;overflow:hidden;} /* 20190621 고객센터 style 추가 */
+
+
+/* 20190722 영문 수신거부 S */
+.con_etc .row_title_e {padding:95px 0 0;font-size:24px; font-weight:400; line-height:36px; text-align:center;}
+.con_etc .row_title_e span { font-size:24px; color:#141414; font-family:'ProximaNova', 'Noto Sans KR', Dotum, "돋움", sans-serif; font-weight:700;}
+.con_etc .mail_refusal_e {margin-top:25px;padding:40px 0 50px;border-top:2px solid #000;border-bottom:1px solid #dbdbdb;text-align:center; font-size:16px; line-height:22px; font-weight:400; }
+.con_etc .mail_refusal_e span { font-size:16px; line-height:22px; font-family:'ProximaNova', 'Noto Sans KR', Dotum, "돋움", sans-serif; font-weight:400;}
+
+.con_etc .mail_refusal_e .bg_box {width:440px;height:70px;margin:30px auto 0; padding:50px 10px 0; background:#f4f4f4;letter-spacing:-0.04em; }
+.con_etc .mail_refusal_e .bg_box .txt {font-size:18px; color:#141414; font-family:'ProximaNova', 'Noto Sans KR', Dotum, "돋움", sans-serif; font-weight:400;}
+
+.btn_area_e { text-align:center; margin-top:30px; }
+.btn_area_e .btn_ty_bface.lg ,.btn_area_e .btn_ty_bline.lg {width:160px; height:70px; display:inline-block; text-align:center; padding:15px 18px !important; box-sizing:border-box;}
+/* 20190722 영문 수신거부 E */
+
+/* 20200212 MADE IN US & USA S */
+.nb_made img {width:100%;}
+.nb_made div {line-height:0;}
+
+.nb_made .made_list {overflow:hidden; text-align:center; padding:77px 0 78px;}
+.nb_made .made_list > ul {display:inline-block;}
+.nb_made .made_list > ul > li {float:left;}
+.nb_made .made_list > ul > li a {display:block; text-indent:-9999px; overflow:hidden; width:300px; height:300px; position:relative;}
+.nb_made .made_list > ul > li.made_list01 a {background:url(https://image.nbkorea.com/NBRB_PC/madeusauk/img_list01.jpg) no-repeat;}
+.nb_made .made_list > ul > li.made_list02 a {background:url(https://image.nbkorea.com/NBRB_PC/madeusauk/img_list02.jpg) no-repeat;}
+.nb_made .made_list > ul > li.made_list03 a {background:url(https://image.nbkorea.com/NBRB_PC/madeusauk/img_list03.jpg) no-repeat;}
+.nb_made .made_list > ul > li.made_list04 a {background:url(https://image.nbkorea.com/NBRB_PC/madeusauk/img_list04.jpg) no-repeat;}
+.nb_made .made_list > ul > li.made_list05 a {background:url(https://image.nbkorea.com/NBRB_PC/madeusauk/img_list05.jpg) no-repeat;} /* 20221005 추가 */
+.nb_made .made_list > ul > li > a::before {content:''; width:300px; height:150px; background:#fff; opacity:0; position:absolute; bottom:60px; left:0;}
+.nb_made .made_list > ul > li > a::after {content:''; width:104px; height:10px; background:#000; opacity:0; position:absolute; bottom:42px; left:102px;}
+.nb_made .made_list > ul > li > a:hover::before {opacity:.5;}
+.nb_made .made_list > ul > li > a:hover::after {opacity:1;}
+.nb_made .made_cont {position:relative; margin-bottom:.5vw; padding:0 2.5vw;}
+.nb_made .made_cont.last {margin-bottom:0;}
+.nb_made .made_cont > .btn_area .btn_ty_bface {padding: 14px 18px; border-radius: 5px;} /* 20221005 추가 */
+.nb_made .made_cont01 > .btn_area {position:absolute; bottom:13%; left:51.8%;}
+.nb_made .made_cont02 > .btn_area {position:absolute; bottom:13.8%; left:51.8%;}
+.nb_made .made_cont03 > .btn_area {position:absolute; bottom:18.3%; left:51.8%;}
+.nb_made .made_cont04 > .btn_area {position:absolute; bottom:8.6%; left:51.8%;}
+.nb_made .made_cont05 > .btn_area {position:absolute; bottom:6.89%; left:51.8%;} /* 20221005 추가 */
+.nb_made .made_btm {padding:104px 0 100px;}
+.nb_made .made_btm > p {margin:0 auto;}
+.nb_made .made_btm > p.made_logo {width:185px; margin-bottom:31px;}
+.nb_made .made_btm > p.btn_mprod {width:480px; margin-bottom:107px;}
+.nb_made .made_btm > p.btn_mtop {width:116px;}
+
+.nb_made .made_list_main {position:relative;}
+.nb_made .made_list_main .btn_area {position:absolute; bottom:13%; right:29.9%;}
+/* 20200212 MADE IN US & USA E */
+
+
+/* 20200401 추가 :: s */
+.icon_delivery { height:17px; background:url('https://image.nbkorea.com/NBRB_PC/product/icon_delivery.png') 0 0 no-repeat; background-size:27px 17px; display:inline-block; padding-left:40px; line-height:18px; }
+.icon_credit {height:17px; background:url('https://image.nbkorea.com/NBRB_PC/product/icon_credit.png') 0 0 no-repeat; background-size:27px 16px; display:inline-block; padding-left:40px;  line-height:18px;  }
+.btn_gray { width:100%; height:60px; text-align:center; background:#eaeaea; border:2px solid  #dcdcdc; display:block; vertical-align:middle; line-height:50px; box-sizing:border-box;}
+.icon_ring { font-size:16px; color:#141414; background:url('https://image.nbkorea.com/NBRB_PC/product/icon_ring.png') 0 center no-repeat; background-size:19px 23px; display:inline-block; padding-left:29px; vertical-align:middle; text-align:left;  }
+
+.mt_7 { margin-top:7px !important; }/*20201216_2 추가*/
+.mt_14 { margin-top:14px !important; }/*20201216 추가*/
+.mt_20 { margin-top:20px !important; }
+.mt_28 { margin-top:28px !important;}
+.mb_17 { margin-bottom:17px !important; }
+.mb_30 { margin-bottom:30px !important; }
+.mb_60 { margin-bottom:60px !important; }
+/* 20200401 추가 :: E */
+
+
+/* 20200402 추가 :: s */
+dl.stock_area { border-top:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; padding:30px 0; margin-bottom:30px; }
+dl.stock_area::after { content:''; display:block; clear:both; }
+dl.stock_area dt { height:17px; font-size:14px; font-weight:500; background:url('https://image.nbkorea.com/NBRB_PC/product/icon_stock.png') 0 0 no-repeat; background-size:27px 16px; float:left; display:block; padding-left:40px; line-height:17px; margin-right:20px;}
+dl.stock_area dd { width:325px; height:14px; float:left; font-size:14px; color:#7c7c7c; font-weight:400; letter-spacing:-0.5px; line-height:17px;}
+dl.stock_area dd > a { font-size:14px; font-weight:500; display:block; float:right; }
+/* 20200402 추가 :: E */
+
+/* 20200407 추가 :: S */
+dl.stock_area dd.quik_c { width:238px;  float:left; font-size:14px; color:#7c7c7c; font-weight:400; letter-spacing:-0.5px; line-height:17px; padding-bottom:27px; }
+dl.stock_area dd.quik_c > a { text-decoration:underline; float:left !important; display:inline-block; line-height:31px;}
+dl.stock_area dd.quik_c > a :hover { text-decoration:underline; }
+/* 20200407 추가 :: E */
+
+
+
+/* INSIDE NB :: 20200513 S */
+.inside_area { padding:0 55px 50px; }
+.inside_area > div { position:relative; height:100%; display:table; }
+.inside_area > div  > img { width:100%; }
+.inside_area > h2 {font-size:66px; font-family:'DidotLTPro';font-weight:700;text-align:center; line-height:75px;}
+.inside_bnr { padding:55px 0 40px; }
+.inside_bnr img { width:100%; }
+.inside_txt { font-size:28px; color:#141414; line-height:46px;   font-weight:400; text-align:center; letter-spacing:-1.5px; padding:25px 0 65px; }
+.inside_txt span { font-size:32px; font-family: 'ProximaNova'; font-weight:700;}
+
+.inside_box { width:100%; padding-top:120px; }
+.inside_area > h3, .inside_box > h3 { font-size:54px; font-weight:700; color:#141414; line-height:46px; text-align:center; letter-spacing:-4px; }
+.inside_box > .inside_txt { padding:30px 0 50px; }
+.inside_con { width:1200px; margin: 0 auto 160px;}
+
+.btn_inside_view {position: absolute; bottom: 18.5%; left: 30%; width: 10%; max-width:160px;} 
+.btn_inside_view img { width:100%; }
+
+.inside_store_txt {position: relative; font-size: 44px; color: #141414; font-weight: 400; line-height: 55px; text-align: center; padding: 110px 0 40px; margin-bottom: 40px;letter-spacing: -3.5px;}
+.inside_store_txt span, .inside_store_txt > .f_small span { font-weight:700; }
+.inside_store_txt:before { position: absolute; display: block; content: ''; border-top: 5px solid #000;  width: 72px; bottom:0; left: 50%; margin-left:-36px; }
+.inside_con .f_small { font-size:24px; font-weight:400; line-height:34px; text-align:center;}
+
+.inside_store_list { width:1200px; height:100%; margin:60px auto; box-sizing:border-box; }
+.inside_store_list li { position:relative; width:580px; height:160px; float:left; padding:20px 25px; box-sizing:border-box; border:1px solid #ccc; margin:0 40px 40px 0; }
+.inside_store_list li:after { position:absolute; top:-4px; left:-1px; width:151px; height:5px; background:#cf092c; display: block; content: ''; }
+.inside_store_list li:nth-child(2n) { margin-right:0; }
+.inside_store_list li > dl { width:410px; height:100%; border-right:1px solid #ccc; letter-spacing:-0.5px; }
+.inside_store_list li > dl dt { font-size:24px; color:#141414; font-weight:700; margin-bottom:10px; padding-top:10px; }
+.inside_store_list li > dl dd { font-size:14px; font-weight:400; line-height:24px; }
+.inside_store_list li > .btn_map { position:absolute; top:53px; right:50px; display:inline-block;padding-top:39px;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_map.png') no-repeat center 0;color:#777;font-size:12px;line-height:1;}
+/* INSIDE NB :: 20200513 E */
+
+
+/* 20200527 카테고리 추가 :: S */
+.sub_category {width:1200px;margin:80px auto 20px; display:block;text-align:center;} 
+.sub_category li {display:inline-block; background:url('https://image.nbkorea.com/NBRB_PC/common/bg_line_2x17.png') no-repeat 0 50%; margin-bottom:20px; padding:0 30px;} 
+.sub_category li:first-child{padding-left:0;background:none;}
+.sub_category li a { color:#777;font-size:18px;line-height:1;letter-spacing:-0.02em; padding-bottom:10px;}
+.sub_category a:hover, .sub_category li a:focus, .sub_category a.on{ color:#141414;  border-bottom:3px solid #000;}
+/* 20200527 카테고리 추가 :: E */
+
+/* 20200731 추가 :: S*/
+.nbvideo-swiper {width: 100%;	margin: 30px auto 0;padding: 40px;}
+.nbvideo-swiper.bottom_nbguide {margin-bottom: -114px}
+.nbvideo-swiper .swiper-wrapper {height: auto !important;	margin: 0 auto}/*20200803 수정*/
+.nbvideo-swiper .video-container {position: relative;	padding-bottom: 67%;}
+.nbvideo-swiper .video-play,.nbvideo-swiper .video-container iframe,.nbvideo-swiper .video-container object,.nbvideo-swiper .video-container embed {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+.nbvideo-swiper .video-container iframe,.nbvideo-swiper .video-container object,.nbvideo-swiper .video-container embed { pointer-events: none;}
+.nbvideo-swiper .video-container {box-shadow: 7px 8px 10px rgba(0,0,0,0.6)}
+.nbvideo-swiper .swiper-slide {height: auto !important;padding-bottom: 30px}
+.nbvideo-swiper .swiper-slide .video-container{	margin: 0 16px;	height: auto !important;}
+/* 20200731 추가 :: E*/
+/* 20200803 추가 :: S*/
+.nbvideo-swiper .btn.hide{opacity: 0}
+.nbvideo-swiper .btn {display:block;position:absolute;top:50%;width:54px;height:54px;margin-top:-27px;text-indent:-999em;overflow:hidden;z-index:1;opacity: 1}
+.nbvideo-swiper .video-prev {left:0;background:url('https://image.nbkorea.com/NBRB_PC/common/btn_slide_left.png') no-repeat 0 0;}
+.nbvideo-swiper .video-next {right:0;background:url('https://image.nbkorea.com/NBRB_PC/common/btn_slide_right.png') no-repeat 0 0;}
+/* 20200803 추가 :: E*/
+
+
+/*20200825 CUSTOMIZE 수정 :: S*/
+.pop-customize{}
+.option_change.option_change-customize{padding: 70px 0 0;border-bottom: 0;margin-bottom: 60px;}
+.option_change.option_change-customize .pr_visual{margin: 0}
+.option_change.option_change-customize .pr_select-customize{padding-left: 130px}
+.pr_select-customize .p_name{font-size: 18px;padding-bottom: 20px;border-bottom: 1px solid #dbdbdb;display: block;}
+.pr_select-customize.pr_select .tit{color: #141414;font-size: 13px;}
+.custom_option .tit{  margin: 20px 0; color: #777;font-size: 13px; line-height: 1}
+.custom_option_tbl th{background:#f4f4f4;color: #141414;font-size: 14px;padding: 14px 0;text-align: center;border-top: 1px solid #121212;border-bottom: 1px solid #dbdbdb;font-family: 'Noto Sans KR',sans-serif;}
+.custom_option_tbl td{padding: 20px 0;text-align: center;vertical-align: top;color: #777;border-bottom: 1px solid #dbdbdb;word-break: break-all}
+.custom_option_tbl td .option_name{margin-top: 10px;font-size: 11px;letter-spacing: -0.5px;}
+.pr_custom_link{position: absolute;bottom: 0;right: 0;border-bottom: 1px solid #141414;}
+.pos_r{position: relative}
+.contents-custom_edit{width: 400px;margin:0 auto;}
+.custom_box{}
+.custom_box_tit{margin: 45px 0 25px;text-align: center;font-size: 18px;font-family: 'Noto Sans KR',sans-serif;}
+.custom_box_input input{border: 1px solid #dbdbdb; padding: 10px;color: #777777;width:380px;box-sizing: border-box;}
+.custom_box_input{display: block;}
+.custom_box_notice{color: #777777;font-size: 14px;line-height: 1.5;margin-top: 30px;letter-spacing: -0.5px;}
+.custom_box_notice li{white-space: nowrap;font-family: 'Noto Sans KR',sans-serif;line-height: 1.7}
+
+.custom_box_color {width: 100%;}
+.custom_box_color + .custom_box_color{margin-top: 10px}
+.custom_box_color .option_color:first-child{ margin-left: 0px; }
+.custom_box_color .color_dots{	position: absolute;width: 100%;height: 100%;top: 0;left: 0;outline: none;border: 0;font-size: 0;background: none;cursor: pointer; padding: 0; border: 1px solid rgba(255,255,255,0); box-sizing: border-box; border-radius: 100%;display: block;}
+.custom_box_color .option_color.check{border: 1px solid #dddddd;}
+.custom_box_color .option_color.check:before{content:'';width: 16px;height: 12px;background:url("https://image.nbkorea.com/NBRB_PC/customize/custom_check.png") no-repeat center;position: absolute;transform:translate(-50%,-50%);background-size: 100%;top: 50%;left: 50%;}
+.custom_box_color .color_pk { background-color: rgb(207,169,181);}
+.custom_box_color .color_pp { background-color: rgb(97,96,164); }
+.custom_box_color .color_mg { background-color: rgb(127,172,186); }
+.custom_box_color .color_kk { background-color: rgb(58,72,58); }
+.custom_box_color .color_bk { background-color: rgb(28,28,30); }
+.custom_box_color .color_iv { background-color: rgb(251,251,241); }
+.custom_box_color .color_lp { background-color: rgb(167,174,205); }
+.custom_box_color .color_lz { background-color: rgb(243,255,112); }
+.custom_box_color .color_fb { background-color: rgb(88,122,213); }
+.custom_box_color .color_wc { background-color: rgb(82,88,95); }
+.custom_box_color .color_lv { background-color: rgb(231,205,244); }
+.custom_box_color .color_mn { background-color: rgb(170,211,203); }
+.custom_box_color .color_ny { background-color: rgb(10,38,84); }
+.custom_box_color .color_be { background-color: rgb(177,166,127); }
+.custom_box_color .color_gn { background-color: rgb(84,190,152); }
+.custom_box_color .color_li { background-color: rgb(189,255,125); }
+.custom_box_color .color_cr { background-color: rgb(254,250,230); }
+.custom_box_color .color_gr { background-color: rgb(151,152,150); }
+.custom_box_color .color_ppk { background: url('../images/ppk.jpg') no-repeat; background-size: contain; }
+.custom_box_color .color_ppp { background: url("../images/ppp.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_plp { background: url("../images/plp.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_pmg { background: url("../images/pmg.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_Plz { background: url("../images/pyl.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_pgb { background: url("../images/pgb.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_pbk { background: url("../images/pbk.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_hol { background: url("../images/hol.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_wt { background: url("../images/wt.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_sv { background: url("../images/sv.jpg") no-repeat; background-size: contain; }
+.custom_box_color .color_dsv { background: url("../images/dsv.jpg") no-repeat; background-size: contain; }
+.custom_box_color .option_color{ width: 28px;height: 28px;font-size: 0;border-radius: 28px;cursor: pointer;display: inline-block; position: relative;margin-left: 8px; border: 1px solid rgba(0,0,0,0); box-sizing: border-box;}
+
+/*20200903 컬러 추가 :: S*/
+.custom_box_color .option_color.pink{background-color: #dda7b7;}
+.custom_box_color .option_color.l_purple{background-color: #bab6d1;}
+.custom_box_color .option_color.yellow{background-color: #f1e998;}
+.custom_box_color .option_color.mint_grey{background-color: #abd2cd;}
+.custom_box_color .option_color.lime{background-color: #cbff80;}
+.custom_box_color .option_color.purple_mix{background-color: #1032;}
+.custom_box_color .option_color.ivory{background-color: #f1f0ec;}
+.custom_box_color .option_color.gold{background-color: #d7cea7;}
+.custom_box_color .option_color.silver{background-color: #cfd2d1;}
+.custom_box_color .option_color.black{background-color: #252525;}
+/*20200903 컬러 추가 :: E*/
+
+.custom_option_check{color: #141414;display: inline-block;border-bottom: 1px solid #141414;margin-bottom: 10px;}
+.custom_box_thumb img{width: 100%;display: block}
+.custom_box_thumb .thumb1{width: 85px;display: inline-block;vertical-align: middle;}
+.custom_box_thumb .thumb2{width: 30%;display: inline-block;vertical-align: middle;margin-bottom: 10px;margin-left: 50px;}
+/*20200825 CUSTOMIZE 수정 :: E*/
+
+.size .items.items-over input[type="radio"] + label{width:81px;}/*20200825 추가*/
+
+/* 20200904 유의사항 추가 S */
+.notes {margin-top: 30px; margin-right: -40px; padding-top: 20px; border-top: 1px solid #dbdbdb;}
+.notes_cont {margin-top: 15px;}
+.notes_cont::after {content: ""; display: block; clear: both;}
+.notes_contL {float: left; width: 25%; box-sizing: border-box;}
+.notes_contR {position: relative; float: right; width: 75%; padding-left: 35px; box-sizing: border-box;}
+.notes p {font-size: 12px; color: #777; line-height: 1.2;}
+.notes li {position: relative; padding-left: 15px; font-size: 12px; color: #777; line-height: 1.2;}
+.notes li i {position: absolute; left: 0; top: 0; font-style: normal;}
+/* 20200904 유의사항 추가 E */
+
+/* 20201020 실시간 뷰 수 배너 추가 S */
+.floating_banner{width: 1200px;position: fixed;padding: 18px 0 22px;margin: 0 auto;background: rgba(238,90,18,0.9);z-index: 100;left: 50%;margin-left: -600px;top: 89%;letter-spacing: -1.2px;}
+.floating_txt{text-align: center;font-size: 20px;font-family: 'Noto Sans KR', sans-serif;}
+.floating_txt span{color: #fff;}
+.floating_close{background: #000;position: absolute;right: 0;top: 0;padding: 7px 9px;cursor: pointer;}
+/* 20201020 실시간 뷰 수 배너 추가 E */
+
+/* 20201021 실시간 뷰 수 배너-퀵뷰 추가 S*/
+.floating_banner_pop{width: 900px;position: fixed;padding: 18px 0 22px;margin: 0 auto;background: rgba(238,90,18,0.9);z-index: 100;left: 50%;margin-left: -450px;top: 89%;letter-spacing: -1.2px;}
+.floating_txt{text-align: center;font-size: 20px;font-family: 'Noto Sans KR', sans-serif;}
+.floating_txt span{color: #fff;}
+.floating_close{background: #000;position: absolute;right: 0;top: 0;padding: 7px 9px;cursor: pointer;}
+/* 20201021 실시간 뷰 수 배너-퀵뷰 추가 E*/
+
+/* 20201116 추가 :: s*/
+/* .subPop{position: absolute;width: 380px;z-index: 99;top: 300px;left: 300px;} */
+.subPop a.subPop_btn1{position: absolute;bottom: 45px;width: 360px;height: 46px;left: 10px;}
+
+/* sub layer */
+.sub_layer {position:absolute;left:500px;top:270px;z-index: 999}
+.sub_layer .inner {margin:0 auto;} /*20190510 width삭제 */
+.subPop {position: relative}
+
+.sub_layer .cont img {display:block;}
+.sub_layer .foot {height:45px; text-align:center; border-top:1px solid #4d4d4d;}/* 20200528 수정 */
+.sub_layer .foot .close_day {display:block;float:left; width:50%;color:#fff; background:#141414; line-height:45px;}/* 20200528 수정 */
+.sub_layer .foot .close {display:block;float:right;width:18px;height:18px;margin-top:14px;background:url('../https://image.nbkorea.com/NBRB_PC/common/btn_layer_close02.jpg') no-repeat 0 0;}/*20200511 수정*/
+.sub_layer .foot .close02 {display:block;float:right; width:50%; color:#fff; background:#737b82; line-height:45px;}/* 20200528 추가 */
+
+/* 20201116 추가 :: e*/
+
+/* 20201126 추가 :: s*/
+.icon_store { font-size:16px; color:#141414; background:url('https://image.nbkorea.com/NBRB_PC/common/icon_store.png') 0 center no-repeat; background-size:36px 23px; display:inline-block; padding-left:50px; vertical-align:middle; text-align:left; line-height: 1;font-family: 'Noto Sans KR',sans-serif}
+.icon_store em{display: block;font-size: 12px;color: #777777;margin-top: 5px;}
+
+.fs_box {padding:20px;border-bottom:1px solid #dbdbdb;background:#f4f4f4;}
+.fs_box label {display:inline-block;margin-right:20px;padding-top:14px;font-size:16px;letter-spacing:-0.04em;line-height:1;}
+.fs_box .ip_text {width:240px;vertical-align:top;}
+.fs_box .btn_ty_bface.sm {min-width:80px;padding:14px 23px 13px;}
+.fs_box .select_box{display: inline-block;}
+.display_ib{display: inline-block;}
+.findStore_result .store_list .name {font-weight: bold;font-size: 16px;font-family: 'Noto Sans KR',sans-serif;}
+.findStore_result .store_list {height: 600px;overflow-y: scroll}
+.findStore_result .store_list td.store .addr {margin-bottom:15px;color: #131313;}
+.findStore_result .comp_txt3 {font-weight: bold;color: #141414;font-size: 20px;text-align: center;font-family: 'Noto Sans KR',sans-serif;margin-top: 70px;}
+.form_area.bd0{border-bottom: 0;}
+.pop_inner .item_box .pr_select .items.w600{width: 600px;}
+.pop_inner p.sub_info2{padding-top:15px;color:#777;line-height:20px;}
+/* 20201126 추가 :: e*/
+
+/* 202011127 추가 :: s*/
+.pickup_storeTime{margin-left: 10px;}
+.pickup_storetxt{padding-bottom: 20px;border-bottom: 1px solid #ddd;margin-bottom: 20px;color: #777}
+/* .pickup_storetxt2{border-bottom: 1px solid #ddd;} */
+.tbl_pickStore th{vertical-align: top;}
+.tbl_pickStore td {padding-top: 0 !important;}
+.tbl_pickStore td .block{margin-bottom: 8px;position: relative}
+.tbl_pickStore td .block .btn_ty_form{position: absolute; right: -110px;top: 0;}
+.tbl_pickStore td .ftxt{display: inline-block;padding-top: 13px;line-height: 1.3;}
+.pickup_storetxt2{color: #777;font-size: 12px;}
+.ending_box .ending_msg .txt03{line-height: 1.3}
+/* 202011127 추가 :: e*/
+
+/*20201130 추가 :: s*/
+.txt_pickupStore{margin-top: 10px;font-size: 14px;letter-spacing: -0.02em;display: inline-block;line-height: 1.2;}
+.page_subtit{color: #777;margin-bottom: 15px;line-height: 1}
+.page_subtit:before{content: '';width: 2px;height: 2px;background: #777;vertical-align: middle;margin-right: 5px;display: inline-block;margin-bottom: 4px;}
+/*20201130 추가 :: e*/
+
+
+.card_banner img{width: 100%}/*20201215 추가*/
+
+/* 리스트 리뉴얼 20201217 :: s*/
+.sub_list .list_area .goods_list02--renewal.goods_list02 li{height: 430px;min-height: inherit;}
+.goods_list02--renewal .img_tag{z-index: 1;}
+.goods_list02--renewal .icon_nbg_s{z-index: 1}
+/* .goods_list02--renewal .img_made{top: 223px}
+.goods_list02--renewal .badge{margin-top: 42px} */
+.goods_list02--renewal .pro_area{position: relative}
+.goods_list02--renewal .pro_area{position: relative;padding-bottom: 35px;}
+.goods_list02--renewal li .sizeOption ul> li{display: inline-block;margin: 0 2px;height: auto !important;float: inherit;font-size: 12px;font-weight: 500;min-width: 22px;}
+.goods_list02--renewal .sizeOption {position: absolute;bottom: 0;background: rgba(255,255,255,0.6);display: none;}
+.goods_list02--renewal .sizeOption.on{display: block;}
+.goods_list02--renewal .sizeOption.sizeOption--center {width: 100%;text-align: center}
+.goods_list02--renewal .sizeOption .off{text-decoration: line-through;color: #888}
+.goods_list02--renewal .sizeOption ul {padding: 10px;box-sizing: border-box;}
+.goods_list02--renewal .pro_thumbNail{position: relative;}
+/* .goods_list02--renewal .quick_view {bottom: 17px;height: 35px;top: inherit;}
+.goods_list02--renewal .quick_view a {	line-height: 35px;	font-size: 14px;} 20210203 리스트페이지 개선시 주석해제하기 */
+.goods_list02--renewal  li {	height: 487px;}
+
+.sub_list .list_area .goods_list04 > li:nth-child(10n-9) .sizeOption{bottom: 65px;text-align: center;width: 100%;}
+.sub_list .list_area .goods_list04 > li:nth-child(10)  .sizeOption{bottom: 65px;text-align: center;width:100%}
+/* 리스트 리뉴얼 20201217 :: e*/
+
+
+/*20201229 추가 :: s*/
+.con_snslogin{font-size: 24px;padding: 50px 0;text-align: center;border-top: 2px solid #121212;border-bottom: 1px solid #121212;margin-top: 100px;letter-spacing: -0.03em;}
+/*20201229 추가 :: e*/
+
+/*20210111 추가 :: S*/
+.tbl_basket td.control-btn [class*="btn_ty_"]:first-child{margin-top: 6px;}
+.main_reviewArea{clear: both;text-align: center;font-size: 24px;border-bottom: 1px solid #ddd;padding: 60px 0;border-top: 1px solid #ddd;}	
+.main_reviewArea em.font_pro{font-weight: 700;}	
+.main_reviewArea-txt1{border-bottom: 1px solid #131313;padding-bottom: 3px;}	
+.btn_ty_bface-w200{width:200px;font-weight: 400;margin-top:40px;}	
+.reviewLink{margin-left: 10px;color: #777777;border-bottom: 1px solid #777777;padding-bottom: 1px;vertical-align: top;line-height: 15px;display: inline-block;}	
+.reviewLink:hover{color: #777;}	
+.review_list .tbl_y tbody td.control {padding-right: 20px;}
+.Re_review .tbl_y .tbl_basket td.review_detail-borderTop{border-top: 1px solid #ddd;padding-top: 20px;}
+.reviewInfo{padding-left: 40px;}
+.reviewInfo .box{display: inline-block;margin-top:20px;}
+.reviewInfo .round-renewl .box:first-child{margin-top:0;}
+.reviewInfo .box:nth-child(2n-1) {width: 215px}
+.reviewInfo .box:nth-child(2n-1) .round-renewl {margin-left: 46px;}
+.reviewInfo .box:nth-child(2n) {width: 190px;margin-left: 30px;}
+.reviewInfo .box:nth-child(2n) .round-renewl{margin-left: 34px;}
+
+
+.reviewInfo .box:after {content:'';display:block;clear:both;}
+.reviewInfo .box> p {display:block;float:left;margin-top:-1px;letter-spacing:-0.04em;line-height:1;}
+.reviewInfo .round-renewl {position: relative;width: 166px;padding-bottom: 20px;}
+.reviewInfo .round-renewl:after {content:'';display:block;clear:both;}
+.reviewInfo .round-renewl em {display:block;background: url(https://image.nbkorea.com/NBRB_PC/my/survey_off.png) no-repeat center center;width:166px;height: 18px;position:relative;}
+.reviewInfo .round-renewl em span{width:16px;height:16px;border-radius: 50%;background:#cf0a2c;position: absolute;top: 1px;}
+.reviewInfo .score01-txt {left:0;}
+.reviewInfo .score02-txt {left: 13%;}
+.reviewInfo .score03-txt {left: 44.5%;}
+.reviewInfo .score04-txt {left: 61.5%;}
+.reviewInfo .score05-txt {right:0;}
+.reviewInfo .round-renewl em span.score01 {left:0}
+.reviewInfo .round-renewl em span.score02 {left:26%;margin-left:-5px}
+.reviewInfo .round-renewl em span.score03 {left:50%;margin-left:-9px;}
+.reviewInfo .round-renewl em span.score04 {left:76%;margin-left:-14px;}
+.reviewInfo .round-renewl em span.score05 {left:100%;margin-left:-18px;}
+.reviewInfo .score-txt {display:none;margin-top:8px;color:#aeaeae;font-size:12px;line-height:1;letter-spacing:-0.04em;position: absolute;bottom: 0;}
+.reviewInfo .score-txt.on {display: block;}
+.reviewInfo .round-renewl .fc{position: absolute;left: 50%;margin-left: 16px;bottom: 0;}
+
+.reviewInfo .info span{display: inline-block;position: relative;color: #777;line-height: 1;}
+.reviewInfo .info span + span {margin-left:13px;padding-left:13px;position: relative;}
+.reviewInfo .info span + span:before {content:'';display:block;position:absolute;left:0;top:2px;width:1px;height:11px;background:#dbdbdb;}
+.reviewInfo_top:after{content: '';display: block;clear: both;}
+.reviewInfo_top{text-align: left;}
+.reviewInfo .info{padding-bottom: 10px;font-size: 14px;font-family:'Noto Sans KR',sans-serif;float: right;}
+.reviewInfo .info em{font-family:'ProximaNova',sans-serif;}
+.star_score-red .star span {background:url('https://image.nbkorea.com/NBRB_PC/my/icon_star_on2.png') no-repeat 0 0;}
+.reviewInfo_starTit{display: inline-block;vertical-align: middle;line-height: 1;}
+.reviewInfo .star_score{display: inline-block;vertical-align: middle;}
+
+.reviewInfo_contLeft{width: calc(100% - 80px);display: inline-block;vertical-align: middle;margin-right: -4px;}
+.reviewInfo_contRight{width: 80px;display: inline-block;vertical-align: middle;text-align: center}
+.reviewInfo_txtSt01{font-size: 16px;font-family: 'Noto Sans KR',sans-serif;letter-spacing:-0.25px;}
+.reviewInfo_contLeft .txt.ellipse{height: 24px;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;width:290px; margin-top:12px;color:#555;letter-spacing:-0.04em;line-height:24px;}
+.reviewInfo_contRight {width: 80px;	vertical-align: middle;}
+.reviewInfo_contRight > a{display: block;}
+.reviewInfo_tabInfo{margin-bottom: 35px;}
+.clear:after{content: '';display: block;clear: both;}
+.reviewInfo_tab{color: #777;}
+.reviewInfo_tab li.on{color: #131313;font-weight: bold;}
+.lineList-bar li{display: inline-block;position: relative;padding: 0 10px;font-size: 14px}
+.lineList-bar li + li:before{content:'';display:block;position:absolute;left:0;width:1px;height:11px;background:#dbdbdb;top: 50%;margin-top: -5px;}
+.reviewInfo_contEmpty{text-align: center;}
+.reviewInfo_txtSt03{font-size: 18px;color: #121212;}
+.reviewInfo_txtSt02{font-size: 14px;color: #555;font-family: 'Noto Sans KR',sans-serif;margin: 10px 0 30px;}
+.reviewInfo_txtSt02 > strong{font-weight: bold;font-family: 'ProximaNova',sans-serif;font-size: 15px;}
+
+/*댓글영역 */
+.reviewComment{clear: both;font-size: 14px;padding-left: 22px;margin-top: 40px;}
+.reviewComment_list{margin: 15px 0;}
+.reviewComment_list > li{margin-bottom: 20px;}
+.btn-commentConfirm{background: none;cursor: pointer;}
+.reviewComment_input{border-radius: 4px;border:1px solid #ddd;padding: 5px 10px;font-size: 14px;margin: 10px 0;}
+.displayFlex{display:table;width: 100%;border-spacing: 0;box-sizing: border-box;}
+/* .displayFlex.displayFlex-noSpace{justify-content: inherit;}
+.displayFlex.displayFlex-alignTop{align-items: flex-start} */
+.reviewComment_id-input{padding-right: 3px;color: #777;width: 50px;padding-right: 10px;}
+.reviewComment_button{width: 40px;color: #777777;line-height: 1;}
+.reviewComment_button input,.reviewDisabled a{color: #777}
+.reviewInfoArea > span{color: #777;display: inline-block;margin-right: -4px;font-size: 13px;}
+.reviewInfoArea > span.reviewInfoArea_date{color: #141414;font-size: 13px;}
+.reviewInfoArea{margin-top: 10px;}
+.reviewInfoArea > span a{color: #777;}
+.reviewInfoArea > span + span:before{content: '';width: 1px;height: 10px;background: #ddd;vertical-align: middle;display: inline-block;margin: 0 10px;}
+.reviewComment_id{width: 50px;padding-right: 10px;color: #000;font-weight: bold;}
+.reviewComment_replyId{color: #d0343d;width: 50px;padding-right: 10px;font-weight: bold;}
+
+.reviewComment_cmt{color: #555}
+.reviewComment_cmt.reviewComment_comment-admin{color: #121212}
+.commentArea{margin-bottom: 10px;}
+.replyArea .commentArea{margin-bottom: 0;}
+.replyArea{margin: 20px 0;}
+.replyArea > li{margin-bottom: 10px;}
+.replyArea_bgGrey{background: #f9f9f9;padding: 21px;}
+.displayFlex > span{line-height: 1.3;vertical-align: top;font-size: 14px;display: table-cell;}
+.displayFlex > span input{width: 100%;border: 0;outline: none;}
+
+
+.chkbox_area-renewalReview > li:first-child{width: 100%;}
+.chkbox_area-renewalReview  >li{width: 50%;}
+.reviewSurvey {width:250px;height:62px;margin: 0 auto;}
+.reviewSurvey ul{height: 40px;position:relative;}
+.reviewSurvey ul:before {content:'';position:absolute;left:0;top:50%;display:block;width:100%;height:1px;background:#dbdbdb;}
+.reviewSurvey ul:after{content: '';clear:both;}
+.reviewSurvey ul > li{float: left;width:30px;margin-left:25px;}
+.reviewSurvey ul > li input[type="radio"]{opacity:0;width:1px;height:1px;position: absolute;}
+.reviewSurvey ul> li label{display:inline-block;position:relative;width:40px;height:40px;background:url('https://image.nbkorea.com/NBRB_PC/product/review/circle2_off.png') no-repeat 0 0;cursor:pointer;padding-top:45px;text-align: center;white-space:nowrap;font-size: 12px;color: #aeaeae;font-family:'Noto Sans KR',sans-serif;}
+.reviewSurvey ul >li input[type="radio"]:checked + label{display:inline-block;position:relative;width:30px;height:30px;background:url('https://image.nbkorea.com/NBRB_PC/product/review/circle2_on.png') no-repeat 0 0;cursor:pointer;color: #cf0a2c;}
+.reviewSurvey ul >li:first-child{margin-left: 0;}
+.RL_reviewpop .chkbox_area.chkbox_area-renewalReview{margin:0 auto;text-align: left;}
+
+.star_score.sizeL-renewal ul {width:300px;height:40px;}
+.star_score.sizeL-renewal ul li {position:relative;float:left;}
+.star_score.sizeL-renewal ul li label {display:block;width:20px;height:38px;background:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_lt_off.png') no-repeat 0 0;text-indent:-9999em;cursor:pointer;}
+.star_score.sizeL-renewal ul li:nth-child(2n) label {width:20px;background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_rt_off.png');margin-right: 25px;}
+.star_score.sizeL-renewal ul li:last-child label {margin-right: 0;}
+.star_score.sizeL-renewal ul li input[type="checkbox"]:checked + label {background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_lt_on.png');}
+.star_score.sizeL-renewal ul li:nth-child(2n) input[type="checkbox"]:checked + label {background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_rt_on.png');}
+.star_score.sizeL-renewal ul li.on label {background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_lt_on.png') !important;}
+.star_score.sizeL-renewal ul li.on:nth-child(2n) label {background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_rt_on.png') !important;}
+.star_score.sizeL-renewal.active ul li input[type="checkbox"]:checked + label {background:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_lt_off.png') no-repeat 0 0;}
+.star_score.sizeL-renewal.active ul li:nth-child(2n) input[type="checkbox"]:checked + label {background-image:url('https://image.nbkorea.com/NBRB_PC/product/review/big_star2_rt_off.png');}
+
+.RL_reviewpop .chkbox_area > ul > li.box-renewalReview{width: 300px;display: inline-block;margin-right: -4px;vertical-align: top;margin-top: 33px;margin-bottom: 4px;}
+
+.RL_reviewpop .chkbox_area > ul > li.box-renewalReview p{font-size: 14px;float: left;margin-top: 3px;}
+.RL_reviewpop .chkbox_area > ul > li.box-renewalReview .reviewSurvey{margin-left: 49px;}
+.RL_reviewpop .chkbox_area > ul > li.box-renewalReview.box-renewalReviewRight .reviewSurvey{margin-left: 37px;}
+.RL_reviewpop .chkbox_area ul > li.chkbox_area-renewalReview > p{display: inline-block;margin-right: -4px;}
+.box-renewalReview .reviewSurvey ul:before{top: 39%;width: 90%;left: 5%;}
+.box-renewalReview .reviewSurvey ul> li label{width: 30px;padding-top: 35px;height: 30px;}
+.RL_reviewpop .chkbox_area > ul > li.box-renewalReviewRight{margin-left: 30px;width: 285px;}
+.pop_inner .RL_reviewpop .form_area.pd0{padding: 0;}
+.pop_inner .form_area .row .fdata .ip_text{margin-right: 0;}
+.textLenght6 label{text-indent: -12px;}
+.textLenght5 label{text-indent: -9px;}
+.textLenght4 label{text-indent: -3px;}
+
+.border_box-pic{}
+.border_box-pic:before{content: '';width: 56px;height: 56px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_pic.png) no-repeat center;background-size: 56px;padding-right: 4n0px;display: inline-block;vertical-align: middle;}
+.border_box-picTxt{display: inline-block;vertical-align: middle;text-align: left}
+.border_boxTit{display: block;font-weight: 500;font-size: 14px;}
+.border_boxCont{display: block;font-size: 12px;margin-top: 5px;}
+.w700 .pop_inner .RL_reviewpop .review_list .border_box.border_box-pic{text-align: left;padding: 27px 16px;margin-bottom: 40px;	}
+.RL_reviewpop .chkbox_area > ul > li:first-child{margin-top: 0;}
+
+/*20210111 추가 :: E*/
+
+/*20210105 추가 :: S*/
+.select_box-gift{margin-top: 10px;}
+/*20210105 추가 :: E*/
+
+
+/*20210106 추가 :: s*/
+.sub_banner_wrap{position: relative}
+.sub_banner-btn01{position: absolute;bottom: 6.7%;left: 3%;width: 17.4%;height: 8%;}
+.sub_banner-btn02{position: absolute;bottom: 6.7%;left: 53.5%;width: 17.6%;height: 8%;}
+/*20210106 추가 :: e*/
+
+/*20210111 추가 :: s*/
+.select_box.select_box-srch{display: inline-block;vertical-align: middle;margin-right: -4px;position: relative}
+.select_box.select_box-srch:after{content: '';display: inline-block;vertical-align: middle;width: 1px;height: 20px;background: #dbdbdb;position: absolute;right: 0%;top: 50%;margin-top: -10px;}
+.header .gnb .customer .category_box .srch_area .ip_text.ip_text-srch{width: 500px;border-left: 0;}
+.srch_area-renewal .select_box-srch select{border-right: 0;}
+/*20210111 추가 :: e*/
+
+/*20210128 추가 :: S*/
+.main_choice{width: 1200px;margin: 0 auto 85px;}
+.main_choiceTit{font-size: 24px;text-align: left;margin: 131px 0 26px;letter-spacing: -0.02em;}/*20210421 수정 */
+.main_choiceTit > span{font-weight: 900;}
+.main_choice .badge{margin-top: 24px;height: 20px;}
+.group_plist.product4 li div.prc_wrap .trade_name.trade_name-mainChoice{margin-top: 7px;}
+.goods_list-nQuick:after {content:'';display:block;clear:both;}
+.goods_list-nQuick li {position:relative;float:left;margin:0 0 38px 80px;height:386px;/*max-height:386px;*/}
+.goods_list-nQuick li:nth-child(4n-3) {margin-left:0;}
+.goods_list-nQuick .img_tag{position:absolute;top:20px;left:20px;}
+.goods_list-nQuick .pro_area {display:block;width:200px;padding:19px;border:1px solid #fff;}
+/* .goods_list-nQuick .pro_area.on, .goods_list-nQuick .pro_area:hover {border:1px solid #434343;} */
+.goods_list-nQuick .img_goods {display:block;width:200px;height:200px;}
+.goods_list-nQuick .img_made {position:absolute;top:215px;left:20px;} /* 20181212 수정 */
+.goods_list-nQuick .badge{margin-top:24px;height:20px;}
+.goods_list-nQuick .badge img {display:inline-block;vertical-align:top;}
+.goods_list-nQuick .badge img + img {margin-left:-1px;}
+.goods_list-nQuick .trade_name {height:42px;margin:7px 0 30px;line-height:20px;}
+.goods_list-nQuick .price{margin-bottom:18px;}
+.goods_list-nQuick .price del {display:inline-block;margin-right:5px;color:#777;font-size:16px;letter-spacing:-0.02em;}
+.goods_list-nQuick .price del span{font-size:14px;}
+.goods_list-nQuick .price p {display:inline-block;color:#000;font-size:16px;font-weight:700;letter-spacing:-0.02em;}
+.goods_list-nQuick .price p span {font-size:14px;font-weight:700;}
+.goods_list-nQuick .sale_info {height:16px;color:#777;letter-spacing:-0.04em;}
+.goods_list-nQuick .chkBox {height:18px;margin-top:9px;padding-top:10px;border-top:2px solid #444;}
+.goods_list-nQuick .chkBox input[type="checkbox"] + label {padding-left:25px;color:#777;}
+.goods_list-nQuick .quick_view {display:none;position:absolute;top:175px;left:20px;width:200px;height:45px;background:#141414;opacity:0.6;}
+.goods_list-nQuick .quick_view.on {display:block;}
+.goods_list-nQuick .quick_view a {display:block;color:#fff;font-size:16px;font-weight:700;text-align:center;line-height:45px;}
+.category:after{content: '';display: block;clear: both;}
+/*20210128 추가 :: E*/
+
+/*20210129 추가 :: S*/
+.soldOut{position: absolute;top: 0;left: 0%;width: 100%;height: 100%;background-color: rgba(0,0,0,0.25);color: #fff;font-size: 30px;display: table;z-index: 3;}
+.soldOut p{display: table-cell;vertical-align: middle;text-align: center;font-weight: 900;}
+.soldOut-L{font-size: 70px;}
+/*20210129추가 :: E*/
+
+/*20210205 런칭캘린더 :: S*/
+.nb_title_area-launching{margin-top: 100px;text-align: center;margin-bottom: 70px;}
+.launching{}
+.launching img{width: 100%;vertical-align: middle;}
+.launching_TabList li {display: inline-block;/* letter-spacing: -0.02em; */font-size: 26px;margin: 0 43px;}
+.launching_TabList li.on a{font-weight: bold;}
+.launching_TabList{margin-top: 112px;}
+
+.launching_List:after{content: '';clear: both;display: block;} 
+/*20210312 수정 :: S*/
+.launching_List {padding: 0 2%;display: flex;flex-flow: row wrap;}
+.launching_List li{float: left;width: 32.6%;position: relative;margin-bottom: 4.2%;display: flex;} 
+/*20210312 수정 :: E*/
+.launching_List li:nth-child(3n-1){margin: 0 1.1% 4.2%;} 
+.launching_txt {margin-top: 4.4%;position: relative}
+.launching_txt > span{letter-spacing: -0.02em}
+.launching_badge{background-color: #000000;font-weight: bold;color: #fff;font-size: 15px;border-radius: 30px;padding: 2% 4.7%;display: inline-block;margin-top: 0.8%;}
+.launching_time{color: #9b9b9b;font-size: 16px;display: block;}
+.launching_name{font-size: 30px;font-weight: bold;display: block;}
+.launching_date{position: absolute;top: 20px;;left: 20px;z-index: 1;line-height: 1;}
+.lMonth{font-size: 30px;color: #6e6e6e;display: block;}
+.lDay{font-size: 62px;font-weight: bold;display: block;font-family: 'DidotLTPro',sans-serif}/*20210225 수정*/
+.launching_List-now{margin-bottom: 300px;}
+/*20210311 수정 :: S*/
+.launchingNow{display: table;width: 100%;position: relative}
+.launchingNow_left{position: absolute;top: 50%;transform: translateY(-50%);color: #fff;left:6%;width: 28%;}/*20210315 수정*/
+
+/* .launchingNow_right{display: table-cell;width: 50%;vertical-align: middle;} */
+.launchingNow_date{font-size: 30px;font-size: 1.6vw;line-height: 1;}
+.launchingNow_title{font-size: 57px;font-weight: bold;margin-top: 3%;margin-bottom: 8%;line-height: 1.2;font-size: 3vw;word-break: break-all}/*20210315 수정*/
+.launchingNow_link{width: 12.7vw;border-radius: 50px;background: #fff;color: #000;display: block;text-align: center;padding: 0.6vw 0;font-weight: bold;font-size: 26px;font-size: 1.4vw;}
+.launchingNow_link:hover{font-weight: bold;}
+.launchingNow_link.launchingNow_link-soldout{color: #fff;background: #d7d7d7;}
+.launching_badge-soldOut{color: #fff;background: #d7d7d7;}
+.launching_empty{color: #a3a3a3;font-size: 20px;margin: 20% 0;text-align: center;}
+/*20210311 수정 :: E*/
+@media all and (max-width:1200px){
+	.launchingNow_date{font-size: 30px;}
+	.launchingNow_title{font-size: 40px;}
+	.launchingNow_link{font-size: 18px;}
+}
+/*20210205 런칭캘린더 :: E*/
+
+/* 20210208 상품검색추천 :: S */
+.search_choice .main_choiceTit{margin: 80px 0;font-weight: 700;}
+/* 20210208 상품검색추천 :: E */
+
+/* 20210215 런칭캘린더상세 :: S */
+.launchingDetail{text-align: center;padding: 90px 0;}
+.launchingDetail_prd{margin-bottom: 30px;}
+.launchingDetail_proNum{font-size: 14px;font-weight: 700;color: #9f9f9f;}
+.launchingDetail_proName{font-size: 50px;font-weight: 700;color: #000;}
+.launchingDetail_price{font-size: 17px;font-weight: 500;color: #000;}
+.launchingDetail_price em{font-weight: 700;font-size: 19px;}
+.launchingDetail_info{margin-bottom: 30px;}
+.launchingDetail_infoTxt{font-size: 18px;font-family: 'Noto Sans KR', sans-serif;font-weight: 500;}
+.launchingDetail_txt{font-size: 16px;font-family: 'Noto Sans KR', sans-serif;font-weight: 500;color: #9f9f9f;margin-bottom: 100px;line-height: 1.7;}
+.launchingDetail_banner{background: #f3f3f3;padding: 25px 0;}
+.launching_btn{padding: 13px 35px;border-radius: 30px;font-size: 17px;font-weight: 500;background: #000;color: #fff;display: inline-block;}
+.launching_btn:hover{background: #000;color: #fff;font-weight: 500;}
+
+.launchingDetail_slide{margin: 35px 28px;}
+.launchingDetail_slide .main_visual{height: auto;}
+.launchingDetail_slide .main_visual li{height: auto;width: 33.33%;}
+.launchingDetail_slide .main_visual li a{height: auto;}
+.launchingDetail_slide .main_visual .bx-controls-direction a{width: 42px;height: 42px;margin-top: -21px;}
+.launchingDetail_slide .main_visual .bx-controls-direction .bx-prev{background-image: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_left3.png);left: 60px;}
+.launchingDetail_slide .main_visual .bx-controls-direction .bx-next{background-image: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_right3.png);right: 60px;}
+.launchingDetail_slide .main_visual .bx-pager{position:relative;bottom: 0;margin-top: 20px;}
+.launchingDetail_slide .main_visual .bx-pager .bx-pager-item{padding: 0 6px;}
+.launchingDetail_slide .main_visual .bx-pager .bx-pager-item a{width: 16px;height: 13px;background:url(https://image.nbkorea.com/NBRB_PC/common/btn_pager2.png) no-repeat 0 0;}
+.launchingDetail_slide .main_visual .bx-pager .bx-pager-item a:hover, .launchingDetail_slide .main_visual .bx-pager .bx-pager-item a.active{background-position: 0 bottom;}
+.stuck {position: fixed;top: 106px;width: 100%;box-sizing: border-box;z-index: 3;}/*20220418 수정*/
+
+.launching_badgeHover{position: absolute;opacity: 0;z-index: 3;top: 0;left: 0;}
+.launching_List >li:hover .launching_badgeHover{opacity: 1;}
+.launching_open{opacity: 1;}
+.launching_List >li:hover .launching_open{opacity: 0;}
+/* 20210215 런칭캘린더상세 :: E */
+
+/* 20210217 메인 슬라이드 추가 :: S */
+.main_choice02{width: 1400px;}
+.main_visual02{position: relative;padding: 0 100px;}
+.main_visual02 .bx-controls-direction a {display:block;position:absolute;top:50%;margin-top:-37px;width:23px;height:44px;text-indent:-999em;overflow:hidden;z-index:2;}
+.main_visual02 .bx-controls-direction .bx-prev {left:0;background:url('https://image.nbkorea.com/NBRB_PC/common/btn_slide_left4.png') no-repeat 0 0;}
+.main_visual02 .bx-controls-direction .bx-next {right:0;background:url('https://image.nbkorea.com/NBRB_PC/common/btn_slide_right4.png') no-repeat 0 0;}
+.main_visual02 .bx-pager {width:100%;text-align:center;overflow:hidden;z-index:2;}
+.main_visual02 .bx-pager .bx-pager-item {display:inline-block;padding:0 8px;}
+.main_visual02 .bx-pager .bx-pager-item a {display: block;width:15px;height:15px;background:url('https://image.nbkorea.com/NBRB_PC/common/btn_pager.png') no-repeat 0 0;text-indent:-999em;overflow:hidden;}
+.main_visual02 .bx-pager .bx-pager-item a:hover, .main_visual02 .bx-pager .bx-pager-item a.active {background-position:0 bottom;}
+/* 20210217 메인 슬라이드 추가 :: E */
+
+/*20210222 메인개편 :: s*/
+.mainContainer{padding: 0 55px;box-sizing: border-box;}
+.main_subTitle{font-family: 'ITCGaramondStd',sans-serif;font-weight: 700;font-size: 43px;margin-bottom: 28px;position: relative;line-height: 43px;}/* 20221115 수정 */
+.mainBanner img, .nbNow img{width: 100%;vertical-align: middle;}
+.main_visual-renewal{height: 895px;}
+.main_visual li a,.main_visual li{height: 840px;}
+.main_visual-renewal .bx-wrapper{position: relative;}
+.mainBanner{text-align: center;}
+/* .mainBanner:last-child{margin-bottom: 0;} */
+.mainBanner li + li{margin-top: 100px;}
+.mainBanner_title{font-size: 39px;font-weight: 900;margin-bottom: 14px;letter-spacing: -0.05px;margin-top: 31px;}
+.mainBanner_sub{font-size: 18px;letter-spacing: -0.05px;}
+.mainBanner_sub{font-size: 18px;letter-spacing: -0.05px;}
+.mainBtn + .mainBtn{margin-left: 10px;}
+.mainBtn{font-size: 16px;color: #141414;padding: 10px;display: inline-block;vertical-align: top;border-radius: 5px;line-height: 1;min-width: 120px;box-sizing: border-box;text-align: center}
+.mainBtn-black:hover{color: #fff !important;}
+.mainBanner .mainBtn140{min-width: 140px;padding: 15px 10px;}
+.mainBtn-white{border: 1px solid #898989;}
+.mainBtn-black{background: #141414;border:1px solid #141414;color: #fff;}
+.btn_wrap-main{margin-top: 35px;}
+
+/* 20211008 수정 :: S */
+/* 20210621-1 수정 :: s */
+.nbNow_info{white-space: normal;text-align: left;word-break: break-all;}
+.nbNow_list{display: table;width: 100%;table-layout: fixed;}
+/* .nbNow_list:after{content: '';clear: both;display: block;} 삭제*/
+.nbNow_list li{width: 31.3%;display: table-cell;padding-bottom: 90px;vertical-align: top;}
+/* 20210621-1 수정 :: e */
+.nbNow_list li:nth-child(3n-1){padding:0 3% 90px;width: 37.3%;}
+.nbNow_title{font-weight: 900;font-size: 24px;margin: 26px 0 9px;min-height: 35px;}
+/* 20211008 수정 :: E */
+
+.nbNow_sub{font-size: 17px;}
+.main_visual li video{height: 100%;}
+
+.categoryList:after{content: '';clear: both;display: block;}
+.categoryList li{width: 31.3%;float: left;}
+.categoryList li:nth-child(3n-1){margin:0 3%;}
+
+.scroll_slide.swiper-container {text-align: center;position: relative;padding-bottom: 10px;}
+.scroll_slide img{width: 100%;}
+.scroll_slide .swiper-slide {/*padding: 20px;box-sizing: border-box;*/background: #fff;	/*white-space: nowrap;*/font-size: 0; display: block;text-align: left; } /*20210831 수정*/
+.scroll_slide .swiper-slide > li{display: inline-block;vertical-align: top;width: 33%;} 
+.scroll_slide .swiper-slide > li + li{margin-left: 30px;}  
+.scroll_slide .swiper-scrollbar {border-radius: 10px;position: relative;-ms-touch-action: none;background: rgba(0,0,0,0.1);}
+.scroll_slide .swiper-scrollbar {width: 100%;height: 4px;position: absolute;left: 0;bottom: 0;z-index: 333333;opacity: 1 !important;}
+.scroll_slide .swiper-scrollbar-drag {height: 100%;width: 100%;position: relative;background: rgba(0,0,0,1);border-radius: 10px;}
+.scroll_slide .swiper-scrollbar-cursor-drag {cursor: move;}
+.scroll_slide .swiper-free-mode>.swiper-wrapper {-webkit-transition-timing-function: ease-out;-moz-transition-timing-function: ease-out;-ms-transition-timing-function: ease-out;-o-transition-timing-function: ease-out;transition-timing-function: ease-out;margin: 0 auto;}
+.scroll_slide .swiper-wrapper {position: relative;width: 100%;
+-webkit-transition-property: -webkit-transform,left,top;-webkit-transition-duration: 0s;-webkit-transform: translate3d(0px,0,0);-webkit-transition-timing-function: ease;-moz-transition-property: -moz-transform,left,top;-moz-transition-duration: 0s;-moz-transform: translate3d(0px,0,0);-moz-transition-timing-function: ease;
+-o-transition-property: -o-transform,left,top;-o-transition-duration: 0s;-o-transition-timing-function: ease;-o-transform: translate(0px,0);-ms-transition-property: -ms-transform,left,top;-ms-transition-duration: 0s;-ms-transform: translate3d(0px,0,0);-ms-transition-timing-function: ease;transition-property: transform,left,top;transition-duration: 0s;transform: translate3d(0px,0,0);transition-timing-function: ease;-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;margin: 0 !important;}
+.scroll_slide .swiper-container {margin: 0 auto;position: relative;overflow: hidden;direction: ltr;-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;-ms-backface-visibility: hidden;-o-backface-visibility: hidden;backface-visibility: hidden;z-index: 1;}
+
+.collection .scroll_slide .swiper-slide > li{width: 50%;} 
+.slideNum4 .scroll_slide .swiper-slide > li{width: 23.5%;} 
+
+.main_prdName{font-size: 14px;word-break: break-all;white-space: normal;}/* 20211109 수정 */
+.main_prdInfo{text-align: left;margin: 20px 0 50px;}
+.main_prdPrice{font-size: 16px;font-weight: bold;}
+.main_prdPrice > span{font-size: 14px;}
+.main_imgTitle{font-weight: 900;font-size: 24px;margin-top: 25px;}
+/*20220610 할인가 추가 :: S */
+.sale_prdPrice{font-size: 16px;font-weight: bold;text-decoration: line-through;color: #9c9c9c;}
+.sale_prdPrice > span{font-size: 14px;}
+/*20220610 할인가 추가 :: E */
+
+.main_visual-textbox{height: auto;}
+.main_visual-textbox .bx-wrapper{position: relative;}
+.main_visual.main_visual-textbox li a, .main_visual.main_visual-textbox li{height: auto;}
+/* .main_visual-textbox .bx-pager{bottom: 443px;} */
+.main_visual-textbox .bx-pager{bottom: auto;top: calc(100% - 430px);} /* 20210428 수정 */
+.main_visual-textbox .visual_imgbox{display:block;height: 840px;background-repeat: no-repeat;background-repeat: no-repeat;background-position: 50% 0;background-size: cover;}
+
+/* 20210305 수정 :: s */
+.main_visual-textbox .visual_txtbox{text-align: center;} /*20210429-1 수정 */
+.main_visual.main_visual-textbox .visual_txtbox{height: 346px;margin-bottom: 0;}/*20210429-1 추가*/
+.visual_txtbox{margin-top: 30px;margin-bottom: 100px;}
+.main_visual-textbox .txtbox_title{font-size: 42px;font-weight: 900;color: #141414;margin: 0 0 0;line-height: 1.2;}/*20220121 추가*/
+.main_visual-textbox .txtbox_sub{font-size: 18px;letter-spacing: -0.5px;display: block;font-weight: normal;line-height: 2;margin-top: 3px;}
+/* 20210305 수정 :: e */
+.visual_txtbox .btn_wrap-main{margin-top: 30px;}
+.visual_txtbox .mainBtn{display: inline-block;min-width: 140px;padding: 15px 10px;width: auto;}/*20210423 수정*/
+/* .main_visual-textbox .video{height: 840px;} */
+.subPick{margin-bottom: 180px;}
+.mainCollection{margin: 186px 0;}
+.mainNew{margin: 56px 0 0;}
+.mainBest{margin: 146px 0 0;}
+.mainShopall{/*margin-top: 184px;*/margin-bottom: 160px;} /*20210412 수정*/
+.mainBottom{margin-bottom: 180px;}
+/*20210222 메인개편 :: e*/
+
+/*20210226 추가 :: S*/
+.npayBanner{text-align: left !important;padding: 20px 0;overflow: hidden;border-bottom: 1px solid #dcdcdc;border-top: 1px solid #dcdcdc;}
+.ico_npay:before{width:54px;height: 22px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_npay.png) no-repeat center;display: inline-block;margin-right: 10px;background-size: 100%;content: '';vertical-align: bottom;}
+.ico_npay{position: relative;display: block;float: left;}
+.npay_txt2{float: right;font-weight: bold;color: #00c63b;}
+/*20210226 추가 :: E*/
+.tossBanner{padding: 20px 0;padding-left: 78px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_toss.png) no-repeat left center;border-top: 1px solid #dcdcdc;}/* 20220905 토스 배너 추가 */
+ 
+
+.fwidth{margin-bottom: 30px;}/*20210302_3 추가*/
+
+/*20210305 서브메인 :: S*/
+.subContainer{padding: 0 55px;}
+.slideNum6 .scroll_slide .swiper-slide > li{width: 16.5%;} 
+.mt150{margin-top: 150px;}
+.mb180{margin-bottom: 180px;}
+/* .main_visual-textbox + .main_visual-textbox {margin-top: 100px;}20210305_2 수정 */
+.main_visual-textbox img{max-width: 100%;display: block}
+.subTitle_link{ position: absolute;right: 0;bottom: 0;font-size: 16px;line-height: 1;padding-right: 10px;font-family: 'Noto Sans KR',sans-serif;}
+.subTitle_link:after{content: '';display: inline-block;	width: 5px;	height: 5px;border-top: 1px solid #131313; border-right: 1px solid #131313;	position: absolute;	transform: rotate(45deg);vertical-align: middle;
+top: 50%;margin-top: -2.5px;right: 0;}
+
+.main_visual-textbox .txtbox_title .sizeL{font-size: 48px;}
+.nbNow_info .btn_wrap-main{margin-top: 30px;}
+.nbNow_title .sizeL{font-size: 28px;}
+.main_imgTitle .sizeL{font-size: 28px;}
+.shopAll_list li{margin-bottom: 160px;}
+.shopAll_info{margin-top: 25px;text-align: center;}
+.shopAll_txt{font-size: 20px;font-weight: 700;border-bottom: 2px solid #141414;}
+.shopAll_txt:hover{font-weight: 700;}
+.main_visual-textbox .txtbox_sub .sizeL{font-size: 20px;}
+.subContainer img{max-width: 100%;display: block}
+.thumbImg{position: relative;}
+.rankNumb{position: absolute;top: 10px;left: 10px;z-index: 1;font-size: 16px;font-weight: bold;line-height: 1;}
+.rankNumb > em{font-weight: inherit;font-size: 18px;}
+.btn_top{width: 40px;height: 40px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_top.png) no-repeat center;background-size: cover;position: fixed;bottom: 84px;right: 17px;z-index: 10;}
+
+/* .subRank{padding-top: 30px;margin-bottom: 157px;}
+.subShop{padding-top: 45px;margin-bottom: 170px;}
+.subNew{margin-bottom: 130px;} 20210413-1 삭제 */
+
+
+/*20210305 서브메인 :: E*/
+/*20210309 리스트페이지 개편 :: S*/
+/*공통영역*/
+.inputBox{display: block;position: relative;}
+.chk-boxBg:before{}
+/*20210804 수정 :: S */
+.ico_thumbView:before{content:'';display: block;width: 18px;height: 18px;background:url(https://image.nbkorea.com/NBRB_PC/common/ico_viewS.png) no-repeat center;background-size: cover;}
+.thumbList{margin: 0 0 0 28px;}
+.thumbList.on .ico_thumbView:before{content:'';display: block;width: 18px;height: 18px;background:url(https://image.nbkorea.com/NBRB_PC/common/ico_viewB.png) no-repeat center;background-size: cover;}
+.pb0{padding-bottom: 0 !important}
+/*20210804 수정 :: E*/
+/* 20220818 추가 :: S */
+.pro_area .pro_thumbNail-enlrg>a{display: flex;flex-direction: column;overflow: hidden;}
+.enlrg_wrap{display: flex;align-items: center;justify-content: center;flex-direction: column;}
+.pro_thumbNail-enlrg .img_goods{min-width: 133%;}/*20220823 수정*/
+/* 20220818 추가 :: E */
+.pro_area .pro_thumbNail-pdlrg>a{background-color: #f5f5f5;padding: 16.5% 0;}/* 20220901 추가 */
+/*
+-------- 상품 타이틀 ------------
+*/
+.listTop{position: relative;padding: 40px 55px 48px;box-sizing: border-box;background: #fff;width: 100%;height: 110px;}
+
+.listTop .category_title{padding:0 !important;display: inline-block;margin-bottom: 0;line-height: 1;}
+.fliterList{position: absolute;top: 0;right: 55px;top: 50%;margin-top: -20px;}
+/* 20210804 수정 :: S */
+.fliterList > div{display: inline-block;vertical-align: top;line-height: 18px;}
+.fliterList > .filter{margin-bottom: 0;margin-left: 24px;}
+.dropdown{position: relative;text-align: right;min-width: 98px;padding-left: 24px;box-sizing: border-box;}
+.dropdown.on .dropdown_tit:after{transform: rotate(180deg);}
+.dropdown_tit{font-size: 15px;font-weight: 500;}
+.dropdown_tit:after{content: '';width: 12px;height: 7px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_more.png) no-repeat center;background-size: 12px 7px;display: inline-block;margin-left: 6px;vertical-align: top;margin-top: 5px;}
+/* 20210804 수정 :: E */.dropdown_tit:hover{font-weight: 500}
+
+.dropdown_list{position: absolute;top: 30px;right:0;background:#fff; display: none;z-index: 10;text-align: right;width: 100px;box-sizing: border-box;padding: 10px;}/* 20210928-1 수정 */
+.dropdown_list > li{margin-bottom: 15px;}
+.dropdown_list > li{margin-bottom: 15px;}
+.dropdown_list > li:hover > a,.dropdown_list > li.on > a{color: #c1c1c1;}
+.dropdown_list > li > a{color: #777}
+.dropdown.on .dropdown_list{display: block;}
+.listNav{display: none;position: absolute;left: 30%;line-height: 22px;}/*20210928-2 수정*/
+.listNav li{display: inline-block;}
+.listNav li + li{margin-left: 70px;}
+.listNav li a{font-size: 16px;font-weight: bold;}
+
+/* 상단고정일때  */
+/*20210901 수정*/
+.listTop.on{position: fixed;top: 0;width: 100%;z-index: 11;transition: 0.2s;box-sizing: border-box;padding: 20px 55px;height: 64px;min-width: 1200px;}
+
+.listTop + .listContent{margin-top: 0}
+.listTop.on + .listContent{margin-top: 110px}
+.listTop.on .listNav{display: inline-block;}
+.listTop.on .category_title{font-size: 16px;line-height: 24px;}/*20210928-2 수정*/
+.listTop.on .fliterList{margin-top: -10px;}
+
+/*
+-------- 상품 LEFT MENU ------------
+*/
+
+
+
+.listContent{position: relative;}
+
+/* 20210901 수정 :: S */
+.listLeft{/*width: 423px;*/width:22%;position: absolute;top: 0;left: 0;padding: 0 2% 0 3%;box-sizing: border-box;min-width: 260px;padding-bottom: 110px;background: #fff;z-index: 10;}
+/* .listLeft::-webkit-scrollbar{opacity: 0;width: 0;} 20210928 삭제*/
+.listLeft.on{position: fixed;top: 0;padding-top: 75px;height: 100%;right: 0;} /* 20211029 수정*/
+/* 20210901 수정 :: E */
+
+.listRight{vertical-align: top;width:100%;box-sizing: border-box;padding-right: 55px;padding-left: 22%;padding-right: 3%;}
+.listRight img{width:100%;vertical-align: middle;} /* 20210721 수정 */
+.productList{font-size: 0;}
+.productList > li{width: 24.2%;display: inline-block;vertical-align: top; margin-right: 1%;margin-bottom: 2.6%;transform: width 0.3s;}
+.productList > li:nth-child(4n){margin-right: 0;}
+
+
+/* 필터 색상 */
+.ip_chk-color+label{position: relative;display: block;cursor: pointer;font-size: 12px;letter-spacing: -0.05px;}/*20210401 수정*/
+/* .ip_chk-color+label:before{content: '';width: 24px;height: 24px;background-size: cover;display: block;background-position: center;margin: 0 auto 5px;} 20210401 삭제 */
+.ip_chk-color:checked+label:after{content: '';width: 24px;height: 24px;background-size: cover;display: block;background-position: center;background-image: url(https://image.nbkorea.com/NBRB_PC/common/img_filter_color_check.png);position: absolute;top: 0%;left: 50%;z-index: 1;margin-left: -12px;}
+/* .ip_chk-color+.color1:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color1.png)}
+.ip_chk-color+.color2:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color2.png)}
+.ip_chk-color+.color3:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color3.png)}
+.ip_chk-color+.color4:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color4.png)}
+.ip_chk-color+.color5:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color5.png)}
+.ip_chk-color+.color6:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color6.png)}
+.ip_chk-color+.color7:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color7.png)}
+.ip_chk-color+.color8:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color8.png)}
+.ip_chk-color+.color9:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color9.png)}
+.ip_chk-color+.color10:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color10.png)}
+.ip_chk-color+.color11:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color11.png)}
+.ip_chk-color+.color12:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color12.png)}
+.ip_chk-color+.color13:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color13.png)}
+.ip_chk-color+.color14:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color14.png)}
+.ip_chk-color+.color15:before{background-image: url(https://image.nbkorea.com/NBRB_PC/product/color/color15.png)} 
+.color3{background-size: 24px 24px;background-position: top;}
+.color3 > span{display: block;} 20210401 삭제*/
+
+/* 상품 필터 */
+/* 20211101-1 수정 :: S */
+.allList{padding-bottom: 30px;font-size: 15px;}
+/* 20220913 추가 :: S */
+.allList + .allList {padding-top: 20px; border-top: 1px solid #959595;}
+.listLeft.on .allList + .allList {margin-top: 0;}
+/* 20220913 추가 :: E */
+.listLeft.on .allList{margin-top: 40px;}
+.women_chekbox{margin-bottom: 40px;}
+/* 20211101-1 수정 :: E */
+
+.allList_tit{font-weight: bold;margin-bottom: 15px;}
+.allList_tit > a{font-weight: bold;}
+.allList_list > li{margin-bottom: 16px;line-height: 1.5;}
+
+.accordion{border-top: 1px solid #959595;width: 100%;}
+.accordionList{padding-bottom: 30px;font-size: 0;}
+.accordionTit:after{content: '';width: 17px;height: 16px;display: block;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_toggleOn.png) no-repeat center; background-size: cover;position: absolute;top:50%;margin-top: -8px;right: 0;	}
+.accordionTit.on:after{content: '';width: 17px;height: 16px;display: block;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_toggleOff.png) no-repeat center; background-size: 17px 2px;}
+.accordionTit>a{font-weight: bold;font-size: 15px;padding: 20px 0;position: relative;display: block;}
+.accordionTit{position: relative;}
+
+.accordionList-border > li{width: 18%;margin-right: 2%;display: inline-block;text-align: center;cursor: pointer;margin-bottom: 2%;}/* 20210401 수정 */
+/* .accordionList-border > li:nth-child(5n){margin-right: 0} 20210402 삭제 */
+
+.accordionList-color > li{margin-bottom: 10px;width: 16.66%;display: inline-block;vertical-align: top;text-align: center;color: #3d3d3e;} /*20210906 수정*/
+.accordionList-list > li{margin-bottom: 10px;font-size: 13px;}
+
+/*
+-------- 상품 리스트 ------------
+*/
+
+/*상품 리스트 필터 */
+
+.listContent.filterOff .listLeft{margin-left: -423px;transition: margin-left 0.3s;}
+.listContent.filterOff .listRight{padding-left: 55px;transition: padding-left 0.3s;}
+.listContent .listLeft{transition: margin-left 0.3s;}
+.listContent .listRight{transition: padding-left 0.3s;}
+
+/*상품 리스트 콘텐츠*/
+/* .badgeArea{position: absolute;top: 0;left: 4px;} */
+
+/* 20210906 수정 :: S */
+/* 20210924  min-height 17 --> 20 변경*/
+.productList .badge{box-sizing: border-box;font-weight: bold;color: #fff;font-size: 11px;letter-spacing: -0.05px;min-height: 20px;margin-bottom: 9px;}
+
+/* .viewB.filterOff .productList .badge{top: 22px;} 삭제 */
+.productList .badge img{display: inline-block;width: auto;vertical-align: top;}
+/* .badge-bl{background: #000;}
+.badge-gr{background: #c5c7c9;} */
+.pro_info{line-height: 1;padding-top: 12px;padding-bottom: 43px;position: relative;font-size: 14px;}
+.viewB.filterOff .pro_info{padding-top: 22px;}
+.prdName{position: relative;margin-top: 5px;}
+/*20210820-1 수정 :: S */
+.prdName_name{font-weight: bold;padding-right: 30%;word-break: break-all;overflow: hidden;font-size: 15px;}
+.prdName_price{position:absolute;top: 0;right: 0;font-weight:bold;font-size: 17px;text-align: right;}
+/* 20210906 수정 :: E */
+
+
+.prdName_price span{font-size: 15px;}/*20210820-1 추가*/
+.prdName_price del{color: #9c9c9c;}
+
+.prdDetail{color: #9c9c9c;font-size: 15px;line-height: 1.2;padding-right: 30%;}/*20210906 수정*/
+
+/* 20210820-1 수정 :: E */
+.prdColor{margin: 10px 0;/*height: 45px;*/color: #9c9c9c;position: relative;padding-bottom: 14%;} /* 20210513 수정 */
+.prdColor-txt{position: absolute;top: 0;left: 0}
+
+.star_score.star_style03{padding: 10px 0 0 0;height: 16px;margin-top: -3px;line-height: 1;}/*20210721 수정*/
+.star_score.star_style03 .star{background :url('https://image.nbkorea.com/NBRB_PC/product/ico_starOff.png') no-repeat 0 0;vertical-align: middle;width: 107px;}
+.star_score.star_style03 .star span{background: url('https://image.nbkorea.com/NBRB_PC/product/ico_starOn.png') no-repeat 0 0;}
+.star_score.star_style03 .num{font-size: 14px;font-family:'ProximaNova',sans-serif;color: #141414;display: inline-block;vertical-align: top;margin: 1px 0 0 5px;}
+/* .prdSoldout{color: #ef1f3c;} */
+.prdSize{position: absolute;bottom: 0;min-height: 32px;left: 0;display: none;}
+.prdSize_list{margin-left: 4px;}
+.prdSize_list > li{display: inline-block;margin-left: -4px;vertical-align: top;margin-right: 10px;margin-bottom: 5px;font-size: 13px;}
+.prdstate{font-size: 13px;}
+.pro_soldOut .prdstate{color: #ef1f3c;}
+
+/*20210820-1 수정:: S */
+.productList .img_tag{position: absolute;left: 12px;top: 12px;width: 40px;z-index: 5;}
+/* .productList .img_tag img{display: inline-block;width: auto;} 삭제 */
+.productList .icon_nbg_s{right: 13px;top: 12px;width: 36px;height: 31px;z-index: 5;}
+/*20210820-1 수정 :: E*/
+.productList .icon_nbg_s +.icon_nbg_s{right: 12px;top: 63px;}
+.productList .img_made{position: absolute;bottom: 22px;left: 50%;margin-left: -35px;}/*20210408 수정*/
+
+
+/* 상품 리스트 슬라이드 */
+.prdColor-swiper{opacity: 0;position: absolute;width: 100%;}/* 20210513 수정 */
+.swiper-wrapper.disabled {transform: translate3d(0px, 0, 0)  !important;}
+.prdSwiper{position: relative;font-size: 0}
+.prdSwiper > a{display: inline-block;width: 5%}
+.prdSwiper .swiper-container{display: inline-block;vertical-align: middle;}
+.prdSwiper .swiper-container{width: 90%;margin: 0 auto;}
+.prdSwiper .swiper-wrapper{height:  auto !important;}
+.prdSwiper .swiper-slide {	-webkit-transform: scale(0.9);	-moz-transform: scale(0.9);	-ms-transform: scale(0.9);	-o-transform: scale(0.9);	transform: scale(0.9);	height: auto !important;}
+.prdSwiper .btn{text-indent: -99999px;vertical-align: middle;}
+.prdSwiper .prev{background: url(https://image.nbkorea.com/NBRB_PC/product/ico_slidePrev.png) no-repeat center;width: 5%;height:17px;background-size: 10px 17px;}
+.prdSwiper .next{background: url(https://image.nbkorea.com/NBRB_PC/product/ico_slideNext.png) no-repeat center;width: 5%;height:17px;background-size: 10px 17px;}
+
+/* 상품 퀵뷰 */
+.pro_area{position: relative;}
+.pro_area .pro_thumbNail{position: relative;}
+.pro_area .pro_thumbNail >a{position: relative;display: block;}
+/* 20210820-1 수정 :: S */
+.pro_area .quick_view {display:none;position:absolute;width:154px;height:40px;background:#141414;opacity:0.7;z-index: 4;bottom: 10px;left: 50%;margin-left: -77px;border-radius: 30px;}
+.viewB.filterOff .pro_area .quick_view {bottom: 36px;}
+.productList li.on .quick_view {display:block;}
+.productList li.on .quick_view a {display:block;color:#fff;font-size:16px;font-weight:400;text-align:center;line-height:40px;letter-spacing: -0.05px;}
+.likeArea{position: absolute;top: 10px;right: 10px;display: none;z-index: 5}
+/* 20210820-1 수정 :: E */
+.icon_like:before{content: '';width: 23px;height: 21px;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_heart.png) no-repeat center;background-size: cover;display: block;}
+.icon_like.on:before{background: url(https://image.nbkorea.com/NBRB_PC/product/ico_heartOn.png) no-repeat center;}
+
+/*.pro_soldOut .pro_thumbNail::before{content: "";display: block;width: 100%;height: 100%;background:rgba(255,255,255,0.5);position: absolute;left: 0;top: 0;z-index: 1;} 20210720 삭제 */
+
+/* 상품 hover*/
+.productList li.on .likeArea{display: block;}
+.productList li.on .prdSize{display: block;}
+.productList li.on .prdColor-txt{display: none;}
+.productList li.on .prdColor-swiper{opacity: 1;}
+.productList li.on .pro_thumbNail > a:before{content: '';width: 100%;height: 100%;position: absolute;top: 0%;left: 0;background: rgba(255,255,255,0.3);z-index: 4;}/*20210820-1 삭제*/
+/* .productList li.on .img_tag{display: none;}
+.productList li.on .icon_nbg_s{display: none;} 20210820-1 삭제 */
+.productList li.on .img_made{display: none;}
+
+
+/*IOS RADIO */
+
+.ip_chk-ios {vertical-align: top; margin: 0 3px 0 0; width: 17px; height: 17px;}
+.ip_chk-ios:not(checked) {	position: absolute;	opacity: 0;}
+/*20210804 수정 :: S */
+.ip_chk-ios:not(checked)+label.ios-switch {position: relative;display: block;height: 20px;padding-right: 48px;font-size: 15px;font-weight: 500;}
+.ip_chk-ios:not(checked)+label.ios-switch:before {content: '';position: absolute;right: 0;width: 40px;height: 14px;border-radius: 13px;border-color: #CDD1DA;box-shadow: 0px 2px 3px 0px rgba(0,0,0,.3) inset;transition: border 0.4s, box-shadow 0.4s;background-color: #d5d5d5;top:2px;}
+.ip_chk-ios:not(checked)+label.ios-switch:after {content: '';position: absolute;top: -1px;left: 34px;width: 18px;height: 18px;border-radius: 10px;background: #FFF;box-shadow: 0 2px 2px 0px rgba(0, 0, 0, .33);transition: all .2s;border: 1px solid #b7b7b7;}
+.ip_chk-ios:checked+label.ios-switch:before {box-shadow: #141414 0px 0px 0px 16px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s; background-color: #141414; border-color: #141414;}
+.ip_chk-ios:checked+label.ios-switch:after {left: 58px;}
+/* 20210804 수정 :: E */
+
+/* 20210317 퀵뷰 추가 :: S */
+.pr_link_area{margin-top: 40px; overflow: hidden}
+.pr_link_area .btn_link{display: block; border-bottom: 1px solid #999999; float: right;}
+.quickView_score .num{font-weight: 700;}
+/* 20210317 퀵뷰 추가 :: E */
+
+/* FILTER - ON */
+/*  --------------------FILTER - OFF ------------------------*/
+.filterOff .productList > li{width: 32.3%}
+.filterOff .pro_banner{display: none}
+
+/* view small*/
+.filterOff.viewS .productList > li{width: 15.66%;margin-bottom: 1%} /*20210518 수정*/
+.filterOff.viewS .productList > li:nth-child(4n){margin-right: 1%;}
+/* .filterOff.viewS .productList > li:nth-child(6n){margin-right: 0;} 20210518 삭제*/
+.filterOff.viewS .pro_info{display: none;}
+.filterOff.viewS .quick_view{display:none !important}
+.filterOff.viewS .productList li.on .viewS_info{display: table;}
+
+.filterOff.viewS .img_tag{display: none;}
+.filterOff.viewS .icon_nbg_s {display: none;}
+.filterOff.viewS .img_made{display: none;}
+
+.viewS_info{display: none;position: absolute;top: 0;left: 0;width: 100%;height: 100%;table-layout: fixed;text-align: center;z-index: 99;font-size: 14px;}
+.filterOff.viewS .viewS_infoWrap{display: table-cell;vertical-align: middle;width: 100%;height: 100%;}
+.viewS_info .prdName_price{position: static}
+.viewS_info .prdDetail{color: #000;margin-bottom: 10px;}
+.viewS_info .prdName_name{width: 100%;padding-right: 0;height: auto;}
+
+
+/* view big */
+.filterOff.viewB .productList > li:nth-child(4n){margin-right: 1%}
+
+@media all and (max-width:1200px){
+	.launchingNow_date{font-size: 30px;}
+	.launchingNow_title{font-size: 40px;}
+	.launchingNow_link{font-size: 18px;}
+}
+
+/* .wrap .header.on{position: static} 20210415 삭제 */
+
+/* 필터값없을때 */
+.listRight .no_data .txt01{padding: 148px 0 0;background: url('https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png') no-repeat 50% 64px;}/* 20210420 수정 */
+
+/*20210309 리스트페이지 개편 :: E*/
+
+/* 20210315 검색엔진 프론트화면작업 :: S */
+.select_box-srch select{border-right: none;background: #fff url(https://image.nbkorea.com/NBRB_PC/common/bg_slecet_box_triangle.png) no-repeat 80% 50%;}
+.header .gnb .customer .category_box .srch_area .ip_text.ip_text-srch{width: 542px;}
+.header .gnb .customer .category_box .srch_area .srch_list_area{width: 640px;}
+.srch_area .keyward_area{position: absolute;top: 44px;background: #fff;width: 640px;height:352px;border: 1px solid #dbdbdb;line-height: 14px;box-sizing: border-box;display: none;}
+.srch_area .keyward_area .srch_list{padding: 12px 0;font-size: 14px;}
+.srch_area .keyward_area .srch_list li{position: relative;overflow: hidden;}
+.srch_area .keyward_area .srch_list li:hover{background: #f4f5f8;}
+.srch_area .keyward_area .srch_list li a{padding: 6px 20px;display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/* 연관검색어 */
+.auto_word_box{display: table;margin-bottom: 40px;}
+.autoWord_title{display: table-cell;width:94px;font-weight: 500;font-size: 16px;}
+.auto_word{display: table-cell;font-size: 0;}
+.wordTxt{display:inline-block;font-size: 16px;margin-right:20px;}
+.wordTxt a{color: #777777;}
+/* 20210315 검색엔진 프론트화면작업 :: E */
+
+/* 20210324 메인개편 추가 수정 :: S */
+.main_titleArea .main_subTitle,.main_titleArea .main_subTab{display: inline-block;}
+.main_titleArea .main_subTitle{margin-right: 55px;}
+.main_titleArea .main_subTab{overflow: hidden;}
+.main_titleArea .main_subTab li{float: left;margin: 0 23px;line-height: 1.2;}/* 20220110 수정 */
+.main_titleArea .main_subTab li a{font-size: 20px;font-weight: 700;color: #aeaeae;}
+.main_titleArea .main_subTab li.on a{color: #141414;}
+/* 20210324 메인개편 추가 수정 :: E */
+
+/* 20210324_1 여자레깅스카테고리 추가 :: S */
+.leggings{margin-bottom: 35px;}/* 20220329 수정 */
+.leggings_title{font-size: 50px;font-weight: 900;margin: 60px 0 45px;}
+.leggings_title span{font-size:60px;font-family: 'DidotLTPro',sans-serif;font-weight: 700;}
+/* .leggings_box{position: relative;display: inline-block;} 20220329 삭제 */
+.leggings_box>img{vertical-align: middle;width: 100%;}
+/* 20220329 수정 :: S */
+.leggings_category{width: 85%;font-size: 0;display: flex;}
+.leggings_category li{display: inline-block;width: calc(20% - 12px);margin-right: 15px;box-sizing: border-box;vertical-align: top;background: #f5f5f5;position: relative;padding-bottom: 80px;}
+.leggings_category li:last-child{margin-right: 0;}
+.leggings_txt1{font-size: 18px;font-weight: 900;letter-spacing: -0.04em;}
+.leggings_txt2{font-size: 16px;letter-spacing: -0.05em;margin: 5px 0 10px;}
+.leggings_link{display: inline-block;font-size:15px;letter-spacing: -0.05em;position: absolute;right: 24px;bottom: 34px;color: #a0a0a0;border-bottom: 1px solid #a0a0a0;}
+.leggings_category li a:hover .leggings_link{color: #141414;border-color: #141414;}
+/* 20220329 수정 :: E*/
+/* 20210324_1 여자레깅스카테고리 추가 :: E */
+
+/* 20210325 커스터마이징반팔 :: S */
+.custom_box_img .custom_option_tbl td .option_name{margin-bottom:20px;margin-top: 0;font-size: 14px;}
+.custom_box_img .option_img{width: 80px;height: 80px;border: 1px solid #ddd;box-sizing: border-box;padding: 5px;margin: 0 auto;position: relative;cursor: pointer;}
+.custom_box_img .option_color{width: 28px;height: 28px;font-size: 0;border-radius: 28px;cursor: pointer;display: inline-block; position: relative;border: 1px solid rgba(0,0,0,0); box-sizing: border-box;margin-top: 28px;}
+.custom_box_img .color_dots{position: absolute;width: 100%;height: 100%;top: 0;left: 0;outline: none;border: 0;font-size: 0;background: none;cursor: pointer; padding: 0; border: 1px solid rgba(255,255,255,0); box-sizing: border-box; border-radius: 100%;display: block;}
+.custom_box_img .option_img span{background-repeat: no-repeat;background-position: center center;background-size: contain;display: inline-block;width: 100%;height: 100%;}
+/* 20210325 커스터마이징반팔 :: E */
+
+/* 20210331 휴대폰인증번호 :: S */
+.con_num .auth_timer{position:relative;float:left;margin-right:5px;}
+.con_num .auth_timer input.ip_text.md{padding-right:50px;}
+.con_num .auth_timer .num{position:absolute;top:15px;right:15px;color:#f7002c;font-size:12px;}
+.con_num .auth_5num{margin:20px 0 0;color:#777;font-size:12px;line-height:1.4;}
+/* 20210331 휴대폰인증번호 :: E */
+
+/* 20210401 리스트페이지 리뉴얼 추가 :: S */
+.dark .ip_chk-color:checked+label:after{background-image: url(https://image.nbkorea.com/NBRB_PC/common/img_filter_color_check2.png);}
+.ip_chk-color+label span{display: block;}
+.ip_chk-color+label img{width: 22px;}/*20210916 리스트페이지 컬러칩 이미지사이즈 고정*/
+.listLeft [class*="btn_ty_"].listBtn{padding:12px 30px;font-size: 12px;border-radius: 5px;}
+.listBanner{position: relative;}
+.listBanner img{width: 100%;vertical-align: middle;}
+.listBanner .btn_area{position: absolute;bottom: 13%;right: 29.9%;}
+.productList .sale_info img{width: auto !important;}
+.accordionList-border > li{width: 23%;margin-right: 2.6%;margin-bottom: 2.6%;}
+.accordionList-border > li:nth-child(4n){margin-right: 0;}
+.accordionList-border .ip_chk-boxBg + label{vertical-align: middle;word-break: break-word;line-height: 1;min-height: 35px;display: table;padding: 0;font-size: 15px;}/* 20210820-1 수정 */
+.accordionList-border .ip_chk-boxBg + label span{display: table-cell;vertical-align: middle;}
+.accordionList-border .ip_chk-boxBg:checked + label{display: table;padding: 0;}/*20210512 추가*/
+/* .twoline .ip_chk-boxBg + label{padding: 3px;} */
+/* 20210401 리스트페이지 리뉴얼 추가 :: E */
+
+/* 20210408 리스트페이지 수정 추가 :: S */
+.listLeft.bottom{top: auto;bottom: 0;min-height: calc(100vh - 64px);position: absolute;padding-bottom: 0;} /* 20210928 수정 */
+
+.productList li .sale_info{position: absolute;bottom: 20px;}
+.productList li.on .sale_info{display: none;}
+.productList li.on .pro_soldOut .sale_info{display: block;}
+/* 20210408 리스트페이지 수정 추가 :: E */
+
+/* 20210412 메인개편 간격 수정 :: S */
+.mainContainer{margin-bottom: 180px;}
+.mainContainer.mainNbnow{margin-bottom: 90px;}
+.main_visual.main_visual-textbox{margin-bottom: 80px;}
+.subPick .main_choiceTit{margin-top: 0;}
+/* 20210412 메인개편 간격 수정 :: E */
+
+[class*="btn_ty_"].wideBtn{width: 100%;}/* 20210412-1 추가 */
+
+/* 20210413 gnb 메뉴 추가 :: S */
+.header .gnb .menu > ul > li > .colorGreen{color: #4baa65;}
+.header .gnb .menu > ul > li > .colorGreen:hover{color: #4baa65 !important;}
+/* 20210413 gnb 메뉴 추가 :: E */
+
+/* 20210413-1 서브메인 간격 수정 :: S */
+.subContainer>div{margin-bottom: 180px;}
+.subContainer>div:last-child{margin-bottom: 0;}
+/* 20210413-1 서브메인 간격 수정 :: E */
+
+/* 20210414 리스트페이지 검색결과추가 :: S */
+.listTop .srch_result{margin: 0;}
+.listTop .srch_result p{font-weight: 400;}
+.listTop .srch_result em{color: #141414;}
+.listTop.on .srch_result{display: none;}
+.listNav.center{position: absolute;left: 22%;margin-left: 0;}
+/* 20210414 리스트페이지 검색결과추가 :: E */
+
+.listContent.filterOff{min-height: 400px !important;} /*20210416 수정*/
+
+/* 20210420 리스트페이지 검색결과 없을때 추가 :: S */
+.search-none .srch_result{text-align: center;}
+.search-none .listTop{display: none;}
+.search-none .no_data{padding: 0 0 86px 0;}
+.search-none .srch_result p{font-weight: 400;}
+.search-none .srch_result em{color: #141414;}
+.prSlide {margin-bottom: 140px;}
+.prSlide .main_choiceTit{text-align: center;font-weight: 700;margin: 120px 0 65px;}
+.prSlide .scroll_slide .swiper-slide > li{width: calc(16.66% - 15px);}
+.prSlide .scroll_slide .swiper-slide > li+li{margin-left: 20px;}
+/* 20210420 리스트페이지 검색결과 없을때 추가 :: E */
+/* 20210427 비회원 구매 추가 :: :: S */
+.sec_price .discount.discount-non div.ef_space,.basket_wrap .discount-non .btn_area{padding-bottom: 0;}
+.nonMembers{color: #777;text-align: center;line-height: 1.2;}
+.pop_inner .contents-nonMembers p.sub_info2{padding-bottom: 47px;padding-top: 17px;}
+.layer_pop > .pop_inner > .contents.contents-nonMembers > .pop_cWrap{height: 158px;margin-bottom: 20px;}
+.contents-nonMembers input.ip_chekbox + label{color: #777;}
+.pop_inner .contents-nonMembers .form_area{padding: 32px 0 20px;border-bottom: 0;}
+.pop_inner .contents-nonMembers .form_area .row{padding-top:30px}
+.pop_inner .contents-nonMembers .form_area .row .fdata{padding-left: 170px;}
+.pop_inner .contents-nonMembers .form_area .row .ftit{width: 170px;}
+.pop_inner .contents-nonMembers .form_area .row .fdata .ip_text{width: 170px;margin-right: 4px;}
+.pop_inner .contents-nonMembers .form_area .row .fdata .ip_text.md{width: 270px}
+.pop_inner .contents-nonMembers .form_area .row .fdata .select_box{width: 166px;}
+.contents-nonMembers .auth_timer{position: relative;display: inline-block;}
+.contents-nonMembers .auth_timer .num{position:absolute;top:15px;right:15px;color:#f7002c;font-size:12px;}
+.contents-nonMembers .auth_5num{margin:20px 0 0;color:#777;font-size:12px;line-height:1.4;}
+.contents-nonMembers .form_area .row .fdata [class*="btn_ty_"]{min-width: 120px;padding: 16px 15px 15px;margin-right: 0;}
+.contents-nonMembers .form_area .row .fdata [class*="btn_ty_"].sm{padding: 14px 15px 13px;}
+.contents-nonMembers .form_area .row .fdata [class*="btn_ty_"].sm{padding: 14px 15px 13px;}
+[class*="btn_ty_"].btn_nonMembers{min-width: 170px;padding: 16px 20px;}
+.athCmp{color: #f7002c;display: inline-block;margin-left: 20px;vertical-align: middle;}
+.contents-nonMembers .pop_cWrap h3{color:#141414;font-size:14px;padding-top:40px;}
+.contents-nonMembers .pop_cWrap h3:first-child{padding-top:0;}
+.contents-nonMembers .pop_cWrap h4{color:#141414;font-size:14px;margin:35px 0 8px;}
+.contents-nonMembers .pop_cWrap h4:first-child{margin-top:0;}
+.contents-nonMembers .pop_cWrap p{color:#777;font-size:14px;line-height:1.4;}
+.contents-nonMembers .pop_cWrap ul{color:#777;font-size:14px;line-height:1.4;}
+.contents-nonMembers .pop_cWrap li{padding-left: 10px;text-indent: -10px;}
+/* 20210427 비회원 구매 추가 :: :: E */
+/* 20210413 gnb 메뉴 추가 :: E */
+
+/* 20210421 추천상품 로그인 추가 :: S */
+.main_titbox{position: relative;}
+.leftTit{position: absolute;right: 0;bottom: 0;font-size: 18px;letter-spacing: -0.02em;}
+.leftTit a{font-size: 16px;color: #898989;border-bottom: 1px solid #898989;margin-left: 12px;vertical-align: top;}
+.btn_wrap-return{text-align: center;margin-top: 40px;}
+.mainBtn-return{border: 1px solid #898989;padding: 15px 48px;}
+.mainBtn-return::before{content: "";display: inline-block;background: url('https://image.nbkorea.com/NBRB_PC/common/ico_return.png') no-repeat;width: 19px;height: 17px;vertical-align: top;margin-right: 10px;}
+/* 20210421 추천상품 로그인 추가 :: E */
+
+/* 20210423 slideSwiper 수정 추가 :: S */
+.swiper-wrapper.noScroll{transform: none !important;}
+.swiper-wrapper.noScroll .swiper-slide {width: 100% !important;text-align: left;}/*20220224 수정*/
+/* 20210423 slideSwiper 수정 추가 :: E */
+
+.main_visual-textbox .bx-controls-direction .bx-prev, .main_visual-textbox .bx-controls-direction .bx-next{margin-top: -212px;} /* 20210428 추가 */
+
+.main_visual.main_visual-textbox .bx-controls-auto{display: none;} /*20210429 추가*/
+
+/* 20210503 비회원 구매 추가 :: S */
+.productList .memberOnly .icon_nbg_s-mb{width: 40px;height: 40px;right: 13px;top: 12px;}/*20210813 수정*/
+.productList .memberOnly.on .icon_nbg_s-mb{display: none;}
+.pro_area .ico_mb{width: 42px;height: 64px;display: inline-block;position: absolute;right: 12px;top: 12px;display: none;z-index: 5;}/*20210820-1 수정*/
+.productList .memberOnly.on .ico_mb {display:block;}
+.productList .memberOnly.on .likeArea{display: none;}
+.pr_option{position: relative;}
+.mb_only{position: absolute;left: 0;top: -33px;color: #737b82;line-height: 18px;letter-spacing: -0.04em;}
+.mb_only p::before{content: '';display: inline-block;width: 14px;height: 18px;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_pd.png) no-repeat;margin-right: 7px;vertical-align: top;}
+/* 20210503 비회원 구매 추가 :: E */
+
+/* 20210503-1 메인개편 추가 :: S */
+.mainCollection .scroll_slide .swiper-slide > li{width: 49%;} 
+.mainCollection .main_imgTitle{white-space: normal;}
+/* 20210503-1 메인개편 추가 :: E */
+
+.main .container{max-width: 1920px;margin: 0 auto;} /*20210504 추가*/
+
+/* 20210511 필터결과값없을때 추가 :: S */
+.sub_list .no_filter{padding: 0 0 250px 0;text-align: center;}
+.listRight .no_filter .txt01{padding: 202px 0 0;background: url('https://image.nbkorea.com/NBRB_PC/common/icon_exclamation2.png') no-repeat 50% 97px; color: #777;font-size: 14px;line-height: 20px;letter-spacing: -0.04em;}
+/* 20210511 필터결과값없을때 추가 :: E */
+
+/* 20210513 추가 :: S */
+.accordionList input.ip_radio + label{background-image: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio-black.png);font-weight: 400;cursor: pointer;}
+.accordionList input.ip_radio:checked + label{background-image: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio_on-black.png);}
+/* 20210513 추가 :: E */
+
+/* 20210429-2 친구추천 영역 추가 :: S */
+.form_area .row .fdata .ip_info2{margin-top: 19px;color:#777;font-size: 12px;line-height: 1.5;}
+.pop_inner .form_area .row .fdata .ip_info2{margin-top: 10px;line-height: 1.3;}
+.form_area .row .fdata .ip_info2 li::before{content: "";display: inline-block;width: 2px;height: 2px;background:#777;vertical-align: top;margin-right: 6px;margin-top: 8px;}
+[class*="btn_ty_"].w140{min-width: 140px !important;}
+/* 20210429-2 친구추천 영역 추가 :: E */
+
+
+/* 20210521 필터 하단 position 추가 :: S */
+/*20210901 z-index 1--> 11 수정 */
+.sub_list .footer{position: relative;z-index: 11;}
+/* 20210521 필터 하단 position 추가 :: E */
+
+
+/* 20210521-1 레깅스카테고리 추가 :: S*/
+/*20220329 수정 :: S */
+.listContent .leggings_title{font-size: 15px;margin: 0;text-align: left;font-weight: 700;}
+.listContent .leggings_title span{font-size: 16px;font-family: 'ProximaNova';}
+.listContent .leggings_box{margin-top: 20px;}
+.listContent .leggings_category{width: 100%;}
+.listContent .leggings_txt1{font-size: 22px;font-weight: 700;letter-spacing: -0.05em;}
+.listContent .leggings_txt2,.listContent .leggings_txt3{font-size: 15px;margin: 10px 0 0;padding-left: 34px;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_desc_01.png) no-repeat 0 0;background-size: 21px;letter-spacing: -0.05em;}
+/*20220329 수정 :: E */
+/* 20220329 추가 :: S */
+.leggings_category.col3 li{width: calc(33.33% - 9px);margin-right: 14px;padding-bottom: 70px;}
+.leggings_category.col3 li:last-child{margin-right: 0;}
+.leggings_category .img_area{position: relative;}
+.leggings_category li .img_area::before{content: "";display: block;width: 100%;height: 100%;position: absolute;left: 0;top: 0;background: rgba(255,255,255,.2);}
+.leggings_category li:hover .img_area::before{display: none;}
+.leggings_category .img_area img{width: 100%;vertical-align: middle;}
+.leggings_category .desc{padding: 18px 16px 0;}
+.listContent .leggings_txt3{background-image: url(https://image.nbkorea.com/NBRB_PC/product/ico_desc_02.png);}
+/* 20220329 추가 :: E */
+/* 20210521-1 레깅스카테고리 추가 :: E*/
+/* 20210520 리뉴얼전 회원전용아이콘 추가 :: S */
+.sub_list .list_area .goods_list02 li .icon_nbg_s-mb{width: 40px;height: 40px;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png) no-repeat 100%;top: 20px;}/*20210521-2 수정*/
+.sub_list .list_area .goods_list02 li:hover .icon_nbg_s-mb{background: url(https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png);width: 47px;height: 59px;right: 17px;}
+/* 20210520 리뉴얼전 회원전용아이콘 추가 :: E */
+
+/* 20210521-2 리뉴얼전 회원전용아이콘 추가 :: S */
+.sub_list .list_area .goods_list04 li .icon_nbg_b-mb{width: 40px;height: 40px;background: url(https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png) no-repeat 100%;top: 20px;}
+.sub_list .list_area .goods_list04 li:hover .icon_nbg_b-mb{background: url(https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_hover.png);width: 47px;height: 59px;right: 17px;}
+/* 20210521-2 리뉴얼전 회원전용아이콘 추가 :: E */
+
+/* 20210531 비회원구매 추가 :: S */
+.pop_inner .contents-nonMembers .form_area .row input::-webkit-outer-spin-button,
+.pop_inner .contents-nonMembers .form_area .row input::-webkit-inner-spin-button {  -webkit-appearance: none; -ms-appearance:none; margin: 0;}
+/* Firefox */
+.pop_inner .contents-nonMembers .form_area .row  input[type=number] {-moz-appearance: textfield;}
+/* 20210531 비회원구매 추가 :: E */
+
+.login_benefit{margin-top: 30px;}/* 20210602 추가 */
+
+
+/* 20210611 추가 :: S */
+.lineBanner{width: calc(100% - 110px);height: 80px;background: url(https://image.nbkorea.com/NBRB_PC/dummy/topBanner.jpg) no-repeat center center;margin:0 55px;}/*20220124 수정*/
+.lineBanner a{display: block;width: 100%;height: 100%;}
+/* 20210611 추가 :: E */
+
+
+.txt02-red{margin-top: 10px;color: #e21836;font-weight: 300;font-family:'Noto Sans KR',sans-serif; }/* 20210611-2 추가 */
+
+.header .gnb .category_box .depth li.textGreen a{color:#00763c;}/*20210615 추가*/
+.header .gnb .category_box .depth img{max-width: 100%;display: block;} /* 20210729-1 gnb메뉴 이미지 크기 수정 */
+
+/* 20210621 추가 :: S */
+.footer .foot_inner .copyright p .btn_line{color: #fff;border-bottom: 1px solid #fff;}
+.content_type-bgCon .text{padding-top: 190px;background:url(https://image.nbkorea.com/NBRB_PC/common/bg_content.png) no-repeat center 50px/89px;padding-bottom: 28px;font-family:'Noto Sans KR',sans-serif;}
+.content_type-bgCon .comp_txt2{line-height: 24px;}
+/* 20210621 추가 :: E */
+
+/* 20210708 장바구니팝업 추천서비스 :: S */
+.rcmPd{margin-bottom: 0;}
+.rcmPd .rcmTit{font-weight: 400;margin: 45px 0 20px;font-size: 20px;letter-spacing: -0.02em;text-align: center;}
+.rcmPd .swiper-container{margin:0 auto;position:relative;overflow:hidden;direction:ltr;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;z-index:1;}
+.rcmPd .swiper-wrapper {position:relative;width:100%;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate3d(0,0,0);-o-transition-timing-function:ease;-o-transform:translate(0,0);-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transform:translate3d(0,0,0);-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0,0,0);transition-timing-function:ease;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+.rcmPd .swiper-free-mode>.swiper-wrapper {-webkit-transition-timing-function: ease-out;-moz-transition-timing-function: ease-out;-ms-transition-timing-function: ease-out;-o-transition-timing-function: ease-out;transition-timing-function: ease-out;margin: 0 auto;}
+.rcmPd .swiper-slide{float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding: 0 5px;}
+.rcmPd .swiper-wp8-horizontal{-ms-touch-action:pan-y}
+.rcmPd .swiper-wp8-vertical{-ms-touch-action:pan-x}
+.rcmPd .swiper-slide img{width: 100%;vertical-align: middle;}
+.rcmPd .swiper-scrollbar{width: 100%;height: 2px;position: absolute;left: 0%;bottom: 0;z-index: 333333;opacity: 1 !important;-ms-touch-action: none;background: rgba(0,0,0,0.1);border-radius: 10px;}
+.rcmPd .pop_scrollSlide .swiper-scrollbar-drag {height: 100%;width: 100%;position: relative;background: rgba(0,0,0,1);border-radius: 10px;}
+.rcmPd .pop_scrollSlide .swiper-scrollbar-cursor-drag {cursor: move;}
+.rcmPd .main_prdInfo{margin: 20px 0 30px;}
+.rcmPd .main_prdName{margin-bottom: 4px;display:-webkit-box;line-height:16px;text-overflow:ellipsis;-webkit-line-clamp: 1;-webkit-box-orient:vertical;overflow:hidden;}
+/* 20211115-1 추가 :: S */
+.rcmPd .main_prdPrice{line-height: 1.2;}
+.rcmPd .main_prdPrice del{color: #777;font-size: 13px;}
+/* 20211115-1 추가 :: E */
+/* 20210708 장바구니팝업 추천서비스 :: E */
+
+.productList .soldOut{font-size: 28px;}/* 20210720 품절표시추가 */
+
+/* 20210721 엠디초이스 ui 리뉴얼 :: S */
+/* .collection .md_choice-st02{width: 1440px;} */
+.collection .md_choice.md_choice-st02{width:1440px}
+.md_choice-st02 img{width: 100%;vertical-align: middle;}
+.md_choice-st02 .productList{padding-bottom: 50px;}
+.prdColor-swiper .swiper-container{margin:0 auto;position:relative;overflow:hidden;direction:ltr;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;z-index:1}
+.prdColor-swiper .swiper-wrapper{position:relative;width:100%;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate3d(0,0,0);-o-transition-timing-function:ease;-o-transform:translate(0,0);-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transform:translate3d(0,0,0);-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0,0,0);transition-timing-function:ease;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+.prdColor-swiper .swiper-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto}
+.prdColor-swiper .swiper-slide{float:left;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+.prdColor-swiper .swiper-wp8-horizontal{-ms-touch-action:pan-y}
+.prdColor-swiper .swiper-wp8-vertical{-ms-touch-action:pan-x}
+/* 20210721 엠디초이스 ui 리뉴얼 :: E */
+
+/* 20210804 리스트페이지 품절필터 추가 :: S */
+.soldout_chk input.ip_chekbox {display:none;}
+.soldout_chk input.ip_chekbox + label {display:inline-block;height:18px;padding:0 22px 0 0;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_chk.png') no-repeat right 0;line-height:18px;vertical-align:top;cursor:pointer;font-size: 15px;font-weight: 500;}
+.soldout_chk input.ip_chekbox.blackBg:checked + label{background:url('https://image.nbkorea.com/NBRB_PC/common/bg_chk2_on.png') no-repeat right 0;}
+/* 20210804 리스트페이지 품절필터 추가 :: E */
+
+.filterOff.viewS .icon_nbg_s-mb{display: block;}/* 20210805 리스트작게보기일때 자물쇠아이콘 보이게 변경 */
+
+/* 20210729 색상품절표시 수정 :: S */
+.color .items input[type="radio"].disabled + label {background:#eee;border:2px solid #eee;}
+.color .items input[type="radio"].disabled + label img {padding:0;opacity:0.2;}
+.color .items input[type="radio"].disabled + label:hover {border:1px solid #000;}
+.color .items input[type="radio"].disabled:checked + label {border:2px solid #000;}
+/* 20210729 색상품절표시 수정 :: E */
+
+/* 20210813 가이드아이콘 위치수정,컬러필터 추가,검색결과배너 추가 :: S */
+.productList .memberOnly .icon_nbg_s{right: 60px;top: 12px;}
+.productList .memberOnly .icon_nbg_s-mb{right: 13px;top: 12px;}
+/* .accordionList.accordionList-color{display: block !important;max-height: 70px;overflow: hidden; padding-bottom: 0; margin-bottom: 30px;transition: max-height .8s linear;} 20210830 수정 */
+/* .accordionList.accordionList-color{display: block !important;max-height: 70px;overflow: hidden; padding-bottom: 0; margin-bottom: 30px;} */ /*20210902 삭제*/
+
+/* .result_banner{margin-bottom: 45px;} 20210817 검색배너 삭제 */
+/* 20210813 가이드아이콘 위치수정컬러필터 추가,검색결과배너 추가 :: E */
+
+.listContent .sub_banner_wrap a img{width: 100%;} /*20210817 검색배너 추가*/
+
+/* 20210819 래플 고도화 :: S */
+.tbl_basket td.info_cell-raffle{text-align: left;}
+.tbl_basket td.info_cell-raffle span{display: block;}
+.tbl_basket td .period .noto{font-family:'Noto Sans KR', sans-serif;}
+/* 20210819 래플 고도화 :: E */
+
+/* 20210820 자사몰 아이콘 크기 추가 :: S */
+.goods_list02 .img_tag{width: 40px;}
+.goods_list02 .img_tag img{width: 100%;}
+/* 20210820 자사몰 아이콘 크기 추가 :: E */
+
+.accordionList > li{font-size: 15px;}/* 20210820-1 리스트페이지 추가수정 */
+
+/* 20210820-2 자사몰 아이콘 크기 추가 :: S */
+.pr_info .marketing img{vertical-align: bottom;}
+.pr_info .marketing .sizeFix{width: 40px;margin-right: 0;}
+.pr_info .marketing .sizeFix img{width: 100%;}
+/* 20210820-2 자사몰 아이콘 크기 추가 :: E */
+/*20210901 추가*/
+.listRight .no_filter{min-height: 500px;}
+
+/* 20210907 색상필터 :: S */
+.accordion-color .accordionList-list{overflow: hidden;max-height: 65px;padding-bottom: 0;margin-bottom: 30px;}
+.accordion-color .accordionList.on{max-height: none;}
+.moreList .accordionList-list{margin-bottom: 0;}
+.aco_moreBtn{display:inline-block;margin: 40px 0 46px;font-size: 15px;letter-spacing: -0.02em;line-height: 1;display: none;}
+/* 20210907 색상필터 :: E */
+
+/* 20210909 더보기 아이콘 추가 :: S */
+.aco_moreBtn span::before{content: "";display: inline-block;width: 12px;height: 7px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_more.png) no-repeat;background-size: 12px 7px;vertical-align: top;margin: 4px 6px 0 0;}
+.aco_moreBtn.on span::before{transform:rotate(180deg)}
+.aco_moreBtn .more_open{display: block;}
+.aco_moreBtn.on .more_open{display: none;}
+.aco_moreBtn .more_close{display: none;}
+.aco_moreBtn.on .more_close{display: block;}
+/* 20210909 더보기 아이콘 추가 :: E */
+
+/* 20210928 추가 :: S */
+.listLeft .inner{height: calc(100vh - 220px);overflow-y: auto;-ms-overflow-style: none;box-sizing: border-box;padding-bottom: 110px;}
+.listLeft .inner::-webkit-scrollbar{opacity: 0;width: 0;}
+.listLeft.on .inner{height: calc(100vh - 64px);}
+.listLeft.bottom .inner{height: calc(100vh - 64px);}
+/* 20210928 추가 :: E */
+
+.wrap.noFix .header{position: relative;}
+.wrap.noFix .container{padding-top: 0 !important;}
+
+.proDetail_info .noti{color: #777;font-size: 12px;line-height: 1;margin-top: 3px;text-align: left;}/* 20211006-1 추가 */
+
+/* 20211029 리스트페이지 여성전용필터추가 :: S */
+.woman_chekbox{margin-bottom: 40px;}
+input.ip_chekbox + label strong{font-weight: 700;}
+/* 20211029 리스트페이지 여성전용필터추가 :: E */
+
+/* 20220110 아웃도어 메인 추가 :: S */
+.od_header{padding: 30px 0 32px;}
+.od_con img{width: 100%;display: block;}/* 20220315 추가 */
+.od_header h2{color:#121212;font-size:44px;font-weight:700;text-align:center;line-height:1;font-family:'DidotLTPro',sans-serif;}
+.od_header h2::before{content: '';display: block;width: 92px;height: 86px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_outdoor.png) no-repeat;margin: 0 auto 20px;}
+.od_container{padding: 0 55px;}
+.od_container .main_visual{margin-bottom: 0 !important;}
+.od_container .visual_txtbox{margin-bottom: 170px;}
+.od_best{margin-bottom: 170px;}
+.outdoor{margin-bottom: 160px;}
+.outdoor .scroll_slide .swiper-slide > li{width: calc(33% - 40px);}
+.outdoor .scroll_slide .swiper-slide > li + li{margin-left: 65px;}
+.scrollItem_info{white-space: normal;text-align: left;word-break: break-all;margin-bottom: 26px;}
+.scrollItem_title{font-size: 24px;font-weight: 900;margin: 28px 0 16px;line-height: 1.2;}
+.scrollItem_sub{font-size: 17px;line-height: 1.2;}
+.scrollItem_info .btn_wrap{margin-top: 30px;}
+.outdoor_slide .swiper-wrapper {display: block !important;}/*20220330 추가  */
+.outdoor_slide .swiper-slide {width: auto !important;height: auto !important;}/*20220330 추가  */
+/* 20220110 아웃도어 메인 추가 :: E */
+
+/* 20220127 카카오 상담톡 추가 :: S */
+.btn_floatKakao{display: block;width: 60px;height: 60px;background: url(https://image.nbkorea.com/NBRB_PC/common/ico_kakao_talk.png) no-repeat;position: fixed;right: 75px;bottom: 60px;z-index: 12;} /* 20220204 수정 */
+/* 20220127 카카오 상담톡 추가 :: E */
+
+/* 2022.02.28 여성의 날 캠페인 IMC 추가  :: S*/ 
+.imc_area>div{position: relative;}
+.imc_area>div img{width: 100%;vertical-align: middle;}
+.imcBtn{display: block;width: 14.3%;height: 4.5%;position: absolute;left: 42.8%;bottom: 11.6%;}/*20220307 수정*/
+/* 2022.02.28 여성의 날 캠페인 IMC 추가  :: E*/
+
+/* 20220316 장바구니 사은품 변경 기능 추가 :: S */
+.tbl_basket .pr .btn_line+.btn_line{margin-left: 26px;}
+.option_change-bonus{padding: 67px 0 70px;}
+.option_change-bonus .pr_visual{margin: 0;}
+.option_change-bonus .pr_select{padding-left: 135px;}
+.option_change-bonus .pr_select .p_name{font-size: 18px;}
+.option_change-bonus .pr_select .tit{color: #141414;margin: 20px 0 10px;}
+.option_change-bonus .bonus .select_box{display: inline-block;width: 210px;}
+.btn_area.wid170 [class*="btn_ty_"]{min-width: 170px;}
+/* 20220316 장바구니 사은품 변경 기능 추가 :: E */
+
+
+/* 20220318 스케이트 카테고리 추가 :: S */
+.sp_category img, .sp_category video{width: 100%;vertical-align: middle;}/*20221007 수정*/
+/* .sp_cateList{margin-bottom: 190px;} 20220817 삭제*/
+.sp_cateList .tit_area{margin-bottom: 34px;}
+.sp_cateList .tit_area .tit{font-size: 32px;font-weight: 700;letter-spacing: -0.02em;text-align: center;}
+.sp_slide{padding: 0 3%;}
+.sp_slide .swiper-slide>li{width: 19%;}
+.sp_slide .swiper-slide>li+li{margin-left: 20px;}
+.sp_slide .swiper-scrollbar{width: 94%;margin: 0 3%;}
+.sp_slideItem .itemInfo{padding: 10px 0 90px;}
+.sp_slideItem .itemInfo .infoTxt_sm{font-size: 16px;}
+.sp_slideItem .itemInfo .infoTxt{font-size: 22px;font-weight: 700;}
+.sp_video .videoWrap{margin: 0 12.5%;}
+/* 20221007 추가 :: S */
+.sp_video .youtubeWrap{margin: 0 8.6%;margin-bottom: 125px;}
+.youtubeCon{position: relative;padding-bottom: 56.25%;}
+.youtubeCon iframe{width: 100%;height: 100%;position: absolute;left: 0;top: 0;}
+/* 20221007 추가 :: E */
+.sp_footer{text-align: center;padding: 175px 0 125px;} /*20220817 수정*/
+.sp_footer img{width: auto;}
+/* 20220318 스케이트 카테고리 추가 :: E */
+
+/* 20220322 개인정보수집동의 추가 :: S */
+.form_area .pay_agree{padding-left: 21px;margin-top: 40px;}
+.form_area .pay_agree input.ip_chekbox + label{color: #777777;}
+.form_area .pay_agree .btn_line{color: #777;margin-left: 48px;}
+.add_info .form_area .row .pay_agree{margin-top: 30px;}
+.add_info .form_area .row .pay_agree:first-child{margin-top: 0;}
+.pop_payAgree{padding-top: 38px;}
+.pop_payAgree .tit{margin-bottom: 28px;letter-spacing: -0.04em;}
+.pop_payAgree .tbl_payAgree{margin-bottom: 8px;}
+.pop_payAgree .tbl_payAgree th,.pop_payAgree .tbl_payAgree td{padding: 14px 5px;text-align: center;border: 1px solid #dbdbdb;letter-spacing: -0.04em;line-height: 1.2;}
+.pop_payAgree .tbl_payAgree th{background: #f4f4f4;}
+.pop_payAgree .tbl_payAgree td .color_gray{color: #777;}
+.pop_payAgree .payAgree_disc{font-size: 12px;color: #aeaeae;letter-spacing: -0.04em;}
+.content_type .pop_payAgree .btn_area_type1{margin-top: 30px;}
+/* 20220322 개인정보수집동의 추가 :: E */
+
+/* 20220411 카테고리상단콘텐츠 추가 :: S */
+.pd_topCon{margin-bottom: 100px;}
+.pd_topCon .pd_topTit{font-size: 15px;font-weight: 700;letter-spacing: -0.025em;margin-bottom: 20px;}
+.pd_contentBox{position: relative;}
+.pd_contentBox .img_area{background: #ececec;}
+.pd_contentBox .swiper-wrapper{margin:0 -7px;}
+.pd_contentBox .slide_item {padding: 0 7px;box-sizing: border-box;}
+.pd_contentBox .slide_item .img_area img{opacity: 0.3;}
+.pd_contentBox .slide_item:hover .img_area img{opacity: 1;}
+.pd_contentBox .item_desc{min-height: 175px;padding: 18px 16px 0;box-sizing: border-box;position: relative;background: #f5f5f5;}
+.pd_contentBox .item_desc .item_name{font-size: 22px;font-weight: 700;letter-spacing: -0.025em;}
+.pd_contentBox .item_desc .item_txt{font-size: 15px;margin-top: 10px;letter-spacing: -0.05em;}
+.pd_contentBox .item_desc .item_link{display: inline-block;font-size: 15px;letter-spacing: -0.05em;position: absolute;right: 20px;bottom: 30px;color: #a0a0a0;border-bottom: 1px solid #a0a0a0;}
+.pd_contentBox .slide_item:hover .item_desc .item_link{color: #141414;border-color: #141414;}
+.pd_contentBox .progress{width: 100%;height: 3px;background: #eaeaea;position: relative;margin-top: 35px;}
+.pd_contentBox .progress .progress_bar{display: inline-block;height: 100%;background: #141414;position: absolute;left: 0;top: 0;transition: all 0.5s;}
+.pd_contentBox .scroll_btn{width: 48px;height: 48px;position: absolute;top: 40%;opacity: 0;transition: opacity 0.2s;}
+.pd_contentBox:hover .scroll_btn{opacity: 1;}
+.pd_contentBox .prev{background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_left5.png) no-repeat;left: 0;}
+.pd_contentBox .next{background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_next5.png) no-repeat;right: 0;}
+@media all and (max-width:1300px){
+	.pd_contentBox .item_desc{min-height: 200px;}
+}
+/* 20220411 카테고리상단콘텐츠 추가 :: E */
+
+/* 20220427 버튼스와이퍼 추가 :: S */
+.btn_slide.slidePer3 .img_box{margin: 0 -30px;}
+.btn_slide.slidePer3 .swiper-slide{box-sizing: border-box;padding: 0 30px;}
+.btn_slide .btn_area .prev,.btn_slide .btn_area .next{width: 48px;height: 48px;top: 38.8%;margin-top: -24px;}
+.btn_slide .btn_area .prev{background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_left5.png) no-repeat;}
+.btn_slide .btn_area .next{background: url(https://image.nbkorea.com/NBRB_PC/common/btn_slide_next5.png) no-repeat;}
+/* 20220427 버튼스와이퍼 추가 :: E */
+
+/* 20211115 크리마 리뷰  별점 상품 리스트,검색페이지    */
+.crema-product-reviews-score {height: 23px; line-height: 13px;} /*  별을 원하는 크기로 변경하시면 됩니다. */
+/* 20211126 수정 :: S */
+.crema_product_reviews_score_star_wrapper {width: 28px;height: 28px;margin-top:-5px;}/*  별을 원하는 크기로 변경하시면 됩니다. */
+.crema_product_reviews_score_star_wrapper svg {fill: #000000 !important;}/*  기본 설정된 색상과 다르게 설정하고 싶을 때 사용하시면 됩니다. */
+/* 20211126 수정 :: E */
+/* 20220502 추가 :: S */
+.productList .crema-product-reviews-score {height: 18px; line-height: 18px;}
+.productList .crema_product_reviews_score_star_wrapper {width: 17px;height: 16px;}
+.productList .crema_product_reviews_score_star_wrapper svg {fill: #000000 !important;}
+.review_popup_form__close_popup_today{font-size:12px;}
+/* 20220502 추가 :: E */
+
+/* 20220523 MEMBERS ONLY SERVICE 추가 :: S */
+/* 회원 전용 쿠폰 혜택 */
+.tbl_y.memberOnly_notice .basic td {text-align: left; vertical-align: top; padding: 56px 0 56px 47px; height: auto;}
+.tbl_y.memberOnly_notice .basic td:nth-child(2) {padding-left: 35px;}
+.tbl_y.memberOnly_notice .basic td:last-child {padding-left: 0;}
+.tbl_y.memberOnly_notice .basic td strong {font-size: 16px; font-weight: bold; color: #141414; letter-spacing: -0.025em;}
+.tbl_y.memberOnly_notice .basic td p, .tbl_y.memberOnly_notice .basic td a {font-size: 14px; margin-top: 12px; letter-spacing: -0.025em;}
+.tbl_y.memberOnly_notice .basic td a {display: inline-block; padding-bottom: 7px; color: #555; border-bottom: 1px solid #8b8b8b;}
+.tbl_y.memberOnly_notice .basic td div {margin-top: 33px; letter-spacing: -0.025em;}
+.tbl_y.memberOnly_notice .basic td div:first-child {margin-top: 0;}
+.tbl_y.memberOnly_notice .basic td div span {font-weight: bold;}
+.tbl_y.memberOnly_notice .basic td div li {margin-top: 5px;}
+
+/* 회원 전용 서비스 제공 */
+.tbl_y.memberOnly_notice .qna_list {margin-top: 0;}
+.tbl_y.memberOnly_notice .qna_list .row_q {padding: 38px 0 38px 20px;}
+.tbl_y.memberOnly_notice .qna_list .row_q a {line-height: normal; letter-spacing: -0.025em;}
+.tbl_y.memberOnly_notice .qna_list .row_q a span {font-size: 16px; font-weight: bold; color: #141414;}
+.tbl_y.memberOnly_notice .qna_list .row_q:hover a span {border-bottom: 1px solid #141414;}
+.tbl_y.memberOnly_notice .qna_list .row_q::before, .tbl_y.memberOnly_notice .qna_list .row_a .board_a::before {display: none;}
+.tbl_y.memberOnly_notice .qna_list .row_q::after {right: 34px;}
+.tbl_y.memberOnly_notice .qna_list .row_a {border-bottom: 1px solid #dbdbdb; padding: 5px 0;}
+.tbl_y.memberOnly_notice .qna_list .row_a .board_a {margin: 0 40px; letter-spacing: -0.025em; padding: 25px 0;}
+/* 20220523 MEMBERS ONLY SERVICE 추가 :: E */
+
+/* 20220707 장바구니품절기능추가 :: S */
+.tbl_basket td .img{position: relative;}
+.tbl_basket td .img .soldOut{font-size: 20px;}
+.tbl_basket td .img .soldOut em{display: table-cell;font-weight: 700;vertical-align: middle;}
+.pd_soldout .btn_line{color: #aeaeae;border-color: #aeaeae;}
+.pd_soldout .pr .btn_line{color: #000;border-color: #777;}
+.tbl_basket .pd_soldout td .pr .p_name, 
+.tbl_basket .pd_soldout td .pr .p_opt{color: #aeaeae;}
+.tbl_basket .pd_soldout td.price{color: #aeaeae;}
+.select_wrap{position: relative;}
+.select_wrap .pr_noti{font-size: 12px;color: #e21836;text-align: left;line-height: 1.1;position: absolute;top: -36px;left: 36px;}
+/* 20220707 장바구니품절기능추가 :: E */
+
+/* 20221004 모자카테고리 추가 :: S */
+.roundedCont::after{content:''; display: block; clear: both;}
+.roundedCont_item{width: calc((100% - 57px) / 4); float: left; overflow: hidden; border-radius: 40px; margin-left: 19px;}
+.roundedCont_item:first-child{margin-left: 0;}
+.roundedCont_item a{display: block;}
+.roundedCont_img{background: #f5f5f5;}
+.roundedCont_img img{opacity: .5;}
+.roundedCont_info{padding: 20px 30px 25px; background: #ececec;}
+.roundedCont_info::after{content:''; display: block; clear: both;}
+.roundedCont_tit{display: block; font-size: 22px; font-weight: 700; color: #141414;}
+.roundedCont_more{display: block; float: right; font-size: 15px; letter-spacing: -0.05em; color: #141414; padding-bottom: 5px; border-bottom: 1px solid #9a9a9a; opacity: .5; margin-top: 10px;}
+.roundedCont_item:hover .roundedCont_more, .roundedCont_item:hover .roundedCont_img img{opacity: 1;}
+/* 20221004 모자카테고리 추가 :: E */
+
+.btn_floatbf{display: block;width: 60px;height: 60px;background: url(https://image.nbkorea.com/NBRB_PC/dummy/float_banner_bf.png) no-repeat;position: fixed;right: 75px;bottom: 130px;z-index: 12;}/* 20221021 추가 */
+/* === MY (MY) ==================================================================== */
+.my_wrap {padding-top:80px;overflow:hidden;}
+.my_wrap:after {content:'';display:block;clear:both;}
+.my_wrap h2 {margin-top:-7px;font-size:38px;font-weight:700;line-height:1;}
+.my_wrap .lnb {float:left;width:300px;}
+.my_wrap .lnb * {line-height:1;}
+.my_wrap .lnb h2 + .category {margin-top:20px;}
+.my_wrap .lnb .category {margin-top:40px;}
+.my_wrap .lnb .category .tit {display:block;padding-bottom:2px;font-size:18px;font-weight:700;}
+.my_wrap .lnb .category ul li {margin-top:14px;}
+.my_wrap .lnb .category ul li a {display:inline-block;color:#555;}
+.my_wrap .lnb .category ul li a:hover {color:#cf0a2c;}
+.my_wrap .lnb .category ul li.on a {color:#cf0a2c;}
+.my_wrap .my_cont {float:right;width:900px;}
+.my_wrap .my_cont .title_area {position:relative;margin-bottom:50px;}
+.my_wrap .my_cont .title_area .page_tit {font-size:28px;}
+.my_wrap .my_cont .title_area .page_txt_info {padding-top:15px;color:#777;line-height:24px;letter-spacing:-0.04em;}
+.my_wrap .my_cont .title_area .page_txt_info .point {color:#141414;font-weight:700;}
+.my_wrap .my_cont .order_info_area li {display:inline-block;position:relative;padding:0 20px 20px 10px;color:#777;line-height:1;}
+.my_wrap .my_cont .order_info_area li:before {content:'';display:block;position:absolute;left:0px;top:6px;width:2px;height:2px;background:#777;}
+.my_wrap .my_cont .btn_area {margin-top:30px;}
+.my_wrap .my_cont .desc_bottom_list + .btn_area {margin-top:60px;}
+
+.my_cont .tt_step {top:13px;overflow:hidden;}
+.my_cont .tt_step span {float:left;display:block;padding-bottom:0;margin-right:29px;font-size:16px;letter-spacing:-0.04em;}
+.my_cont .tt_step span:after {right:-17px;width:6px;height:6px;background-size:6px auto;}
+.my_cont .tt_step span.current {border-bottom:0;color:#141414;}
+.my_cont .tt_step span.current:after {background-position:0 0;}
+.my_cont .tt_step span:last-child {margin-right:0;}
+.my_cont .tt_step span:last-child:after {display:none;}
+
+.my_prinfo .tbl_y {border-bottom:1px solid #dbdbdb;}
+.my_prinfo .tbl_y thead th {border-bottom:0;}
+.my_prinfo .tbl_y tbody td {border-top:1px solid #dbdbdb;border-bottom:0;}
+.my_prinfo .tbl_y tbody .cancel td {border-top:0;}
+
+
+
+
+.cscenter2 {margin-top:100px;border:1px solid #dbdbdb;}
+.cscenter2 ul {display:table;width:100%;}
+.cscenter2 ul.col2 li {width:50%;}
+.cscenter2 ul.col3 li {width:33.3%;}
+.cscenter2 ul li {position:relative;display:table-cell;height:156px;vertical-align:middle;}
+.cscenter2 ul li + li:before {content:'';display:block;position:absolute;left:0;top:48px;width:1px;height:60px;background:#efefef;}
+.cscenter2 ul li a {display:block;padding:0 0 0 108px;}
+.cscenter2 ul li a strong {display:block;position:relative;margin-top:-1px;font-size:16px;line-height:18px;}
+.cscenter2 ul li a strong em {font-size:18px;}
+.cscenter2 ul li a strong:before {content:'';display:block;position:absolute;left:-43px;top:0;width:45px;height:45px;margin-left:-25px;}
+.cscenter2 ul li a span {display:block;margin-top:7px;color:#777;font-size:12px;line-height:18px;letter-spacing:-0.04em;}
+.cscenter2 ul li a:hover strong {color:#cf0a2c;}
+.cscenter2 ul li.cs1 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 0;}
+.cscenter2 ul li.cs2 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -130px;}
+.cscenter2 ul li.cs3 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -260px;}
+.cscenter2 ul li.cs4 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 100%;}
+
+
+
+
+
+
+
+/* 고객센터 */
+.store_cs .type1 {border-top:2px solid #444;padding-top:60px;overflow:hidden;}
+.store_cs .type1 dt {float:left;width:450px;}
+.store_cs .type1 dt strong {margin:-2px 0 16px;letter-spacing:-0.04em;}
+.store_cs .type1 dt span {display:block;color:#777;letter-spacing:-0.075em;line-height:1;}
+.store_cs .type1 dd {float:right;width:450px;}
+.store_cs .type1 dd ul li strong {font-size:16px;font-weight:700;}
+.store_cs .type1 dd ul li + li {margin-top:29px;}
+.store_cs .type1 dd .time {margin-top:57px;border-top:1px solid #dbdbdb;}
+.store_cs dt strong {display:block;font-size:42px;font-weight:300;line-height:44px;}
+.store_cs dd ul li {color:#121212;line-height:1;}
+.store_cs dd ul li p {margin-bottom:9px;color:#121212;letter-spacing:-0.06em;}
+.store_cs dd .time {padding-top:20px;}
+.store_cs dd .time strong {display:block;margin:9px 0 10px;line-height:1;}
+.store_cs dd .time p {color:#777;line-height:1;}
+.store_cs + .cscenter2 {margin-top:78px;}
