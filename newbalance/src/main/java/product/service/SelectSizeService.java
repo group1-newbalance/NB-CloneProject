@@ -9,7 +9,7 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import product.dao.ProductDAO;
-import product.domain.ProductDTO;
+import product.domain.ProductAjaxDTO;
 import product.domain.ProductSizeDTO;
 
 public class SelectSizeService {
