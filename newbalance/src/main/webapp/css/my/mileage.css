@@ -1,0 +1,696 @@
+@charset "UTF-8";
+
+/* 마일리지 통합하기 팝업 */
+.midimm_pop {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 99 !important;
+}
+
+.milayer_pop {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    z-index: 100;
+    word-break: break-all;
+}
+
+.w700 .mipop_inner {
+    width: 700px;
+    padding: 50px 40px;
+}
+
+.milayer_pop .mipop_inner {
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.mititle_pop700 {
+    padding: 0 0 18px;
+    border-bottom: 2px solid #121212;
+    color: #121212;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.07em;
+}
+
+.mileage_integration.mipop_inner .miform_area {
+    padding: 28px 0 0;
+    border-bottom: 0;
+}
+
+.mipop_inner .miform_area {
+    border-top: 0;
+    padding: 10px 0 30px;
+}
+
+.mipop_inner .miform_area .mirow {
+    padding-top: 20px;
+}
+
+.miform_area .mirow {
+    padding-top: 30px;
+}
+
+.miform_area .mirow:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.mileage_integration.mipop_inner .miform_area .mirow .miftit {
+    width: 145px;
+}
+.mipop_inner .miform_area .mirow .miftit {
+    width: 114px;
+    padding-left: 0;
+}
+.miform_area .mirow .miftit {
+    float: left;
+    width: 150px;
+    padding-top: 13px;
+    padding-left: 30px;
+    line-height: 1.3;
+}
+
+.mipop_inner .miform_area .mirow .mifdata {
+    padding-left: 114px;
+}
+
+.mipop_inner .miform_area .mirow .mifdata .miip_text {
+    margin-right: 4px;
+}
+
+.mileage_integration.mipop_inner .mirow .mifdata .miip_text {
+    width: 366px;
+}
+
+.miform_area .mirow .mifdata .miip_text {
+    vertical-align: middle;
+}
+
+.mileage_integration.mipop_inner .miform_area .mirow .mifdata .mibtn_form {
+    margin-right: 0;
+}
+.miform_area .mirow .mifdata .mibtn_form {
+    margin-left: 0;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.mibtn_form, .mibtn_form:hover {
+    min-width: 100px;
+    padding: 16px 22px 15px;
+    background: #737B82;
+    color: #fff;
+}
+.mibtn_form {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+input.miip_text {
+    display: inline-block;
+    height: 45px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    color: #141414;
+    line-height: 1;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.miform_area .mirow:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.mipop_inner ul.misub_info {
+    padding: 27px 0;
+}
+
+.mipop_inner ul.misub_info li {
+    color: #777;
+    line-height: 20px;
+}
+
+.mileage_integration .miscroll {
+    margin: 48px 0 0;
+    max-height: 295px;
+}
+.mipop_inner .miscroll {
+    overflow-y: auto;
+}
+
+.mipop_inner .mitbl {
+    border-top: 2px solid #121212;
+}
+
+.mipop_inner .mitbl thead th {
+    position: relative;
+    height: 40px;
+    border-bottom: 1px solid #444;
+}
+
+.mipop_inner .mitbl tbody tr {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mipop_inner .mitbl tbody td {
+    /* min-height: 50px; */
+    padding: 15px 10px 14px;
+    color: #777;
+    letter-spacing: -0.025em;
+    line-height: 20px;
+    text-align: center;
+}
+
+input.miip_radio {
+    display: none;
+}
+
+.mipop_inner .mitbl input.miip_radio + label {
+    padding-left: 18px;
+    vertical-align: top;
+}
+input.miip_radio:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio_on.png) no-repeat 0 0;
+}
+input.miip_radio + label {
+    display: inline-block;
+    height: 18px;
+    padding-left: 28px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio.png) no-repeat 0 0;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+span.miblind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.miblind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.mileage_integration .mibtn_area {
+    margin-top: 40px;
+}
+
+.mipop_inner .mibtn_area {
+    text-align: center;
+}
+.mibtn_area {
+    text-align: right;
+}
+.mibtn_area {
+    display: block;
+    text-align: center;
+}
+
+/* 팝업 마일리지 통합하기 버튼 */
+.mibtn_bface.sm {
+    min-width: 120px;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+}
+.mibtn_bface:first-child {
+    margin-left: 0;
+}
+.mibtn_bface, .mibtn_bface:hover {
+    border: 2px solid #141414;
+    background: #141414;
+    color: #fff;
+}
+.mibtn_bface {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+/* 팝업 마일리지 통합하기 버튼 :: E */
+
+/* 팝업 닫기 버튼 */
+.w700 .miclose {
+    right: 40px;
+    top: 50px;
+}
+
+.mipop_inner .miclose {
+    position: absolute;
+    z-index: 60;
+}
+.miclose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.mipop_inner .miclose img {
+    display: block;
+}
+/* 팝업 닫기 버튼 :: E */
+
+/* 마일리지 카드 없는 경우 */
+.mipop_inner table td.mino_data {
+    height: 246px !important;
+    padding: 0;
+}
+.mipop_inner .mitbl tbody td {
+    /* min-height: 50px; */
+    padding: 15px 10px 14px;
+    color: #777;
+    letter-spacing: -0.025em;
+    line-height: 20px;
+    text-align: center;
+}
+table .mino_data {
+    height: 285px !important;
+    padding: 0;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+.mipop_inner table td.mino_data .mitxt01 {
+    margin-top: 60px;
+    padding-top: 97px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation1.png) no-repeat 50% 0;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+.mino_data .mitxt01 {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+/* 마일리지 카드 없는 경우 :: E */
+
+/* 마일리지 통합하기 팝업 :: E */
+
+.my_wrap .my_cont .mititle_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .my_cont .mititle_area .mipage_tit {
+    font-size: 28px;
+}
+.mipage_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.milevel_box.type3 {
+    margin-top: 0px;
+    background: #f4f4f4 url(https://image.nbkorea.com/NBRB_PC/my/img_mileage.png) no-repeat 61px 60px;
+}
+.milevel_box {
+    height: 200px;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+.milevel_box .mipoint {
+    float: right;
+    position: relative;
+    width: 450px;
+    text-align: right;
+}
+
+.milevel_box.type3 .mipoint .mitotal {
+    padding-top: 60px;
+    margin-right: 71px;
+}
+.milevel_box .mipoint .mitotal {
+    margin-right: 60px;
+    padding-top: 68px;
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.milevel_box.type3 .mipoint em {
+    display: block;
+    margin-top: 17px;
+    margin-right: 71px;
+    color: #777;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.midot_noti {
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+.midot_noti li {
+    position: relative;
+    padding-left: 10px;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+
+.midot_noti li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 2px;
+    height: 2px;
+    background: #707070;
+}
+
+.misec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+
+.mibasic_box {
+    border-top: 2px solid #444;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mibasic_box .mileage {
+    position: relative;
+    padding: 35px 20px 39px;
+}
+
+.mibasic_box .mileage p {
+    margin-bottom: 13px;
+    color: #555;
+    letter-spacing: -0.04em;
+    line-height: 24px;
+}
+
+.mi_bold {
+    font-weight: 700 !important;
+}
+
+.mibtn_detail_view {
+    display: inline-block;
+    padding-right: 12px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_ctitle.png) no-repeat right 3px;
+    background-size: 6px auto;
+    color: #000;
+    letter-spacing: -0.06em;
+    line-height: 1;
+}
+
+.mibtn_detail_view span {
+    display: inline-block;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+.mibasic_box .mileage .mibtn_rface {
+    position: absolute;
+    right: 20px;
+    top: 54px;
+}
+.mibtn_rface.md {
+    min-width: 120px;
+    padding: 16px 20px;
+    font-size: 14px;
+}
+.mibtn_rface, .mibtn_rface:hover {
+    border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+}
+
+.mibtn_rface, .mibtn_rface:hover {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.sort_area {
+    margin: 43px 0 30px;
+}
+
+.sort_area .period {
+    overflow: hidden;
+}
+.sort_area fieldset > div {
+    float: left;
+}
+
+.sort_area .period input[type="radio"] {
+    display: none;
+}
+
+.sort_area .period input[type="radio"]:checked + label {
+    background-color: #141414;
+    border-color: #141414;
+    color: #fff;
+    font-weight: 400;
+    z-index: 1;
+}
+.sort_area .period input[type="radio"]:first-child + label {
+    margin-left: 0;
+}
+.sort_area .period input[type="radio"] + label {
+    display: block;
+    float: left;
+    position: relative;
+    width: 88px;
+    height: 33px;
+    margin-left: -1px;
+    border: 1px solid #dbdbdb;
+    color: #777;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+.sort_area .period input[type="radio"] {
+    display: none;
+}
+
+.sort_area .date {
+    display: inline-block;
+}
+
+.sort_area .date .datepicker {
+    display: inline-block;
+    position: relative;
+}
+
+.sort_area .date .datepicker .ip_text {
+    width: 175px;
+    height: 35px;
+    background: #fff;
+    padding: 9px 35px 8px 16px;
+    color: #777;
+}
+
+input.ip_text[type="text"][readonly] {
+    background: #f4f4f4;
+    color: #aeaeae;
+}
+
+input.ip_text {
+    display: inline-block;
+    height: 45px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    color: #141414;
+    line-height: 1;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.sort_area .date .datepicker .btn_date {
+    display: block;
+    position: absolute;
+    right: 13px;
+    top: 6px;
+    width: 23px;
+    height: 23px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/btn_calendar.png) no-repeat 0 0;
+}
+
+span.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.blind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.sort_area .date .unit {
+    display: inline-block;
+    padding: 0 7px;
+    color: #777;
+    line-height: 35px;
+    vertical-align: top;
+}
+
+.sort_area .btn_ty_gface.xs {
+    min-width: 60px;
+}
+
+.btn_ty_gface, .btn_ty_gface:hover.xs {
+    padding: 11px 15px 10px;
+    border-width: 1px !important;
+    font-size: 12px;
+}
+
+.sort_area .period label {
+	box-sizing: content-box;
+}
+.btn_ty_gface, .btn_ty_gface:hover {
+    border: 2px solid #444;
+    background: #444;
+    color: #fff;
+}
+
+.btn_ty_gface {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+
+.mitbl_y {
+    border-top: 2px solid #444;
+}
+
+.mitbl_mynb tbody td {
+    height: 120px;
+    letter-spacing: -0.04em;
+}
+.mitbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+table .mino_data {
+    height: 285px !important;
+    padding: 0;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+.mino_data .mitxt01 {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.mitbl_mynb tbody th.ef_txt {
+    color: #141414;
+    font-size: 14px;
+}
+
+.mitbl_mynb tbody th {
+    height: 120px;
+    border-bottom: 1px solid #dbdbdb;
+    color: #444;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.mitbl_mynb tbody td.info {
+    padding-left: 54px;
+    line-height: 20px;
+}
+
+.mitbl_mynb tbody td.pt {
+    text-align: center;
+}
+
+.mitbl_mynb tbody td.pt strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.mitbl_mynb tbody td.date {
+    color: #777;
+    text-align: center;
+    letter-spacing: 0;
+}

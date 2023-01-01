@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+.my_wrap .my_cont .sctitle_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+my_wrap .my_cont .sctitle_area .scpage_tit {
+    font-size: 28px;
+}
+.scpage_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.sclevel_box.type4 {
+    margin-top: 0px;
+}
+
+.sclevel_box {
+    height: 200px;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+.sclevel_box.type4 .scode {
+    float: left;
+    width: 257px;
+    padding: 67px 0 67px 193px;
+    background: url(https://image.nbkorea.com/NBRB_PC/my/img_code.png) no-repeat 70px center;
+    background-size: 105px 105px;
+    box-sizing: unset;
+}
+
+.sclevel_box.type4 .scode p {
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    color: #121212;
+    line-height: 1;
+}
+
+.sclevel_box.type4 .scode em {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.sclevel_box.type4 .scode a {
+    margin-left: 14px;
+    min-width: 60px;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.btn_ty_bface, .btn_ty_bface:hover {
+    
+    background: #141414;
+    color: #fff;
+}
+
+.btn_ty_bface {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.sclevel_box .scpoint {
+    float: right;
+    position: relative;
+    width: 450px;
+    text-align: right;
+}
+
+.sclevel_box.type4 .scpoint .total {
+    padding-top: 60px;
+    margin-right: 71px;
+}
+
+.sclevel_box .scpoint .total {
+    margin-right: 60px;
+    padding-top: 68px;
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.sclevel_box.type4 .scpoint em {
+    display: block;
+    margin-top: 17px;
+    margin-right: 71px;
+    color: #777;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.scdot_noti {
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+.scdot_noti li {
+    position: relative;
+    padding-left: 10px;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+
+.scdot_noti li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 2px;
+    height: 2px;
+    background: #707070;
+}
+
+.sctbl_y {
+    border-top: 2px solid #444;
+}
+
+.tbl_mynb tbody th {
+    height: 120px;
+    border-bottom: 1px solid #dbdbdb;
+    color: #444;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.friend .tbl_mynb tbody td.scinfo {
+    padding-left: 32px;
+}
+
+.tbl_mynb tbody td.scinfo {
+    padding-left: 54px;
+    line-height: 20px;
+}
+
+.tbl_mynb tbody td {
+    height: 120px;
+    letter-spacing: -0.04em;
+}
+
+.sctbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.tbl_mynb tbody td.pt {
+    text-align: center;
+}
+.tbl_mynb tbody td {
+    height: 120px;
+    letter-spacing: -0.04em;
+}
+.sctbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.tbl_mynb tbody td.pt strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tbl_mynb tbody td.date {
+    color: #777;
+    text-align: center;
+    letter-spacing: 0;
+}
+
+table .scno_data {
+    height: 285px !important;
+    padding: 0;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+.scno_data .sctxt01 {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.my_wrap .my_cont .friend .sctbl_y + .btn_area {
+    margin-top: 53px;
+}
+.my_wrap .my_cont .friend .sctbl_y + .btn_area {
+    margin-top: 53px;
+}
+.my_wrap .my_cont .sctbl_y + .btn_area {
+    margin-top: 60px;
+}
+.my_wrap .my_cont .btn_area {
+    margin-top: 30px;
+}
+.btn_area.center {
+    text-align: center;
+}
+
+.btn_ty_more:first-child {
+    margin-left: 0;
+}
+
+.btn_ty_more, .btn_ty_more:hover {
+    padding: 5px 20px 5px 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png) no-repeat 100% 52%;
+    color: #333;
+    font-size: 16px;
+    letter-spacing: -0.045em;
+}
+
+.friend .scsec_tit {
+    margin-bottom: 42px;
+    padding-top: 58px;
+    letter-spacing: -0.06em;
+    color: #121212;
+}
+
+.scsec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+
