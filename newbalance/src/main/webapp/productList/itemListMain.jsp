@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss1.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss2.css">
 <link rel="stylesheet" href="/newbalance/css/productList/itemListMainCss3.css">
+<link rel="stylesheet" href="/newbalance/css/productList/productmodal.css">
 </head>
 <style>
 </style>
@@ -84,8 +85,8 @@
         <div class="inner">
                 <!-- filter에서 남자(신발부분,의류,용품,언더 목록들)-->
                 <div class="allList">
-                    <ul class="allList_list">
-                     				<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=${param.cateGrpCode }&cIdx=" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">전체보기</a></li>                    		
+                    <ul class="allList_list">                    
+                     				<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=${param.cateGrpCode }&cIdx=F" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">전체보기</a></li>                    		
                      		<c:forEach items="${categoryList}" var="categoryList">
                     				<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=${param.cateGrpCode }&cIdx=${categoryList.category_code}" data-gtag-idx="fo_common_gbn_1" data-gtag-label="${categoryList.minor_sort }" data-category-name="">${categoryList.minor_sort }</a></li>
                     		</c:forEach>
@@ -154,10 +155,8 @@ ${ fn:substring(param.cIdx, 0,1) }
                 </div>
                 <script>
                		if('${param.cIdx}'.length == 1){
-               			//$(":checkbox[name='subCateIdx']").each(function(index){
-               			//	index.prop("checked",true);
-               			//})
-               			$(":checkbox[name='subCateIdx']").prop("checked", true);
+               			$(":checkbox[name='subCateIdx']").prop("checked", true);               			
+               			//체크된 subCateIdxes input 태그에 넣기
 
                		}else{
 				     	$(":checkbox[name='subCateIdx'][value='${ param.cIdx}']").prop("checked", true);
@@ -210,9 +209,10 @@ ${ fn:substring(param.cIdx, 0,1) }
 	                                          <p>SOLD OUT</p>
 	                                       </div>
 	                                   </c:if>
+	                                   
                                                                
                      	</a>
-                     <p class="quick_view"><a href="javascript:;" id="btnQuickView">Quick View</a></p>
+  <!-- quick_view -->       <p class="quick_view"><a href="javascript:;" class="btnQuickView" name=${map.key.pd_code}>Quick View</a></p>
                                                                      
                       	<c:if test="${map.key.pd_memberonly == 1}">              
                                     <!-- 회원전용상품 아이콘 productList안에 memberonly가 1이면 없앰-->
@@ -276,61 +276,232 @@ ${ fn:substring(param.cIdx, 0,1) }
         </div><!--listRight  -->       
     </div><!-- listContent -->
 
+
+
 	<!-- 모달창 -->
-	<div class="Mouter_pop" style="position:fixed"></div>
-	<div class="Mlayer_pop">
-			<div class="Mpop_inner">
-					<div class="Mquick_view">
-						    <p class="style_code">스타일코드 <strong id="quickStyleCode">NBPDCF034F</strong></p>
-	   				</div>
-	   				<a href="javascript:;" class="Mclose" id="btnLayerPopupClose"><i class="fa-solid fa-x"></i></a>
-			</div>
-	</div> 
+	<div class="dimm_pop" id="layerProductQuickViewPopupDimmed" style="/* position: fixed; *//* display: block; */"></div>
+	<div class="item_detail"><!-- pop_inner background : fff -->
+	  <div class="item_detailTop"><!-- 내용 -->
 </div><!--container  -->
-<script>
-    $(".quick_view").click(function() {
-        $(".Mouter_pop").css("display", "block");
-        $(".Mlayer_pop").css("display", "block");
-    });
-
-    $(".Mlayer_pop .Mclose").click(function() {
-        $(".Mouter_pop").css("display", "none");
-        $(".Mlayer_pop").css("display", "none");
-    });
-
-
-    
-</script>
-
 
 
 
 <script>
-$("#btnQuickView").click(function() {
-    $(".layer_pop").css("display", "block");
-});
 
-$("#btnLayerPopupClose").click(function() {
-    $(".layer_pop").css("display", "none");
-});
+var modalAjaxForm = $("<form name=modalAjaxForm></form>")
+modalAjaxForm.appendTo('body');
+
+$("#btnLayerPopupClose").on("click",function(){
+	$(".dimm_pop").css("display","none");
+	$(".item_detail").css("display","none");
+	
+	$("form[name='modalAjaxForm'] input[name='pdCode']").remove();
+	
+})	
+$(".btnQuickView").on("click",function(){
+	$(".dimm_pop").css("display","block");
+	$(".item_detail").css("display","block");
+	
+	//${map.key.pd_code}
+	//var btnpdCodeValue = $(this).prop("name");
+	//console.log(btnpdCodeValue)
+	modalAjaxForm.append( $("<input/>",{type:'hidden', name:'pdCode', value: $(this).prop("name") })  );
+	
+	var modalParam = $("form[name='modalAjaxForm']").serialize();
+	console.log(modalParam);
+	$.ajax({
+		url:"/newbalance/product/quickView.ajx",
+		dataType:"json",
+		type:"POST",
+		data:modalParam,
+		cache:false,
+		success:function(data,testStatus,jqXHR){
+			if(data){
+
+				console.log(data);
+				$(".item_detail").empty();		
+				
+var pdDto = data[0];	//pdDto list			
+var imgList = data[1];	//imgList list			
+var sizeList = data[2];	//sizeList list			
+var relatedPdList = data[3];	//relatedPdList list			
+var diffColorList = data[4];	//diffColorList list	
+
+var content= "";
+content+="<div class='item_detailTop'>";
+content+="<a href='javascript:;' class='close' id='btnLayerPopupClose' onclick='closeClick(this)'><img src='https://image.nbkorea.com/NBRB_PC/common/btn_pop_close.png' alt='팝업 닫기'></a>";
+content+="<p class='"+pdDto.pdCode+"'>스타일코드<strong id='quickStyleCode'>"+pdDto.pdCode+"</strong></p>";
+content+="<div class='pr_visual'>"
+content+="<div class='item_img'>";
+
+var count = 0
+for (var i = 0; i < sizeList.length; i++) {
+	if (sizeList[i].stockCount != 0 ) {
+		count += 1;
+	}//if
+}//for
+if(count == 0 ){
+	content +="<div class='soldout'><p>SOLD OUT</p></div>";
+}
+content+="<img class='main_img' alt='상품 메인이미지' src='"+pdDto.imgUrl+"'>";
+content+="</div>"
+content+="<div class='img_list'>";
+for (var i = 0; i < imgList.length; i++) {
+	if( i == 0){
+		content+="<span class='active' id='first_image'><img src='"+imgList[0].imgUrl+"' alt='1번' /></span>";
+	}else{
+		content+="<span><img src='"+imgList[i].imgUrl+"' alt='"+i+"번' /></span>";
+	}
+}
+content+="</div>";
+content+="</div>";
+content+="<div class='item_option'>";
+content+="<h2 class='pd_name'>"+pdDto.pdName+"</h2>";
+content+="<div class='icon'>";
+content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200053137001.png' alt='BEST' />";
+content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200034090001.png' alt='NEW' />";
+content+="</div>";
+content+="<div class='right_box'>";
+content+="<div class='review_sns'>";
+content+="<span class='star_point'>";
+content+="<b>5</b>/5 <a href='#pd_review'>(1)</a>";
+content+="</span>";
+content+="<div class='btn_sns' style='float: right; width: 115px;'>";
+content+="<a id='like_item' class='like_item' href='javascript::;' data-pdcode='"+pdDto.pdCode +"' onclick='wishList(this)'></a>";
+content+="<p>";
+content+="<a class='facebook' href='javascript::;'></a>";
+content+="<a class='twitter' href='javascript::;'></a>";
+content+="</p>";
+content+="</div>";
+content+="</div>";
+content+="<div class='price'>";
+content+="<span><b id='item_price'>"+pdDto.pdPrice+"</b>원</span><br>";
+content+="<span>적립 &nbsp;<b>"+pdDto.pdPrice*0.06+"</b> (6%)</span>";
+content+="</div>"
+
+if(pdDto.pdMemberonly == 1){
+	content+="<div class='buy_limit'>";
+	content+="<p>해당 상품은 <strong>ID</strong>당 색상별<br>최대 <b id='maximum'>"+pdDto.pdMincount+"</b>pcs까지 구매가능합니다.</p>"
+	content+="</div>"
+}
+
+content+="<div class='sizes op_top'>";
+content+="<div class='fsize_guide'>";
+content+="<p class='op_title'>사이즈</p>";
+content+="</div>";
+content+="<ul id='size_list'>";
+
+for (var i = 0; i < sizeList.length; i++) {
+	if(sizeList[i].stockCount == 0){
+		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
+		content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
+		content+="</li>";
+		
+	}else{
+		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";//onclick='showPrice(this)'
+		content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
+		content+="</li>";
+	}
+}
+content+="</ul> ";
+content+="</div>";
+if(pdDto.pdFeet != null){
+	content+="<div class='fwidth op_top'>";
+	content+="<div class='fwidth_guide'>";
+	content+="<p class='op_title'>발볼 넓이</p>";
+	content+="</div>";
+	content+="<ul>";
+	content+="<li>";
+	content+="<input type='radio' id='fwidth' name='fwidth' value='"+pdDto.pdFeet+"' data-pdcode='"+pdDto.pdCode+"'>";
+	content+="<label for='fwidth'>"+pdDto.pdFeet+"</label>";
+	content+="</li>";
+	content+="</ul>";
+	content+="</div>";
+}
+
+content+="<div class='selected'>";
+content+="<ul id='selected_size' class='selected_list'>";
+content+="</ul>";
+content+="</div>";
+
+content+="<div class='total_price'>";
+content+="<div class='hide_box' style='display: none;'>";
+content+="<div class='won first'>";
+content+="<span class='tp_text'>합계</span>";
+content+="<span class='tp_money' id='tp_money'><strong></strong>원</span>";
+content+="</div>";
+content+="<div class='won'>";
+content+="<span class='ship_fee'>배송비</span>";
+content+="<span class='all_free'>전상품 무료배송</span>";
+content+="</div>";
+content+="<div class='card_benefit'>";
+content+="<span class='cb_text'>카드혜택</span>";
+content+="<span class='cb_details'><a href='/newbalance/product/benefitCardPop.jsp'>자세히 보기</a></span>";
+content+="</div>";
+content+="<div class='naver_banner'>";
+content+="<span class='naver_text'>네이버페이 포인트 혜택</span>";
+content+="<span class='naver_point'>최대 3% 적립</span>";
+content+="</div>";
+content+="</div>";
+content+="<div class='cart_buy'>";
+content+="<a href='javascript:void(0);' class='cart' id='open_cart'>장바구니</a>";
+content+="<a href='/newbalance/order/orderSheet.action' class='buy'>구매하기</a>";
+content+="</div>";
+content+="<p class='noti'>* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>";
+content+="</div>";
+
+if(pdDto.pdMemberonly == 1){
+	content+="<div class='mb_only'>";
+	content+="<p>뉴발란스 멤버 전용상품입니다</p>";
+	content+="</div>";
+}
+content+="</div>";
+content+="</div>";
+content+="<div class='item_detailBottom'></div>";
+content+="</div>";
+content+="</div>";
+content+="</div>";
+content+="</div>";			
+				
+$(".item_detail").append(content);				
+	
+
+			}//if data==true
+		}//success
+		
+	})//ajax
+})//click
 
 
-</script>
 
 
-<script>
-	$(".btn_ty_bface").on("click",function(){
-		$(".accd .accordionList input[type=checkbox]:checked").prop("checked",false);
-	});
-/* 	
-	$(".aco_moreBtn .more_open").on("click",function(){
-		$(".aco_moreBtn .more_close").css("display","block");
-		$(".aco_moreBtn .more_close").css("display","none");
+
+	
+/*
+//이미지에 active
+	$(".img_list span").on("click",function(){
+		$(".img_list span.active").removeClass();
+		$(this).addClass("active");
 	})
-	$(".aco_moreBtn .more_close").on("click",function(){
-		$(".aco_moreBtn .more_close").css("display","block");
-		$(".aco_moreBtn .more_open").css("display","none");
-	}) */
+*/
+
+function closeClick(self){
+	$(".dimm_pop").css("display","none");
+	$(".item_detail").css("display","none");
+	$("form[name='modalAjaxForm'] input[name='pdCode']").remove();
+	
+}
+
+
+</script>
+
+
+
+<script>
+$(function(){
+	
 
 	$(".dropdown_tit").on("click", function () {
 		$(".dropdown").toggleClass('on');
@@ -412,12 +583,14 @@ $("#btnLayerPopupClose").click(function() {
 	}); 
 	
 	//상품에 마우스 올렸을 때 이미지 바뀜
+	// $(this)    ul  li 중에 마우스가 올라가 있는  mouseover 이벤트를 받은 li 태그
 	$("#prodList").on({
 		mouseover:function() {			
+			
 			var hoverImg = $(this).find("#selGoods").data("hoverImg");			
 			$(this).find("#selGoods").attr("src", hoverImg);
 			
-			$(this).addClass("on");
+			$(this).addClass("on"); //jquery 클래스 속성 추가 +
 			
 		}, 
 		mouseout:function() {						
@@ -427,14 +600,8 @@ $("#btnLayerPopupClose").click(function() {
 			$(this).removeClass("on");
 		}
 	}, "li");
-	
+})	
 </script>
-
-
-
-
-
-
 
 <!-- 카테고리 클릭 시 input 동적 생성. ajax -->
 <script>
@@ -459,9 +626,6 @@ $(".dropdown_list a").on("click", function(){
 			   if(data){
 				   console.log(data);
 				   $(".productList").empty();//초기화
-				   
-				   
-				   
 					//	   												key			value
 					//console.log("productInfoList.MF01aaak41.pd_code : ", productInfoList.MF01aaak41.pd_code);//상품코드
 	/*
@@ -511,9 +675,9 @@ $(".dropdown_list a").on("click", function(){
 		}//if
 		content+="";
 		content+="</a>";
-		content+="<p class='quick_view'><a href='javascript:;' id='btnQuickView'>Quick View</a></p>";
+		content+="<p class='quick_view'><a href='javascript:;' name='"+productInfoList[key].pd_code+"' class='btnQuickView' onclick='quickClick(this)'>Quick View</a></p>";
 		
-		if(productImgList[key][0].img_url == 1){//맴버면? 자물쇠 이미지
+		if(productInfoList[key].pd_memberonly == 1){//맴버면? 자물쇠 이미지
 			content+="<span class='icon_nbg_s icon_nbg_s-mb' style='display:block;'>";
 			content+="<img class='' alt='member only' src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png'>";
 			content+="</span>";
@@ -540,9 +704,9 @@ $(".dropdown_list a").on("click", function(){
 		content+="<div class='star_style03 star_score'>";
 		content+="<span class='star_point'>"
 		if(productReviewList[key] == null){
-			content+="<b>별점</b><span>0개</span>";
+			content+="<b>별점</b><span>(0개)</span>";
 		}else{
-			content+="<b>별점"+productReviewList[key].avgReview+"</b><span>"+productReviewList[key].countPOfReview+"개</span>";
+			content+="<b>별점"+productReviewList[key][0].avgReview+"</b><span>("+productReviewList[key][0].countPOfReview+")개</span>";
 		}
 		content+="</span>";//star_point
 		content+="</div>";//star_style03
@@ -565,7 +729,9 @@ $(".dropdown_list a").on("click", function(){
 
 	}//처음꺼 for 
 	$(".productList").append(content);				   
-				   
+		   
+	
+	
 			   }//if
 		   }//success
 	   }) 
@@ -578,21 +744,26 @@ var categoryForm = $('<form name=categoryAjax></form>');
 categoryForm.append($("<input/>", {type:'hidden', name:"cateGrpCode", value:"${param.cateGrpCode}" } ) );                         
 categoryForm.append($("<input/>", {type:'hidden', name:"cIdx", value:"${param.cIdx}" } ) );
 categoryForm.append($("<input/>", {type:'hidden', name:"sortProducts", value:"Q01" } ) );
-categoryForm.append($("<input/>", {type:'hidden', name:"subCateIdx", value:"${param.cIdx}" } ) );
+
+if('${param.cIdx}'.length==3){//전체보기가 아니면 카테고리 코드 넣기
+	categoryForm.append($("<input/>", {type:'hidden', name:"subCateIdx", value:"${param.cIdx}" } ) );
+}
+
 categoryForm.appendTo('body');
 
-//전체취소버튼
-$("#btnAllFilterRemove").on("click",function(){
-	$("#categoryAjax input[type=checkbox]").remove();
+//전체취소
+$(".btn_ty_bface").on("click",function(){
+	$(".accd .accordionList input[type=checkbox]:checked").prop("checked",false);
+	alert("ㅎㅎㅎ");
+	$("form[name=categoryAjax] input[name=subCateIdx]").remove();
 });
 
-
 //2. input[type=checkbox] 태그 클릭 했을 때
-$(":checkbox").on("click", function (){
+$("input[type=checkbox]").on("click", function (){
   
 	   var isChecked =  $(this).prop("checked");  // 
 	   var inputValue = $(this).val();
-	   console.log("inputValue : ", inputValue);
+	   //console.log("inputValue : ", inputValue);
 	   if( isChecked ){
 	      categoryForm.append(  $("<input/>", {type:'hidden', name:$(this).prop("name") , value:$(this).val() } ) );
 	   }else{
@@ -601,13 +772,14 @@ $(":checkbox").on("click", function (){
 	   }
 	
 	   var params = $("form[name=categoryAjax]").serialize();
-	   console.log(params);
+	   console.log(params);//cateGrpCode=M&cIdx=F01&sortProducts=Q01&subCateIdx=F01&sizeCode=220
 	    $.ajax({
 		   url:"/newbalance/product/productAjaxFilter.ajx",
 		   dataType:"json",
 		   type:"POST",
 		   data:params,
 		   cache:false,
+		   //async: false,
 		   success:function(data, testStatus, jqXHR){
 			   if(data){
 				   console.log(data)
@@ -663,9 +835,9 @@ for(const key in productInfoList){
 	}//if
 	content+="";
 	content+="</a>";
-	content+="<p class='quick_view'><a href='javascript:;' id='btnQuickView'>Quick View</a></p>";
+	content+="<p class='quick_view'><a href='javascript:;' name='"+productInfoList[key].pd_code+"' class='btnQuickView' onclick='quickClick(this)'>Quick View</a></p>";
 	
-	if(productImgList[key][0].img_url == 1){//맴버면? 자물쇠 이미지
+	if(productInfoList[key].pd_memberonly == 1){//맴버면? 자물쇠 이미지
 		content+="<span class='icon_nbg_s icon_nbg_s-mb' style='display:block;'>";
 		content+="<img class='' alt='member only' src='https://image.nbkorea.com/NBRB_PC/product/ico_memberOnly_list.png'>";
 		content+="</span>";
@@ -692,10 +864,11 @@ for(const key in productInfoList){
 	content+="<div class='star_style03 star_score'>";
 	content+="<span class='star_point'>"
 	if(productReviewList[key] == null){
-		content+="<b>별점</b><span>0개</span>";
+		content+="<b>별점</b><span>(0개)</span>";
 	}else{
-		content+="<b>별점"+productReviewList[key].avgReview+"</b><span>"+productReviewList[key].countPOfReview+"개</span>";
-		console.log(productReviewList[key].avgReview);
+		content+="<b>별점"+productReviewList[key][0].avgReview
+		+"</b><span>("+productReviewList[key][0].countPOfReview+"개)</span>";
+		//console.log(productReviewList[key].avgReview);
 	}
 	content+="</span>";//star_point
 	content+="</div>";//star_style03
@@ -720,31 +893,849 @@ for(const key in productInfoList){
 $(".productList").append(content);
 
 
+
+ 
+/* 
+	$("#btnLayerPopupClose").on("click",function() {
+	    $(".layer_pop").css("display", "none");
+	}); 
+*/
+
 			   }//if
+
 		   }//success
 	   }) 
 });
 
+function quickClick(self){
+	 $(".dimm_pop").css("display", "block");
+	 $(".item_detail").css("display","block");
+	 
+		//$(".dimm_pop").css("display","block");
+		//$(".item_detail").css("display","block");
+		
+		//${map.key.pd_code}
+		//var btnpdCodeValue = $(this).prop("name");
+		//console.log(btnpdCodeValue)
+		modalAjaxForm.append( $("<input/>",{type:'hidden', name:'pdCode', value: $(self).prop("name") })  );
+		
+		var modalParam = $("form[name='modalAjaxForm']").serialize();
+		console.log(modalParam);
+		$.ajax({
+			url:"/newbalance/product/quickView.ajx",
+			dataType:"json",
+			type:"POST",
+			data:modalParam,
+			cache:false,
+			
+			success:function(data,testStatus,jqXHR){
+				if(data){
+
+					console.log(data);
+					$(".item_detail").empty();		
+					
+	var pdDto = data[0];	//pdDto list			
+	var imgList = data[1];	//imgList list			
+	var sizeList = data[2];	//sizeList list			
+	var relatedPdList = data[3];	//relatedPdList list			
+	var diffColorList = data[4];	//diffColorList list	
+
+	var content= "";
+	content+="<div class='item_detailTop'>";
+	content+="<a href='javascript:;' class='close' id='btnLayerPopupClose' onclick='closeClick(this)'><img src='https://image.nbkorea.com/NBRB_PC/common/btn_pop_close.png' alt='팝업 닫기'></a>";
+	content+="<p class='"+pdDto.pdCode+"'>스타일코드<strong id='quickStyleCode'>"+pdDto.pdCode+"</strong></p>";
+	content+="<div class='pr_visual'>"
+	content+="<div class='item_img'>";
+
+	var count = 0
+	for (var i = 0; i < sizeList.length; i++) {
+		if (sizeList[i].stockCount != 0 ) {
+			count += 1;
+		}//if
+	}//for
+	if(count == 0 ){
+		content +="<div class='soldout'><p>SOLD OUT</p></div>";
+	}
+	content+="<img class='main_img' alt='상품 메인이미지' src='"+pdDto.imgUrl+"'>";
+	content+="</div>"
+	content+="<div class='img_list'>";
+	for (var i = 0; i < imgList.length; i++) {
+		if( i == 0){
+			content+="<span class='active' id='first_image'><img src='"+imgList[0].imgUrl+"' alt='1번' /></span>";
+		}else{
+			content+="<span><img src='"+imgList[i].imgUrl+"' alt='"+i+"번' /></span>";
+		}
+	}
+	content+="</div>";
+	content+="</div>";
+	content+="<div class='item_option'>";
+	content+="<h2 class='pd_name'>"+pdDto.pdName+"</h2>";
+	content+="<div class='icon'>";
+	content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200053137001.png' alt='BEST' />";
+	content+="<img src='https://image.nbkorea.com/NBRB_Icon/NB20180727200034090001.png' alt='NEW' />";
+	content+="</div>";
+	content+="<div class='right_box'>";
+	content+="<div class='review_sns'>";
+	content+="<span class='star_point'>";
+	content+="<b>5</b>/5 <a href='#pd_review'>(1)</a>";
+	content+="</span>";
+	content+="<div class='btn_sns' style='float: right; width: 115px;'>";
+	content+="<a id='like_item' class='like_item' href='javascript::;' data-pdcode='"+pdDto.pdCode +"'></a>";
+	content+="<p>";
+	content+="<a class='facebook' href='javascript::;'></a>";
+	content+="<a class='twitter' href='javascript::;'></a>";
+	content+="</p>";
+	content+="</div>";
+	content+="</div>";
+	content+="<div class='price'>";
+	content+="<span><b id='item_price'>"+pdDto.pdPrice+"</b>원</span><br>";
+	content+="<span>적립 &nbsp;<b>"+pdDto.pdPrice*0.06+"</b> (6%)</span>";
+	content+="</div>"
+
+	if(pdDto.pdMemberonly == 1){
+		content+="<div class='buy_limit'>";
+		content+="<p>해당 상품은 <strong>ID</strong>당 색상별<br>최대 <b id='maximum'>"+pdDto.pdMincount+"</b>pcs까지 구매가능합니다.</p>"
+		content+="</div>"
+	}
+
+	content+="<div class='sizes op_top'>";
+	content+="<div class='fsize_guide'>";
+	content+="<p class='op_title'>사이즈</p>";
+	content+="</div>";
+	content+="<ul id='size_list'>";
+
+	for (var i = 0; i < sizeList.length; i++) {
+		if(sizeList[i].stockCount == 0){
+			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
+			content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
+			content+="</li>";
+			
+		}else{
+			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
+			content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
+			content+="</li>";
+		}
+	}
+	content+="</ul> ";
+	content+="</div>";
+	if(pdDto.pdFeet != null){
+		content+="<div class='fwidth op_top'>";
+		content+="<div class='fwidth_guide'>";
+		content+="<p class='op_title'>발볼 넓이</p>";
+		content+="</div>";
+		content+="<ul>";
+		content+="<li>";
+		content+="<input type='radio' id='fwidth' name='fwidth' value='"+pdDto.pdFeet+"' data-pdcode='"+pdDto.pdCode+"'>";
+		content+="<label for='fwidth'>"+pdDto.pdFeet+"</label>";
+		content+="</li>";
+		content+="</ul>";
+		content+="</div>";
+	}
+
+	content+="<div class='selected'>";
+	content+="<ul id='selected_size' class='selected_list'>";
+	content+="</ul>";
+	content+="</div>";
+
+	content+="<div class='total_price'>";
+	content+="<div class='hide_box' style='display: none;'>";
+	content+="<div class='won first'>";
+	content+="<span class='tp_text'>합계</span>";
+	content+="<span class='tp_money' id='tp_money'><strong></strong>원</span>";
+	content+="</div>";
+	content+="<div class='won'>";
+	content+="<span class='ship_fee'>배송비</span>";
+	content+="<span class='all_free'>전상품 무료배송</span>";
+	content+="</div>";
+	content+="<div class='card_benefit'>";
+	content+="<span class='cb_text'>카드혜택</span>";
+	content+="<span class='cb_details'><a href='/newbalance/product/benefitCardPop.jsp'>자세히 보기</a></span>";
+	content+="</div>";
+	content+="<div class='naver_banner'>";
+	content+="<span class='naver_text'>네이버페이 포인트 혜택</span>";
+	content+="<span class='naver_point'>최대 3% 적립</span>";
+	content+="</div>";
+	content+="</div>";
+	content+="<div class='cart_buy'>";
+	content+="<a href='javascript:void(0);' class='cart' id='open_cart'>장바구니</a>";
+	content+="<a href='/newbalance/order/orderSheet.action' class='buy'>구매하기</a>";
+	content+="</div>";
+	content+="<p class='noti'>* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>";
+	content+="</div>";
+
+	if(pdDto.pdMemberonly == 1){
+		content+="<div class='mb_only'>";
+		content+="<p>뉴발란스 멤버 전용상품입니다</p>";
+		content+="</div>";
+	}
+	content+="</div>";
+	content+="</div>";
+	content+="<div class='item_detailBottom' data-pdCode='"+pdDto.pdCode+"' data-color='"+diffColorList[0].colorCode+"'></div>";
+	content+="</div>";
+	content+="</div>";
+	content+="</div>";
+	content+="</div>";			
+					
+	$(".item_detail").append(content);				
+		
+
+			}//if data==true
+		}//success
+			
+	})//ajax
+}
+</script>
+
+<script>
+
+
+
+$(".buy").on("click",function(){
+	
+	var array = new Array();  //Object를 배열로 저장할 Array
+     
+    
+    $("#selected_size li").each(function(i, element){
+    	
+    	var obj=new Object(); //key, value형태로 저장할 Object
+ 		
+		 obj.pdCode = $(element).data("pdCode");
+		 obj.sizeCode = $(".clearfix").eq(i).data("size");
+		 obj.count = $(".pd_amount").eq(i).val();    
+		 obj.color = $(element).data("color");
+		 array.push(obj);
+    })
+    
+    
+    //console.log(array.pdCode);
+    
+    var cartList = JSON.stringify(array);
+    console.log(JSON.stringify(array));
+    $.ajax({
+       url : '/newbalance/product/addCart.ajx',
+       type : 'POST',   
+       async : false,
+       dataType : 'json',
+       cache : false,
+       data : {
+          "cartList" : cartList
+       }, 
+       success : function(data){
+       }
+       error: function(data){
+           alert("에러가 발생했습니다.");
+       }
+	
+	
+})
+
+
+
 
 </script>
 
+<script>
+function showPrice(self){
+	console.log("a");
+	//$(".hide_box").css("display","block");
+
+		// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+		Number.prototype.format = function(){
+		    if(this==0) return 0;
+		    var reg = /(^[+-]?\d+)(\d{3})/;
+		    var n = (this + '');
+		    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+		    return n;
+		};
+
+		// 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+		String.prototype.format = function(){
+		    var num = parseFloat(this);
+		    if(isNaN(num)) return "0";
+		    return num.format();
+		};
+
+		// 발볼넓이 값 select에 추가
+		var value = $(".radio[name=fwidth]").val();
+		var html = $("label[for=fwidth]").html();
+		$("select[name=feet]").html($("<option value='" +  "selected='selected'>" + html + "</option>"));
+	
+		// 사진 클릭
+		$(".img_list span").click(function() {
+			$(".img_list span").each(function(i, element) {
+				$(element).removeClass("active");
+			})
+			$(this).addClass("active");
+			$(".main_img").prop("src", $(this).children("img").prop("src"));
+		});
+	    
+ 		// 확인 클릭 -> 모달창 닫기
+	    $("#wishListModalClose").click(function() {
+	        $("#wishListModal").css("display", "none");
+	        $(".dimm_pop").css("display", "none");
+	    }); 
+	    // X 클릭 -> 모달창 닫기
+	    $("#btnModalClose").click(function() {
+		    $("#wishListModal").css("display", "none");
+		   $(".dimm_pop").css("display", "none");
+		});
+	    
+	    	        
+ 		// 쇼핑 계속하기 클릭 -> 모달창 닫기
+	    $("#shoppingContinue").click(function() {
+	        $("#cartListModal").css("display", "none");
+	        $(".dimm_pop").css("display", "none");
+	    }); 
+	    // X 클릭 -> 모달창 닫기
+	    $("#btnCloseCartModal").click(function() {
+		    $("#cartListModal").css("display", "none");
+		   $(".dimm_pop").css("display", "none");
+		});
+	
+  
+ 	
+		// 선택한 옵션 추가
+		var total = 0; 
+		var content ="";
+		$("#size_list li label").click(function() {
+			 var stock = $(this).siblings('input').data("stock");
+			 // alert("재고 : " + stock);
+			
+			if (total >= $("#maximum").html() || total >= stock) { //
+				// 구매제한 수량 있는 경우
+				if($("#maximum").html() != null){
+					alert("해당 상품은 최대 " + $("#maximum").html() + "pcs까지 구매가능합니다.");
+				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+					alert("10개 까지 구매가능합니다.");
+				}else{
+					alert(stock + "개 까지 구매가능합니다.");
+				}
+			}else{
+				
+				 content  += "<li class='clearfix' data-size='"+$(self).val()+"' data-cartcount='1' data-pdstock='" + stock + "'>"
+	 				+ "<span class='selected_op'>"
+	 				//+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
+	 				+ $(self).data("colorcode") + "/"
+	 				+ $(this).siblings('input').val();
+	 				
+		 	 		if($('#fwidth').val() != null) {
+		 				content += "/" + $('#fwidth').val();
+		 			} 
+	 			 
+	 				content += "</span><div class='plusminus_wrap' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength=";
+	 				
+	 				if($("#maximum").html() != null){
+	 					content += $("#maximum").html() + "'>";
+	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+	 					content += "10'>";
+					}else{
+						content += stock + "'>";
+					}
+	 				
+	 				content += "<button type='button' class='btn_minus' onclick='minus(this)'></button><button type='button' class='btn_plus' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
+					+ "<span class='each_price'><strong class='inner_price'>"
+					+ $(self).data("price") + "</strong>원</span>"
+					+ "<a class='delete' href='javascript:void(0);' onclick='delete_op(this)'></a></li>";
+				$("#selected_size").append(content); 
+	
+				$(".hide_box").show();
+	
+/* 
+				// 하단 셀렉터
+				var content2  = "<li class='clearfix2'>"
+					+ "<span><img src='" + $("#first_image img").prop("src") + "' alt='대표이미지'></span>"
+	 				+ "<span class='selected_op'>"
+	 				+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
+	 				+ $(this).siblings('input').val();
+	 				 
+	 				  if($('#fwidth').val() != null) {
+	 					content2 += "/" + $('#fwidth').val();
+	 				}
+	 				
+	 				content2 += "</span><div class='plusminus_wrap mini' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength='";
+	 				
+	 				if($("#maximum").html() != null){
+	 					content2 += $("#maximum").html() + "'>";
+	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+	 					content2 += "10'>";
+					}else{
+						content2 += stock + "'>"
+					}
+	 				
+	 				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
+					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
+					+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
+					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
+					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
+					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'></li>"; 
+					
+				$("#op_quickadd").append(content2);   */ 
+			
+				var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+				var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+				tp_money += eachPrice;
+				$(".tp_money strong").html(tp_money.format());
+				
+				total += 1;
+				// alert("total : " + total);
+			}
+		 });
+	    
+						
+	// 옵션 삭제
+	function delete_op(self) {
+		var index = $(self).parent("li").index() + 1;
+		// console.log(index);
+	
+		// 금액 차감
+		var curPrice = Number($("#selected_size>li:nth-of-type(" + index + ")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+		var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+		tp_money -= curPrice;
+		$(".tp_money strong").html(tp_money.format());
+		
+		// 개수 차감 - NaN ******
+		total -= Number($("#selected_size>li:nth-of-type(" + index + ")").children("div").children("value").val());
+		
+		$(".delete").parent("li:nth-of-type(" + index + ")").remove();
+		$(".delete2").parent("li:nth-of-type(" + index + ")").remove();
+		// alert("total : " + total);
+	}
+	
+	// - 버튼 클릭 시
+	function minus(self) {
+		var value = $(self).siblings("input").val();
+		var index = $(self).parent("div").parent("li").index() + 1;
+		
+		if (value != 1) {
+			$("#selected_size > li:nth-of-type(" + index +")").children("div").children("input").val(value - 1);
+			$("#op_quickadd > li:nth-of-type(" + index +")").children("div").children("input").val(value - 1);
+			var curPrice = Number($("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+			var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+			$("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html(Number(curPrice - eachPrice).format());
+
+			var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+			tp_money -= eachPrice;
+			$(".tp_money strong").html(tp_money.format());
+			
+			if($("#maximum").html() != null){
+				total -= 1;
+				// console.log("total : " + total);
+			}else{
+				total -= 1;
+				value -= 1;
+				// console.log("total : " + total);
+				// console.log("value : " + value);
+			}
+		}
+	};
+	
+	
+	// 수량 증가 함수
+	function plus_count(index, value, stock){
+		console.log("tttt : ", value);
+		$("#selected_size > li:nth-of-type(" + index +")").children("div").children("input").val(value + 1);
+		$("#op_quickadd > li:nth-of-type(" + index +")").children("div").children("input").val(value + 1);
+		var curPrice = Number($("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+		var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+		$("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html(Number(curPrice + eachPrice).format());
+		
+		var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+		tp_money += eachPrice;
+		$(".tp_money strong").html(tp_money.format());
+		
+		if($("#maximum").html() != null){
+			total += 1;
+		}else{
+			value += 1;
+		}
+
+	}
+
+	// + 버튼 클릭 시
+	function plus(self) {		
+		var index = $(self).parent("div").parent("li").index() + 1;
+		var value = Number($(self).siblings("input").val());
+		var stock = $(self).data("stock");
+		// console.log("index : " + index);
+		// alert("인덱스 : " + index);
+		// alert("재고 : " + stock);
+		// alert("수량 : " + value);
+	
+		// 회원구매전용 상품 O => value == 구매제한개수
+		// 회원구매전용 상품 X, 재고수량 10개 이상 => value == 10
+		// 회원구매전용 상품 X, 재고수량 10개 이하 => value == 재고수량
+		
+		 if($("#maximum").html() != null){
+			if (total>= $("#maximum").html()) {
+				alert("해당 상품은 최대 " + $("#maximum").html() + "pcs까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+			if (value >= 10) {
+				alert("10개까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}else if($("#maximum").html() == null && stock < 10){
+			if (value >= stock) {
+				alert(stock + "개까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}
+	};
+
+	
+	// 관심상품 담기
+	function wishList(pdcode){
+		// if 로그인 X -> true - 로그인 페이지로 이동, false - 창 닫기
+		var usercode = "${ userCode }"; 
+		if(usercode == ""){
+			var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+			if(result == true){
+				location.replace("<%= contextPath %>/customer/login.action");
+			}else{
+				return;
+			}
+		} else{
+			var array = new Array();
+			array.push(pdcode);
+			console.log(array);
+			console.log(JSON.stringify(array));
+			$.ajax({
+				url : '/newbalance/product/wishList.ajx',
+				type : 'POST',   
+				async : false,
+				dataType : 'json',
+				cache : false,
+				data : {
+					"wishCodeList" : array
+				}, 		 
+				success : function(data){
+					if(data.result == "00"){
+						$("#like_item").addClass("on");
+					}
+					if(data.result == "99"){
+				    	$("#wishListTitle").html("이미 관심상품으로 등록된 상품입니다.");
+				    }
+					$("#wishListModal").css({
+	        			"top": (($(window).height()-$("#wishListModal").outerHeight())/2+$(window).scrollTop())+"px",
+	        			"display" : "block"
+	        		});
+	        		$(".dimm_pop").css("display", "block"); 
+				},
+				error: function(data){
+				    alert("에러가 발생했습니다.");
+				}
+			});
+		}  
+	};
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+		Number.prototype.format = function(){
+		    if(this==0) return 0;
+		    var reg = /(^[+-]?\d+)(\d{3})/;
+		    var n = (this + '');
+		    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+		    return n;
+		};
+
+		// 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+		String.prototype.format = function(){
+		    var num = parseFloat(this);
+		    if(isNaN(num)) return "0";
+		    return num.format();
+		};
+
+		// 발볼넓이 값 select에 추가
+		var value = $(".radio[name=fwidth]").val();
+		var html = $("label[for=fwidth]").html();
+		$("select[name=feet]").html($("<option value='" +  "selected='selected'>" + html + "</option>"));
+	
+		// 사진 클릭
+		$(".img_list span").click(function() {
+			$(".img_list span").each(function(i, element) {
+				$(element).removeClass("active");
+			})
+			$(this).addClass("active");
+			$(".main_img").prop("src", $(this).children("img").prop("src"));
+		});
+	    
+ 		// 확인 클릭 -> 모달창 닫기
+	    $("#wishListModalClose").click(function() {
+	        $("#wishListModal").css("display", "none");
+	        $(".dimm_pop").css("display", "none");
+	    }); 
+	    // X 클릭 -> 모달창 닫기
+	    $("#btnModalClose").click(function() {
+		    $("#wishListModal").css("display", "none");
+		   $(".dimm_pop").css("display", "none");
+		});
+	    
+	    	        
+ 		// 쇼핑 계속하기 클릭 -> 모달창 닫기
+	    $("#shoppingContinue").click(function() {
+	        $("#cartListModal").css("display", "none");
+	        $(".dimm_pop").css("display", "none");
+	    }); 
+	    // X 클릭 -> 모달창 닫기
+	    $("#btnCloseCartModal").click(function() {
+		    $("#cartListModal").css("display", "none");
+		   $(".dimm_pop").css("display", "none");
+		});
+	
+  
+ 	
+		// 선택한 옵션 추가
+		var total = 0; 
+		var content ="";
+		$("#size_list li label").click(function() {
+			 var stock = $(this).siblings('input').data("stock");
+			 // alert("재고 : " + stock);
+			
+			if (total >= $("#maximum").html() || total >= stock) { //
+				// 구매제한 수량 있는 경우
+				if($("#maximum").html() != null){
+					alert("해당 상품은 최대 " + $("#maximum").html() + "pcs까지 구매가능합니다.");
+				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+					alert("10개 까지 구매가능합니다.");
+				}else{
+					alert(stock + "개 까지 구매가능합니다.");
+				}
+			}else{
+				
+				 content  += "<li class='clearfix' data-pdcode='${ pdDto.pdCode }' data-cartcount='${ cartCount }' data-pdstock='" + stock + "'>"
+	 				+ "<span class='selected_op'>"
+	 				//+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
+	 				+ $(self).data("colorcode") + "/"
+	 				+ $(this).siblings('input').val();
+	 				
+		 	 		if($('#fwidth').val() != null) {
+		 				content += "/" + $('#fwidth').val();
+		 			} 
+	 			 
+	 				content += "</span><div class='plusminus_wrap' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength=";
+	 				
+	 				if($("#maximum").html() != null){
+	 					content += $("#maximum").html() + "'>";
+	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+	 					content += "10'>";
+					}else{
+						content += stock + "'>";
+					}
+	 				
+	 				content += "<button type='button' class='btn_minus' onclick='minus(this)'></button><button type='button' class='btn_plus' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
+					+ "<span class='each_price'><strong class='inner_price'>"
+					+ $(self).data("price") + "</strong>원</span>"
+					+ "<a class='delete' href='javascript:void(0);' onclick='delete_op(this)'></a></li>";
+				$("#selected_size").append(content); 
+	
+				$(".hide_box").show();
+	
+/* 
+				// 하단 셀렉터
+				var content2  = "<li class='clearfix2'>"
+					+ "<span><img src='" + $("#first_image img").prop("src") + "' alt='대표이미지'></span>"
+	 				+ "<span class='selected_op'>"
+	 				+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
+	 				+ $(this).siblings('input').val();
+	 				 
+	 				  if($('#fwidth').val() != null) {
+	 					content2 += "/" + $('#fwidth').val();
+	 				}
+	 				
+	 				content2 += "</span><div class='plusminus_wrap mini' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength='";
+	 				
+	 				if($("#maximum").html() != null){
+	 					content2 += $("#maximum").html() + "'>";
+	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+	 					content2 += "10'>";
+					}else{
+						content2 += stock + "'>"
+					}
+	 				
+	 				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
+					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
+					+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
+					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
+					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
+					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'></li>"; 
+					
+				$("#op_quickadd").append(content2);   */ 
+			
+				var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+				var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+				tp_money += eachPrice;
+				$(".tp_money strong").html(tp_money.format());
+				
+				total += 1;
+				// alert("total : " + total);
+			}
+		 });
+	    
+						
+	// 옵션 삭제
+	function delete_op(self) {
+		var index = $(self).parent("li").index() + 1;
+		// console.log(index);
+	
+		// 금액 차감
+		var curPrice = Number($("#selected_size>li:nth-of-type(" + index + ")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+		var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+		tp_money -= curPrice;
+		$(".tp_money strong").html(tp_money.format());
+		
+		// 개수 차감 - NaN ******
+		total -= Number($("#selected_size>li:nth-of-type(" + index + ")").children("div").children("value").val());
+		
+		$(".delete").parent("li:nth-of-type(" + index + ")").remove();
+		$(".delete2").parent("li:nth-of-type(" + index + ")").remove();
+		// alert("total : " + total);
+	}
+	
+	// - 버튼 클릭 시
+	function minus(self) {
+		var value = $(self).siblings("input").val();
+		var index = $(self).parent("div").parent("li").index() + 1;
+		
+		if (value != 1) {
+			$("#selected_size > li:nth-of-type(" + index +")").children("div").children("input").val(value - 1);
+			$("#op_quickadd > li:nth-of-type(" + index +")").children("div").children("input").val(value - 1);
+			var curPrice = Number($("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+			var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+			$("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html(Number(curPrice - eachPrice).format());
+
+			var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+			tp_money -= eachPrice;
+			$(".tp_money strong").html(tp_money.format());
+			
+			if($("#maximum").html() != null){
+				total -= 1;
+				// console.log("total : " + total);
+			}else{
+				total -= 1;
+				value -= 1;
+				// console.log("total : " + total);
+				// console.log("value : " + value);
+			}
+		}
+	};
+	
+	
+	// 수량 증가 함수
+	function plus_count(index, value, stock){
+		console.log("tttt : ", value);
+		$("#selected_size > li:nth-of-type(" + index +")").children("div").children("input").val(value + 1);
+		$("#op_quickadd > li:nth-of-type(" + index +")").children("div").children("input").val(value + 1);
+		var curPrice = Number($("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html().replaceAll(",", ""));
+		var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
+		$("#selected_size > li:nth-of-type(" + index +")").children("span.each_price").children("strong").html(Number(curPrice + eachPrice).format());
+		
+		var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
+		tp_money += eachPrice;
+		$(".tp_money strong").html(tp_money.format());
+		
+		if($("#maximum").html() != null){
+			total += 1;
+		}else{
+			value += 1;
+		}
+
+	}
+
+	// + 버튼 클릭 시
+	function plus(self) {		
+		var index = $(self).parent("div").parent("li").index() + 1;
+		var value = Number($(self).siblings("input").val());
+		var stock = $(self).data("stock");
+		// console.log("index : " + index);
+		// alert("인덱스 : " + index);
+		// alert("재고 : " + stock);
+		// alert("수량 : " + value);
+	
+		// 회원구매전용 상품 O => value == 구매제한개수
+		// 회원구매전용 상품 X, 재고수량 10개 이상 => value == 10
+		// 회원구매전용 상품 X, 재고수량 10개 이하 => value == 재고수량
+		
+		 if($("#maximum").html() != null){
+			if (total>= $("#maximum").html()-1) {
+				alert("해당 상품은 최대 " + $("#maximum").html() + "pcs까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
+			if (value >= 10) {
+				alert("10개까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}else if($("#maximum").html() == null && stock < 10){
+			if (value >= stock) {
+				alert(stock + "개까지 구매가능합니다.");
+			}else{
+				plus_count(index, value, stock);
+			}
+		}
+	};
+
+	
+	// 관심상품 담기
+	function wishList(self){
+		// if 로그인 X -> true - 로그인 페이지로 이동, false - 창 닫기
+		var usercode = "${ userCode }";
+		
+		if(usercode == ""){
+			var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+			if(result == true){
+				location.replace("<%= contextPath %>/customer/login.action");
+			}else{
+				return;
+			}
+		} else{
+			var array = new Array();
+			array.push(  $(self).data("pdcode")  );
+			console.log(array);
+			console.log(JSON.stringify(array));
+			$.ajax({
+				url : '/newbalance/product/wishList.ajx',
+				type : 'POST',   
+				async : false,
+				dataType : 'json',
+				cache : false,
+				data : {
+					"wishCodeList" : array
+				}, 		 
+				success : function(data){
+					if(data.result == "00"){
+						$("#like_item").addClass("on");
+					}
+					if(data.result == "99"){
+				    	$("#wishListTitle").html("이미 관심상품으로 등록된 상품입니다.");
+				    }
+					$("#wishListModal").css({
+	        			"top": (($(window).height()-$("#wishListModal").outerHeight())/2+$(window).scrollTop())+"px",
+	        			"display" : "block"
+	        		});
+	        		$(".dimm_pop").css("display", "block"); 
+				},
+				error: function(data){
+				    alert("에러가 발생했습니다.");
+				}
+			});
+		}  
+	};
 
 
+
+</script>
  
 
- 
- 
  
  <jsp:include page="/common/footer.jsp" flush="false" />
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

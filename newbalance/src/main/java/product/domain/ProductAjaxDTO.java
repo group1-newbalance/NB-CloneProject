@@ -2,7 +2,7 @@ package product.domain;
 
 import java.sql.Date;
 
-public class ProductDTO {
+public class ProductAjaxDTO {
 
 	private String pdCode;
 	private String categoryCode;
@@ -15,13 +15,13 @@ public class ProductDTO {
 	private String pdDate;
 	private String pdMaterial;
 	private String pdFeet;
-	private Date pdRelease;
+	private String pdRelease;
 	private String pdFeature;
 	private String imgUrl;  // 첫 번째 이미지 저장
 	
 	
 	// 생성자
-	public ProductDTO() {
+	public ProductAjaxDTO() {
 		super();
 	}
 	
@@ -91,10 +91,10 @@ public class ProductDTO {
 	public void setPdFeet(String pdFeet) {
 		this.pdFeet = pdFeet;
 	}
-	public Date getPdRelease() {
+	public String getPdRelease() {
 		return pdRelease;
 	}
-	public void setPdRelease(Date pdRelease) {
+	public void setPdRelease(String pdRelease) {
 		this.pdRelease = pdRelease;
 	}
 	public String getPdFeature() {
