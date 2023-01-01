@@ -304,7 +304,7 @@ function choiceSize(obj){
 								<td class="chkBox">
 									<em class="chk">
 										<input type="checkbox" id="checkbox_sharePurchaseIdx_${status.index}" name="sharePurchaseIdx" value="0" style="display: none;" checked="checked">
-										<input type="checkbox" id="checkbox_prodCode_${status.index}" name="prodCode" class="ipChekbox" value="${data.pdCode}" data-pdPrice="${data.pdPrice}" data-pdName="${data.pdName}" data-qty="${data.cartCount}" data-cartnum="${data.cartNum}"  ${data.maxCount == 0 ? 'disabled' : ' checked="checked"'}>
+										<input type="checkbox" id="checkbox_prodCode_${status.index}" name="prodCode" class="ipChekbox" value="${data.pdCode}" data-pdPrice="${data.pdPrice}" data-pdName="${data.pdName}" data-qty="${data.cartCount}" data-cartnum="${data.cartNum}"  ${data.maxCount == 0 ? 'disabled' : ' checked="checked"'} data-sizecode="${data.sizeCode}">
 										<label for="checkbox_prodCode_${status.index}"><span class="bblind">상품선택</span></label>
 									</em>
 								</td>
@@ -672,7 +672,77 @@ $(function() {
 
 	});
 	
-})
+});
+
+$("#totalProductOrder").click(function(){
+	let totalArray = new Array();
+	let obj = null;
+	$("tr[name=cartRow]").not(".pd_soldout").each(function(i, e){
+		obj = new Object();
+		obj.pdCode = $(this).find("input[name=prodCode]").val();
+		obj.pdPrice = $(this).find("input[name=prodCode]").data("pdprice");
+		obj.pdName = $(this).find("input[name=prodCode]").data("pdname");
+		obj.qty = $(this).find("input[name=prodCode]").data("qty");
+		obj.cartNum = $(this).find("input[name=prodCode]").data("cartnum");
+		obj.imgUrl = $(this).find("img").attr("src");
+		obj.opt = $(this).find(".p_opt:nth-child(2)").text();
+		obj.sizeCode = $(this).find("input[name=prodCode]").data("sizecode");
+		totalArray.push(obj);
+
+	});
+	//console.log(totalArray);
+	
+	 $.ajax({
+         url : '/newbalance/payment/order.action',
+         type : 'POST',   
+         async : false,
+         dataType : 'json',
+         cache : false,
+         data : {
+            "productList" : JSON.stringify(totalArray)
+         },        
+         success : function(data){
+         },
+         error: function(data){
+             alert("에러가 발생했습니다.");
+         }
+      });
+});
+
+$("#choiceProductOrder").click(function(){
+	let totalArray = new Array();
+	let obj = null;
+	$("tr[name=cartRow] input[name=prodCode]:checked").each(function(i, e){
+		obj = new Object();
+		obj.pdCode = $(this).parents("#cartRow").find("input[name=prodCode]").val();
+		obj.pdPrice = $(this).parents("#cartRow").find("input[name=prodCode]").data("pdprice");
+		obj.pdName = $(this).parents("#cartRow").find("input[name=prodCode]").data("pdname");
+		obj.qty = $(this).parents("#cartRow").find("input[name=prodCode]").data("qty");
+		obj.cartNum = $(this).parents("#cartRow").find("input[name=prodCode]").data("cartnum");
+		obj.imgUrl = $(this).parents("#cartRow").find("img").attr("src");
+		obj.opt = $(this).parents("#cartRow").find(".p_opt:nth-child(2)").text();
+		obj.sizeCode = $(this).parents("#cartRow").find("input[name=prodCode]").data("sizecode");
+		totalArray.push(obj);
+
+	});
+	//console.log(totalArray);
+	
+	 $.ajax({
+         url : '/newbalance/payment/order.action',
+         type : 'POST',   
+         async : false,
+         dataType : 'json',
+         cache : false,
+         data : {
+            "productList" : JSON.stringify(totalArray)
+         },        
+         success : function(data){
+         },
+         error: function(data){
+             alert("에러가 발생했습니다.");
+         }
+      });
+});
 
 function deleteCart(prod){
 		var delArray = new Array();		
