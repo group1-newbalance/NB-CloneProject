@@ -11,9 +11,10 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import my.dao.MyDAO;
-import my.domain.CartProductDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
+import my.domain.MywishDTO;
+import my.domain.QuestionDTO;
 import product.dao.ProductDAO;
 import product.domain.WishlistDTO;
 
@@ -141,5 +142,53 @@ private static MyPageService instance = null;
 	      }
 	      return rowCount;
 	   }
+	
+	public List<MywishDTO> getMyWish(String userCode) throws NamingException {
+		List<MywishDTO> mywishdto = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			mywishdto = myDao.getMyWishlist(conn, userCode);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mywishdto;
+	}
+
+
+	public int getWishCount(String userCode) {
+		Connection con =null;
+		
+		try {
+			con  = ConnectionProvider.getConnection();
+			MyDAO dao = MyDAO.getInstance();
+			
+			int totalCount = dao.getTotalWish(con);
+			
+			return totalCount;
+			
+		} catch (NamingException | SQLException e) { 
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(con);
+		}
+	}
+
+	public List<QuestionDTO> getQuestion(String userCode) {
+		Connection con = null;
+		try {
+			con = ConnectionProvider.getConnection();
+			MyDAO dao = MyDAO.getInstance();
+			List<QuestionDTO> list = null;
+			list = dao.getMyQuestion(con, userCode);
+			
+			return list;
+			
+		} catch (NamingException | SQLException e) { 
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(con);
+		}
+	}
 
 }
