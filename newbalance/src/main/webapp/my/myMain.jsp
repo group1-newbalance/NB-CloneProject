@@ -11,6 +11,8 @@
 <link rel="icon" type="image/x-icon"
    href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/newbalance/common/header.css">
+<link rel="stylesheet" href="/newbalance/common/footer.css">
 <link rel="stylesheet" type="text/css" href="/newbalance/css/my/myMain.css">
 </head>
 <body>
@@ -40,13 +42,13 @@
 					<div class="categoryMenu">
 						<strong class="cTitle">MY NB</strong>
 						<ul>
-							<li><a href="/newbalance/my/introMyNB.action" data-gtag-idx="fo_mypage_5">My NB란</a></li>
+							<li><a href="/newbalance/my/myNb.action" data-gtag-idx="fo_mypage_5">My NB란</a></li>
 							<li><a href="/newbalance/my/customer/memberLevelInfo.action" data-gtag-idx="fo_mypage_6">회원등급</a></li>
-							<li><a href="/newbalance/my/customer/memberMileageInfo.action" data-gtag-idx="fo_mypage_7">마일리지</a></li>
-							<li><a href="/newbalance/my/couponList.action" data-gtag-idx="fo_mypage_8">쿠폰</a></li>
-							<li><a href="/newbalance/my/customer/memberMyNbPointInfo.action" data-gtag-idx="fo_mypage_9">MyNB 활동내역</a></li>
+							<li><a href="/newbalance/my/mileage.action" data-gtag-idx="fo_mypage_7">마일리지</a></li>
+							<li><a href="/newbalance/my/coupon.action" data-gtag-idx="fo_mypage_8">쿠폰</a></li>
+							<li><a href="/newbalance/my/myNbPoint.action" data-gtag-idx="fo_mypage_9">MyNB 활동내역</a></li>
 							
-							<li><a href="/newbalance/my/customer/saleCode.action" data-gtag-idx="fo_mypage_10">친구할인코드</a></li>
+							<li><a href="/newbalance/my/saleCode.action" data-gtag-idx="fo_mypage_10">친구할인코드</a></li>
 							
 							<li><a href="/newbalance/my/customer/raffleList.action" data-gtag-idx="fo_mypage_11">래플응모내역</a></li>
 						</ul>
@@ -70,17 +72,17 @@
 					<div class="categoryMenu">
 						<strong class="cTitle">상품내역</strong>
 						<ul>
-							<li><a href="/newbalance/my/product/orderWishList.action" data-gtag-idx="fo_mypage_18">관심상품</a></li>
-                            <li><a href="/newbalance/my/product/orderWishToday.action" data-gtag-idx="fo_mypage_19">오늘 본 상품</a></li>
-							<li><a href="/newbalance/my/product/warehousingAlarmProduct.action" data-gtag-idx="fo_mypage_20">재입고 알림 상품</a></li>
+							<li><a href="/newbalance/my/orderWishList.action" data-gtag-idx="fo_mypage_18">관심상품</a></li>
+                            <li><a href="/newbalance/my/orderWishToday.action" data-gtag-idx="fo_mypage_19">오늘 본 상품</a></li>
+							<li><a href="/newbalance/my/warehousingAlarmProduct.action" data-gtag-idx="fo_mypage_20">재입고 알림 상품</a></li>
 						</ul>
 					</div>
 					<div class="categoryMenu">
 						<strong class="cTitle">Q&amp;A</strong>
 						<ul>
 							<li><a href="/newbalance/support/searchFaqList.action" data-gtag-idx="fo_mypage_21">FAQ</a></li>
-							<li><a href="/newbalance/my/qna/searchQuestionList.action" data-gtag-idx="fo_mypage_22">1:1 문의</a></li>
-							<li><a href="/newbalance/my/qna/searchAsList.action" data-gtag-idx="fo_mypage_23">A/S 처리현황</a></li>
+							<li><a href="/newbalance/my/searchQuestionList.action" data-gtag-idx="fo_mypage_22">1:1 문의</a></li>
+							<li><a href="/newbalance/my/searchAsList.action" data-gtag-idx="fo_mypage_23">A/S 처리현황</a></li>
 						</ul>
 					</div>
 				</div>

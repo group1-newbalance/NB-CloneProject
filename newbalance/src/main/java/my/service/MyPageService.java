@@ -48,7 +48,7 @@ private static MyPageService instance = null;
 			MyDAO myDao = MyDAO.getInstance();
 			List<MyDeliveryInfoDTO> deliveryInfoList = myDao.getMemberDeliveryInfo(conn, userCode);
 			
-			myData.put("delCount", deliveryInfoList.size());
+			myData.put("delCount", deliveryInfoList == null ? 0 : deliveryInfoList.size());
 			myData.put("myData", deliveryInfoList);
 
 		} catch (SQLException e) {

@@ -42,7 +42,7 @@
 		            </div>
 					<div class="con_list_info">
 						<c:choose>
-	                		<c:when test="${delData['deliveryCnt'] == 0}">
+	                		<c:when test="${delData['delCount'] == 0}">
 								<h4 class="row_title">자주 쓰는 배송지 주소를 설정해주세요.</h4>
 			               </c:when>
 	                		<c:otherwise>
