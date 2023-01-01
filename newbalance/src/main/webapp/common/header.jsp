@@ -8,6 +8,7 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 	var pre_idx = null;
 	var pre_label = null;
 	
+	
 	$(document).ready(function() {
 		
 		$('div.top_search #schWord').on('keydown', function (event) {
@@ -1224,7 +1225,7 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 					
 				</div>
 				<div class="cart none_count">
-					<a href="/noncustomer/cartList.action" data-gtag-idx="fo_common_4_3">
+					<a href="/newbalance/my/cartList.action" data-gtag-idx="fo_common_4_3">
 						<span class="blind"></span>
 						<c:if test="${cartCount != 0 && not empty cartCount}">
 							<span class="count">${cartCount}</span>					
@@ -1240,6 +1241,34 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 </div>
 <div class="dimm_gnb" style="display: none;"></div>
 <script type="text/javascript">
+
+/* $(function(){
+	debugger;
+var hUserCode = "${sessionScope.member.getUserCode()}";
+	
+	if(hUserCode != "" && hUserCode != null){
+		
+		
+		$.ajax({
+	           url : '/newbalance/my/getCartCount.ajx',
+	           type : 'POST',   
+	           async : false,
+	           dataType : 'json',
+	           cache : false,
+	           data : {
+	              "userCode" : hUserCode
+	           },        
+	           success : function(data){	
+	        	   console.log(data.result);
+	           },
+	           error: function(data){
+	               alert("cart count 에러가 발생했습니다.");
+	           }
+	        });
+	}
+}) */
+
+
 	var h_offset = $(".header").offset().top;
 	$(window).on('scroll',function(){
 		var w_offset = $(window).scrollTop();
