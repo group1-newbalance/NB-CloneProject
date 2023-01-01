@@ -16,5 +16,4 @@ public interface IMy {
 	public boolean checkDuplicateDeliveryInfo(Connection conn, MyDeliveryInfoDTO dto ) throws SQLException;
 	public int updateMemberDeliveryInfo(Connection conn, MyDeliveryInfoDTO dto) throws SQLException;
 	public int deleteMemberDeliveryInfo(Connection conn, int maSeq) throws SQLException;
-	
 }
