@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+.my_wrap .my_cont .mltitle_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .my_cont .mltitle_area .mlpage_tit {
+    font-size: 28px;
+}
+.mlpage_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.level_box.type2 {
+    height: 250px;
+    margin-top: 0px;
+}
+.level_box {
+    height: 200px;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+.level_box.type2 .mlevel {
+    padding-top: 58px;
+}
+.level_box .mlevel {
+    float: left;
+    position: relative;
+    width: 450px;
+    padding-top: 72px;
+}
+/* 
+.level_box .mlevel.bronze:before {
+    background: url(https://image.nbkorea.com/NBRB_PC/my/badge_bronze.png) no-repeat 0 0;
+}
+
+.level_box .mlevel:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50px;
+    top: 53px;
+    width: 90px;
+    height: 90px;
+}
+ */
+ 
+.level_img{
+	width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 50px;
+} 
+ 
+.level_box .mlevel strong {
+    display: inline-block;
+    padding-left: 166px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.level_box.type2 .mlevel p {
+    margin-top: 14px;
+}
+
+.level_box .mlevel p {
+    margin-top: 10px;
+    padding-left: 166px;
+    color: #777;
+    line-height: 1;
+}
+
+.level_box.type2 .mlevel p + span {
+    display: block;
+    margin-top: 8px;
+    padding-left: 166px;
+    color: #aeaeae;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.level_box.type2 .mlpoint {
+    width: 321px;
+    padding-top: 50px;
+    padding-right: 71px;
+    box-sizing: content-box;
+}
+
+.level_box .mlpoint {
+    float: right;
+    position: relative;
+    width: 450px;
+    text-align: right;
+}
+
+.level_box.type2 .mlpoint:before {
+    top: 50px;
+    height: 150px;
+}
+
+.level_box .mlpoint:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 68px;
+    width: 1px;
+    height: 64px;
+    background: #dbdbdb;
+}
+
+.level_box.type2 .mlpoint ul li {
+    margin-bottom: 15px;
+    padding-left: 60px;
+    overflow: hidden;
+}
+
+.level_box.type2 .mlpoint ul li strong {
+    float: left;
+    color: #777;
+    letter-spacing: -0.04em;
+    line-height: 18px;
+}
+
+.level_box.type2 .mlpoint ul li p {
+    float: right;
+    color: #777;
+    line-height: 18px;
+}
+
+.level_box.type2 .mlpoint ul li p span {
+    color: #141414;
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: top;
+}
+
+.mlstar_noti {
+    margin-top: 20px;
+}
+
+.mlstar_noti li {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: -0.025em;
+    line-height: 1;
+}
+
+.mlsec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+
+.mlbasic_box {
+    border-top: 2px solid #444;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mlbasic_box > p {
+    padding: 32px 20px 34px;
+    color: #555;
+    letter-spacing: -0.06em;
+    line-height: 28px;
+}
+
+.mlbasic_box > .mlbox {
+    height: 265px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mlbasic_box > .mlbox .mlevel {
+    float: left;
+    position: relative;
+    height: 200px;
+    padding: 65px 0 0 190px;
+    overflow: hidden;
+}
+
+.mlbasic_box > .mlbox .mlevel img {
+    position: absolute;
+    left: 60px;
+    top: 57px;
+}
+
+.mlbasic_box > .mlbox .mlevel strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.mlbasic_box > .mlbox .mlevel p {
+    margin-top: 15px;
+    color: #777;
+    letter-spacing: -0.04em;
+    line-height: 20px;
+}
+
+.mlbasic_box > .mlbox .mlevel span {
+    display: block;
+    margin-top: 6px;
+    padding-left: 14px;
+    background: url(https://image.nbkorea.com/NBRB_PC/my/bg_bullet_arrow.png) no-repeat 0 4px;
+    color: #555;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.mlbasic_box > .mlbox > ul {
+    padding: 54px 0 0 540px;
+}
+
+.mlbasic_box > .mlbox > ul > li {
+    color: #555;
+    letter-spacing: -0.04em;
+    line-height: 28px;
+}
+
+.mlbasic_box > .mlbox:last-child {
+    border-bottom: 0;
+}

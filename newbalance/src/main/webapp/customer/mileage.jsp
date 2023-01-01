@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/newbalance/common/header.css">
 <link rel="stylesheet" href="/newbalance/common/footer.css">
 
-<link rel="stylesheet" type="text/css" href="/newbalance/css/customer/mileage.css">
+<link rel="stylesheet" type="text/css" href="/newbalance/css/customer/mileageInfo.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- <link rel="stylesheet" href="support.css"> -->
 
