@@ -2,6 +2,7 @@ package my.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,14 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import my.dao.MyDAO;
-import my.domain.CartProductDTO;
+import my.domain.CouponDTO;
+import my.domain.MbLevelDTO;
+import my.domain.MileageDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
+import my.domain.MyNbPointDTO;
+import my.domain.MyWishDTO;
+import my.domain.SaleCodeDTO;
 import product.dao.ProductDAO;
 import product.domain.WishlistDTO;
 
@@ -141,6 +147,30 @@ private static MyPageService instance = null;
 	      }
 	      return rowCount;
 	   }
+	
+	public List<MyWishDTO> getMemberWishList(String userCode) throws NamingException {
+		List<MyWishDTO> wishList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			wishList = myDao.getMemberWishList(conn, userCode);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return wishList;
+	}
+
+	public int deleteWishList(String userCode, String[] wishList) throws NamingException {
+		int rowCount = 0;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			rowCount = myDao.deleteWishList(conn, userCode, wishList);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowCount;
+	}
 	
 	public MbLevelDTO getMbLevel(String userCode) throws NamingException {
 		MbLevelDTO levelDto;
