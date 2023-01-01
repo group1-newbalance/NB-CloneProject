@@ -11,8 +11,11 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import my.dao.MyDAO;
+import my.domain.CartProductDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
+import product.dao.ProductDAO;
+import product.domain.WishlistDTO;
 
 public class MyPageService {
 private static MyPageService instance = null;
@@ -117,4 +120,26 @@ private static MyPageService instance = null;
 		}
 		return rowCount;
 	}
+
+	
+	public int addWishlist(WishlistDTO dto){
+	      Connection conn = null;
+	      int rowCount = 0;
+	      try {
+	         conn = ConnectionProvider.getConnection();
+	         ProductDAO dao = ProductDAO.getInstance();
+
+	         conn.setAutoCommit(false); 
+	         rowCount = dao.addWishlist(conn, dto);
+
+	         conn.commit();
+	      } catch (NamingException | SQLException e) {
+	         JdbcUtil.rollback(conn);
+	         throw new RuntimeException(e);
+	      } finally {
+	         JdbcUtil.close(conn); 
+	      }
+	      return rowCount;
+	   }
+
 }

@@ -15,8 +15,6 @@ public class WishListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("WishListHandler 호출됨");
 		JSONObject resultJSON = new JSONObject();
 		try {
 			String[] wishCodeList = request.getParameterValues("wishCodeList[]");

@@ -2,7 +2,10 @@ package member.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
+import member.domain.CartOptionDTO;
+import member.domain.CartProductDTO;
 import member.domain.MemberDTO;
 
 public interface IMember {
@@ -20,4 +23,16 @@ public interface IMember {
 	public int insert(Connection conn , MemberDTO mem) throws SQLException;
 
 	public int update(Connection con, MemberDTO mem) throws SQLException;
+	
+	public int updateCartQty(Connection conn, int cartNum, int cartCount, String userCode) throws SQLException;
+
+	public List<CartOptionDTO> getCartOption(Connection conn, String pdCode) throws SQLException;
+	
+	public int deleteCartProduct(Connection conn, String userCode, String[] delCartList)  throws SQLException;
+	
+	public boolean isDuplicateOption(Connection conn, String userCode, String pdCode, int sizeCode) throws SQLException;
+
+	public List<CartProductDTO> getCartList(Connection conn, String userCode) throws SQLException;
+	
+	public int updateCartOption(Connection conn, int cartNum, String pdCode, int sizeCode, String color) throws SQLException;
 }
