@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import member.domain.UserDTO;
 import mvc.command.CommandHandler;
-import my.domain.MywishDTO;
+import my.domain.MyWishDTO;
 import my.service.MyPageService;
 
 public class WishListHandler  implements CommandHandler {
@@ -20,22 +20,18 @@ public class WishListHandler  implements CommandHandler {
 		
 		MyPageService myPageService = MyPageService.getInstance();
 	      HttpSession session = request.getSession(false);
-	      List<MywishDTO> mywishdto = null;
+	      List<MyWishDTO> mywishdto = null;
 	      if (session != null) {
-	         System.out.println("myMain session [not null]");
 	         UserDTO member = (UserDTO) session.getAttribute("member");
 	         if (member != null) {
-	            System.out.println("myMain member [not null]");
-	            mywishdto = myPageService.getMyWish(member.getUserCode());
+
+	            mywishdto = myPageService.getMemberWishList(member.getUserCode());
 	         }
 	      }
 
-	      if(mywishdto == null) {
-	         response.setStatus(HttpServletResponse. SC_NOT_FOUND);
-	         return null;
-	      }
+	 
 	      
-	      request.setAttribute("mywishdto", mywishdto);
+	      request.setAttribute("wishData", mywishdto);
 		
 		return "/my/orderWishList.jsp";
 	}

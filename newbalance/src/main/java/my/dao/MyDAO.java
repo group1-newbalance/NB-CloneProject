@@ -14,6 +14,7 @@ import my.domain.MileageDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
 import my.domain.MyNbPointDTO;
+import my.domain.MyWishDTO;
 import my.domain.SaleCodeDTO;
 
 public class MyDAO implements IMy{
@@ -207,6 +208,69 @@ public class MyDAO implements IMy{
 		}finally {
 			JdbcUtil.close(pstmt);
 		}
+	}
+	public List<MyWishDTO> getMemberWishList(Connection conn, String userCode) throws SQLException {
+		String sql = " SELECT pd_code, img_url, user_code, pd_price, pd_name, wish_code "
+				+ " FROM (SELECT ROW_NUMBER() OVER(PARTITION BY pi.pd_code ORDER BY img_seq) row_num, pi.pd_code pd_code , img_url, user_code, pd_price, pd_name, wish_code "
+				+ "    FROM wishlist w JOIN product p ON w.pd_code = p.pd_code "
+				+ "                    JOIN product_image pi ON p.pd_code = pi.pd_code "
+				+ "    ORDER BY pi.pd_code, img_seq) "
+				+ " WHERE row_num = 1 and user_code = ?  ";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userCode);
+			rs = pstmt.executeQuery();
+			
+			List<MyWishDTO> myData = null;
+			MyWishDTO temp = null;
+			if (rs.next()) {
+				myData = new ArrayList<MyWishDTO>();
+				do {
+					temp = new MyWishDTO(rs.getString("pd_code")
+							, rs.getString("img_url")
+							, rs.getInt("pd_price")
+							, rs.getString("pd_name")
+							, rs.getInt("wish_code"));
+	
+					myData.add(temp);
+				}while(rs.next());
+			}
+			
+			return myData;
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public int deleteWishList(Connection conn, String userCode, String[] wishList) {
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		System.out.println("deleteWishList dao 호출됨");
+
+		String sql = "DELETE FROM wishlist " + "WHERE user_code = ?  and wish_code  in (";
+
+		String str = "";
+		for (int i = 0; i < wishList.length; i++) {
+			str += String.format("%s", wishList[i]) + (i != wishList.length - 1 ? ", " : ") ");
+		}
+		sql += str;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, userCode);
+			rowCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		return rowCount;
+
 	}
 
 	@Override
