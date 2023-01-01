@@ -1,0 +1,1126 @@
+@charset "UTF-8";
+.basket_wrap {
+    width: 980px;
+    margin: 0 auto;
+}
+.basket_wrap .title_area {
+    position: relative;
+    margin: 56px 0 50px;
+}
+.page_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+.tt_step {
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
+.tt_step span {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 7px;
+    margin-right: 35px;
+    color: #aeaeae;
+    font-size: 18px;
+    line-height: 1;
+}
+.tt_step span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: -24px;
+    width: 8px;
+    height: 8px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step.png) no-repeat 0 bottom;
+}
+.tt_step span.current {
+    border-bottom: 3px solid #141414;
+    color: #141414;
+}
+.tt_step span.current:after {
+    background-position: 0 0;
+}
+
+.tt_step span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: -24px;
+    width: 8px;
+    height: 8px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step.png) no-repeat 0 bottom;
+}
+.tt_step span:last-child {
+    margin-right: 0;
+}
+.tt_step span:last-child:after {
+    display: none;
+}
+.tbl_count {
+    position: relative;
+}
+.tbl_count h3 {
+    margin-bottom: 20px;
+    color: #121212;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.075em;
+}
+.tbl_y {
+    border-top: 2px solid #444;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+colgroup {
+    display: table-column-group;
+}
+col {
+    display: table-column;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.tbl_y thead th {
+    height: 61px;
+    border-bottom: 1px solid #dbdbdb;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.tbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.tbl_basket td {
+    padding: 38px 0;
+    text-align: center;
+}
+.tbl_basket td .img {
+    position: relative;
+}
+
+.tbl_basket td .img {
+    float: left;
+    width: 84px;
+    margin-left: 20px;
+}
+.tbl_basket td .img img {
+    display: block;
+    width: 84px;
+}
+.tbl_basket td .pr {
+    padding-left: 134px;
+    text-align: left;
+}
+.tbl_basket td .pr .p_name {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 20px;
+    word-break: break-all;
+}
+.tbl_basket td .pr .p_opt {
+    margin-top: 2px;
+    color: #666;
+    line-height: 20px;
+}
+.tbl_basket td.price strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+.tbl_btm {
+    margin-top: 20px;
+    overflow: hidden;
+}
+.tbl_btm .info_txt {
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: -0.025em;
+}
+.sec_price {
+    margin-top: 30px;
+    border: 1px solid #dbdbdb;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+.sec_price .calc {
+    float: left;
+    width: 718px;
+    padding: 13px 40px 22px;
+    background: #fff;
+    letter-spacing: -0.04em;
+    box-sizing: border-box;
+}
+.sec_price .calc > div:first-child {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.sec_price .calc > div {
+    padding: 29px 0;
+}
+.sec_price .calc > div .ttl {
+    display: inline-block;
+    font-weight: 700;
+    
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+.sec_price .calc > div .price {
+    display: inline-block;
+    float: right;
+}
+
+.point_r {
+    color: #cf0a2c !important;
+}
+.sec_price .discount > div:first-child {
+    padding-bottom: 30px;
+}
+.sec_price .discount .ttl02 {
+    float: left;
+    width: 149px;
+    margin-top: 15px;
+    color: #777;
+}
+input.ip_radio {
+    display: none;
+}
+.sec_price .discount .ttl02 input.ip_radio + label {
+    font-weight: 400;
+}
+input.ip_radio + label {
+    display: inline-block;
+    height: 18px;
+    padding-left: 28px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio.png) no-repeat 0 0;
+    font-weight: 700;
+    line-height: 18px;
+}
+.sec_price .discount .entry {
+    float: left;
+    width: 390px;
+}
+input.ip_text {
+    display: inline-block;
+    height: 45px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    color: #141414;
+    line-height: 1;
+    box-sizing: border-box;
+    outline: none;
+}
+input.ip_text[type="text"][disabled] {
+    background: #f4f4f4;
+    color: #aeaeae;
+}
+.sec_price .discount .entry .chk_type {
+    display: inline-block;
+    margin-left: 7px;
+}
+input.ip_chekbox {
+    display: none;
+}
+.sec_price .discount .entry .chk_type input + label {
+    color: #777;
+}
+
+/* 체크 되었을때 == 모두사용하기 */
+input.ip_chekbox + label {
+    display: inline-block;
+    height: 18px;
+    padding: 0 0 0 27px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk.png) no-repeat 0 0;
+    line-height: 18px;
+    vertical-align: top;
+    cursor: pointer;
+}
+input.ip_chekbox:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk_on.png) no-repeat 0 0;
+}
+
+/* */
+.sec_price .discount .score_box {
+    position: relative;
+    margin-top: 10px;
+}
+.sec_price .discount .score_box .txt_score {
+    display: inline-block;
+    width: 110px;
+    margin-right: 10px;
+    color: #62b1bd;
+    line-height: 45px;
+    letter-spacing: -0.04em;
+}
+.btn_ty_form {
+    min-width: 100px;
+    padding: 16px 22px 15px;
+    background: #737B82;
+    color: #fff;
+}
+
+[class*="btn_ty_"] {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.tooltip:before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_tooltip.png) no-repeat 0 0;
+}
+.sec_price .discount .entry .tooltip {
+    margin: 14px 0 0 10px;
+}
+
+.tooltip {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+span.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.blind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.tooltip .text {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 35px;
+    width: 225px;
+    padding: 17px 19px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    color: #777;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.tooltip .text:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -1px;
+    top: -13px;
+    width: 26px;
+    height: 13px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_tooltip_arrow.png) no-repeat 0 0;
+}
+.tooltip .text strong {
+    display: block;
+    margin-bottom: 9px;
+    color: #141414;
+    font-size: 14px;
+}
+.sec_price .discount .score_box .txt_use {
+    margin-top: 20px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.025em;
+}
+.sec_price .discount .price02 {
+    float: right;
+    line-height: 45px;
+}
+.sec_price .discount > div {
+    padding-bottom: 20px;
+}
+input.ip_radio:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio_on.png) no-repeat 0 0;
+}
+input.ip_radio + label {
+    display: inline-block;
+    height: 18px;
+    padding-left: 28px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio.png) no-repeat 0 0;
+    font-weight: 700;
+    line-height: 18px;
+}
+.sec_price .discount .entry {
+    float: left;
+    width: 390px;
+}
+.sec_price .discount .entry .select_box {
+    display: inline-block;
+}
+
+.select_box {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+}
+.select_box select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 0 30px 0 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    background: #fff url(https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png) no-repeat 100% 50%;
+    color: #121212;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+.select_box select[disabled] {
+    background: #f4f4f4 url(https://image.nbkorea.com/NBRB_PC/common/bg_select_box_dis.png) no-repeat 100% 50%;
+}
+select[disabled] > option {
+    color: -internal-light-dark(graytext, rgb(170, 170, 170));
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.tooltip .text strong {
+    display: block;
+    margin-bottom: 9px;
+    color: #141414;
+    font-size: 14px;
+}
+.sec_price .discount .discount_info li.m_discount {
+    font-size: 14px;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.sec_price .discount .discount_info li {
+    font-size: 12px;
+    padding-left: 7px;
+    color: #777;
+    text-indent: -7px;
+    line-height: 24px;
+    letter-spacing: -0.025em;
+}
+.sec_price .calc > div {
+    padding: 29px 0;
+}
+
+.sec_price .discount {
+    border-bottom: 1px solid #dbdbdb;
+}
+.sec_price .calc > div .txt_effect {
+    margin-top: 16px;
+}
+.sec_price .calc > div .txt_effect .ttl {
+    color: #777;
+    font-weight: 400;
+}
+/* 주문자 정보 */
+.title_box {
+    position: relative;
+}
+.sec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+.title_box .txt_info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    line-height: 1;
+}
+.title_box .txt_info .compulsory {
+    display: inline-block;
+    margin-left: 26px;
+    color: #cf0a2c;
+}
+.title_box .txt_info .compulsory .mark {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin: 3px 0 0 5px;
+    background: #e3233f;
+    border-radius: 1.5px;
+    text-indent: -999em;
+    overflow: hidden;
+    vertical-align: top;
+}
+.form_area {
+    padding: 10px 0 40px;
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #dbdbdb;
+}
+.form_area .row {
+    padding-top: 30px;
+}
+.pa_group .form_area .row .ftit {
+    padding-left: 21px;
+}
+
+.form_area .row.type_low .ftit {
+    padding-top: 0;
+}
+.form_area .row .ftit {
+    float: left;
+    width: 150px;
+    padding-top: 13px;
+    padding-left: 30px;
+    line-height: 1.3;
+}
+.form_area .row .fdata {
+    padding-left: 180px;
+}
+.form_area .row.type_low .fdata .fval {
+    display: inline-block;
+    line-height: 1.3;
+}
+.form_area .row:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.pa_group .form_area .row .ftit {
+    padding-left: 21px;
+}
+label {
+    cursor: default;
+}
+.form_area .row .ftit .compulsory {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    background: #e3233f;
+    border-radius: 1.5px;
+    text-indent: -999em;
+    overflow: hidden;
+    vertical-align: top;
+}
+.form_area .row .fdata .ip_text {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+input.ip_text.sm {
+    width: 170px;
+}
+.form_area .row .fdata .unit {
+    display: inline-block;
+    padding: 15px 8px 0 3px;
+    line-height: 1;
+    vertical-align: top;
+}
+.form_area .row .fdata .ip_text {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.form_area .row .fdata .select_box {
+    display: inline-block;
+    width: 170px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.form_area .row .fdata .select_box select {
+    height: 45px;
+}
+.select_box select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 0 30px 0 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    background: #fff url(https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png) no-repeat 100% 50%;
+    color: #121212;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+.form_area .row .fdata .ip_info {
+    display: block;
+    margin-top: 19px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.2;
+}
+.form_area .row .fdata [class*="btn_ty_"] {
+    margin-left: 0;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.btn_ty_form {
+    min-width: 100px;
+    padding: 16px 22px 15px;
+    background: #737B82;
+    color: #fff;
+}
+.btn_ty_form:hover {
+    min-width: 100px;
+    padding: 16px 22px 15px;
+    background: #737B82;
+    color: #fff;
+}
+.form_area .row .fdata .block {
+    margin-bottom: 8px;
+}
+.form_area .row .fdata .ip_text {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+input.ip_text[type="text"][readonly] {
+    background: #f4f4f4;
+    color: #aeaeae;
+}
+input.ip_text.sm {
+    width: 170px;
+}
+input.ip_text.xl {
+    width: 634px;
+}
+
+.form_area .row .fdata .ip_text + .ip_text.xl {
+    margin-top: 8px;
+}
+.form_btm {
+    margin-top: 20px;
+    color: #777;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.form_btm .form_control {
+    float: left;
+}
+.form_btm .form_control span {
+    display: inline-block;
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+}
+.form_btm .txt_right {
+    float: right;
+}
+input.ip_chekbox {
+    display: none;
+}
+.form_btm .txt_right input.ip_chekbox + label {
+    color: #777;
+}
+input.ip_chekbox:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk_on.png) no-repeat 0 0;
+}
+.form_area .row .fdata .ip_textarea {
+    width: 634px;
+    height: 90px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+textarea {
+    resize: none;
+}
+.form_area .pay_agree {
+    padding-left: 21px;
+    margin-top: 40px;
+}
+.form_area .pay_agree input.ip_chekbox + label {
+    color: #777777;
+}
+
+input.ip_chekbox + label {
+    display: inline-block;
+    height: 18px;
+    padding: 0 0 0 27px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk.png) no-repeat 0 0;
+    line-height: 18px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.form_area .pay_agree .btn_line {
+    color: #777;
+    margin-left: 48px;
+}
+
+.btn_line {
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #777;
+    color: #000;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+/* 배송정보 수정*/
+
+
+/* 결제 예정금액 수정*/
+.sec_price .total {
+    float: right;
+    width: 260px;
+    padding: 45px 0 0 40px;
+    box-sizing: border-box;
+}
+.sec_price .total .txt1 {
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.sec_price .total .txt2 {
+    display: block;
+    margin-top: 10px;
+    color: #777;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.sec_price .total .txt5 {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: #777;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.sec_price .total .txt3 {
+    display: block;
+    margin-top: 29px;
+    color: #cf0a2c;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.sec_price .total .txt3 em {
+    font-size: 27px;
+    font-weight: 700;
+}
+.sec_price .total .txt4 {
+    display: block;
+    margin-top: 9px;
+    color: #62b1bd;
+    line-height: 1;
+}
+.form_area.form_area_pay {
+    padding-bottom: 0;
+}
+.pa_group .form_area .row .ftit {
+    padding-left: 21px;
+}
+
+.form_area .row.type_low .ftit {
+    padding-top: 0;
+}
+.form_area .row .ftit {
+    float: left;
+    width: 150px;
+    padding-top: 13px;
+    padding-left: 30px;
+    line-height: 1.3;
+}
+.pa_group .form_area .row .fdata.pay_opt {
+    padding-bottom: 12px;
+    font-size: 0;
+}
+
+.form_area.form_area_pay .row .fdata {
+    padding-left: 0;
+}
+.pa_group .pay_opt_row {
+    padding-left: 116px;
+    margin-bottom: 25px;
+}
+.pa_group .form_area .row .fdata .chk {
+    margin-right: 25px;
+    position: relative;
+}
+
+.form_area .row .fdata .chk {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.pa_group .form_area .row .fdata .chk .chk_benefit {
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/ico_benefit.png) no-repeat;
+    background-size: 35px auto;
+    position: absolute;
+    left: 5%;
+    top: -10px;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+    display: block;
+}	
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay8 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment08.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay8 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment08_on.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label {
+    width: 100px;
+    height: 100px;
+    padding-left: 0;
+}
+.form_area .row .fdata .chk label {
+    font-weight: 400;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay1 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment01.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay1 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment01_on.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay7 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment07_on.jpg) no-repeat 0 0;
+}
+
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay7 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment07.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay6 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment06_on.jpg) no-repeat 0 0;
+}
+
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay6 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment06.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay4 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment04_on.jpg) no-repeat 0 0;
+}
+
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay4 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment04.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay5 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment05_on.jpg) no-repeat 0 0;
+}
+
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay5 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment05.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay3 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment03_on.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay3 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment03.jpg) no-repeat 0 0;
+}
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio:checked + label.pay2 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment02_on.jpg) no-repeat 0 0;
+}
+
+.pa_group .form_area .row .fdata.pay_opt input.ip_radio + label.pay2 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/pay/payment02.jpg) no-repeat 0 0;
+}
+.pa_group .pay_opt_row:last-child {
+    margin-bottom: 0;
+}
+
+.pa_group .pay_opt_row {
+    padding-left: 116px;
+    margin-bottom: 25px;
+}
+.pa_group .form_area .row .fdata .chk:last-child {
+    margin-right: 0;
+}
+.pay_option_wrap {
+    display: table;
+    margin-top: 30px;
+    border-top: 1px solid #dbdbdb;
+}
+.pa_group .pay_option_group {
+    display: table-cell;
+    width: 720px;
+    padding: 50px 21px 21px 21px;
+    box-sizing: border-box;
+    border-right: 1px solid #dbdbdb;
+    letter-spacing: -0.04em;
+    vertical-align: top;
+}
+.pa_group .pay_option_group .box03 {
+    color: #777;
+    line-height: 20px;
+}
+
+
+.pa_group .pay_option_group .box03 p.txt01 {
+    margin-top: 25px;
+}
+
+.pa_group .pay_option_group .box01 .txt01 {
+    margin-bottom: 40px;
+    color: #777;
+}
+.pa_group .pay_option_group .box01 .grouping > div:first-child {
+    width: 409px;
+}
+
+.pa_group .pay_option_group .box01 .grouping > div {
+    float: left;
+    width: auto;
+}
+.pa_group .pay_option_group .box01 .grouping ul {
+    display: table;
+    width: 100%;
+}
+.pa_group .pay_option_group .box01 .grouping ul li {
+    padding-top: 13px;
+}
+.pa_group .pay_option_group .box01 .grouping ul li p {
+    display: table-cell;
+    width: 116px;
+    vertical-align: top;
+}
+.pa_group .pay_option_group .box01 .grouping ul li div {
+    display: table-cell;
+    vertical-align: top;
+}
+.pa_group .pay_option_group .box01 .grouping ul li div span {
+    display: block;
+    padding: 17px 0 10px 0;
+    color: #aeaeae;
+    font-size: 12px;
+    line-height: 1;
+}
+.pa_group .pay_option_group .box03 {
+    color: #777;
+    line-height: 20px;
+}
+
+.pa_group .pay_option_group .box05 {
+    color: #777;
+    line-height: 20px;
+}
+
+.pa_group .pay_option_group .box05 p.txt01 {
+    margin-bottom: 25px;
+}
+.pa_group .pay_option_group > div.on {
+    display: block;
+}
+
+.pa_group .pay_option_group .box04 {
+    color: #777;
+    line-height: 20px;
+}
+.pa_group .pay_option_group > div {
+    display: none;
+    height: 400px;
+    overflow-y: scroll;
+}
+.pa_group .pay_option_group .box04 p.txt01 {
+    margin-bottom: 25px;
+}
+
+.pa_group .pay_option_group .box04 {
+    color: #777;
+    line-height: 20px;
+}
+.pa_group .pay_option_group .box03 {
+    color: #777;
+    line-height: 20px;
+}
+.pa_group .pay_option_group .box03 span {
+    color: #141414;
+    font-weight: 700;
+}
+.pa_group .pay_option_group .box03 p.txt01 {
+    margin-top: 25px;
+}
+.pa_group .pay_option_group > div.on {
+    display: block;
+}
+.pa_group .pay_option_group .box02 .txt01 {
+    margin-top: 18px;
+}
+.pa_group .pay_option_group .box02 {
+    color: #777;
+}
+.pa_group .form_area .row.pay_sum {
+    display: table-cell;
+    width: 260px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.pa_group .form_area .row.pay_sum .pay_price {
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.pa_group .form_area .row .ftit {
+    padding-left: 21px;
+}
+.form_area .row.type_low .ftit {
+    padding-top: 0;
+}
+.pa_group .form_area .row.pay_sum .pay_price {
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+}
+.pa_group .form_area .row.pay_sum .fdata .fr {
+    padding-right: 20px;
+}
+.fr {
+    float: right;
+}
+.pa_group .form_area .row.pay_sum .pay_price:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.pa_group .form_area .row.pay_sum .pay_price.discount .fdata .fr {
+    color: #cf0a2c;
+}
+.pa_group .form_area .row.pay_sum .pay_price.total {
+    margin-top: 95px;
+    margin-bottom: 0;
+}
+.pa_group .form_area .row.pay_sum .pay_price .ftit {
+    width: 79px;
+}
+.pay_price.total .ftit {
+    line-height: 26px;
+}
+.pa_group .form_area .row.pay_sum .pay_price.total .fdata .fr {
+    color: #cf0a2c;
+}
+.pa_group .form_area .row.pay_sum .pay_price.total .fdata .fr strong {
+    font-size: 26px;
+    font-weight: bold;
+}
+.pa_group .form_area .row.pay_sum .pay_price:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.pa_group .form_area .row.pay_sum .pay_price.terms {
+    width: 220px;
+    height: 80px;
+    margin-left: 21px;
+    padding: 10px 0 10px 10px;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    font-size: 10px;
+    line-height: 1.7em;
+    color: #777;
+    overflow-y: scroll;
+}
+.pa_group .form_area .row.pay_sum .pay_price.chk {
+    margin-top: 26px;
+    padding-left: 21px;
+    color: #777;
+}
+.pa_group .form_area .row.pay_sum .pay_price > p.pc_st01 {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    border-bottom: 1px solid #bababa;
+    font-size: 12px;
+    margin-bottom: 2px;
+    line-height: 1.3;
+    color: #777;
+}
+.pa_group .form_area .row.pay_sum .pay_price > p.pc_st01 a {
+    color: #777;
+}
+.form_btm02 .pay_txt_list {
+    padding-top: 20px;
+}
+.form_btm02 .pay_txt_list li {
+    padding-left: 13px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_gStar.png) no-repeat 0 8px;
+    color: #777;
+    font-size: 12px;
+    line-height: 20px;
+}
+.basket_wrap .btn_area {
+    margin-top: 30px;
+}
+
+.btn_area {
+    display: block;
+    text-align: center;
+}
+[class*="btn_ty_"].lg {
+    min-width: 140px;
+    padding: 20px 18px;
+    font-size: 16px;
+}
+
+[class*="btn_ty_"]:first-child {
+    margin-left: 0;
+}
+.btn_ty_rface, .btn_ty_rface:hover {
+    border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+}
+.btn_ty_bline, .btn_ty_bline:hover {
+    border: 2px solid #444;
+    color: #141414;
+}
