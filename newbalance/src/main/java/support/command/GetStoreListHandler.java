@@ -16,6 +16,7 @@ public class GetStoreListHandler implements CommandHandler{
 		
 		System.out.println(">GetStoreListHandler.process() 호출됨..");
 		
+		
 		SupportService service= SupportService.getInstance();
 		
 		String searchWord = ( request.getParameter("searchWord") == null ? "" : request.getParameter("searchWord") );

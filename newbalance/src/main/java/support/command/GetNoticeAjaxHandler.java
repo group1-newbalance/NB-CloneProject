@@ -15,6 +15,7 @@ public class GetNoticeAjaxHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
+	
 		
 		System.out.println(">GetNoticeAjaxHandler.process() 호출됨..");
 		

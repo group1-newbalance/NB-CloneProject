@@ -15,7 +15,6 @@ public class GetFaqAjaxHandler implements CommandHandler{
 public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("text/html; charset=UTF-8");
-		
 		System.out.println(">GetFaqAjaxHandler.process() 호출됨..");
 		
 	    SupportService  faqService= SupportService.getInstance();

@@ -15,6 +15,7 @@ public class GetNoticeListHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(">GetNoticeListHandler.process() 호출됨..");
 		
+		
 		SupportService  listService= SupportService.getInstance();
 		
 		int currentPage =  ( request.getParameter("currentPage") == null ? 1 : Integer.parseInt(request.getParameter("currentPage")) );  // 현재 페이지. 

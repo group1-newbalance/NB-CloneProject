@@ -12,7 +12,6 @@ public class AppDownloadHandler implements CommandHandler {
 		
 		System.out.println("> AppDownloadHandler 호출 ! ");
 		
-		
 		return "/support/appDown.jsp";
 	}
 
