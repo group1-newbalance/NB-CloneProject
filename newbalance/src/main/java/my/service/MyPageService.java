@@ -150,19 +150,6 @@ private static MyPageService instance = null;
 	      return rowCount;
 	   }
 
-	public List<MywishDTO> getMyWish(String userCode) throws NamingException {
-		List<MywishDTO> mywishdto = null;
-		try ( Connection conn = ConnectionProvider.getConnection()) {
-			MyDAO myDao = MyDAO.getInstance();
-			mywishdto = myDao.getMyWishlist(conn, userCode);
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return mywishdto;
-	}
-
-
 	public int getWishCount(String userCode) {
 		Connection con =null;
 		
@@ -196,7 +183,7 @@ private static MyPageService instance = null;
 		} finally {
 			JdbcUtil.close(con);
 		}
-=======
+	}
 	public List<MyWishDTO> getMemberWishList(String userCode) throws NamingException {
 		List<MyWishDTO> wishList = null;
 		try ( Connection conn = ConnectionProvider.getConnection()) {

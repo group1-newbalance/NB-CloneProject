@@ -13,7 +13,6 @@ import my.domain.MbLevelDTO;
 import my.domain.MileageDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
-import my.domain.MywishDTO;
 import my.domain.QuestionDTO;
 import support.domain.StoreDTO;
 import my.domain.MyNbPointDTO;
@@ -253,69 +252,6 @@ public class MyDAO implements IMy{
 	}
   
 
-
-	@Override
-	public List<MywishDTO> getMyWishlist(Connection conn, String userCode) throws SQLException {
-		
-		ArrayList<MywishDTO> list = null;
-		
-		String sql = " SELECT b.* "
-        + " FROM (  "
-		+ "	        SELECT ROWNUM no, t.*  "
-		+ "	        FROM (  "
-		+ "						SELECT *  "
-		+ "							FROM wishlist w JOIN product p ON w.pd_code = p.pd_code "
-		+ "							                JOIN product_image i ON w.pd_code = i.pd_code "
-		+ "							                WHERE user_code = ? "
-		+ "							                    ) t "
-		+ "	       	) b "
-		+ " WHERE  b.no = 1 ";
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userCode);
-
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-			
-		list = new ArrayList<MywishDTO>();
-		
-		MywishDTO mywishdto = null;
-		
-		do {
-			
-			mywishdto = new MywishDTO(
-					rs.getInt("wish_code")
-					,rs.getString("pd_code")
-					,rs.getString("user_code")
-					,rs.getString("wish_insertdate")
-					,rs.getString("wish_expiredate")
-					,rs.getString("pd_name")
-					,rs.getInt("pd_price")
-					,rs.getString("img_url")
-					);
-			
-			list.add(mywishdto);
-			
-		}while(rs.next());
-			
-		}
-		
-	} finally {
-		JdbcUtil.close(pstmt);
-		JdbcUtil.close(rs);     
-		
-	} // finally
-	
-	return list;
-	
-	}
-
-
 	public int getTotalWish(Connection con) throws SQLException {
 		int totalCount = 0;
 		
@@ -399,45 +335,6 @@ public class MyDAO implements IMy{
 	}
 
 
-	
-=======
-	public List<MyWishDTO> getMemberWishList(Connection conn, String userCode) throws SQLException {
-		String sql = " SELECT pd_code, img_url, user_code, pd_price, pd_name, wish_code "
-				+ " FROM (SELECT ROW_NUMBER() OVER(PARTITION BY pi.pd_code ORDER BY img_seq) row_num, pi.pd_code pd_code , img_url, user_code, pd_price, pd_name, wish_code "
-				+ "    FROM wishlist w JOIN product p ON w.pd_code = p.pd_code "
-				+ "                    JOIN product_image pi ON p.pd_code = pi.pd_code "
-				+ "    ORDER BY pi.pd_code, img_seq) "
-				+ " WHERE row_num = 1 and user_code = ?  ";
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, userCode);
-			rs = pstmt.executeQuery();
-			
-			List<MyWishDTO> myData = null;
-			MyWishDTO temp = null;
-			if (rs.next()) {
-				myData = new ArrayList<MyWishDTO>();
-				do {
-					temp = new MyWishDTO(rs.getString("pd_code")
-							, rs.getString("img_url")
-							, rs.getInt("pd_price")
-							, rs.getString("pd_name")
-							, rs.getInt("wish_code"));
-	
-					myData.add(temp);
-				}while(rs.next());
-			}
-			
-			return myData;
-		}finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-	}
-	
 	public int deleteWishList(Connection conn, String userCode, String[] wishList) {
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
