@@ -12,7 +12,7 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 	$(document).ready(function() {
 		
 		$('div.top_search #schWord').on('keydown', function (event) {
-	        if (event.which == 13) {
+	        if (event.which == 13) {diffColorList
 	            event.preventDefault();            
 	            
 	            var schWord = $('#schWord').val();
@@ -291,10 +291,10 @@ zsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script
 			<a href="/collection/madeusauk.action" class="made" data-gtag-idx="fo_common_1_1"><img src="https://image.nbkorea.com/NBRB_PC/common/btn_made_99x16.png" alt="MADE IN USA /UK"></a>
 			<a href="/my/introMyNB.action" class="mynb" data-gtag-idx="fo_common_1_2"><img src="https://image.nbkorea.com/NBRB_PC/common/logo_mynb.png" alt="MYNB"></a>
 			<ul class="clearfix">				
-						<li><a href="/support/searchShopList.action" data-gtag-idx="fo_common_1_3">매장찾기</a></li>
-						<li><a href="/support/searchNoticeList.action" data-gtag-idx="fo_common_1_4">공지사항</a></li>
-						<li><a href="/support/callCenter.action" data-gtag-idx="fo_common_1_5">FAQS</a></li>
-						<li><a href="/nbnyou/searchEventList.action" data-gtag-idx="fo_common_1_6">이벤트</a></li>
+						<li><a href="/newbalance/support/storeSearch.action" data-gtag-idx="fo_common_1_3">매장찾기</a></li>
+						<li><a href="/newbalance/support/notice.action" data-gtag-idx="fo_common_1_4">공지사항</a></li>
+						<li><a href="/newbalance/support/faq.action" data-gtag-idx="fo_common_1_5">FAQS</a></li>
+						<li><a href="/newbalance/nbnyou/searchEventList.action" data-gtag-idx="fo_common_1_6">이벤트</a></li>
 			</ul>
 		</div>
 	</div>

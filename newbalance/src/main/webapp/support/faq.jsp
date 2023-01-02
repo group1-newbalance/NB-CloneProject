@@ -31,10 +31,10 @@
 	<div class="category">
 		<strong class="tit">NEED HELP</strong>
 		<ul>
-			<li class=""><a href="/support/callCenter.action">고객센터</a></li>
+			<li class=""><a href="/newbalance/support/callCenter.action">고객센터</a></li>
 			<li class=""><a href="/newbalance/support/faq.action">FAQs</a></li>
 			<li class=""><a href="/newbalance/support/notice.action">공지사항</a></li>
-			<li class=""><a href="/my/qna/searchQuestionList.action">1:1 문의</a></li>
+			<li class=""><a href="/newbalance/my/searchQuestionList.action">1:1 문의</a></li>
 			<li class=""><a href="/newbalance/support/storeSearch.action">매장 찾기</a></li>
 			<li class=""><a href="/newbalance/support/appDownload.action">App 다운로드</a></li>
 		</ul>
@@ -42,12 +42,12 @@
 	<div class="category">
 		<strong class="tit">INFORMATION</strong>
 		<ul>
-			<li class=""><a href="/support/membership.action">온라인 회원 등급 안내</a></li>
-			<li class="on"><a href="/support/mileage.action">통합 마일리지 안내</a></li>
-			<li class=""><a href="/support/teamwearOrder.action">팀/단체복 주문 안내</a></li>
-			<li class=""><a href="/support/dlvy.action">배송 및 교환 반품 안내</a></li>
-			<li class=""><a href="/support/wash.action">세탁 및 손질 방법 안내</a></li>
-			<li class=""><a href="/support/terms.action">약관</a></li>
+			<li class=""><a href="/newbalance/support/membership.action">온라인 회원 등급 안내</a></li>
+			<li class=""><a href="/newbalance/support/mileage.action">통합 마일리지 안내</a></li>
+			<li class=""><a href="/newbalance/support/teamwearOrder.action">팀/단체복 주문 안내</a></li>
+			<li class=""><a href="/newbalance/support/dlvy.action">배송 및 교환 반품 안내</a></li>
+			<li class=""><a href="/newbalance/support/wash.action">세탁 및 손질 방법 안내</a></li>
+			<li class=""><a href="/newbalance/support/terms.action">약관</a></li>
 		</ul>
 	</div>
 	
@@ -55,9 +55,9 @@
 		<strong class="tit">MEMBERS ONLY SERVICE</strong>
 		<ul>
 			<!-- [D] 'on'클래스 추가 시 활성화 -->
-			<li class=""><a href="/nbnotice.action">회원 전용 쿠폰 혜택</a></li>
-			<li class=""><a href="/support/serviceOffer.action">회원 전용 서비스 제공</a></li>
-			<li class=""><a href="/support/membersEvent.action">회원 전용 이벤트 참여</a></li>
+			<li class=""><a href="/newbalance/nbnotice.action">회원 전용 쿠폰 혜택</a></li>
+			<li class=""><a href="/newbalance/support/serviceOffer.action">회원 전용 서비스 제공</a></li>
+			<li class=""><a href="/newbalance/support/membersEvent.action">회원 전용 이벤트 참여</a></li>
 		</ul>
 	</div>
 

@@ -28,8 +28,6 @@ public class WishListHandler  implements CommandHandler {
 	            mywishdto = myPageService.getMemberWishList(member.getUserCode());
 	         }
 	      }
-
-	 
 	      
 	      request.setAttribute("wishData", mywishdto);
 		

@@ -35,10 +35,10 @@ var j = jQuery.noConflict();
 						<div class="mplevel_box">
 							<div class="level bronze"> <!-- [D] 등급별로 class명 추가! (vip / gold / silver / bronze)  -->
 							  
-							  <strong>SILVER</strong>
+							  <strong>BRONZE</strong>
 							</div>
 							<div class="mpoint">
-								<p class="mptotal">3,500 P
+								<p class="mptotal">4,000 P
 								</p>
 							</div>
 						</div>

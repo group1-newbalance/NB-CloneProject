@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import product.domain.AddCartDTO;
+import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
@@ -49,4 +50,6 @@ public interface IProduct {
 
 	// 리뷰 집계(count, 별점 평균)
 	ReviewDTO totalReview(Connection conn, String pdCode) throws SQLException;
+
+	ProductAjaxDTO selectProductAjax(Connection conn, String pdCode) throws SQLException;
 }

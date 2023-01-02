@@ -30,7 +30,7 @@
     <!-- header -->
     <div class="listTop">
         <div class="category_title">            
-            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">
+            <span data-cidx="1285"><a href="/newbalance/product/subMain.action?cIdx=1285">
 	            <c:choose>
 	            	<c:when test="${param.cateGrpCode == 'M'}">
 	            		남자
@@ -191,7 +191,7 @@ ${ fn:substring(param.cIdx, 0,1) }
               <li class="memberOnly">
                <div class="pro_area pro_soldOut"><!-- 품절 시 pro_soldOut 클래스 추가 -->
                   <div class="pro_thumbNail">
-                     	<a href="/product/productDetail.action?pdCode=${map.key.pd_code}" id="selDetail" data-emphasis="Y" data-style="${ map.key.pd_code}" data-color="${map.key.color } " data-cidx="${map.key.category_code }" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">   
+                     	<a href="/newbalance/product/productDetail.action?pdCode=${map.key.pd_code}" id="selDetail" data-emphasis="Y" data-style="${ map.key.pd_code}" data-color="${map.key.color } " data-cidx="${map.key.category_code }" class="pro_area" data-com-icon="https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png" data-sale-icon="" data-cate-icon="" data-event-icon="" data-guide-icon="">   
                         <img id="selGoods" src="${map.value.get(0).img_url}" alt="ML2002RC" class="img_goods" data-base-img="${map.value.get(0).img_url}" data-hover-img="${map.value.get(1).img_url}" style="display: inline-block;">                    	
                               <span class="img_tag"></span>
                                        <span class="icon_nbg_s "></span>
@@ -394,13 +394,13 @@ content+="<ul id='size_list'>";
 for (var i = 0; i < sizeList.length; i++) {
 	if(sizeList[i].stockCount == 0){
 		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList.color+"' onclick='showPrice(this)'>";
 		content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 		content+="</li>";
 		
 	}else{
 		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";//onclick='showPrice(this)'
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList.color+"' onclick='showPrice(this)'>";
 		content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 		content+="</li>";
 	}
@@ -654,7 +654,7 @@ $(".dropdown_list a").on("click", function(){
 		
 		//이미지
 		content+="<div class='pro_thumbNail'>";
-		content+="<a href='/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
+		content+="<a href='/newbalance/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
 		
 		content+="<img id='selGoods' src='"+productImgList[key][0].img_url+"' alt='' class='img_goods' data-base-img='"+productImgList[key][0].img_url+"' data-hover-img='"+productImgList[key][0].img_url+"' style='display: inline-block;'>";
 		content+="<span class='img_tag'></span>";
@@ -814,7 +814,7 @@ for(const key in productInfoList){
 	
 	//이미지
 	content+="<div class='pro_thumbNail'>";
-	content+="<a href='/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
+	content+="<a href='/newbalance/product/productDetail.action?pdCode="+productInfoList[key].pd_code+"' id='selDetail' data-emphasis='Y' data-style='"+productInfoList[key].pd_code+"' data-color='"+productInfoList[key].color+"' data-cidx='"+productInfoList[key].category_code+"' class='pro_area' data-com-icon='https://image.nbkorea.com/NBRB_Icon/NB20180727200033690001.png,https://image.nbkorea.com/NBRB_Icon/NB20180727200053071001.png' data-sale-icon='' data-cate-icon='' data-event-icon='' data-guide-icon=''>";                                                          
 	
 	content+="<img id='selGoods' src='"+productImgList[key][0].img_url+"' alt='' class='img_goods' data-base-img='"+productImgList[key][0].img_url+"' data-hover-img='"+productImgList[key][0].img_url+"' style='display: inline-block;'>";
 	content+="<span class='img_tag'></span>";
@@ -1007,13 +1007,13 @@ function quickClick(self){
 	for (var i = 0; i < sizeList.length; i++) {
 		if(sizeList[i].stockCount == 0){
 			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
 			content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 			content+="</li>";
 			
 		}else{
 			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
 			content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 			content+="</li>";
 		}
@@ -1082,7 +1082,8 @@ function quickClick(self){
 		
 
 			}//if data==true
-		}//success
+		}//
+
 			
 	})//ajax
 }
@@ -1092,7 +1093,7 @@ function quickClick(self){
 
 
 
-$(".buy").on("click",function(){
+/* $(".buy").on("click",function(){
 	
 	var array = new Array();  //Object를 배열로 저장할 Array
      
@@ -1123,16 +1124,16 @@ $(".buy").on("click",function(){
           "cartList" : cartList
        }, 
        success : function(data){
-       }
+       },
        error: function(data){
            alert("에러가 발생했습니다.");
        }
 	
 	
-})
+	});
 
 
-
+ */
 
 </script>
 
@@ -1733,7 +1734,6 @@ function showPrice(self){
 
 
 </script>
- 
 
  
  <jsp:include page="/common/footer.jsp" flush="false" />

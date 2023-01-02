@@ -11,6 +11,7 @@ import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import product.dao.ProductDAO;
 import product.domain.AddCartDTO;
+import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
@@ -26,26 +27,6 @@ public class SelectProductService {
 	private static SelectProductService instance = new SelectProductService();
 	public static SelectProductService getInstance() {
 		return instance;
-	}
-
-	public ProductDTO selectProduct(String pdCode, String userCode){
-
-		Connection conn = null;
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			ProductDAO dao = ProductDAO.getInstance();
-
-			ProductDTO pdDto = null;
-			pdDto = dao.selectProduct(conn, pdCode);
-			return pdDto;
-			
-		} catch (NamingException | SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			JdbcUtil.close(conn); 
-		}
-		
 	}
 	
 	public ProductDTO selectProduct(String pdCode){
@@ -68,6 +49,26 @@ public class SelectProductService {
 		
 	}
 
+	public ProductAjaxDTO selectProductAjax(String pdCode){
+
+		Connection conn = null;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			ProductDAO dao = ProductDAO.getInstance();
+
+			ProductAjaxDTO pdDto = null;
+			pdDto = dao.selectProductAjax(conn, pdCode);
+			return pdDto;
+			
+		} catch (NamingException | SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn); 
+		}
+		
+	}
+	
 	public ProductColorDTO getPdColor(String pdCode) {
 		Connection conn = null;
 		try {
