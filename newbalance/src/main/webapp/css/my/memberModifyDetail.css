@@ -219,7 +219,7 @@
 
 .pop_inner .form_area {border-top:0;padding:10px 0 30px;}
 .pop_inner .form_area .row {padding-top:20px;}
-.pop_inner .form_area .row .ftit {width:114px;padding-left:0;}
+
 .pop_inner .form_area .row .fdata {padding-left:114px;}
 .pop_inner .form_area .row .fdata .ip_text {width:100%;}
 .pop_inner .form_area .row .fdata .textarea {height:145px;}
@@ -269,3 +269,4 @@
     top: 0;
     min-width: 1200px;
 }
+.findFormName {width:114px;padding-left:0;}
