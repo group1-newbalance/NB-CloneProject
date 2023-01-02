@@ -1,0 +1,176 @@
+@charset "UTF-8";
+@import '/newbalance/common/reset.css';
+@import '/newbalance/common/font.css';
+
+
+/* Q&A - A/S 처리 현황 */
+.as_box {margin-bottom:20px;padding:40px 0 40px 30px;background:#f4f4f4;overflow:hidden;}
+.as_box .bbox {float:left;}
+.as_box .bbox + .bbox {margin-left:48px;}
+.as_box label {display:inline-block;padding:16px 22px 15px 0;line-height:1;vertical-align:top;}
+.as_box .ip_text {width:180px;vertical-align:top;}
+.as_box .as_select_box {display:inline-block;width:120px;vertical-align:top;}
+.as_box .as_btn_ty_bface.assm {float:left;min-width:80px;}
+.as_box .ip_text.assm { width: 120px; margin-left: 3px;}
+.as_tbl_y .as_basic tbody td {height:100px;color:#555;text-align:center;letter-spacing:-0.04em;}
+
+.cscenter.type3 {margin-top:130px;margin-bottom:-80px;}
+.cscenter.type3 ul li {width:400px;height:inherit;}
+.cscenter.type3 ul li a {height:inherit;padding-top:60px;padding-bottom:0;}
+.cscenter.type3 ul li a strong {font-size:24px;}
+.cscenter.type3 ul li a span {margin-top:6px;font-size:12px;line-height:18px;}
+.cscenter.type3 ul li a span em {display:block;margin-bottom:2px;color:#141414;font-size:14px;font-weight:700;}
+.cscenter ul li.cs:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter.png') no-repeat 0 0;}
+
+.as_process {margin-top:14px;}
+.as_step_list {padding:71px 0 80px;border-top:2px solid #121212;border-bottom:1px solid #141414;overflow:hidden;}
+.as_step_list li {float:left;width:293px;color:#555;text-align:center;line-height:1;letter-spacing:-0.06em;box-sizing:boder-box;}
+.as_step_list li span {display:block;margin-bottom:10px;padding-top:84px;color:#141414;font-size:18px;font-weight:700;letter-spacing:0;}
+.as_step_list li:nth-child(1) span {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_as_step01.png') no-repeat 50% 0;}
+.as_step_list li:nth-child(2) span {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_as_step02.png') no-repeat 50% 1px;}
+.as_step_list li:nth-child(3) span {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_as_step03.png') no-repeat 50% 10px;}
+.as_step_list li:nth-child(4) {width:298px;margin:87px 0 0 162px;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step2.png') no-repeat 100% 53px;}
+.as_step_list li:nth-child(4) span {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_as_step04.png') no-repeat 50% 0;}
+.as_step_list li:nth-child(5) {width:289px;margin:87px 151px 0 0;}
+.as_step_list li:nth-child(5) span {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_as_step05.png') no-repeat 50% 10px;}
+.as_step_list li:nth-child(1), .as_step_list li:nth-child(2){background:url('https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step2.png') no-repeat 100% 57px;}
+
+
+
+/* common */
+
+.as_clearfix:after{visibility:hidden;display:block;font-size:0;content:".";clear:both;height:0;}
+.as_clearfix{height:1%;}
+
+.as_sec_tit {padding-top:80px;margin-bottom:20px;font-size:24px;font-family:'Noto Sans KR';font-weight:700;line-height:1;}
+.vl_t{vertical-align:top !important;}/* 20190918 추가*/
+
+/* select */ /* header에 있음 sslect로*/
+.as_select_box {display:block;position:relative;box-sizing:border-box;}
+.as_select_box select {display:block;width:100%;height:45px;padding:0 30px 0 15px;border:1px solid #dbdbdb;border-radius:1px;background:#fff url('https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png') no-repeat 100% 50%;color:#121212;-webkit-appearance: none; -moz-appearance: none;appearance: none;box-sizing:border-box;}
+.as_select_box:before {content:'';display:none;position:absolute;right:1px;top:1px;width:30px;height:43px;background:url('https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png') no-repeat 100% 50%;overflow:hidden;}
+.as_select_box select::-ms-expand {display:none;}
+.as_select_box select {padding-right:0\9;}
+.as_select_box select[disabled] {background:#f4f4f4 url('https://image.nbkorea.com/NBRB_PC/common/bg_select_box_dis.png') no-repeat 100% 50%;}
+.as_select_box.disabled:before {background-image:url('https://image.nbkorea.com/NBRB_PC/common/bg_select_box_dis.png');}
+.as_select_box:before {display:block\9;}
+.as_select_box.small select {height:35px !important;padding:0 30px 0 22px;}
+.as_select_box.small select {padding-right:0\9;}
+.as_select_box.small:before {height:33px !important;}
+
+/* Q&A - 1:1 문의 */
+.cscenter2 {margin-top:100px;border:1px solid #dbdbdb;}
+.cscenter2 ul {display:table;width:100%;}
+.cscenter2 ul.col2 li {width:50%;}
+.cscenter2 ul.col3 li {width:33.3%;}
+.cscenter2 ul li {position:relative;display:table-cell;height:156px;vertical-align:middle;}
+.cscenter2 ul li + li:before {content:'';display:block;position:absolute;left:0;top:48px;width:1px;height:60px;background:#efefef;}
+.cscenter2 ul li a {display:block;padding:0 0 0 108px;text-decoration: none;color: #141414;font-weight: 400;}
+.cscenter2 ul li a strong {display:block;position:relative;margin-top:-1px;font-size:16px;line-height:18px;}
+.cscenter2 ul li a strong em {font-size:18px;}
+.cscenter2 ul li a strong:before {content:'';display:block;position:absolute;left:-43px;top:0;width:45px;height:45px;margin-left:-25px;}
+.cscenter2 ul li a span {display:block;margin-top:7px;color:#777;font-size:12px;line-height:18px;letter-spacing:-0.04em;}
+.cscenter2 ul li a:hover strong {color:#cf0a2c;}
+.cscenter2 ul li.cs1 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 0;}
+.cscenter2 ul li.cs2 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -130px;}
+.cscenter2 ul li.cs3 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -260px;}
+.cscenter2 ul li.cs4 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 100%;}
+
+
+.as_page_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.my_wrap .as_my_cont {
+    float: right;
+    width: 900px;
+}
+
+.my_wrap .as_my_cont .as_title_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .as_my_cont .as_title_area .page_txt_info {
+    padding-top: 15px;
+    color: #777;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.as_my_cont .as_title_area + .as_sec_tit {padding-top:0;}
+/* .as_my_cont .as_title_area + .as_essential {text-align:right;margin-bottom:30px;} */
+
+.as_sec_tit + .as_sec_sub_txt {
+    margin-top: -6px;
+    margin-bottom: 30px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+[class*="as_btn_ty_"].assm {
+    min-width: 120px;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+}
+
+.as_btn_ty_bface, .as_btn_ty_bface:hover { 
+    border: 3px solid #141414;
+    background: #141414;
+    color: #fff;
+}
+
+[class*="as_btn_ty_"] {
+    display: inline-block;
+    margin-left: 7px;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.as_tbl_y {
+    border-top: 2px solid #444;
+}
+
+.as_tbl_y thead th {
+    height: 61px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.as_tbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.as_no_data {
+    height: 285px !important;
+    padding: 0;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+.as_no_data .txt01 {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.as_sec_tit + .as_sec_sub_txtlist {
+    margin-top: -6px;
+    margin-bottom: 24px;
+}
+
+.as_sec_tit + .as_sec_sub_txtlist li {
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
