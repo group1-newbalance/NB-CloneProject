@@ -1,0 +1,54 @@
+@charset "utf-8";
+.listbtn {
+    min-width: 120px;
+    padding: 14px 30px 13px;
+    font-size: 14px;
+   border: 2px solid #444;
+   color: #141414;
+}
+
+.nttpage_tit {
+    font-size: 28px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.qbtn_area {
+    text-align: right;
+}
+
+.my_wrap .my_cont .qbtn_area {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+
+/* NB&YOU - 이벤트 리스트 상세, 이벤트 당첨자 리스트 상세 */
+.con_sumnail_detail .head{padding:37px 30px 36px;border-top:2px solid #141414; border-bottom:1px solid #dbdbdb;position:relative;}
+.con_sumnail_detail .head .title {color:#141414;font-size:18px;line-height:24px;margin-right:125px;}
+.con_sumnail_detail .head .txt_info{position:absolute;top:42px;right:30px;color:#777;font-size:14px;}
+.con_sumnail_detail .head .line_separator{color:#d6d6d6}
+.con_sumnail_detail .cont{padding:40px 0;border-bottom:1px solid #dbdbdb;line-height:1.5;}
+.con_sumnail_detail .cont img {max-width:100%;}
+.con_sumnail_detail .foot{position:relative;margin-top:20px;}
+.con_sumnail_detail .foot .sns{position:absolute;top:4px;left:0;width:53px;height:19px;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_sumnail_sns.png') 0 0 no-repeat scroll; }
+.con_sumnail_detail .foot .sns .btn_fb{display:block;width:11px;height:19px;float:left;margin-right:21px;text-indent:-9999px;}
+.con_sumnail_detail .foot .sns .btn_tw{display:block;width:21px;height:19px;float:left;text-indent:-9999px;}
+
+.con_comment_input{margin-top:120px;position:relative;}
+.con_comment_input .ip_textarea{width:980px;height:150px;padding:14px 15px;border:1px solid #dbdbdb;color: #141414;line-height:20px;box-sizing:border-box;}
+.con_comment_input .txt_num{position:absolute;top:120px;right:25px;color:#747474;font-size:14px;}
+.con_comment_input .btn_area{margin-top:20px;}
+.con_comment_login{margin-top: 120px;padding:70px 0;border-top:2px solid #444; border-bottom:1px solid #dbdbdb;color:#747474;text-align:center;}
+.con_comment_login .btn_area{margin-top:20px;text-align:center;}
+.con_comment_list{margin-top:60px;}
+.con_comment_list h3{font-size:24px;color:#141414;font-weight:700;}
+.con_comment_list ul{border-top:1px solid #444;margin-top:20px;}
+.con_comment_list li{border-bottom:1px solid #dbdbdb;padding:40px 20px;position:relative;}
+.con_comment_list .id{color:#000;font-weight:700;}
+.con_comment_list .date{color:#141414;margin-left:5px;}
+.con_comment_list .cont{color:#141414;margin-top:20px;line-height:1.5;}
+.con_comment_list .btn_del{position:absolute;top:35px;right:20px;}
+.con_comment_list .btn_area{margin-top:80px}

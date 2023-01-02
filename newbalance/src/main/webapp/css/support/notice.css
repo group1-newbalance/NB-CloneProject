@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+.qbtn_ty_more, .qbtn_ty_more:hover {
+    padding: 5px 20px 5px 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png) no-repeat 100% 52%;
+    color: #333;
+    font-size: 16px;
+    letter-spacing: -0.045em;
+}
+
+.qbtn_area_center {
+	    margin-top: 60px;
+	    text-align: center;
+	
+}
+
+
+.ntpage_tit {
+    font-size: 28px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+
+.nttbl_y {
+    border-top: 2px solid #444;
+}
+
+.nttbl_y thead th {
+    height: 61px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.nttbl_y .ntbasic tbody td.title {
+    line-height: 24px;
+}
+
+.nttbl_y .ntbasic tbody td {
+    height: 100px;
+    color: #555;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.nttbl_y tbody td.title {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left !important;
+    word-break: break-all;
+}
+
+.nttbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}

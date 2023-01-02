@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+
+.btn_ty_more, .btn_ty_more:hover {
+    padding: 5px 20px 5px 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png) no-repeat 100% 52%;
+    color: #333;
+    font-size: 16px;
+    letter-spacing: -0.045em;
+}
+
+.btn_area {
+    display: block;
+    text-align: center;
+}
+
+.ssno_data .tttxt01 {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+table .ssno_data {
+    height: 285px !important;
+    padding: 0;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+
+.my_wrap .my_stcont {
+    float: right;
+    width: 900px;
+}
+
+.my_wrap .my_stcont .title_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .my_stcont .title_area .page_tit {
+    font-size: 28px;
+}
+
+.stpage_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.scsc_box {
+    padding: 40px;
+    border-top: 2px solid #444;
+    background: #f4f4f4;
+}
+
+.scsc_box + .sstab_list {
+    margin-top: 80px;
+}
+
+.scsc_box label {
+    display: inline-block;
+    margin-right: 38px;
+    padding-top: 14px;
+    font-size: 16px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.scsc_box .ipst_text {
+    width: 400px;
+    vertical-align: top;
+    
+}
+
+ input.ipst_text {
+    display: inline-block;
+    height: 45px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    color: #141414;
+    line-height: 1;
+    box-sizing: border-box;
+    outline: none;
+} 
+
+.scsc_box .stbtn_ty_bface.sm {
+    min-width: 80px;
+    padding: 14px 23px 13px;
+}
+
+.scsc_box > [class*="stbtn_ty_"].w80 {
+    min-width: 80px !important;
+}
+
+.scsc_box > [class*="stbtn_ty_"].sm {
+    min-width: 120px
+px
+;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+}
+
+
+
+.stbtn_ty_bface, .stbtn_ty_bface:hover {
+    border: 2px solid #141414;
+    background: #141414;
+    color: #fff;
+}
+
+.scsc_box > [class*="stbtn_ty_"] {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+
+.ssselect_box select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 0 30px 0 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    background: #fff url(https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png) no-repeat 100% 50%;
+    color: #121212;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+/* 매장검색 */
+.scsc_box .box + .box {margin-top:20px;}
+.scsc_box .ssselect_box {display:inline-block;vertical-align:top;}
+.store_list td {height:170px;border-bottom:1px solid #dbdbdb;text-align:center;letter-spacing:-0.04em;}
+.store_list td.store {padding:0 20px;text-align:left;}
+.store_list td.store .name {display:block;padding-top:4px;font-size:16px;font-weight:700;line-height:1;}
+.store_list td.store .addr {margin:20px 0 6px;color:#777;line-height:16px;}
+.store_list td.store .type {display:inline-block;color:#cf0a2c;line-height:1;}
+.store_list td.store .phone {display:inline-block;color:#777;line-height:1;}
+.store_list td.store .phone:before {content:'';display:inline-block;position:relative;top:2px;width:1px;height:10px;margin:0 8px 0 6px;background:#dbdbdb;vertical-align:top;}
+.store_list td.store .etc {display:inline-block;color:#777;line-height:1;}/*20201120 추가*/
+.store_list td.store .etc:before {content:'';display:inline-block;position:relative;top:2px;width:1px;height:10px;margin:0 8px 0 6px;background:#dbdbdb;vertical-align:top;}/*20201120 추가*/
+.store_list td .btn_map {display:inline-block;padding-top:39px;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_map.png') no-repeat center 0;color:#777;font-size:12px;line-height:1;}
+.store_list + .btn_area {margin-top:60px !important;}
+
+/* tab_list */
+.sstab_list {overflow:hidden;}
+.sstab_list:after {content:"";display:block;clear:both;}
+.sstab_list ul {position:relative;overflow:hidden}
+.sstab_list ul:after {content:"";display: block;position:absolute;bottom:0;width:100%;height:2px;clear:both;background:#000;}
+.sstab_list ul > li {float:left;border:solid #dbdbdb;border-width:1px 1px 0 0;box-sizing:border-box;}
+.sstab_list ul > li:first-child {border-left:1px solid #dbdbdb;}
+.sstab_list ul > li > a {display:block;padding:20px 1px 23px;color:#121212;font-size:16px;line-height:1;text-align:center;box-sizing:border-box;}
+.sstab_list ul > li.activ {border-color:#141414;border-width:2px 2px 0 2px;}
+.sstab_list ul > li.activ > a {position:relative;padding:19px 0 23px;border-color:#141414;background:#fff;font-weight:700;z-index:1;}
+.sstab_list ul.col8 li {width:12.5%;}
+.sstab_list ul.col5 li {width:20%;}
+.sstab_list ul.col4 li {width:25%;}
+.sstab_list ul.col3 li {width:33%;}
+.sstab_list ul.col3 li:first-child {width:34%;}
+.sstab_list ul.col2 li {width:50%;}
+.sstab_cont .stcont {display:none;padding-top:98px;}
+.sstab_cont .stcont.activ {display:block;}

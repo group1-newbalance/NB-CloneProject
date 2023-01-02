@@ -49,6 +49,27 @@ public class JoinService {
 			return memCount;
 		}
 
+	
+	   public int update(MemberDTO mem) throws NamingException{
+	         Connection con = null;
+	         int rowCount = 0;
+	         try {
+	            con = ConnectionProvider.getConnection();
+	            MemberDAO dao = MemberDAO.getInstance();
+	            //update클릭해서 만들기
+	            rowCount  = dao.update(con, mem);
+	            
+	            System.out.println(rowCount);
+	         } catch (Exception e) {
+	            throw new JoinServiceException("메시지 수정 실패 : "+e.getLocalizedMessage(), e);
+	         }finally {
+	            JdbcUtil.close(con);
+	         }
+	         return rowCount;
+	      }
+	   
+
+
 		/*
 		 * // 3. public int update(MemberDTO mem) throws JoinServiceException {
 		 * System.out.println("service : "+mem.toString()); Connection con = null; int
@@ -81,6 +102,7 @@ public class JoinService {
 		 * 
 		 * }finally { JdbcUtil.close(con); } return delCount; }
 		 */
+     
 		public int update(MemberDTO mem) throws NamingException{
 			Connection con = null;
 			int rowCount = 0;

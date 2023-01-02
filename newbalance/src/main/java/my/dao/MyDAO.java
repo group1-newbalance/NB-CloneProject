@@ -13,9 +13,12 @@ import my.domain.MbLevelDTO;
 import my.domain.MileageDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
+import my.domain.QuestionDTO;
+import support.domain.StoreDTO;
 import my.domain.MyNbPointDTO;
 import my.domain.MyWishDTO;
 import my.domain.SaleCodeDTO;
+
 
 public class MyDAO implements IMy{
 
@@ -209,7 +212,9 @@ public class MyDAO implements IMy{
 			JdbcUtil.close(pstmt);
 		}
 	}
-	public List<MyWishDTO> getMemberWishList(Connection conn, String userCode) throws SQLException {
+  
+  
+  public List<MyWishDTO> getMemberWishList(Connection conn, String userCode) throws SQLException {
 		String sql = " SELECT pd_code, img_url, user_code, pd_price, pd_name, wish_code "
 				+ " FROM (SELECT ROW_NUMBER() OVER(PARTITION BY pi.pd_code ORDER BY img_seq) row_num, pi.pd_code pd_code , img_url, user_code, pd_price, pd_name, wish_code "
 				+ "    FROM wishlist w JOIN product p ON w.pd_code = p.pd_code "
@@ -245,7 +250,91 @@ public class MyDAO implements IMy{
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
+  
+
+	public int getTotalWish(Connection con) throws SQLException {
+		int totalCount = 0;
+		
+		String sql  = " SELECT COUNT(*) ";
+		sql += " FROM wishlist WHERE user_code = ? ";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "user_code");
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				totalCount = rs.getInt(1);	
+			}
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);         
+		} // finally
+		
+		return totalCount;
+	}
+
+	public List<QuestionDTO> getMyQuestion(Connection conn, String userCode) throws SQLException {
+		
+			System.out.println("userCode = " + userCode);
+			ArrayList<QuestionDTO> list = null;
+			
+			String sql  = " SELECT * ";
+			sql += " FROM qna q JOIN question_type qt ON q.qt_seq = qt.qt_seq ";
+			sql += " 					JOIN user_info u ON q.user_code = u.user_code ";
+			sql += " WHERE u.user_code = ? " ;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userCode);
+				
+				rs = pstmt.executeQuery();
+				if ( rs.next() ) {
+					System.out.println("userCode = " + userCode);
+					list = new ArrayList<QuestionDTO>();
+					QuestionDTO dto = null;
+					do {
+						dto = new QuestionDTO(
+								
+								rs.getInt("qna_code")
+								,rs.getString("user_code")
+								,rs.getString("qna_writedate")
+								,rs.getString("qna_status")
+								,rs.getInt("qt_seq")
+								,rs.getString("qt_content")
+								,rs.getString("qna_replydate")
+								,rs.getString("qna_title")
+								,rs.getString("qna_content")
+								,rs.getString("pd_code")
+								,rs.getString("ord_code")
+								,rs.getString("qna_file")
+								,rs.getString("qna_reply")
+								,rs.getString("user_email")
+								,rs.getString("user_name")
+								,rs.getString("user_phone")
+								);
+
+						list.add(dto);
+						
+					} while ( rs.next() );
+				} // if
+				
+			} finally {
+				JdbcUtil.close(pstmt);
+				JdbcUtil.close(rs);         
+			} // finally
+			return list;
+
+	}
+
+
 	public int deleteWishList(Connection conn, String userCode, String[] wishList) {
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
@@ -606,7 +695,6 @@ public class MyDAO implements IMy{
 		}
 
 	}
-
 
 
 }

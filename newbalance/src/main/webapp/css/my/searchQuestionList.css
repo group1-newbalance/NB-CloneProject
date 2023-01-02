@@ -1,0 +1,263 @@
+@charset "utf-8";
+@import '/newbalance/common/reset.css';
+@import '/newbalance/common/font.css';
+
+.qna_nodata .txt_nodata {
+    padding: 167px 0 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_exclamation.png) no-repeat 50% 84px;
+    color: #141414;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.ppage_tit {
+    font-size: 28px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.ppoint_r {
+    color: #cf0a2c !important;
+}
+
+.ppoint {
+    color: #141414;
+    font-weight: 700;
+}
+
+.my_wrap .my_cont .qtitle_area .page_txt_info {
+    padding-top: 15px;
+    color: #777;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.my_wrap .my_cont .qtitle_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .my_cont .qbtn_area {
+    margin-top: 30px;
+}
+
+.qbtn_area {
+    text-align: right;
+}
+
+[class*="qbtn_ty_"].lg {
+    min-width: 140px;
+    padding: 20px 18px;
+    font-size: 16px;
+}
+
+.qbtn_ty_bface, .qbtn_ty_bface:hover { 
+    border: 3px solid #141414;
+    background: #141414;
+    color: #fff;
+}
+
+[class*="qbtn_ty_"] {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.qpop_inner ul.sub_info {
+    padding: 27px 0;
+}
+
+.w700 .qpop_inner {
+    width: 700px;
+    padding: 50px 40px;
+}
+
+.layer_pop .qpop_inner {
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.form_area .rrow .fdata .select_box select {
+    height: 45px;
+}
+
+
+/* popup layout */
+.qpop_inner .header {padding:0 0 18px;border-bottom:2px solid #121212;position: relative !important;height: auto !important}
+.wrap .qpop_inner .header{min-width: auto;}/*20220519 추가*/
+.qpop_inner .header strong {display:block;color:#121212;font-size:24px;font-weight:700;line-height:1;}
+.qpop_inner .close {position:absolute;z-index: 60;}
+.qpop_inner .close img {display:block;}
+.qpop_inner .btn_area {text-align:center;}
+.qpop_inner .square {border:2px solid #444;text-align:center;}
+.qpop_inner .scroll {overflow-y:auto;}
+.qpop_inner .comp_txt1 {display:block;padding-bottom:17px;color:#121212;font-size:20px;font-weight:700;letter-spacing:-0.07em;line-height:1;}
+.qpop_inner .comp_txt2 {color:#777;line-height:20px;letter-spacing:-0.04em;}
+
+.qpop_inner .qform_area {border-top:0;padding:10px 0 30px;}
+.qpop_inner .qform_area .rrow {padding-top:20px;}
+.qpop_inner .qform_area .rrow .ftit {width:114px;padding-left:0;}
+.qpop_inner .qform_area .rrow .fdata {padding-left:114px;}
+
+.qpop_inner .qform_area .rrow .fdata .ip_text {width:100%;}
+
+.qpop_inner .qform_area .rrow .fdata .textarea {height:145px;}
+.qpop_inner .qform_area + .btn_area {margin-top:40px;}
+
+.qpop_inner .sub_info + .tbl {margin-top:18px;}
+.qpop_inner .tbl {border-top:2px solid #121212;}
+.qpop_inner .tbl thead th {position:relative;height:40px;border-bottom:1px solid #444;}
+.qpop_inner .tbl tbody tr {border-bottom:1px solid #dbdbdb;}
+.qpop_inner .tbl tbody td {/*min-height:50px;*/padding:15px 10px 14px;color:#777;letter-spacing:-0.025em;line-height:20px;text-align:center;}
+.qpop_inner .tbl tbody td.pd0 {padding:0;}
+.qpop_inner .tbl tbody td .store {color:#555;}
+.qpop_inner .tbl input.ip_radio + label {padding-left:18px; vertical-align:top;}
+.qpop_inner .tbl.bt_none {border-top:0;}
+.qpop_inner .tbl tbody td.btn_td {height:35px;padding:8px 0 7px;}
+.qpop_inner .tbl tbody td.btn_td .btn_ty_form.xs {min-width:50px;}
+.qpop_inner .inquiry.not_info{text-align:center;padding:71px 0 40px;height:auto;}
+
+.qtextarea {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+    box-sizing: border-box;
+}
+
+[class*="btn_ty_"].qsm {
+    min-width: 120px;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+}
+
+.qfile {position:relative;width:100%;padding-right:110px;box-sizing:border-box;}
+.qfile .btn_ty_form {position:absolute;right:0;top:0;min-width:100px;margin:0 !important;}
+.qfile .btn_ty_form input[type="file"]{position:absolute;right:0;top:0px;width:100px;height:45px;-ms-filter:alpha(opacity=0);filter:alpha(opacity=0);opacity:0;-moz-opacity:0;cursor:pointer;z-index:1;}
+.qplaceholder {display:block;position:relative;}
+.qplaceholder .assi {position:absolute;left:15px;top:0;color:#777;line-height:45px;}
+
+.qpop_inner .qform_area .rrow {
+    padding-top: 20px;
+}
+
+.qform_area .roww .ftit {
+    /* float: left; */
+    width: 150px;
+    padding-top: 13px;
+    padding-left: 30px;
+    line-height: 1.3;
+}
+
+.qform_area .rrow .fdata .select_box {
+    display: inline-block;
+    width: 170px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+/* popup size*/
+.w450 .pop_inner {width:450px;padding:40px 30px;}
+.w450 .square {margin:-15px -5px;}
+.w450 .square .close {right:47px;top:47px;}
+.w450 .square .btn_area {margin-top:22px;}
+.w450 .close {right:30px;top:40px;}
+
+.w700 .pop_inner {width:700px;padding:50px 40px;}
+.w700 .close {right:40px;top:50px;}
+.w700 .square {margin:-20px -10px;}
+.w700 .square .close {right:62px;top:62px;}
+.w700 .square .btn_area {margin-top:37px;}
+
+.w900 .pop_inner {width:900px;padding:50px 40px;}
+.w900 .close {right:40px;top:50px;}
+
+
+/* my - 1:1 문의 */
+.question11 .qform_area .rrow .fdata{padding-left:144px;}
+.question11 .qform_area{padding-top:0;}
+.question11{color:#141414;font-size:14px;}
+.question11 .list{font-size:14px;letter-spacing:-0.04em;border-top:1px solid #dbdbdb;}
+.question11 .list li{padding:10px 0;border-bottom:1px solid #dbdbdb;}
+.question11 .list li:after {content: '';display: block;clear: both;}
+.question11 .list li:first-child{margin-top:0;}
+.question11 .list .txt_head{display:block;float:left;width:144px;line-height:1.7;}
+.question11 .list .txt_content{display:block;float:right;width:476px;line-height:1.7;}
+.question11 textarea{line-height:1.7;}
+
+
+/* product - 상품 문의하기 */
+.qpop_inner ul.sub_info {padding:27px 0;}
+.qpop_inner ul.sub_info li {color:#777;line-height:20px;}
+.qpop_inner .prod {display:table;width:100%;border:solid #dbdbdb;border-width:1px 0;}
+.qpop_inner .prod .img {display:table-cell;width:85px;padding:19px 0;}
+.qpop_inner .prod .img img {display:block;width:100%;}
+.qpop_inner .prod .txt {display:table-cell;padding:10px 35px;vertical-align:middle;}
+.qpop_inner .prod .txt .p_name {margin-bottom:15px;line-height:20px;}
+.qpop_inner .prod .txt .p_option {color:#666;}
+.qpop_inner .item_box + .sub_info {margin-top:10px;}
+.qpop_inner .qform_area .row .fdata .ip_info.point_g {margin:11px 0 20px;}
+.qpop_inner .data_none {height:254px;padding-top:60px;box-sizing:border-box;text-align:center;}
+.qpop_inner .data_none .comp_txt1:before {content:'';display:block;width:100%;height:100px;margin:0 auto;color:#121212;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_exclamation1.png') no-repeat center 0;}
+
+/* product - 상품문의 등록 완료 */
+.qpop_inner .inquiry {height:372px;padding-top:100px;box-sizing:border-box;}
+.qpop_inner .inquiry .comp_txt1:before {content:'';display:block;width:100%;height:100px;margin:0 auto;color:#121212;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_exclamation1.png') no-repeat center 0;}
+.qpop_inner .inquiry.comp {height:404px;padding-top:80px;}
+.qpop_inner .inquiry.comp .comp_txt1:before {content:'';display:block;width:100%;height:87px;margin:0 auto;color:#121212;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_checkpoint.png') no-repeat center 0;}
+
+
+/* Q&A - 1:1 문의 */
+.ssorting_area {margin-bottom:20px;overflow:hidden;}
+.ssorting_area .sselect_box {float:right;}
+
+.qna_list2 {border-top:2px solid #000;}
+.qna_list2 li {border-bottom:1px solid #dfdfdf;}
+.qna_list2 .row_q .row_th {display:table;border-bottom:1px solid #efefef;}
+.qna_list2 .row_q .row_th > div {display:table-cell;height:100px;line-height:22px;vertical-align:middle;}
+.qna_list2 .row_q .col_path {width:570px;padding-left:20px;color:#777;}
+.qna_list2 .row_q .col_path em {position:relative;padding-right:15px;margin-right:8px;background:url('https://image.nbkorea.com/NBRB_PC/common/icon_arrow_gray3.png') no-repeat 100% 50%;}
+.qna_list2 .row_q .col_path em:last-child {background:none;}
+.qna_list2 .row_q .col_path a {display:block;color:#777;font-weight:bold;}
+.qna_list2 .row_q .col_path a:hover {text-decoration:underline;}
+.qna_list2 .row_q .col_date {width:130px;text-align:center;}
+.qna_list2 .row_q .col_state {width:200px;text-align:center;}
+.qna_list2 .row_q .col_state strong {display:block;color:#555;font-weight:700;}
+.qna_list2 .row_q .col_state strong span {font-weight:400;}
+.qna_list2 .row_q .board_q {padding:38px 100px 35px 20px;}
+.qna_list2 .row_q .board_q .tit {margin-bottom:6px;font-size:18px;letter-spacing:-0.04em;line-height:24px;}
+.qna_list2 .row_q .board_q .tit:before {content:'Q';display:inline-block;margin-right:8px;color:#141414;font-size:24px;line-height:24px;vertical-align:top;}
+.qna_list2 .row_q .board_q .txt {color:#555;letter-spacing:-0.04em;line-height:24px;}
+.qna_list2 .row_a {margin-bottom:40px;padding:5px 0 13px;background:#f4f4f4;}
+.qna_list2 .row_a .board_a {position:relative;margin:0 74px;padding:33px 0 38px;color:#555;line-height:24px}
+.qna_list2 .row_a .board_a:before {content:'A';display:block;position:absolute;left:-35px;top:34px;color:#aeaeae;font-size:24px;line-height:1;}
+.qna_list2 .no_data{height:285px;}
+
+.cscenter2 {margin-top:100px;border:1px solid #dbdbdb;}
+.cscenter2 ul {display:table;width:100%;}
+.cscenter2 ul.col2 li {width:50%;}
+.cscenter2 ul.col3 li {width:33.3%;}
+.cscenter2 ul li {position:relative;display:table-cell;height:156px;vertical-align:middle;}
+.cscenter2 ul li + li:before {content:'';display:block;position:absolute;left:0;top:48px;width:1px;height:60px;background:#efefef;}
+.cscenter2 ul li a {display:block;padding:0 0 0 108px;}
+.cscenter2 ul li a strong {display:block;position:relative;margin-top:-1px;font-size:16px;line-height:18px;}
+.cscenter2 ul li a strong em {font-size:18px;}
+.cscenter2 ul li a strong:before {content:'';display:block;position:absolute;left:-43px;top:0;width:45px;height:45px;margin-left:-25px;}
+.cscenter2 ul li a span {display:block;margin-top:7px;color:#777;font-size:12px;line-height:18px;letter-spacing:-0.04em;}
+.cscenter2 ul li a:hover strong {color:#cf0a2c;}
+.cscenter2 ul li.cs1 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 0;}
+.cscenter2 ul li.cs2 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -130px;}
+.cscenter2 ul li.cs3 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 -260px;}
+.cscenter2 ul li.cs4 a strong:before {background:url('https://image.nbkorea.com/NBRB_PC/common/bg_cscenter2.png') no-repeat 0 100%;}

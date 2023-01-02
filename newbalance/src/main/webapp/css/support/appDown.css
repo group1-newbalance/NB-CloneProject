@@ -1,0 +1,55 @@
+@charset "UTF-8";
+@import '/newbalance/common/reset.css';
+@import '/newbalance/common/font.css';
+
+
+/* app_download */
+.app_download {position:relative;text-align:center;}
+.app_download:before {content:'';display:block;position:absolute;left:0;top:151px;width:100%;height:598px;background:url('https://image.nbkorea.com/NBRB_PC/my/bg_app_down.png') no-repeat center 0;}
+.app_download .inner {height:635px;background:#bc001c;}
+.app_download .inner h4 {padding-top:200px;color:#fff;font-size:40px;font-weight:300;letter-spacing:-0.06em;line-height:1;}
+.app_download p {margin-top:150px;color:#777;letter-spacing:-0.04em;line-height:24px;}
+.app_download .btn_area.center {margin-top:76px;}
+.app_download .btn_area.center a {margin:0 3px;text-decoration: none;color: #141414;font-weight: 400;}
+
+.as_blind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.as_my_cont {
+	float: right;
+	width: 900px;
+}
+
+.as_my_cont .as_title_area + .sec_tit {
+    padding-top: 0;
+}
+
+/* support 바뀌면 바뀜*/
+.my_wrap .as_my_cont .as_title_area {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.as_h3 {
+    font-size: 28px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+
+.app_download .as_btn_area.center {
+	margin-top:76px;
+	text-align: center;
+}
+
+
