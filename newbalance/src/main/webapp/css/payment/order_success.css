@@ -1,0 +1,371 @@
+@charset "UTF-8";
+@import '/newbalance/common/common.css';
+.basket_wrap {
+    width: 980px;
+    margin: 0 auto;
+}
+.basket_wrap .title_area {
+    position: relative;
+    margin: 56px 0 50px;
+}
+.page_tit {
+    font-size: 33px;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+.tt_step {
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
+.tt_step span {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 7px;
+    margin-right: 35px;
+    color: #aeaeae;
+    font-size: 18px;
+    line-height: 1;
+}
+.tt_step span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: -24px;
+    width: 8px;
+    height: 8px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step.png) no-repeat 0 bottom;
+}
+.tt_step span:last-child {
+    margin-right: 0;
+}
+.tt_step span.current {
+    border-bottom: 3px solid #141414;
+    color: #141414;
+}
+.tt_step span:last-child:after {
+    display: none;
+}
+.tt_step span.current:after {
+    background-position: 0 0;
+}
+.ending_box {
+    margin-bottom: 80px;
+}
+.ending_box .ending_msg {
+    padding: 58px 0 60px 0;
+    border-top: 2px solid #121212;
+    border-bottom: 1px solid #dbdbdb;
+    color: #121212;
+    letter-spacing: -0.075em;
+    text-align: center;
+    line-height: 1;
+}
+.ending_box .ending_msg .txt01 {
+    font-size: 24px;
+}
+.ending_box .ending_msg .txt01 strong {
+    font-weight: 700;
+}
+.ending_box .ending_msg .txt02 {
+    margin-top: 20px;
+    color: #777;
+    font-weight: 300;
+}
+.btn_area {
+    text-align: right;
+}
+.ending_box .btn_area {
+    margin-top: 20px;
+}
+
+[class*="btn_ty_"].md {
+    min-width: 120px;
+    padding: 16px 20px;
+    font-size: 14px;
+}
+
+[class*="btn_ty_"] {
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.tbl_count {
+    position: relative;
+}
+.tbl_count h3 {
+    margin-bottom: 20px;
+    color: #121212;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.075em;
+}
+.tbl_count .txt_info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.tbl_count .txt_info .txt_order {
+    color: #aeaeae;
+}
+.tbl_y {
+    border-top: 2px solid #444;
+}
+.window_pop.print .pop_inner {
+    padding: 70px 60px;
+}
+.window_pop .pop_inner {
+    position: relative;
+    background: #fff;
+    box-sizing: border-box;
+}
+.tbl_count .txt_info .txt_order em {
+    display: inline-block;
+    margin-left: 14px;
+    color: #000;
+    font-size: 16px;
+}
+colgroup {
+    display: table-column-group;
+}
+.tbl_y thead th {
+    height: 61px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.tbl_basket td .img {
+    position: relative;
+}
+
+.tbl_basket td .img {
+    float: left;
+    width: 84px;
+    margin-left: 20px;
+}
+.tbl_basket td .img img {
+    display: block;
+    width: 84px;
+}
+.btn_ty_bline, .btn_ty_bline:hover {
+    border: 2px solid #444;
+    color: #141414;
+    float: right;
+}
+.window_pop.print .print_top .logo {
+    float: left;
+}
+.window_pop.print .print_top:after {
+    content: '';
+    display: block;
+    clear: both;
+    margin-bottom: 50px;
+}
+.window_pop.print .print_top .btn_area {
+    float: right;
+}
+.tbl_basket td {
+    padding: 38px 0;
+    text-align: center;
+}
+.tbl_basket td .pr {
+    padding-left: 134px;
+    text-align: left;
+}
+.tbl_basket td .pr .p_name {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 20px;
+    word-break: break-all;
+}
+.tbl_basket td .pr .p_opt {
+    margin-top: 2px;
+    color: #666;
+    line-height: 20px;
+}
+.tbl_basket td.price strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+.tbl_basket td.price .mileage {
+    display: block;
+    margin-top: 2px;
+    color: #000;
+    font-weight: 400;
+}
+.tbl_y tbody td {
+    border-bottom: 1px solid #dbdbdb;
+}
+/* 주문 내역 */
+.sec_price {
+    margin-top: 30px;
+    border: 1px solid #dbdbdb;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+.sec_price .calc {
+    float: left;
+    width: 718px;
+    padding: 13px 40px 22px;
+    background: #fff;
+    letter-spacing: -0.04em;
+    box-sizing: border-box;
+}
+.sec_price .calc > div:first-child {
+    border-bottom: 1px solid #dbdbdb;
+}
+.sec_price .calc > div {
+    padding: 29px 0;
+}
+.sec_price .calc > div .ttl {
+    display: inline-block;
+    font-weight: 700;
+}
+.sec_price .calc > div .price {
+    display: inline-block;
+    float: right;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+.sec_price .discount {
+    border-bottom: 1px solid #dbdbdb;
+}
+.sec_price .discount div.ef_space {
+    padding-bottom: 18px;
+}
+.sec_price .calc > div .ttl {
+    display: inline-block;
+    font-weight: 700;
+}
+.point_r {
+    color: #cf0a2c !important;
+}
+.sec_price .calc > div .txt_effect {
+    margin-top: 16px;
+}
+.sec_price .calc > div .txt_effect .ttl {
+    color: #777;
+    font-weight: 400;
+}
+.sec_price .discount .discount_info li {
+    font-size: 12px;
+    padding-left: 7px;
+    color: #777;
+    text-indent: -7px;
+    line-height: 24px;
+    letter-spacing: -0.025em;
+}
+
+/*우측 결제정보*/
+.sec_price .total {
+    float: right;
+    width: 260px;
+    padding: 45px 0 0 40px;
+    box-sizing: border-box;
+}
+.sec_price .total .txt1 {
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.sec_price .total .txt1 span {
+    margin-left: 7px;
+    color: #777;
+    font-weight: 400;
+}
+.sec_price .total .ef_space {
+    margin-top: 60px;
+}
+.sec_price .total .txt3 {
+    display: block;
+    /* margin-top: 29px; */
+    color: #cf0a2c;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.sec_price .total .txt3 em {
+    font-size: 27px;
+    font-weight: 700;
+}
+.sec_price .total .txt4 {
+    display: block;
+    margin-top: 9px;
+    color: #62b1bd;
+    line-height: 1;
+}
+.title_box {
+    position: relative;
+}
+.sec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+.tbl_y02 {
+    padding: 26px 0;
+    border-top: 2px solid #444;
+    border-bottom: 1px solid #dbdbdb;
+}
+.tbl_basket02 tbody th {
+    padding: 13px 0 11px 20px;
+    color: #777;
+    text-align: left;
+    letter-spacing: -0.04em;
+    line-height: 20px;
+}
+.tbl_basket02 tbody td {
+    padding: 13px 20px 11px 0;
+    line-height: 20px;
+}
+.tbl_basket02 td .txt_postnum {
+    display: inline-block;
+    padding-right: 12px;
+}
+.tbl_basket02 td .ex_time {
+    margin-left: 5px;
+}
+.tbl_basket02 td .txt_strong {
+    font-weight: 700;
+}
+.basket_wrap .btn_area {
+    margin-top: 30px;
+}
+[class*="btn_ty_"].lg {
+    min-width: 140px;
+    padding: 20px 18px;
+    font-size: 16px;
+}
+
+.print_copy {
+    padding: 100px 0 10px;
+    text-align: center;
+}
+.print_copy span {
+    display: block;
+    color: #aeaeae;
+    font-size: 13px;
+    line-height: 1;
+}
+.print_copy p {
+    margin-top: 23px;
+    color: #777;
+    font-size: 12px;
+    line-height: 19px;
+}

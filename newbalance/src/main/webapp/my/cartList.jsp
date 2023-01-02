@@ -690,7 +690,7 @@ $("#totalProductOrder").click(function(){
 		totalArray.push(obj);
 
 	});
-	//console.log(totalArray);
+	console.log(totalArray);
 	
 	 $.ajax({
          url : '/newbalance/payment/order.action',
@@ -702,11 +702,12 @@ $("#totalProductOrder").click(function(){
             "productList" : JSON.stringify(totalArray)
          },        
          success : function(data){
-         },
-         error: function(data){
-             alert("에러가 발생했습니다.");
+        	 console.log(data);
+        	 location.href = "/newbalance/payment/order.action";
+        	 console.log(111111);
          }
       });
+	 
 });
 
 $("#choiceProductOrder").click(function(){

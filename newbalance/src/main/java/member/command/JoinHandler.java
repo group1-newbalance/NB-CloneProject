@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.domain.MemberDTO;
-import member.domain.TermsDTO;
 import member.service.JoinService;
 import mvc.command.CommandHandler;
 

@@ -1,10 +1,11 @@
 package payment.command;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.NamingException;
-import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,13 +13,14 @@ import javax.servlet.http.HttpSession;
 import member.domain.MemberDTO;
 import member.domain.UserDTO;
 import mvc.command.CommandHandler;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import payment.domain.CouponDTO;
 import payment.domain.OrderDTO;
 import payment.domain.PaymentInfoDTO;
 import payment.domain.ShipInfoDTO;
 import payment.service.OrderService;
 import payment.service.SelectMemberByUserCodeService;
-import payment.service.ShipInfoService;
 
 public class OrderHandler implements CommandHandler{
 
@@ -41,7 +43,6 @@ public class OrderHandler implements CommandHandler{
 		//return ORDER_SUCCESS;
 	}// process
 	private String processPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// success 전달정보
 		OrderService orderService = OrderService.getInstance();
 		
 		 String ordCode = request.getParameter("ordCode");
@@ -55,7 +56,6 @@ public class OrderHandler implements CommandHandler{
 		 String ordAddress = request.getParameter("ordAddress");
 		 
 		 String userCode = request.getParameter("userCode");
-		 
 		 
 		 String usercpSeq = request.getParameter("usercpSeq");
 		 int intUsercpSeq ;
@@ -111,14 +111,37 @@ public class OrderHandler implements CommandHandler{
 		// 주문상세(List)
 		
 		
+		
+		
+		
+		
 		String payType = request.getParameter("payType");
 		int ordDisCount = Integer.parseInt(request.getParameter("ordDisCount"));
 		
 		String payName = request.getParameter("payName");
 		String payStatus = request.getParameter("payStatus");
 		
-		int cardSeq = Integer.parseInt(request.getParameter("cardSeq"));
-		int bankSeq =Integer.parseInt( request.getParameter("bankSeq"));
+		
+		
+		
+		
+		
+		 String cardSeq = request.getParameter("cardSeq");
+		 int intCardSeq ;
+		 if( !(cardSeq==null)) {
+			 intCardSeq = -1;
+		 }else {
+			 intCardSeq = Integer.parseInt(request.getParameter("intCardSeq")); 
+		 }
+		
+		 String bankSeq = request.getParameter("bankSeq");
+		 int intBankSeq;
+		 if (!(bankSeq==null)) {
+			 intBankSeq = -1;
+		}else {
+			intBankSeq= Integer.parseInt(request.getParameter("bankSeq"));
+		}
+		
 		String imgUrl = request.getParameter("imgUrl");
 		String pdName = request.getParameter("pdName");
 		
@@ -134,36 +157,14 @@ public class OrderHandler implements CommandHandler{
 		
 		payment.setPayStatus(payStatus);
 		payment.setOrdCode(ordCode);
-		payment.setCardSeq(cardSeq);
-		payment.setBankSeq(bankSeq);
+		payment.setCardSeq(intCardSeq);
+		payment.setBankSeq(intBankSeq);
 		payment.setImgUrl(imgUrl);
 		payment.setPdName(pdName);
 		
-		
+		System.out.println("오더핸들러"+payment.toString());
 		orderService.insertPaymentInfo(payment);
 		
-		
-		 /* 
-		  	private int payCode; // seq
-		  	
-			private String userCode;
-			private String payType;
-			private int ordDisCount;
-			private int ordAmount;
-			private String payName;
-			
-			private String payDate;//SYSDATE
-			
-			private String payStatus;
-	
-			private String ordCode;
-			private int cardSeq;
-			private int bankSeq;
-			private String imgUrl;
-			private String pdName;
-		  
-		 
-		 */
 		
 		
 		
@@ -185,7 +186,7 @@ public class OrderHandler implements CommandHandler{
 		
 		
 		 
-		String location = "/newbalance/payment/order_success.action";
+		//String location = "/newbalance/payment/order_success.action";
 		
 		//System.out.println("오더핸들러2"+ord.toString());
 		
@@ -194,32 +195,42 @@ public class OrderHandler implements CommandHandler{
 		request.setAttribute("payment", payment);
 		request.setAttribute("ship", ship);
 		request.setAttribute("ord", ord);
-		// 포워딩으로 수정해야함
-		response.sendRedirect(location);
-		return null;
+		
+		return "/newbalance/payment/order_success.action";
+	
 	}
 	
-	// 데이터
-	private String processGet(HttpServletRequest request, HttpServletResponse response) {
-		  SelectMemberByUserCodeService selectMemberService = SelectMemberByUserCodeService.getInstance();
-	      OrderService showCouponService = OrderService.getInstance();
-	      List<CouponDTO>list = null;
-		  MemberDTO memDto = null;
-	      
-	      HttpSession session = request.getSession(false);
+	
+	private String processGet(HttpServletRequest request, HttpServletResponse response) throws NamingException {
+		SelectMemberByUserCodeService selectMemberByUserCodeService = SelectMemberByUserCodeService.getInstance();
+		//OrderService orderService = OrderService.getInstance();
+		MemberDTO memDto = null;
+		//List<CouponDTO> ordDto = null;
+		  HttpSession session = request.getSession(false);
 	      if(session != null) {
 	         UserDTO member = (UserDTO) session.getAttribute("member");
 	         if(member != null) {
-	        	
-	            memDto = selectMemberService.selectMemberByUserCode(member.getUserCode());
-	            list = showCouponService.showCoupon(member.getUserCode());
-	            System.out.println(memDto.toString());
-	            request.setAttribute("memDto", memDto);
-	            
-	            request.setAttribute("list", list);
-	       }
-	    }  
+	        	memDto = selectMemberByUserCodeService.selectMemberByUserCode(member.getUserCode());
+	        	request.setAttribute("memDto", memDto);
+	        	//ordDto = orderService.showCoupon(member.getUserCode());
+	        	//request.setAttribute("ordDto", ordDto);
+	        	 
+	         }
+	      }
+			/*
+			 * SelectMemberByIdService selectMemberService =
+			 * SelectMemberByIdService.getInstance();
+			 * 
+			 * MemberDTO memDto = null;
+			 * 
+			 * HttpSession session = request.getSession(false); if(session != null) {
+			 * UserDTO member = (UserDTO) session.getAttribute("member"); if(member != null)
+			 * { memDto = selectMemberService.selectMemberById(member.getId());
+			 * request.setAttribute("memDto", memDto); } }
+			 */
+		//return "/payment/order_success.jsp";
+		
+		
 	return "/payment/order.jsp";
 	}
-	
 }
