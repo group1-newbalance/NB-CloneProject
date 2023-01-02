@@ -16,7 +16,6 @@ public class GetFaqListHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println(">GetFaqListHandler.process() 호출됨..");
-	
 		String searchWord = ( request.getParameter("searchWord") == null ? "" : request.getParameter("searchWord") );
 		System.out.println("searchWord=" + searchWord);
 		

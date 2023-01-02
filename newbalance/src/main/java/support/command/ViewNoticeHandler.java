@@ -16,6 +16,8 @@ public class ViewNoticeHandler implements CommandHandler{
       // view.action?noti_seq=
       int noti_seq = Integer.parseInt( request.getParameter("noti_seq") );
       
+      
+      
       SupportService contentService = SupportService.getInstance();
       NoticeDTO notice = contentService.selectOne(noti_seq);
       

@@ -14,6 +14,7 @@ public class ViewMapHandler implements CommandHandler{
 		
 		System.out.println(">GetMapHandler.process() 호출됨..");
 		
+		
 		System.out.println(request.getParameter("lat"));
 		System.out.println(request.getParameter("lng"));
 		System.out.println(request.getParameter("name"));

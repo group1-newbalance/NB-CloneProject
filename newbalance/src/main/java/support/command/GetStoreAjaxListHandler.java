@@ -16,6 +16,7 @@ public class GetStoreAjaxListHandler implements CommandHandler{
 	
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		
 		//request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		System.out.println(">GetStoreAjaxListHandler.process() 호출됨..");
