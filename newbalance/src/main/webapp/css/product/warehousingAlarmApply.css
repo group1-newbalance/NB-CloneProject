@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+.window_popup{
+	width: 700px;
+}
+.popup_inner{
+	width: 700px;
+	padding: 50px 40px;
+}
+.popup_header{
+	padding-bottom: 15px;
+    border-bottom: 2px solid black;
+    position: relative !important;
+    height: auto !important;
+    font-size: 24px;
+}
+.popup_header strong{
+	font-weight: bold;
+}
+.popup_inner p.sub_info {
+    padding-top: 27px;
+    color: #777;
+    line-height: 20px;
+}
+.popup_inner .item_box {
+    margin: 28px 0 0;
+}
+.popup_inner .item_box .pd_name {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+.popup_inner .item_box .pr_select {
+    padding: 10px 0 30px;
+    border: solid #dbdbdb;
+    border-width: 1px 0;
+}
+.pr_select .title {
+    margin: 20px 0 3px;
+    color: #777;
+    font-size: 13px;
+    line-height: 1;
+}
+.pr_select .items {
+    width: 100%;
+    margin-left: -8px;
+}
+.color .items li {
+    position: relative;
+    float: left;
+    margin: 8px 0 0 8px;
+}
+.color .items input[type="radio"] {
+    display: none;
+}
+.color .items input[type="radio"]:checked + label {
+    border: 2px solid #141414;
+}
+.color .items input[type="radio"] + label {
+    display: block;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #dbdbdb;
+    cursor: pointer;
+    padding: 1px;
+}
+.color .items input[type="radio"] + label:hover:not() {
+    border: 1px solid #141414;
+}
+.color .items input[type="radio"]:checked + label img {
+    padding: 0;
+}
+.color .items input[type="radio"] + label img {
+    display: block;
+    width: 100%;
+    padding: 1px;
+}
+.color input[type="radio"] + label:hover{
+	border: 1px solid black;
+	cursor: pointer;
+}
+.pr_select .items:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.size .items input[type="radio"] + label {
+    display: inline-block;
+    width: 56px;
+    height: 35px;
+    border: 1px solid #dbdbdb;
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.size .items input[type="radio"]:disabled + label{
+	border-color: #eee;
+    background-color: #eee;
+    color: #aeaeae;
+}
+.size input[type="radio"] + label:hover{
+	border: 1px solid black;
+	cursor: pointer;
+	font-weight: bold;
+}
+.size input[type="radio"]:disabled + label:hover{
+	cursor: pointer;
+	font-weight: normal;
+}
+.popup_inner .gray_box {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: #f4f4f4;
+}
+.popup_inner .gray_box p {
+    color: #777;
+    line-height: 20px;
+}
+.popup_inner .gray_box p .phone {
+    display: inline-block;
+    margin-left: 9px;
+    color: #141414;
+    font-size: 16px;
+    line-height: 20px;
+}
+.popup_inner .gray_box p + p {
+    margin-top: 12px;
+}
+.popup_inner .gray_box p span {
+    color: #141414;
+}
+.popup_inner .item_box + .btn_area {
+    margin-top: 40px;
+}
+.popup_inner .btn_area {
+    text-align: center;
+    min-width: 140px;
+	padding: 14px 16px 13px;
+}
+.items li {
+    display: inline-block;
+    margin-top: 7px;
+}
+.btn_area .alarm_apply{
+	border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+    padding: 12px 13px;
+}
+.btn_area .apply_cancel{
+	border: 2px solid #444;
+    color: #141414;
+    padding: 12px 43px;
+    margin-left: 7px;
+}
+.size .items input:checked + label {
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}

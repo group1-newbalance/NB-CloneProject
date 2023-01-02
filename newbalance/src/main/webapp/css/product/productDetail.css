@@ -1,0 +1,1689 @@
+@charset "UTF-8";
+@import '/newbalance/common/common.css'; 
+
+*{
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.item_option div{
+	float: left;
+	width: 100%;
+}
+.item_detail{
+	min-width: 1200px;
+}
+.item_detailTop{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0px 115px;
+}
+.item_detailTop::after{
+	content: '';
+    display: block;
+    clear: both;
+}
+.item_img{
+    float: left;
+    width: 680px;
+    position: relative;
+}
+.item_option{
+	width: 440px;
+	float: right;
+	position: relative;
+}
+.main_img {
+	width: 100%;
+	height: 680px;
+}
+.expand_view{
+	width: 100%;
+	text-align: center;
+	margin: 15px 0px 7px;
+}
+.expandView{
+	background: url(https://image.nbkorea.com/NBRB_PC/product/icon_expand_view.png) no-repeat 0 0;
+    font-size: 12px;
+    display: inline-block;
+	line-height: 18px;
+    padding-left: 30px;
+}
+.img_list{
+	width: 690px;
+	margin-left: -8px;
+}
+.img_list span{
+    float: left;
+    width: 130px;
+    height: 130px;
+	border: 1px solid #dbdbdb;
+	padding: 15px;
+	margin-left: 8px;
+    margin-top: 8px;
+}
+.img_list span img{
+	width: 100%;
+    height: 100%;
+}
+.img_list span:hover:not(span.active){
+	border: 1px solid black;
+}
+.img_list span.active{
+	border: 2px solid black;
+	cursor: pointer;
+} 
+.pd_name{
+	font-weight: normal;
+	font-size: 28px;	
+}
+
+.icon{
+	margin-top: 8px;
+}
+.star_point{
+	display: inline-block;
+}
+.star_point i{
+	width: 11px;
+}
+.price{
+	margin: 15px 0 30px 0;
+}
+.like_item{
+	background: url(https://image.nbkorea.com/NBRB_PC/product/icon_pr_like.png) no-repeat 0 0;
+	width: 21px;
+	height: 17px;
+	display: inline-block;
+}
+.on{
+	background-position: 0 bottom;
+}
+.price span {
+	font-size: 18px;
+}
+.price span:nth-of-type(2) {
+	color: #777;
+	font-size: 14px;
+}
+.price span:nth-of-type(2) b{
+	font-weight: normal;
+}
+.box{
+	position: relative;
+}
+.review_sns {
+	margin-top: 15px;
+	padding: 0;
+}
+
+.btn_sns p{
+    display: inline-block;
+    padding-left: 15px;
+    margin-left: 15px;
+    border-left: 1px solid #dbdbdb;
+}
+.facebook, .twitter{
+	display: inline-block;
+	width: 22px;
+    height: 20px;
+    background: url(https://image.nbkorea.com/NBRB_PC/product/icon_pr_sns.png) no-repeat 0 0;
+}
+.twitter{
+    background-position: right 0;
+    margin-left: 10px;
+}
+.buy_limit{
+	padding: 8px 0;
+	border-top: 1px solid #dbdbdb;
+	padding: 20px;
+}
+.buy_limit b{
+	color: red;
+	text-decoration: underline;
+}
+.buy_limit strong{
+	font-weight: bold;
+}
+.op_select{
+	border-top: 1px solid #dbdbdb;
+}
+.op_select ul{
+	padding-top: 25px;
+	list-style-type: none;
+	margin: -8px;
+}
+.op_select li {
+	float: left;
+	margin: 8px 0 0 8px;
+}
+.color ul{
+	width: 448px;
+    margin-left: -8px;
+}
+.color ul li{
+	position: relative;
+}
+.color input[type="radio"] {
+    display: none;
+}
+.color input[type="radio"] + label{
+	display: block;
+    width: 68px;
+    height: 68px;
+    padding: 1px;
+    border: 1px solid #dbdbdb;
+    cursor: pointer;
+}
+.color input[type="radio"]:checked + label img {
+    padding: 0;
+} 
+.color input[type="radio"] + label img {
+    display: block;
+    width: 100%;
+    padding: 1px;
+}
+.color input[type="radio"]:checked  + label{
+	border: 2px solid black;
+}
+.color input[type="radio"].disabled + label{
+	background: #eee;
+    border: 2px solid #eee;
+}
+.color input[type="radio"].disabled + label img {
+    padding: 0;
+    opacity: 0.2;
+}
+.color input[type="radio"].disabled:checked + label {
+    border: 2px solid black;
+}
+.color input[type="radio"] + label:hover{
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+.color img{
+    width: 100%;
+    height: 100%;
+}
+.size label{
+	display: block;
+    width: 56px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #dbdbdb;
+}
+.size label:hover:not(.soldout){
+	border: 1px solid black;
+	font-weight: bold;
+}
+.size label.soldout {
+	background-color: #eee;
+	color:  #aeaeae;
+	border: none;
+}
+.op_title, .guide{
+	color: #777777;
+	font-size: 13px;
+	margin: 0;
+	display: inline-block;
+}
+.fwidth label{
+	display: block;
+    width: 110px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
+.guide {
+	float: right;
+	padding-right: 13px;
+	background: url(https://image.nbkorea.com/NBRB_PC/common/icon_arrow_gray.png) no-repeat right 48%;
+}
+.op_top{
+    margin-top: 20px;
+}
+.fwidth_guide{
+	display: block;
+}
+input[name=size], input[name=fwidth]{
+	display: none;
+}
+.naver_banner{
+	padding: 20px 0;
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
+	margin-bottom: 30px;
+} 
+.each_price{
+	display: block;
+	float: left;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 25px;
+	width: 150px;
+    text-align: right;
+}
+.each_price strong{
+	font-weight: 600;
+	font-size: 18px;
+}
+.delete{
+	display: block;
+	float: right;
+	width: 10px;
+    height: 10px;
+	background: url(https://image.nbkorea.com/NBRB_PC/common/btn_delete_small.png) no-repeat center 50%;
+	position: absolute;
+    right: -40px;
+    bottom: 10px;
+}
+.total_price{
+	padding-top: 30px;
+}
+ .won.first{
+	padding-top: 25px;
+	border-top: 2px solid black;
+}
+.won:not(.first){
+	margin-top: 25px;
+}
+.tp_text{
+	display: block;
+	font-size: 15px;
+	float: left;
+	font-weight: bold;
+}
+.ship_fee{
+	background: url(https://image.nbkorea.com/NBRB_PC/product/icon_delivery.png) 0 0 no-repeat;
+	padding-left: 35px;
+} 
+ .card_benefit{
+	margin: 12px 0 25px 0;
+} 
+.cb_text{
+	background: url(https://image.nbkorea.com/NBRB_PC/product/icon_credit.png) 0 0 no-repeat;
+	padding-left: 35px; 
+}
+.all_free, .cb_details{
+	float: right;
+}
+.lauching_banner img{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.lauching_banner img:hover{
+	cursor: pointer;
+}
+.noti{
+	color: #777;
+	font-size: 12px;
+	text-align: left;
+}
+.related_item h2{
+	font-size: 18px;
+	text-align: center;
+	margin: 60px 0 0 0;
+}
+.ri_img li{
+	width: 210px;
+	height: 210px;
+	padding: 5px;
+	position: relative;
+	border: 1px solid #dbdbdb;
+	margin: 0px 10px 10px 0;
+	float: left;
+}
+.ri_img li img{
+	width: 200px;
+	height: 200px;
+}
+.ri_text{
+	width: 200px;
+    height: 205px;
+	background: white;
+	opacity:0.8;
+	position: absolute;
+    top: 0;
+    text-align: center;
+    padding-top: 77px;
+	visibility: hidden;
+}
+.ri_img li:hover .ri_text{
+	position: absolute;
+ 	visibility: visible; 
+}
+.ri_text span:nth-of-type(1){
+	font-size: 14px;
+}
+.ri_text span:nth-of-type(2){
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.detail_wrap {
+    position: relative;
+    padding: 0 0 98px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.detail_wrap .sticky_wrap {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    border-bottom: 1px solid #dbdbdb;
+}
+.detail_wrap .sticky_wrap .inner {
+	position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+.sticky_wrap .tab_box {
+    width: 900px;
+    margin-bottom: -1px;
+}
+.sticky_wrap .tab_box li {
+    float: left;
+    width: 300px;
+}
+.sticky_wrap .tab_box li a {
+    display: block;
+    width: 300px;
+    height: 66px;
+    padding: 24px 0 22px;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+}
+.sticky_wrap .tab_box:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.sticky_wrap .option_wrap {
+    position: absolute;
+    right: 0;
+    top: 66px;
+    width: 300px;
+    padding: 0 0 180px;
+    border-left: 1px solid #efefef;
+}
+.option_wrap .sec_scroll {
+    padding: 22px 0 0 24px;
+    overflow-y: auto;
+}
+.explain_wrap {
+    width: 1200px;
+    padding-right: 360px;
+    margin: 0 auto;
+}
+.exp_tab{
+	margin-top: 100px;
+}
+.tab_list {
+    overflow: hidden;
+}
+.tab_list ul.col4 {
+    position: relative;
+    overflow: hidden;
+}
+.tab_list ul.col4 li {
+    width: 25%;
+}
+.tab_list ul li.active {
+    border-color: black;
+    border-width: 2px 2px 0 2px;
+}
+.tab_list ul li {
+    float: left;
+    border: solid #dbdbdb;
+    border-width: 1px 1px 0 0;
+}
+.tab_list ul li.active a {
+    position: relative;
+    padding: 19px 0 25px;
+    border-color: black;
+    background: #fff;
+    font-weight: 700;
+    z-index: 1;
+}
+.tab_list ul li a {
+    display: block;
+    padding: 20px 1px 23px;
+    color: #121212;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+}
+.sticky_wrap .tab_box li.active {
+    border-bottom: 3px solid black;
+}
+.sticky_wrap .tab_box li.active a {
+    font-weight: bold;
+}
+.tab_list ul li:not(.active) {
+    border-bottom: 2px solid black;
+}
+/* .tab_content > div.active{
+	display: block;
+}
+.tab_content > div:not(.active) {
+    display: none;
+} */
+div.content{
+	display: none;
+}
+div.content.active{
+	display: block;
+}
+.tab_content .pd_name{
+	font-size: 22px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 100px;
+}
+.info_list .info_key{
+	float: left;
+    padding-left: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+}
+.info_list .info_value{
+	padding-left: 140px;
+    padding-right: 30px;
+    color: #555;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+}
+.info_list {
+    margin-top: 17px;
+    padding: 9px 0 36px;
+    border-top: 1px solid #121212;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 80px;
+}
+.info_list li {
+    width: 100%;
+    padding-top: 28px;
+    display: table;
+}
+
+.size_guide{
+	margin: 43px 0 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+.ship_noti p{
+	margin-top: 23px;
+}
+.ship_noti p a.go_mypage{
+	color: #4686c5;
+	border-bottom: 1px solid #a7c0df;
+    padding-bottom: 6px;
+}
+.warning p:nth-of-type(1){
+	margin-top: 25px;
+}
+.warning p{
+	margin-top: 43px;
+}
+.warning2, .warning3, .online_ex, .offline_ex{
+	margin-top: 14px;
+}
+.content .list li{
+	color: #555;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.7;
+}
+.content .list li::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 1px;
+    top: 11px;
+    width: 2px;
+    height: 2px;
+    background: black;
+}
+.warning li span{
+	margin-left: 110px;	
+}
+.content h4{
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 100px;
+}
+.support{
+    float: left;
+    width: 100%;
+    padding: 50px;
+    margin: 25px 0 100px 0;
+    border: 1px solid #dbdbdb;
+}
+.support_list div:nth-of-type(1){
+	display: block;
+	font-weight: bold;
+	float: left;
+	letter-spacing: -0.06em;
+}
+.support_list div:nth-of-type(2){
+	display: block;
+	float: left;
+}
+.support_list div:nth-of-type(2) p{
+	margin: 0 0 10px 50px;
+	color: #555;
+}
+.support_list{
+	border-bottom: 0.5px solid #eaeaea;
+    height: 180px;
+}
+.support_link{
+	position: relative;
+    margin-top: 40px;
+    min-height: 45px;
+}
+.support_link li {
+    position: relative;
+    margin-top: 40px;
+    min-height: 45px;
+}
+.support_link .head{
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+.support_link .text{
+	color: #555;
+}
+.support_link .link{
+    background: #eaeaea;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 160px;
+    height: 45px;
+    text-align: center;
+    padding: 12px 25px;
+    line-height: 20px;
+}
+.detail_wrap.fixed .sticky_wrap {
+    position: fixed;
+    /* top: 0; */
+    left: 0;
+    z-index: 98;
+}
+.detail_wrap.fixed {
+    padding-top: 66px;
+}
+.exchange_noti p{
+	margin-top: 26px;
+}
+.exp_tab .step_guide {
+    width: 840px;
+}
+.step_guide {
+    position: relative;
+    margin-top: 25px;
+    padding: 80px 0;
+    border-top: 2px solid #121212;
+    border-bottom: 1px solid #dbdbdb;
+}
+.step_guide ol {
+    margin-left: 320px;
+    padding-left: 109px;
+    border-left: 1px solid #efefef;
+}
+.step_guide ol li {
+    display: table;
+}
+.step_guide ol li span:first-child {
+    display: table-cell;
+    width: 52px;
+    padding-top: 25px;
+    font: 42px 'DidotLTPro';
+    line-height: 1;
+    vertical-align: middle;
+}
+.step_guide h5 {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding-top: 90px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_step.png) no-repeat 2px 3px;
+    color: #555;
+    font-size: 36px;
+    font-weight: 300;
+}
+.step_guide ol li:first-child span {
+    margin-top: -5px;
+}
+.step_guide ol li span:last-child {
+    display: table-cell;
+    padding-top: 25px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+.step_guide h5 span {
+    font-size: 38px;
+    line-height: 1;
+}
+.exchange_noti p:nth-of-type(2){
+	margin-top: 45px;
+}
+.return p:nth-of-type(2){
+	margin-top: 7px;
+}
+#tabs-3 ul{
+	margin-top: 10px;	
+}
+.shoes_care > p{
+	margin: 40px 0 12px 0;
+}
+.shoes_care > p:first-of-type{
+	margin: 25px 0 12px 0;
+} 
+.clothes_care > h4, .other_care > h4 .review > h4{
+	margin: 80px 0 15px 0;
+}
+.cs > p{
+	margin-top: 100px;
+}
+.cs_details{
+	padding: 50px 60px 60px;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    position: relative;
+    margin-top: 24px;
+}
+.cs_details .cs1 p{
+	margin: 0 0 10px 10px !important;
+}
+.cs1{
+	height: 150px;
+}
+.cs2{
+	margin-top: 50px;
+}
+.as_step{
+    padding: 70px 0 80px;
+    border-top: 2px solid #121212;
+    border-bottom: 1px solid #141414;
+    overflow: hidden;
+}
+.as_step li{
+	width: 33.3%;
+	float: left;
+    color: #555;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.06em;
+}
+.as_step li span {
+    display: block;
+    margin-bottom: 10px;
+    padding-top: 84px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+.as_step li:nth-child(1), .as_step li:nth-child(2) {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step2.png) no-repeat 100% 57px;
+}
+.as_step li:nth-child(4) {
+    margin-left: 17%;
+    margin-top: 80px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_step2.png) no-repeat 100% 53px;
+}
+.as_step li:nth-child(5) {
+    margin-right: 0;
+    margin-top: 80px;
+}
+.as_step li:nth-child(1) span {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_as_step01.png) no-repeat 50% 0;
+}
+.as_step li:nth-child(2) span {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_as_step02.png) no-repeat 50% 1px;
+}
+.as_step li:nth-child(3) span {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_as_step03.png) no-repeat 50% 10px;
+}
+.as_step li:nth-child(4) span {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_as_step04.png) no-repeat 50% 0;
+}
+.as_step li:nth-child(5) span {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_as_step05.png) no-repeat 50% 10px;
+}
+.as_p{
+	margin: 23px 0 30px 0;
+}
+.as_p > p{
+	margin-top: 7px;
+}
+.as_question {
+    margin-top: 110px;
+}
+.as_question > ul {
+    padding-left: 280px;
+}
+.as_question h4 {
+    float: left;
+    margin-top: -4px !important;
+    color: #333;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: -0.045em;
+    line-height: 46px;
+}
+.as_question > ul > li {
+    padding-top: 45px;
+    margin-top: 45px;
+    border-top: 1px solid #dbdbdb;
+}
+.as_question > ul > li:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+p.cs_list::before{
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    margin-right: 7px;
+    margin-top: 12px;
+    background: black;
+    vertical-align: top;
+}
+.as_question > ul > li strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+}
+.as_question p{
+	color: #555;
+	margin: 20px 0 5px 0;
+}
+.as_question span {
+    display: block;
+    float: left;
+    font-size: 25px;
+    line-height: 23px;
+    padding-right: 13px;
+}
+.option_wrap .sec_scroll .box {
+    width: 252px;
+}
+.option_wrap .sec_scroll .select_box {
+    margin-top: 8px;
+}
+.select_box {
+    display: block;
+    position: relative;
+}
+.select_box option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.select_box select {
+    width: 100%;
+    height: 45px;
+    padding: 0 30px 0 15px;
+    border: 1px solid #dbdbdb;
+    background: #fff url(https://image.nbkorea.com/NBRB_PC/common/bg_select_box.png) no-repeat 100% 50%;
+    appearance: none;
+}
+.sec_scroll .choice {
+    margin: 13px 0;
+}
+ .sec_scroll .choice li {
+    position: relative;
+    padding: 20px 0 20px 100px;
+    border-bottom: 1px solid #dbdbdb;
+}
+#op_quickadd .clearfix2 .selected_op {
+    height: 50px;
+    padding: 0;
+}
+.plusminus_wrap.mini {
+    width: 64px;
+    padding: 0 0 0 28px;
+}
+.sec_prices {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    height: 180px;
+    padding: 28px 24px 30px;
+    background: #f8f8f8;
+}
+.sec_prices .total {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.sec_prices .total .tp_text {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
+    float: left;
+}
+.sec_prices .total .tp_money {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    float: right;
+}
+.sec_prices .total .tp_money strong {
+    font-size: 24px;
+    font-weight: 700;
+    vertical-align: top;
+}
+.total_btn{
+	margin: 10px 0 15px 0;
+}
+.total_btn a{
+	text-align: center;
+	vertical-align: middle;	
+}
+.total_btn .cart{
+	border: 2px solid black;
+	float: left;
+}
+.total_btn .buy{
+	color: white;
+	border: 2px solid #cf0a2c;
+    background-color: #cf0a2c;
+    float: right;
+}
+.total_btn .md{
+	min-width: 120px;
+    padding: 12px 20px;
+    font-size: 14px;
+}
+.item_img .soldout {
+    position: absolute;
+    width: 100%;
+    height: 680px;
+    background-color: rgba(0,0,0,0.25);
+    color: white;
+    font-size: 70px;
+}
+.item_img .soldout p{
+	text-align: center;
+	font-weight: 800;
+	padding: 300px 0;
+}
+.shoes, .width{
+	width: 100% !important;
+}
+.shoes .tbl_box {
+    width: 100% !important;
+}
+.tab_list ul li:first-child {
+    border-left: 1px solid #dbdbdb;
+}
+.tab_list ul li:first-child.active {
+    border-left: 2px solid black;
+}
+.review h4 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    padding-top: 100px;
+}
+.text_box .txt{
+	line-height: 28px;
+}
+.text_box .txt .col_red{
+	color: #cf0a2c;
+}
+.review_box{
+	border-top: 1px solid #121212;
+}
+.review_inner{
+	padding: 33px 22px;
+}
+.border_box{
+    border: 1px solid #999;
+    background: #f9f9f9;
+    padding: 35px 25px;
+    text-align: center;
+    margin: 23px 0 32px;
+}
+.hoverIcon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    /* margin-top: 1px; */
+    position: relative;
+}
+.hoverIcon > p + div li > p {
+    font-size: 14px;
+}
+.hoverIcon > p + div li > ol {
+    padding: 10px 0 15px;
+}
+.hoverIcon > p + div li > ol > li {
+    color: #666;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+}
+.hoverIcon > p + div {
+    position: absolute;
+    background: #fff;
+    z-index: 1000;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #dbdbdb;
+    width: 440px;
+    top: 34px;
+    left: -13.2px;
+    padding-bottom: 10px;
+    display: none;
+}
+.hoverIcon > p > img:hover {
+	cursor: pointer;
+}
+.hoverIcon > p + div::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #dfdfdf;
+    background: #fff;
+    border-color: #d5d5d5 #d5d5d5 transparent transparent;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -7px;
+    left: 15px;
+}
+.border_box > p > span+span::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    margin: 0 10px;
+    background: #dbdbdb;
+    vertical-align: middle;
+}
+.border_box > p{
+	display: inline-block;
+}
+.review_point .star_area{
+    font-size: 35px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+.star_area .star_text {
+    display: inline-block;
+    vertical-align: middle;
+    height: 23px;
+    line-height: 13px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #cf0a2c;
+}
+.star_point {
+    display: inline-block;
+    font-size: 17px;
+}
+.review_point{
+	text-align: center;
+}
+.review_area {
+    font-size: 35px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.star_area:after {
+	content: "";
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: #dbdbdb;
+    margin: 0 50px;
+}
+.review_area span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+#pd_qna h4{
+	margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    display: inline-block;
+    padding-top: 100px;
+}
+.check_box{
+	margin-left: 17px;
+}
+.secret_view{
+	vertical-align: middle;
+}
+.qna_checkbox + label {
+    display: inline-block;
+    height: 18px;
+    padding: 0 0 0 27px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk.png) no-repeat 0 0;
+    line-height: 18px;
+    cursor: pointer;
+}
+.qna_checkbox:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_chk_on.png) no-repeat 0 0;
+}
+.qna_list {
+    border-top: 1px solid #121212;
+}
+.qna_list li {
+    border-bottom: 1px solid #dfdfdf;
+}
+.qna_list .row_q .col_status {
+    width: 94px;
+    font-weight: 700;
+    text-align: center;
+}
+.qna_list .row_q > div {
+    float: left;
+    min-height: 90px;
+    padding: 35px 0;
+    line-height: 20px;
+}
+.qna_list .row_q .col_title {
+    width: 506px;
+    padding-left: 30px;
+}
+.qna_list .row_q .col_author {
+    width: 140px;
+    color: #777;
+    text-align: center;
+}
+.qna_list .row_q .col_date {
+    width: 100px;
+    color: #777;
+    text-align: center;
+}
+.qna_list .row_q:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.qna_list .row_a {
+    padding: 5px 0 13px;
+    background: #f4f4f4;
+    border-top: 1px solid #dfdfdf;
+}
+.qna_list .row_a .board_q::before {
+    content: 'Q';
+    display: block;
+    position: absolute;
+    left: -57px;
+    top: 40px;
+    color: #555;
+    font-size: 24px;
+    line-height: 1;
+}
+.qna_list .row_a .board_a::before {
+    content: 'A';
+    display: block;
+    position: absolute;
+    left: -57px;
+    top: 44px;
+    color: #aeaeae;
+    font-size: 24px;
+    line-height: 1;
+}
+.qna_list .row_a [class*="board_"] {
+    position: relative;
+    margin: 0 100px 0 124px;
+    padding: 39px 0 32px;
+    color: #555;
+    line-height: 24px;
+}
+.qna_list .row_a .board_a {
+    border-top: 1px solid #dfdfdf;
+}
+.qna_list .qna_secret .row_a div {
+    margin: 0 100px 0 124px;
+    padding: 39px 0 32px;
+    color: #555;
+    line-height: 24px;
+}
+.qna_list .qna_secret .row_q .col_title a:after {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 16px;
+    margin-left: 10px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_lock.png) no-repeat 0 0;
+    vertical-align: top;
+}
+.btn_area {
+	display: block;	
+    margin-top: 30px;
+    text-align: right;
+}
+.explain_wrap .section .noti {
+    margin-top: -10px;
+    margin-bottom: 30px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1;
+    text-align: right;
+}
+.write_qna {
+    min-width: 120px;
+    padding: 16px 20px;
+    font-size: 14px;
+    border: 2px solid #444;
+    background: #444;
+    color: #fff;
+    display: inline-block;
+    margin-left: 7px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    vertical-align: top;
+}
+.write_qna:hover{
+	color: #fff;
+}
+.more_qna{
+	text-align: center;
+	margin-top: 12px;
+}
+.btn_more {
+    padding: 5px 20px 5px 0;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_btn_more.png) no-repeat 100% 52%;
+    color: #333;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 7px;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    vertical-align: top;
+}
+.qna_none{
+	height: 450px;
+    padding-top: 71px;
+    border-top: 1px solid #121212;
+    border-bottom: 1px solid #dfdfdf;
+    text-align: center;
+}
+.qna_none > strong {
+    display: block;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 18px;
+    line-height: 1;
+}
+.qna_none > strong::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 65px;
+    margin: 0 auto 17px;
+    background: url(https://image.nbkorea.com/NBRB_PC/product/icon_q.png) no-repeat 0 0;
+}
+.qna_none ul {
+    margin-left: 184px;
+    text-align: left;
+}
+.qna_none ul li {
+    color: #777;
+    letter-spacing: -0.04em;
+    line-height: 24px;
+}
+.qna_none ul li::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 24px;
+    background: url(https://image.nbkorea.com/NBRB_PC/product/icon_bull_dot.png) no-repeat 0 50%;
+    vertical-align: top;
+}
+.qna_none .btn_area{
+	text-align: center;
+	margin-top: 55px;
+	display: block;
+}
+.qna_none .btn_area .sm {
+    min-width: 140px;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+    border: 2px solid #eaeaea;
+    background: #eaeaea;
+    margin-left: 7px;
+    display: inline-block;
+    line-height: 1;
+    cursor: pointer;
+}
+.policyPopUp{
+  position: absolute;
+  left: 0px;
+  width: auto;
+  z-index: 100;
+display:none;
+}
+.policyPopUp .policyPopUpInner{
+  background-color: white;
+  position: absolute;
+  width: 700px;
+  padding: 50px 40px;
+  border: 1px solid black;
+  margin: auto;
+  z-index: 100;
+}
+.policyPopUpInner .policyPopUpHeader strong {
+  display: block;
+  color: #121212;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+.policyPopUpInner .policyPopUpHeader{
+  padding-bottom: 18px;
+  border-bottom: 2px solid #121212;
+}
+.policyPopUpCntType .policyPopUpText{
+  list-style-type: none;
+  padding:0;
+  font-size: 14px;
+  color:#121212
+}
+.policyPopUpCntType .policyPopUpText2{
+  color:#777;
+  font-size: 14px;
+}
+.point_b{
+  font-weight: 700;
+}
+.policyPopUpCntType .policyPopUpText {
+  padding-top: 190px;
+  background: url(https://image.nbkorea.com/NBRB_PC/common/bg_content.png) no-repeat center 50px/89px;
+  padding-bottom: 28px;
+  font-family: 'Noto Sans KR',sans-serif;
+}
+.policyPopUp .policyPopUpClose {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+}
+.modal_qna{
+    top: 9857.7px;
+    left: 0px;
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    word-break: break-all;
+    width: 700px;
+    background-color: rgb(0,0,0);
+    background-color:rgba(0,0,0,0.4);
+    overflow: auto;
+}
+.modal_inner .modal_header {
+    padding: 0 0 18px;
+    border-bottom: 2px solid #121212;
+    position: relative !important;
+    height: auto !important;
+}
+.modal_inner .modal_header strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+.modal_inner ul.sub_info {
+    padding: 27px 0;
+}
+.modal_inner ul.sub_info li {
+    color: #777;
+    line-height: 20px;
+}
+.modal_inner .product {
+    display: table;
+    width: 100%;
+    border: solid #dbdbdb;
+    border-width: 1px 0;
+}
+.modal_inner .product .img {
+    display: table-cell;
+    width: 85px;
+    padding: 19px 0;
+}
+.modal_inner .product .img img {
+    display: block;
+    width: 100%;
+}
+.modal_inner .product .txt .pd_name {
+    margin-bottom: 15px;
+    line-height: 20px;
+    font-size: 14px
+}
+.modal_inner .product .txt .pd_option {
+    color: #666;
+}
+.modal_inner .product .txt {
+    display: table-cell;
+    padding: 10px 35px;
+    vertical-align: middle;
+}
+.modal_inner .close {
+    right: 40px;
+    top: 50px;
+    position: absolute;
+    z-index: 60;
+}
+.modal_inner .form_area {
+    border-top: 0;
+    padding: 10px 0 30px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.form_area .row {
+    padding-top: 20px;
+}
+.form_area .row .ftit {
+	width: 114px;
+    padding-left: 0;
+    float: left;
+    padding-top: 13px;
+    line-height: 1.3;
+}
+.form_area .row .ftit .necessary {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    background: #e3233f;
+    overflow: hidden;
+    vertical-align: top;
+}
+.form_area .row::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.form_area .row .fdata .ip_text {
+    vertical-align: middle;
+    width: 100%;
+    margin-right: 0;
+}
+.form_area input.ip_text {
+    height: 45px;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    line-height: 1;
+    box-sizing: border-box;
+}
+.form_area .row .fdata .textarea {
+    height: 145px;
+}
+.textarea {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+}
+.form_area .row .fdata {
+    padding-left: 114px;
+}
+.file {
+    position: relative;
+    width: 100%;
+    padding-right: 110px;
+}
+.form_areainput.ip_text[readonly] {
+    background: #f4f4f4;
+    color: #aeaeae;
+}
+.btn_attach_file label{
+	padding: 12px 22px;
+    background: #737B82;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    min-width: 100px;
+    margin: 0 !important;
+   vertical-align: middle;
+}
+.btn_attach_file input[type="file"] {
+    position: absolute;
+    top: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+.info_file{
+	color: #62b1bd !important;
+	font-size: 12px;
+    line-height: 1.2;
+    display: block;
+    margin: 11px 0 20px;
+}
+.form_area .row .fdata .chk {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.form_area .row .fdata .chk label {
+    font-weight: 400;
+}
+.form_area input.ip_radio:checked + label {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio_on.png) no-repeat 0 0;
+}
+.form_area input.ip_radio + label {
+    display: inline-block;
+    height: 18px;
+    padding-left: 28px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_radio.png) no-repeat 0 0;
+    font-weight: 700;
+    line-height: 18px;
+}
+.modal {
+    z-index: 100;
+    word-break: break-all;
+    width: 100%;
+}
+.modal_inner {
+    width: 700px;
+    padding: 50px 40px;
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+    margin: 0 auto;
+}
+.type_low{
+	line-height: 40px;
+}
+.modal_inner .form_area + .btn_area {
+    margin-top: 55px;
+}
+.modal_inner .btn_area {
+    text-align: center;
+}
+.modal_inner .btn_area a{
+    padding: 14px 33px;
+    font-size: 14px;
+}
+.modal_inner .btn_area .btn_qna {
+    border: 2px solid #141414;
+    background: #141414;
+    color: white;
+}
+.modal_inner .btn_area .btn_cancel {
+    border: 2px solid #141414;
+    color: black;
+    margin-left: 7px;
+}
+.dimm_pop{
+	opacity: 0.5 !important;
+}
+#wishListModal .modal_inner{
+	width: 450px;
+	padding: 25px;
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+}
+.modal_inner .square {
+    border: 2px solid #444;
+    text-align: center;
+}
+.modal_inner .interest {
+    height: 320px;
+    padding-top: 60px;
+}
+.modal_inner .txt1 {
+    display: block;
+    padding-bottom: 17px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+.modal_inner .interest .txt1::before {
+    content: '';
+    display: block;
+    width: 47px;
+    height: 40px;
+    margin: 0 auto 13px;
+    background: url(https://image.nbkorea.com/NBRB_PC/product/icon_heart_pop.png) no-repeat 0 0;
+}
+.modal_inner .txt2 {
+    color: #777;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+}
+.modal_inner .txt2 span {
+    color: #141414 !important;
+}
+.btn_area .btn_ok{
+	background: #141414;
+    color: #fff;
+    min-width: 120px;
+    padding: 14px 50px !important;
+    font-size: 14px;
+}
+.modal_inner .btn_close{
+	position: absolute;
+    z-index: 60;
+	right: 47px;
+    top: 47px;
+}
+.modal_inner .btn_close img {
+    display: block;
+}
+#cartListModal .modal_inner{
+	width: 700px;
+	padding: 50px 40px;
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+}
+.modal_inner .completion {
+    padding-top: 50px;
+    text-align: center;
+}
+.modal_inner .completion .scroll {
+    height: 214px;
+    overflow-y: auto;
+}
+.point_r {
+    color: #cf0a2c !important;
+}
+.modal_inner .completion .result {
+    margin-top: 25px;
+    border-top: 2px solid #141414;
+    border-bottom: 1px solid #dbdbdb;
+    text-align: left;
+}
+.modal_inner .completion .result .info {
+    padding: 25px 30px;
+}
+.modal_inner .completion .result .info .sub_info {
+    padding: 15px 0 0;
+}
+.modal_inner .completion .btn_area {
+    margin-top: 40px;
+}
+.modal_inner .completion .btn_area a{
+	min-width: 140px;
+	padding: 12px 25px;
+}
+.completion .btn_area .btn_continue {
+    border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+}
+.completion .btn_area .btn_check {
+    border: 2px solid black;
+    background: #fff;
+    padding: 12px 15px !important;
+    margin-left: 7px;
+}
+.rcmPd .rcmTit {
+    margin: 55px 0 20px;
+    font-size: 20px;
+}
+.rcmPd .swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    direction: ltr;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+.rcmPd .swiper-scrollbar {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: 0%;
+    bottom: 0;
+    z-index: 333333;
+    opacity: 1 !important;
+    background: rgba(0,0,0,0.1);
+}
+.rcmPd .swiper-wrapper {
+    position: relative;
+    transition-property: transform,left,top;
+    transition-timing-function: ease;
+}
+.rcmPd .pop_scrollSlide .swiper-scrollbar-cursor-drag {
+    cursor: move;
+}
+.rcmPd .pop_scrollSlide .swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(0,0,0,1);
+    border-radius: 10px;
+}
+.rcmPd .swiper-slide {
+    float: left;
+    padding: 0 5px;
+}
