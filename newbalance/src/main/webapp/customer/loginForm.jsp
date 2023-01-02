@@ -20,8 +20,8 @@
         <div class="contents">
             <h2 class="loginH2Title">LOG IN</h2>
 			<div class="loginForm">
-				<input type="text" name="id" class="loginFormInput" maxlength="50" placeholder="아이디">
-				<input type="password" name="password" class="loginFormInput" maxlength="20" placeholder="비밀번호">
+				<input type="text" name="id" class="loginFormInput" maxlength="50" placeholder="아이디" value="taehee33">
+				<input type="password" name="password" class="loginFormInput" maxlength="20" placeholder="비밀번호" value="aaa12345!">
 				<div class="loginFormEtcBox">
 					<p class="save_id"><input type="checkbox" id="saveId" name="saveId" class="ip_chekbox" checked="checked"><label for="saveId">아이디 저장하기</label></p>
 					<ul>

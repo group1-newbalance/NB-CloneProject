@@ -1,0 +1,148 @@
+@charset "UTF-8";
+@import '/newbalance/common/reset.css';
+@import '/newbalance/common/font.css';
+
+.coupon_pop {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+.w700 .cppop_inner {
+    width: 700px;
+    padding: 50px 40px;
+}
+.coupon_pop .cppop_inner {
+    position: relative;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.cppop_inner .cpheader {
+    padding: 0 0 18px;
+    border-bottom: 2px solid #121212;
+    position: relative !important;
+    height: auto !important;
+}
+
+.cppop_inner .cpheader strong {
+    display: block;
+    color: #121212;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.terms_of_use {
+    color: #141414;
+    font-size: 14px;
+}
+
+.terms_of_use .cplist {
+    margin: 10px 0 10px;
+    padding: 30px 0;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+}
+
+.terms_of_use .cplist li:first-child {
+    margin-top: 0;
+}
+.terms_of_use .cplist li {
+    margin: 30px 0 0 0;
+}
+
+.terms_of_use .cplist .cptxt_head {
+    display: block;
+    float: left;
+    width: 144px;
+    line-height: 1.7;
+}
+
+.terms_of_use .cplist .cptxt_content {
+    display: block;
+    float: right;
+    width: 476px;
+    line-height: 1.7;
+}
+
+.terms_of_use .cplist li:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.terms_of_use .btn_store_use {
+    border-bottom: 1px solid #dbdbdb;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.terms_of_use .btn_store_use div {
+    display: block;
+    float: left;
+}
+
+.terms_of_use .btn_store_use .icon_arrow {
+    width: 11px;
+    height: 8px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_arrow_tb.png) 0 100% no-repeat scroll;
+    margin: 7px 0 0 10px;
+    float: left;
+}
+
+.cf:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.terms_of_use .list_store_use {
+    margin: 14px 0;
+    color: #777;
+    max-height: 91px;
+    overflow: hidden;
+    line-height: 2.2;
+}
+
+.terms_of_use .btn_store {
+    border-top: 1px solid #dbdbdb;
+    padding-top: 10px;
+}
+
+.terms_of_use .cplist li:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.terms_of_use .list_detail {
+    line-height: 1.7;
+}
+
+.terms_of_use .list_detail .cptxt_head {
+    display: block;
+    float: left;
+    width: 144px;
+    line-height: 2.2;
+}
+
+.terms_of_use .list_detail .cptxt_content {
+    display: block;
+    float: right;
+    width: 476px;
+    line-height: 2.2;
+}
+
+.terms_of_use .btn_store_use .icon_arrow.on {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_arrow_tb.png) 0 0 no-repeat scroll;
+}
+
+.terms_of_use .list_store_use.on {
+    margin: 14px 0;
+    color: #777;
+    max-height: none;
+    height: auto;
+    overflow: visible;
+    line-height: 2.2;
+}

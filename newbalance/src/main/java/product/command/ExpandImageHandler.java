@@ -24,16 +24,8 @@ public class ExpandImageHandler implements CommandHandler{
 		ProductDTO pdDto = null;
 		ArrayList<ProductImageDTO> imgList = null;
 				
-		HttpSession session = request.getSession();
-		if (session != null) {
-			UserDTO member = (UserDTO) session.getAttribute("member");
-			if(member != null) {
-				pdDto = productService.selectProduct(pdCode, member.getUserCode());
-				imgList = productService.selectImage(pdCode, member.getUserCode());
-			}
-		}else {
-			return null;
-		}
+		pdDto = productService.selectProduct(pdCode);
+		imgList = productService.selectImage(pdCode);
 
 	    request.setAttribute("pdDto", pdDto);
 	    request.setAttribute("imgList", imgList);

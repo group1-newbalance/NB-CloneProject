@@ -1,0 +1,723 @@
+@charset "UTF-8";
+
+.my_wrap .my_cont .mynb_title {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.my_wrap .my_cont .mynb_title .mynb_tit {
+    font-size: 28px;
+}
+
+.mynb_tit {
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.mntab_list {
+    overflow: hidden;
+}
+
+.mntab_list ul {
+    position: relative;
+    overflow: hidden;
+}
+
+.mntab_list ul.col4 li {
+    width: 25%;
+}
+
+.mntab_list ul > li.active {
+    border-color: #141414;
+    border-width: 2px 2px 0 2px;
+}
+
+
+.mntab_list ul > li {
+    float: left;
+    border: solid #dbdbdb;
+    border-width: 1px 1px 0 0;
+    box-sizing: border-box;
+    border-bottom: 2px solid #000;
+}
+
+.mntab_list ul > li.active > a {
+    position: relative;
+    padding: 19px 0 23px;
+    border-color: #141414;
+    background: #fff;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.mntab_list ul > li > a {
+    display: block;
+    padding: 20px 1px 23px;
+    color: #141414;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.my_cont .mntab_cont .mncont_tit:first-child {
+    margin-top: 72px;
+}
+
+.my_cont .mntab_cont .mncont_tit {
+    display: block;
+    margin: 95px 0 17px;
+    color: #121212;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.my_cont .introduce {
+    height: 209px !important;
+    padding: 248px 0 0 90px;
+    background: #141414 url(https://image.nbkorea.com/NBRB_PC/my/img_introduce.png) no-repeat 0 0;
+    color: #fff;
+}
+
+.my_cont .introduce .mntxt1 {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.my_cont .introduce .mntxt2 {
+    margin-top: 34px;
+    color: #aeaeae;
+    line-height: 1;
+}
+
+.my_cont .introduce .mntxt3 {
+    margin-top: 10px;
+    color: #aeaeae;
+    line-height: 24px;
+    letter-spacing: -0.06em;
+}
+
+.my_cont .vision {
+    border-top: 2px solid #121212;
+    border-bottom: 1px solid #141414;
+    overflow: hidden;
+}
+
+.my_cont .vision li {
+    float: left;
+    position: relative;
+    width: 300px;
+    height: 326px;
+    padding-top: 47px;
+    text-align: center;
+}
+
+.my_cont .vision li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 98px;
+    top: 63px;
+    width: 104px;
+    height: 80px;
+    background: url(https://image.nbkorea.com/NBRB_PC/my/bg_nb_vision.png) no-repeat 0 0;
+}
+
+.my_cont .vision li p {
+    padding-top: 138px;
+    color: #555;
+    letter-spacing: -0.06em;
+    line-height: 24px;
+}
+
+.my_cont .vision li p strong {
+    color: #141414;
+    font-weight: 700;
+}
+
+.my_cont .vision li:nth-child(2):before {
+    background-position: 0 -80px;
+}
+
+.my_cont .vision li:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 47px;
+    width: 1px;
+    height: 203px;
+    background: #dbdbdb;
+    
+}
+
+.my_cont .vision li:first-child:after{
+	 background: #fff;
+}
+
+.my_cont .vision li:nth-child(3):before {
+    background-position: 0 -160px;
+}
+
+.my_cont .point_info {
+    margin-top: 100px;
+    border: 1px solid #dbdbdb;
+}
+
+.my_cont .point_info dl {
+    padding: 72px 0 80px;
+}
+
+.my_cont .point_info dl dt {
+    float: left;
+    margin-left: 70px;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 42px;
+}
+
+.my_cont .point_info dl dd {
+    padding-left: 427px;
+}
+
+.my_cont .point_info dl dd p {
+    padding-top: 2px;
+    color: #555;
+    letter-spacing: -0.04em;
+    line-height: 26px;
+}
+
+.my_cont .point_info dl dd p strong {
+    color: #141414;
+    font-weight: 700;
+}
+
+.my_cont .point_info dl dd p strong {
+    color: #141414;
+    font-weight: 700;
+}
+
+.mntbn_detail{
+	min-width: 120px;
+    padding: 14px 16px 13px;
+    font-size: 14px;
+    margin-left: 0;
+    
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.mntbn_detail, .mntbn_detail:hover{
+    border: 2px solid #cf0a2c;
+    background: #cf0a2c;
+    color: #fff;
+}
+
+.my_cont .point_info .mnbtn {
+    margin-top: 34px;
+}
+
+.my_cont .point_info dl + dl {
+    border-top: 1px solid #ececec;
+}
+
+.my_wrap .sub_mntab2 {
+    margin-top: 60px;
+}
+
+.sub_mntab2 ul {
+    text-align: center;
+}
+
+.sub_mntab2 ul li:first-child {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.sub_mntab2 ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 27px;
+    padding-left: 30px;
+}
+
+.sub_mntab2 ul li.active a {
+    font-weight: 700;
+    border-bottom: 3px solid #141414;
+}
+.sub_mntab2 ul li a {
+    display: block;
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.sub_mntab2 ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 27px;
+    padding-left: 30px;
+}
+
+.sub_mntab2 ul li:first-child:before {
+    display: none;
+}
+
+.sub_mntab2 ul li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 1px;
+    height: 15px;
+    background: #ccc;
+}
+
+.donation_exp {
+    margin-top: 54px;
+    text-align: center;
+}
+
+.donation_exp em {
+    display: block;
+    color: #000;
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.donation_exp em span {
+    display: block;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.donation_exp p {
+    margin-top: 12px;
+    color: #555;
+    line-height: 24px;
+}
+
+.mn_bold {
+    font-weight: 700 !important;
+}
+
+.donation_cont p > img {
+    vertical-align: middle;
+}
+
+.donation_mov .mnmov_box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: -4px;
+}
+
+.mnvideo_container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.mnvideo_container iframe, .mnvideo_container object, .mnvideo_container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.donation_cont p > img {
+    vertical-align: middle;
+}
+
+.donation_info .mnsec_tit:first-child {
+    padding-top: 58px;
+}
+.donation_info .mnsec_tit {
+    margin-bottom: 23px;
+    font-family: 'ProximaNova','Noto Sans KR';
+}
+.mnsec_tit {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    line-height: 1;
+}
+
+.donation_info .mntxt {
+    letter-spacing: -0.06em;
+    line-height: 24px;
+}
+
+.donation_info .mnobjective {
+    border: 1px solid #dbdbdb;
+}
+
+.donation_info .mnobjective .mnobj1 {
+    border-top: 0;
+}
+.donation_info .mnobjective dl {
+    height: 270px;
+    border-top: 1px solid #dbdbdb;
+}
+
+.donation_info .mnobjective .mnobj1 dt:before {
+    width: 36px;
+    height: 29px;
+    background-position: 0 0;
+    margin-bottom: 15px;
+}
+.donation_info .mnobjective dt:before {
+    content: '';
+    display: block;
+    background: url(https://image.nbkorea.com/NBRB_PC/my/bg_nb_objective.png) no-repeat;
+}
+
+.donation_info .mnobjective dt {
+    float: left;
+    margin: 80px 0 0 60px;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.donation_info .mnobjective dd {
+    padding: 73px 0 0 430px;
+    color: #555;
+    letter-spacing: -0.04em;
+    line-height: 28px;
+}
+
+.donation_info .mnobjective dd strong {
+    display: block;
+    color: #141414;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.donation_info .mnobjective .mnobj2 dt:before {
+    width: 31px;
+    height: 31px;
+    background-position: 0 -100px;
+    margin-bottom: 14px;
+}
+
+.donation_info .mnobjective .mnobj3 dt:before {
+    width: 28px;
+    height: 35px;
+    background-position: 0 -200px;
+    margin-bottom: 12px;
+}
+
+.donation_info .mnqr_info {
+    margin-top: 80px;
+    padding-top: 90px;
+    border-top: 2px solid #444;
+    text-align: center;
+}
+
+.donation_info .mnqr_info .mntit {
+    margin-top: 40px;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.donation_info .mnqr_info .mntit span {
+    display: inline-block;
+    width: 84px;
+    height: 29px;
+    margin-right: 5px;
+    background: url(https://image.nbkorea.com/NBRB_PC/my/logo_mynb2.png) no-repeat 0 0;
+    text-indent: -999em;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.donation_info .mnqr_info p {
+    margin-top: 14px;
+    color: #555;
+    line-height: 1;
+}
+
+.my_wrap .sub_mntab {
+    margin-top: 60px;
+}
+
+.sub_mntab ul {
+    text-align: center;
+}
+
+.sub_mntab ul li:first-child {
+    padding-left: 0;
+    margin-left: 0;
+}
+.sub_mntab ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 27px;
+    padding-left: 30px;
+}
+
+.sub_mntab ul li:first-child:before {
+    display: none;
+}
+.sub_mntab ul li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 1px;
+    height: 15px;
+    background: #ccc;
+}
+
+.sub_mntab ul li.active a {
+    font-weight: 700;
+    border-bottom: 3px solid #141414;
+}
+.sub_mntab ul li a {
+    display: block;
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.sub_mntab ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 27px;
+    padding-left: 30px;
+}
+
+.point_box {
+    margin-top: 60px;
+}
+
+.point_box .mnbox:first-child {
+    border-top: 1px solid #dfdfdf;
+}
+.point_box .mnbox {
+    position: relative;
+    padding: 80px 0;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.point_box .mnbox .mnpoint_tit {
+    position: absolute;
+    top: 77px;
+    left: 0;
+}
+
+.point_box .mnbox .mnpoint_tit strong {
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.point_box .mnbox .mnpoint_tit span {
+    display: block;
+    padding-bottom: 52px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_point_title2.png) no-repeat 0 100%;
+    color: #555;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.point_box .mnbox .mnpoint_cont {
+    padding-left: 450px;
+}
+
+.point_box .mnbox .mnpoint_cont li:first-child {
+    padding-top: 0;
+}
+.point_box .mnbox .mnpoint_cont li {
+    position: relative;
+    padding-top: 30px;
+}
+
+.point_box .mnbox .mnpoint_cont li:first-child strong {
+    top: 0;
+}
+
+.point_box .mnbox .mnpoint_cont li strong {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.point_box .mnbox .mnpoint_cont li p {
+    padding-left: 108px;
+    color: #555;
+    letter-spacing: -0.04em;
+}
+
+.point_box .mnbox .mnpoint_cont li span {
+    display: block;
+    margin-top: 7px;
+    color: #aeaeae;
+    font-size: 12px;
+}
+
+.point_box .mnbox .mnpoint_tit span.mnbg_ef1 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_point_title1.png) no-repeat 0 100%;
+}
+
+.point_box .mnbox .mnpoint_tit span.mnbg_ef2 {
+    background: url(https://image.nbkorea.com/NBRB_PC/common/icon_point_title3.png) no-repeat 0 100%;
+}
+
+.mnpoint_use2 .mnsec_tit {
+    display: block;
+    margin-bottom: 9px;
+}
+
+.mnpoint_use2 > p {
+    color: #001414;
+    /* letter-spacing: -0.06em; */
+    line-height: 24px;
+}
+
+.mnpoint_use2 > p > span {
+    color: #777;
+}
+
+.mnpoint_use2 > dl dt {
+    padding-top: 35px;
+    margin-bottom: 12px;
+    color: #555;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.mnpoint_use2 > dl dd p {
+    color: #555;
+    line-height: 28px;
+}
+
+.mnpoint_use2 > dl dd ul li {
+    position: relative;
+    padding-left: 12px;
+    color: #555;
+    line-height: 28px;
+}
+
+.mnpoint_use2 > dl dd ul li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 1px;
+    top: 13px;
+    width: 2px;
+    height: 2px;
+    background: #444;
+}
+
+.mnqna_list {
+    margin-top: 20px;
+}
+
+.mnqna_list .mnrow_q {
+    position: relative;
+    padding: 33px 57px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mnqna_list .mnrow_q:before {
+    content: 'Q';
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 33px;
+    color: #555;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.mnqna_list .mnrow_q:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 40px;
+    top: 43px;
+    width: 8px;
+    height: 7px;
+    background: url(https://image.nbkorea.com/NBRB_PC/common/bg_bullet_qna.png) no-repeat 0 0;
+}
+
+.mnqna_list .mnrow_q a {
+    display: block;
+    color: #555;
+    line-height: 24px;
+}
+
+.mnqna_list .mnrow_q a span {
+    color: #555;
+    font-weight: 700;
+}
+
+.mnqna_list .mnrow_q a {
+    display: block;
+    color: #555;
+    line-height: 24px;
+}
+
+.mnqna_list .mnrow_a {
+    display: none;
+    padding: 5px 0 13px;
+    background: #f4f4f4;
+}
+
+.mnqna_list .mnrow_a .mnboard_a {
+    position: relative;
+    margin: 0 92px;
+    padding: 29px 0 20px;
+    color: #555;
+    line-height: 24px;
+}
+
+.mnqna_list .mnrow_a .mnboard_a:before {
+    content: 'A';
+    display: block;
+    position: absolute;
+    left: -35px;
+    top: 32px;
+    color: #aeaeae;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.my_wrap {
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.my_wrap:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.mnqna_list .open .mnrow_q a {
+    color: #141414;
+    font-weight: 700;
+}

@@ -70,6 +70,40 @@ public class MemberDTO {
 		this.userAddress2 = userAddress2;
 		this.lv = lv;
 	}
+	public MemberDTO(String userCode, String pwd,String tel, int zipcode, String address1, String address2, String email,
+			String specialdate, int receiveinfo) {
+		this.userCode = userCode;
+		this.userTel =  tel;
+		this.userZipcode = zipcode;
+		this.userAddress1 = address1;
+		this.userAddress2 = address2;
+		this.userEmail = email;
+		this.userSpecialdate = specialdate;
+		this.userReceiveinfo = receiveinfo;
+	}
+	
+	
+
+
+	public MemberDTO(String userCode, String userId, String userPwd, int userGender, String userPhone, String userName,
+			String userBirth, String userEmail, int userZipcode, int userMileage, String userAddress1,
+			String userAddress2, String lv) {
+		super();
+		this.userCode = userCode;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userGender = userGender;
+		this.userPhone = userPhone;
+		this.userName = userName;
+		this.userBirth = userBirth;
+		this.userEmail = userEmail;
+		this.userZipcode = userZipcode;
+		this.userMileage = userMileage;
+		this.userAddress1 = userAddress1;
+		this.userAddress2 = userAddress2;
+		this.lv = lv;
+	}
+
 
 	public boolean matchPassword(String userPwd) {
 		return this.userPwd.equals(userPwd);

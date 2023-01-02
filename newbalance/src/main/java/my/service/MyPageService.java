@@ -2,6 +2,7 @@ package my.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +12,16 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import my.dao.MyDAO;
+
+import my.domain.QuestionDTO;
+import my.domain.CouponDTO;
+import my.domain.MbLevelDTO;
+import my.domain.MileageDTO;
 import my.domain.MyDeliveryInfoDTO;
 import my.domain.MyMainDTO;
-import my.domain.MywishDTO;
-import my.domain.QuestionDTO;
+import my.domain.MyNbPointDTO;
+import my.domain.MyWishDTO;
+import my.domain.SaleCodeDTO;
 import product.dao.ProductDAO;
 import product.domain.WishlistDTO;
 
@@ -142,7 +149,7 @@ private static MyPageService instance = null;
 	      }
 	      return rowCount;
 	   }
-	
+
 	public List<MywishDTO> getMyWish(String userCode) throws NamingException {
 		List<MywishDTO> mywishdto = null;
 		try ( Connection conn = ConnectionProvider.getConnection()) {
@@ -189,6 +196,147 @@ private static MyPageService instance = null;
 		} finally {
 			JdbcUtil.close(con);
 		}
+=======
+	public List<MyWishDTO> getMemberWishList(String userCode) throws NamingException {
+		List<MyWishDTO> wishList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			wishList = myDao.getMemberWishList(conn, userCode);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return wishList;
+	}
+
+	public int deleteWishList(String userCode, String[] wishList) throws NamingException {
+		int rowCount = 0;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			rowCount = myDao.deleteWishList(conn, userCode, wishList);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowCount;
+	}
+	
+	public MbLevelDTO getMbLevel(String userCode) throws NamingException {
+		MbLevelDTO levelDto;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			levelDto = myDao.getMbLevel(conn, userCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return levelDto;
+		
+	} 
+	
+	public SaleCodeDTO getSaleCode(String userCode) throws NamingException {
+		SaleCodeDTO salecodeDto;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			salecodeDto = myDao.getSaleCode(conn, userCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return salecodeDto;
+		
+	} 
+	
+	public int getMileage(String userCode) throws NamingException {
+		int userMile;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			userMile = myDao.getMileage(conn, userCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return userMile;
+		
+	} 
+	
+	public ArrayList<MileageDTO> selectMileageByDate(String userCode, String sDate, String eDate) throws NamingException {
+		ArrayList<MileageDTO> miList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			miList = myDao.selectMileageByDate(conn, userCode,sDate, eDate );
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return miList;
+		
+	} 
+	
+	public ArrayList<CouponDTO> getCoupon(String userCode) throws NamingException {
+		ArrayList<CouponDTO> cpList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			cpList = myDao.getCoupon(conn, userCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return cpList;
+		
+	} 
+	
+	public ArrayList<CouponDTO> selectCouponByDate(String userCode, String sDate, String eDate) throws NamingException {
+		ArrayList<CouponDTO> cpList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			cpList = myDao.selectCouponByDate(conn, userCode, sDate, eDate);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return cpList;
+		
+	}
+	
+	public ArrayList<MyNbPointDTO> selectMyNbPointByDate(String userCode, String sDate, String eDate) throws NamingException {
+		ArrayList<MyNbPointDTO> mpList = null;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			mpList = myDao.selectMyNbPointByDate(conn, userCode,sDate, eDate);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return mpList;
+		
+	}
+	
+	public MyNbPointDTO getLevel(String userCode) throws NamingException {
+		MyNbPointDTO glDto;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			glDto = myDao.getLevel(conn, userCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return glDto;
+		
+	} 
+	
+	
+	public CouponDTO getUserCoupon(String userCode, String cpCode) throws NamingException {
+		CouponDTO cpDto;
+		try ( Connection conn = ConnectionProvider.getConnection()) {
+			MyDAO myDao = MyDAO.getInstance();
+			cpDto = myDao.getUserCoupon(conn, userCode, cpCode);
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return cpDto;
+
 	}
 
 }

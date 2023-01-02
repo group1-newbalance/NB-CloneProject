@@ -3,7 +3,7 @@ package product.domain;
 import java.sql.Date;
 
 public class ProductDTO {
-
+	
 	private String pdCode;
 	private String categoryCode;
 	private String pdName;
