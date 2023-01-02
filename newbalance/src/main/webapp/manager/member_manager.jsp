@@ -39,33 +39,49 @@
 	
 	
 	<div class = "my_cont">
-	<div><h1>여기에 제목쓰세요</h1></div>
+	<div><h1>모든 회원 정보</h1></div>
 	<table class="type03">
   <tr>
-    <th scope="row">항목명</th>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
+    <td>회원코드</td>
+    <td>아이디</td>
+    <td>비밀번호</td>
+    <td>성별</td>
+    <td>휴대폰번호</td>
+    <td>이름</td>
+    <td>생년월일</td>
+    <td>이메일</td>
+    <td>우편번호</td>
+    <td>보유중인 마일리지</td>
+    <td>주소</td>
+    <td>상세주소</td>
+    <td>회원등급</td>
   </tr>
-  <tr>
-    <th scope="row">항목명</th>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-  </tr>
-  <tr>
-    <th scope="row">항목명</th>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    <td>내용이 들어갑니다.</td>
-    
-  </tr>
+ 	<c:choose>
+ 	<c:when test="${ empty viewData.memberList}">
+ 		<td colspan="13" align = "center">
+ 			<b>등록된 회원이 없습니다.</b>
+ 		</td>
+	 </c:when>
+	 <c:otherwise>
+	 	<c:forEach var="member" items="${viewData.memberList}">
+	 	<tr>
+	 		<td>${member.userCode}</td>
+	 		<td>${member.userId}</td>
+	 		<td>${member.userPwd}</td>
+	 		<td>${member.userGender}</td>
+	 		<td>${member.userPhone}</td>
+	 		<td>${member.userName}</td>
+	 		<td>${member.userBirth}</td>
+	 		<td>${member.userEmail}</td>
+	 		<td>${member.userZipcode}</td>
+	 		<td>${member.userMileage}</td>
+	 		<td>${member.userAddress1}</td>
+	 		<td>${member.userAddress2}</td>
+	 		<td>${member.lv}</td>
+	 		</tr>
+	 	</c:forEach>
+	 	</c:otherwise>
+ 		</c:choose>
 </table>
 	</div>
 	
