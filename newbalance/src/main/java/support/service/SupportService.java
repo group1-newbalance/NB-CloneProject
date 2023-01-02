@@ -8,10 +8,10 @@ import javax.naming.NamingException;
 
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
+import manager.service.ServiceException;
 import support.dao.SupportDAO;
 import support.domain.FaqDTO;
 import support.domain.NoticeDTO;
-import support.domain.PageBlock;
 import support.domain.StoreDTO;
 
 public class SupportService {
@@ -74,7 +74,7 @@ public class SupportService {
 	       rowCount = dao.insertNotice(con, notice);
 	
 	    } catch (Exception e) { 
-	       throw new ServiceException("> 메시지 등록 실패 : " + e.getMessage(), e);
+	       // throw new ServiceException("> 메시지 등록 실패 : " + e.getMessage(), e);
 	    } finally {
 	       try {
 	          con.close();

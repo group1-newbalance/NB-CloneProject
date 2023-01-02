@@ -16,6 +16,7 @@ import jdbc.connection.JdbcUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import product.domain.AddCartDTO;
+import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
@@ -90,6 +91,58 @@ public class ProductDAO implements IProduct {
 		return pdDto;
 	}
 
+	@Override
+	public ProductAjaxDTO selectProductAjax(Connection conn, String pdCode) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String  sql = " SELECT pd_code, category_code, pd_name, pd_price, pd_memberonly, pd_mincount "
+				+ "    , pd_country, pd_from, pd_date, pd_material, pd_feet, pd_release, pd_feature "
+				+ "    , img_url"
+				+ " FROM ( "
+				+ "    SELECT p.pd_code, category_code, pd_name, pd_price, pd_memberonly, pd_mincount "
+				+ "        , pd_country, pd_from, pd_date, pd_material, pd_feet, pd_release, pd_feature "
+				+ "        , ROW_NUMBER() OVER(PARTITION BY p.pd_code ORDER BY img_seq ASC) seq, img_url "
+				+ "    FROM product p join product_detail d on p.pd_code = d.pd_code "
+				+ "                   		   join product_image i on p.pd_code = i.pd_code "
+				+ " )t "
+				+ " WHERE seq = 1 and pd_code = ? ";
+
+		ProductAjaxDTO pdDto = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);   
+			pstmt.setString(1, pdCode);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				pdDto = new ProductAjaxDTO();
+				pdDto.setPdCode(rs.getString("pd_code"));
+				pdDto.setCategoryCode(rs.getString("category_code"));
+				pdDto.setPdName(rs.getString("pd_name"));
+				pdDto.setPdPrice(rs.getInt("pd_price"));
+				pdDto.setPdMemberonly(rs.getInt("pd_memberonly"));
+				pdDto.setPdMincount(rs.getInt("pd_mincount"));
+				pdDto.setPdCountry(rs.getString("pd_country"));
+				pdDto.setPdFrom(rs.getString("pd_from"));
+				pdDto.setPdDate(rs.getString("pd_date"));
+				pdDto.setPdMaterial(rs.getString("pd_material"));
+				pdDto.setPdFeet(rs.getString("pd_feet"));
+				pdDto.setPdRelease(rs.getString("pd_release"));
+				pdDto.setPdFeature(rs.getString("pd_feature"));
+				pdDto.setImgUrl(rs.getString("img_url"));
+			} 
+
+		} finally {
+			try {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}catch(Exception e) {            
+			}
+		}   
+
+		return pdDto;
+	}
+	
 	// 상품 이미지 리스트
 	@Override
 	public ArrayList<ProductImageDTO> selectImage(Connection conn, String pdCode) throws SQLException {

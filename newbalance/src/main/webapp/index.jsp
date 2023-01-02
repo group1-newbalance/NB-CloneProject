@@ -16,6 +16,8 @@
 <link rel="icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
 
+
+
 <link rel="stylesheet" type="text/css" href="/newbalance/css/main/common.css">
 <link rel="stylesheet" type="text/css" href="/newbalance/css/main/index.css">
 <link rel="stylesheet" type="text/css" href="/newbalance/css/main/jquery-ui-1.12.1.css">

@@ -27,15 +27,15 @@
 				<div class=myUserInfobox>
 					<div class="grade ${myData.lv}"> <!-- [D] 등급별로 class명 추가! (vip / gold / silver / bronze)  -->
 						<p class="myUserName"><strong class="nameBold">${myData.userName}</strong>님</p>
-						<a href="/newbalance/my/customer/memberLevelInfo.action" class="level">${fn:toUpperCase(myData.lv)}</a>
+						<a href="/newbalance/my/mbLevel.action" class="level">${fn:toUpperCase(myData.lv)}</a>
 						<a href="/newbalance/customer/logout.action" class="logout">로그아웃</a>
 					</div>
 					<ul class="info">
-						<li><strong>쿠폰</strong><a href="/newbalance/my/couponList.action" data-gtag-idx="fo_mypage_1">${myData.couponCnt}</a></li>
-						<li><strong>마일리지</strong><a href="/newbalance/my/customer/memberMileageInfo.action" data-gtag-idx="fo_mypage_2">
+						<li><strong>쿠폰</strong><a href="/newbalance/my/coupon.action" data-gtag-idx="fo_mypage_1">${myData.couponCnt}</a></li>
+						<li><strong>마일리지</strong><a href="/newbalance/my/mileage.action" data-gtag-idx="fo_mypage_2">
 							<fmt:formatNumber type = "number"  maxFractionDigits = "10" value = "${myData.mileageAmount}" /></a></li>
-						<li><strong>관심상품</strong><a href="/newbalance/my/product/orderWishList.action" data-gtag-idx="fo_mypage_3">${myData.wishCnt}</a></li>
-						<li><strong>주문/배송</strong><a href="/newbalance/my/order/orderList.action" data-gtag-idx="fo_mypage_4">${myData.orderCnt}</a></li>
+						<li><strong>관심상품</strong><a href="/newbalance/my/orderWishList.action" data-gtag-idx="fo_mypage_3">${myData.wishCnt}</a></li>
+						<li><strong>주문/배송</strong><a href="/newbalance/my/orderList.action" data-gtag-idx="fo_mypage_4">${myData.orderCnt}</a></li>
 					</ul>
 				</div>
 				<div class="myMenu">
@@ -43,22 +43,22 @@
 						<strong class="cTitle">MY NB</strong>
 						<ul>
 							<li><a href="/newbalance/my/myNb.action" data-gtag-idx="fo_mypage_5">My NB란</a></li>
-							<li><a href="/newbalance/my/customer/memberLevelInfo.action" data-gtag-idx="fo_mypage_6">회원등급</a></li>
+							<li><a href="/newbalance/my/mbLevel.action" data-gtag-idx="fo_mypage_6">회원등급</a></li>
 							<li><a href="/newbalance/my/mileage.action" data-gtag-idx="fo_mypage_7">마일리지</a></li>
 							<li><a href="/newbalance/my/coupon.action" data-gtag-idx="fo_mypage_8">쿠폰</a></li>
 							<li><a href="/newbalance/my/myNbPoint.action" data-gtag-idx="fo_mypage_9">MyNB 활동내역</a></li>
 							
 							<li><a href="/newbalance/my/saleCode.action" data-gtag-idx="fo_mypage_10">친구할인코드</a></li>
 							
-							<li><a href="/newbalance/my/customer/raffleList.action" data-gtag-idx="fo_mypage_11">래플응모내역</a></li>
+				
 						</ul>
 					</div>
 					<div class="categoryMenu">
 						<strong class="cTitle">계정관리</strong>
 						<ul>
-							<li><a href="/newbalance/my/customer/memberModifyDetail.action" data-gtag-idx="fo_mypage_12">회원정보확인/수정</a></li>
+							<li><a href="/newbalance/my/memberModifyDetail.action" data-gtag-idx="fo_mypage_12">회원정보확인/수정</a></li>
 							<li><a href="/newbalance/my/memberDeliveryInfo.action" data-gtag-idx="fo_mypage_13">배송지 관리</a></li>
-							<li><a href="/newbalance/my/customer/memberRefundAccountInfo.action" data-gtag-idx="fo_mypage_14">환불계좌 관리</a></li>
+							<li><a href="#" data-gtag-idx="fo_mypage_14">환불계좌 관리</a></li>
 						</ul>
 					</div>
 					<div class="categoryMenu">
@@ -66,7 +66,7 @@
 						<ul>
 							<li><a href="/newbalance/my/orderList.action" data-gtag-idx="fo_mypage_15">주문/배송 조회</a></li>
 							<li><a href="/newbalance/my/orderCRCList.action" data-gtag-idx="fo_mypage_16">취소/교환/반품 내역</a></li>
-							<li><a href="/newbalance/my/searchOrderReviewList.action" data-gtag-idx="fo_mypage_17">상품리뷰</a></li>
+							<li><a href="#" data-gtag-idx="fo_mypage_17">상품리뷰</a></li>
 						</ul>
 					</div>
 					<div class="categoryMenu">
@@ -80,7 +80,7 @@
 					<div class="categoryMenu">
 						<strong class="cTitle">Q&amp;A</strong>
 						<ul>
-							<li><a href="/newbalance/support/searchFaqList.action" data-gtag-idx="fo_mypage_21">FAQ</a></li>
+							<li><a href="/newbalance/support/faq.action" data-gtag-idx="fo_mypage_21">FAQ</a></li>
 							<li><a href="/newbalance/my/searchQuestionList.action" data-gtag-idx="fo_mypage_22">1:1 문의</a></li>
 							<li><a href="/newbalance/my/searchAsList.action" data-gtag-idx="fo_mypage_23">A/S 처리현황</a></li>
 						</ul>
