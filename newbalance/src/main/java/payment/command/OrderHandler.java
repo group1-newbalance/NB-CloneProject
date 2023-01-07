@@ -1,5 +1,6 @@
 package payment.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,11 @@ import payment.domain.PaymentInfoDTO;
 import payment.domain.ShipInfoDTO;
 import payment.service.OrderService;
 import payment.service.SelectMemberByUserCodeService;
+import product.domain.BuyProductDTO;
+import product.domain.ProductColorDTO;
+import product.domain.ProductDTO;
+import product.domain.ProductSizeDTO;
+import product.service.SelectProductService;
 
 public class OrderHandler implements CommandHandler{
 
@@ -43,8 +49,33 @@ public class OrderHandler implements CommandHandler{
 		//return ORDER_SUCCESS;
 	}// process
 	private String processPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		OrderService orderService = OrderService.getInstance();
+		// OrderService orderService = OrderService.getInstance();
 		
+		HttpSession session = request.getSession();
+		UserDTO member = (UserDTO) session.getAttribute("member");
+		String userCode = member.getUserCode();
+		
+
+		String pdCode = request.getParameter("pd_code");
+		int pdPrice = Integer.parseInt(request.getParameter("pd_price").replaceAll(",", ""));
+		String pdSize = request.getParameter("pd_size");
+		int pdAmount = Integer.parseInt(request.getParameter("pd_amount"));
+		
+		SelectProductService productService = SelectProductService.getInstance();
+	    
+	    ProductDTO pdDto = productService.selectProduct(pdCode);
+		ProductColorDTO colorDto = productService.getPdColor(pdCode);
+		BuyProductDTO buyDto = new BuyProductDTO(pdCode, pdPrice, pdSize, pdAmount);
+		
+		System.out.println(userCode + "/" + pdCode + "/" + pdPrice + "/" + pdSize + "/" + pdAmount);
+
+		request.setAttribute("pdDto", pdDto);   // 상품정보
+	    request.setAttribute("colorDto", colorDto);  // 상품 색상 정보
+		request.setAttribute("buyDto", buyDto);  // 구매 옵션 정보
+
+		return "/payment/order.jsp";
+		
+		/*
 		 String ordCode = request.getParameter("ordCode");
 		 int ordAmount = Integer.parseInt(request.getParameter("ordAmount"));
 		 int ordDiscount =Integer.parseInt(request.getParameter("ordDiscount"));
@@ -73,18 +104,21 @@ public class OrderHandler implements CommandHandler{
 			intMi_seq= Integer.parseInt(request.getParameter("mi_seq"));
 		}
 		 
-		 
+		*/ 
 		 // 배송지 정보 추가
 		 // ordCode
+		 /*
 		 String shipName = request.getParameter("shipName");
 		 String shipPhone = request.getParameter("shipPhone1");
 		 int shipZipCode = Integer.parseInt(request.getParameter("shipZipCode"));
 		 String shipPhone2 = request.getParameter("shipPhone2");
 		 String shipRequest = request.getParameter("shipRequest");
 		 String shipAddress = request.getParameter("shipAddress");
+		 */
 		 //userCode
 		 
 		// 주문내역 DTO 저장
+		/*
 		OrderDTO ord = new OrderDTO();
 		ord.setOrdCode(ordCode);
 		ord.setOrdAmount(ordAmount);
@@ -99,33 +133,20 @@ public class OrderHandler implements CommandHandler{
 		ord.setUserCode(userCode);
 		ord.setUsercpSeq(intUsercpSeq);
 		ord.setMi_seq(intMi_seq);
-				 
-				
+		*/	 
+				/*
 		System.out.println("오더핸들러"+ord.toString());
-		orderService.insertOrder(ord);
-		
-		
-		
-		
+		// orderService.insertOrder(ord);
 		
 		// 주문상세(List)
-		
-		
-		
-		
-		
+
 		
 		String payType = request.getParameter("payType");
 		int ordDisCount = Integer.parseInt(request.getParameter("ordDisCount"));
 		
 		String payName = request.getParameter("payName");
 		String payStatus = request.getParameter("payStatus");
-		
-		
-		
-		
-		
-		
+	
 		 String cardSeq = request.getParameter("cardSeq");
 		 int intCardSeq ;
 		 if( !(cardSeq==null)) {
@@ -195,13 +216,16 @@ public class OrderHandler implements CommandHandler{
 		request.setAttribute("payment", payment);
 		request.setAttribute("ship", ship);
 		request.setAttribute("ord", ord);
+		*/
 		
-		return "/newbalance/payment/order_success.action";
+		
+		//return "/newbalance/payment/order_success.action";
 	
 	}
 	
 	
 	private String processGet(HttpServletRequest request, HttpServletResponse response) throws NamingException {
+		
 		SelectMemberByUserCodeService selectMemberByUserCodeService = SelectMemberByUserCodeService.getInstance();
 		//OrderService orderService = OrderService.getInstance();
 		MemberDTO memDto = null;
@@ -217,6 +241,10 @@ public class OrderHandler implements CommandHandler{
 	        	 
 	         }
 	      }
+	      
+	      
+
+	      
 			/*
 			 * SelectMemberByIdService selectMemberService =
 			 * SelectMemberByIdService.getInstance();
@@ -231,6 +259,6 @@ public class OrderHandler implements CommandHandler{
 		//return "/payment/order_success.jsp";
 		
 		
-	return "/payment/order.jsp";
+		    return "/payment/order.jsp";
 	}
 }

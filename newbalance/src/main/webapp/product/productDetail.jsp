@@ -2089,7 +2089,7 @@ a.delete2 {
 			alert("사이즈를 선택해주세요.");
 			return;
 		}else{
-			$("form").attr("action", "/newbalance/product/productDetail.action");
+			$("form").attr("action", "/newbalance/payment/order.action");
 			$("#buy_form").submit();
 		}
 	});
