@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import member.domain.UserDTO;
 import mvc.command.CommandHandler;
 import productlist.service.ProductImgService;
 import productlist.service.ProductListService;
@@ -28,6 +30,20 @@ public class ProductListHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			UserDTO member = (UserDTO) session.getAttribute("member");
+			if(member != null) {
+				request.setAttribute("userCode", member.getUserCode());   // ${ userCode }
+				
+				//cartCount = cartService.sumOfCartCount( pdCode);
+				//request.setAttribute("cartCount", cartCount);
+			}
+		}
+		
+		
+		
 		String searchWord= request.getParameter("searchWord")==null?"":request.getParameter("searchWord");
 	
 		
@@ -44,30 +60,30 @@ public class ProductListHandler implements CommandHandler{
 		
 		//sizeStock 사이즈별 상품재고
 		ProductSizeStockService pSizeStockService = ProductSizeStockService.getIinstance();
-		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> pSizeStockMap = pSizeStockService.seletProductSizeStock(cIdx, gender);
+		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> pSizeStockMap = pSizeStockService.seletProductSizeStock(cIdx, gender,searchWord);
 								//pd_code
 		//카테고리명
 		CategoryListService clistservice = CategoryListService.getIinstance();
-		List<CategoryDTO> categoryList = clistservice.select(cIdx, gender);
+		List<CategoryDTO> categoryList = clistservice.select(cIdx, gender,searchWord);
 		
 		//F01, M // F,  M 왼쪽 카테고리명들
 		
 		//리뷰
 		ProductReivewService previewservice = ProductReivewService.getIinstance();
-		LinkedHashMap<String, ProductReviewDTO> pReview = previewservice.selectProductReview(cIdx, gender);
+		LinkedHashMap<String, ProductReviewDTO> pReview = previewservice.selectProductReview(cIdx, gender,searchWord);
 		
 		
 		//카테고리 사이즈
 		CategorySizeService csizeservice = CategorySizeService.getIinstance();
-		List<ProductSizeStockDTO> csizeList = csizeservice.selectSize(cIdx, gender);
+		List<ProductSizeStockDTO> csizeList = csizeservice.selectSize(cIdx, gender,searchWord);
 		
 		//카테고리 발볼
 		CategoryFeetService cfeetservice = CategoryFeetService.getIinstance();
-		List<ProductListDTO> cfeetList = cfeetservice.selectFeet(cIdx, gender);
+		List<ProductListDTO> cfeetList = cfeetservice.selectFeet(cIdx, gender,searchWord);
 		
 		//카테고리 컬러
 		CategorColorService cColor = CategorColorService.getIinstance();
-		List<ProductColorDTO> cColorlist = cColor.selectColor(cIdx, gender);
+		List<ProductColorDTO> cColorlist = cColor.selectColor(cIdx, gender,searchWord);
 		
 		
 		request.setAttribute("productList", productList);

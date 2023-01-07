@@ -23,7 +23,7 @@ public interface IProductFilterAjax {
 																							, String sortProducts
 																							, String cateGrpCode
 																							, String cIdx				
-																								) throws SQLException;
+																							, String searchWord	) throws SQLException;
 	
 	
 	//1. 상품 이미지 필터
@@ -37,7 +37,7 @@ public interface IProductFilterAjax {
 																							, String sortProducts
 																							, String cateGrpCode
 																							, String cIdx				
-																								) throws SQLException;
+																							, String searchWord	) throws SQLException;
 	
 	//2. 상품 사이즈 재고들
 	LinkedHashMap< String, ArrayList<ProductSizeStockDTO>> 
@@ -50,7 +50,7 @@ public interface IProductFilterAjax {
 																							, String sortProducts
 																							, String cateGrpCode
 																							, String cIdx				
-																								) throws SQLException;
+																							, String searchWord	) throws SQLException;
 	
 	//3. 상품 평점
 		LinkedHashMap< String, ArrayList<ProductReviewDTO>> 
@@ -63,7 +63,7 @@ public interface IProductFilterAjax {
 																								, String sortProducts
 																								, String cateGrpCode
 																								, String cIdx				
-																									) throws SQLException;
+																								, String searchWord	) throws SQLException;
 											
 
 }

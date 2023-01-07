@@ -19,14 +19,14 @@ public class CategorySizeService {
 			return instance;
 		}
 		
-		public List<ProductSizeStockDTO> selectSize(String cIdx, String gender){
+		public List<ProductSizeStockDTO> selectSize(String cIdx, String gender,String searchWord ){
 			Connection con = null;
 			
 			try {
 				con = ConnectionProvider.getConnection();
 				ProductListDAO dao = ProductListDAO.getInstance();
 				List<ProductSizeStockDTO> list = null;
-				list = dao.selectSizeCategory(con, cIdx, gender);
+				list = dao.selectSizeCategory(con, cIdx, gender,searchWord);
 				return list;
 			} catch (Exception e) {
 				System.out.println(">categorySize.service() 에러:" + e.toString());

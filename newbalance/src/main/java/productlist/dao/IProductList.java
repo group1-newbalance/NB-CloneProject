@@ -22,21 +22,21 @@ public interface IProductList {
 	LinkedHashMap< ProductListDTO, ArrayList<ProductImgDTO> > seletProductImg(Connection conn, String category_code, String gender, String searchWord ) throws SQLException;
 	
 	//3. 상품 사이즈에 대한 재고
-	LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> selectProductSizeStock(Connection conn, String category_code, String gender) throws SQLException;
+	LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> selectProductSizeStock(Connection conn, String category_code, String gender,String searchWord ) throws SQLException;
 	
 	//4. 카테고리 코드
-	List<CategoryDTO> category(Connection conn, String category_code, String gender) throws SQLException;
+	List<CategoryDTO> category(Connection conn, String category_code, String gender,String searchWord ) throws SQLException;
 	
 	//5. 평점
-	LinkedHashMap< String, ProductReviewDTO > selectProductReview(Connection conn, String category_code,String gender) throws SQLException;
+	LinkedHashMap< String, ProductReviewDTO > selectProductReview(Connection conn, String category_code,String gender,String searchWord ) throws SQLException;
 	
 	//6. 카테고리에서 사이즈
-	List<ProductSizeStockDTO> selectSizeCategory(Connection conn, String category_code, String gender) throws SQLException;
+	List<ProductSizeStockDTO> selectSizeCategory(Connection conn, String category_code, String gender,String searchWord ) throws SQLException;
 	
 	//7. 카테고리에서 발볼
-	List<ProductListDTO>selectFeet(Connection conn, String category_code, String gender) throws SQLException;
+	List<ProductListDTO>selectFeet(Connection conn, String category_code, String gender,String searchWord ) throws SQLException;
 	
 	//8. 카테고리 컬러
-	List<ProductColorDTO>selectColor(Connection conn, String category_code, String gender) throws SQLException;
+	List<ProductColorDTO>selectColor(Connection conn, String category_code, String gender,String searchWord ) throws SQLException;
 	
 }

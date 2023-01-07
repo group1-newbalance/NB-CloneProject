@@ -31,7 +31,7 @@ public class ProductFilterAjaxDAO implements IProductFilterAjax{
 	@Override
 	public LinkedHashMap<String, ProductListDTO> productInfoAjax(Connection conn, String soldOutYn,
 			String sizeCode, String feetWidth, String colorCode, String subCateIdx, String[][] priceRange,
-			String sortProducts, String cateGrpCode, String cIdx) throws SQLException {
+			String sortProducts, String cateGrpCode, String cIdx,String searchWord) throws SQLException {
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
@@ -49,61 +49,70 @@ public class ProductFilterAjaxDAO implements IProductFilterAjax{
 			+ " WHERE p.pd_code IN ( "
 			+ "        SELECT ps.pd_code "
 			+ "        FROM product_stock ps JOIN product_detail pd ON ps.pd_code = pd.pd_code ";
-	
-		if(cateGrpCode.equals("K")) {//아동
-			sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
-		}else {//성인
-			sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
-		}
-	
-		if(sizeCode != "null") {//사이즈
-			sql += 	" 			AND ps.size_code in ( " + sizeCode + " )  ";
+		if(searchWord == "") {
+			if(cateGrpCode.equals("K")) {//아동
+				sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
+			}else {//성인
+				sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+			}
 		}else {
-			sql += "";
+				sql += "  WHERE REGEXP_LIKE( p.pd_code , ? , 'i' ) or  REGEXP_LIKE( p.pd_name , ? , 'i' )";
 		}
-
-		if(feetWidth != "null") {//발볼
-			sql += 	" 			AND pd_feet in ( " + feetWidth + " ) ";
-		}
+		
+			if(sizeCode != "null") {//사이즈
+				sql += 	" 			AND ps.size_code in ( " + sizeCode + " )  ";
+			}else {
+				sql += "";
+			}
 	
-		if(colorCode!="null") {//컬러
-			sql +=	" 			AND substr(ps.pd_code,9,2) in ( " + colorCode + " ) "; // 02, 20, 57
-		}
-
-		if(subCateIdx!= "null") {//카테고리들
-			sql += 	" 			AND substr(ps.pd_code,2,3) in ( " + subCateIdx + " ) "; // "F01" , "F02"
-		}
-
-		if(priceRange!=null) {//가격범위
-			sql += 	" 			AND ( ";
-			for (int i = 0; i < priceRange.length; i++) {
-				sql += 	"				pd_price >= " + priceRange[i][0] + " AND pd_price < " + priceRange[i][1];
-				sql += i != priceRange.length -1 ? " OR ": ")";
+			if(feetWidth != "null") {//발볼
+				sql += 	" 			AND pd_feet in ( " + feetWidth + " ) ";
 			}
-		}
-			sql += 	" 			GROUP BY ps.pd_code ";
-		if(soldOutYn != null) {//품절상품 제외
-			System.out.println("soldOutYn : "+ soldOutYn);
-			sql +=	" 			HAVING SUM(stock_count) > 0 ";
-		}
-			sql += 	" ) ";
-		if(sortProducts != "null") {//정렬들(가격순, 신상품순....)
-			if(sortProducts.equals("Q01")) {
-				sql += " ORDER BY pd_release DESC NULLS LAST ";
-			}else if(sortProducts.equals("Q02")) {
-				sql += " ORDER BY out_count DESC NULLS LAST ";
-			}else if(sortProducts.equals("Q03")) {
-				sql += " ORDER BY pd_price DESC ";
-			}else if(sortProducts.equals("Q04")) {
-				sql += " ORDER BY pd_price ASC ";
+		
+			if(colorCode!="null") {//컬러
+				sql +=	" 			AND substr(ps.pd_code,9,2) in ( " + colorCode + " ) "; // 02, 20, 57
 			}
-		}
+	
+			if(subCateIdx!= "null") {//카테고리들
+				sql += 	" 			AND substr(ps.pd_code,2,3) in ( " + subCateIdx + " ) "; // "F01" , "F02"
+			}
+	
+			if(priceRange!=null) {//가격범위
+				sql += 	" 			AND ( ";
+				for (int i = 0; i < priceRange.length; i++) {
+					sql += 	"				pd_price >= " + priceRange[i][0] + " AND pd_price < " + priceRange[i][1];
+					sql += i != priceRange.length -1 ? " OR ": ")";
+				}
+			}
+				sql += 	" 			GROUP BY ps.pd_code ";
+			if(soldOutYn != null) {//품절상품 제외
+				System.out.println("soldOutYn : "+ soldOutYn);
+				sql +=	" 			HAVING SUM(stock_count) > 0 ";
+			}
+				sql += 	" ) ";
+			if(sortProducts != "null") {//정렬들(가격순, 신상품순....)
+				if(sortProducts.equals("Q01")) {
+					sql += " ORDER BY pd_release DESC NULLS LAST ";
+				}else if(sortProducts.equals("Q02")) {
+					sql += " ORDER BY out_count DESC NULLS LAST ";
+				}else if(sortProducts.equals("Q03")) {
+					sql += " ORDER BY pd_price DESC ";
+				}else if(sortProducts.equals("Q04")) {
+					sql += " ORDER BY pd_price ASC ";
+				}
+			}
 		
 System.out.println(sql);
 
 		try {
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, cateGrpCode); // "M"
+			if(searchWord == "") {
+				pstmt.setString(1, cateGrpCode); // "M"
+			}else {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}
+			
 			rs=pstmt.executeQuery();
 System.out.println("1");			
 			if(rs.next()) {
@@ -166,7 +175,7 @@ System.out.println("이미지2");
 	@Override
 	public LinkedHashMap<String, ArrayList<ProductImgDTO>> productImgAjax(Connection conn, String soldOutYn,
 			String sizeCode, String feetWidth, String colorCode, String subCateIdx, String[][] priceRange,
-			String sortProducts, String cateGrpCode, String cIdx) throws SQLException {
+			String sortProducts, String cateGrpCode, String cIdx, String searchWord) throws SQLException {
 		
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -186,10 +195,14 @@ System.out.println("이미지2");
 			+ "        SELECT ps.pd_code "
 			+ "        FROM product_stock ps JOIN product_detail pd ON ps.pd_code = pd.pd_code ";
 	
-		if(cateGrpCode.equals("K")) {//아동
-			sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
-		}else {//성인
-			sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+		if(searchWord == "") {
+			if(cateGrpCode.equals("K")) {//아동
+				sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
+			}else {//성인
+				sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+			}
+		}else {
+				sql += "  WHERE REGEXP_LIKE( p.pd_code , ? , 'i' ) or  REGEXP_LIKE( p.pd_name , ? , 'i' )";
 		}
 	
 		if(sizeCode != "null") {//사이즈
@@ -238,7 +251,12 @@ System.out.println(sql);
 
 		try {
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, cateGrpCode); // "M"
+			if(searchWord == "") {
+				pstmt.setString(1, cateGrpCode); // "M"
+			}else {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}
 			rs=pstmt.executeQuery();
 System.out.println("1");			
 			if(rs.next()) {
@@ -307,7 +325,7 @@ System.out.println("이미지2");
 	@Override
 	public LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> productSizeStockAjax(Connection conn, String soldOutYn,
 			String sizeCode, String feetWidth, String colorCode, String subCateIdx, String[][] priceRange,
-			String sortProducts, String cateGrpCode, String cIdx) throws SQLException {
+			String sortProducts, String cateGrpCode, String cIdx, String searchWord) throws SQLException {
 
 		
 		PreparedStatement pstmt = null;
@@ -330,10 +348,14 @@ System.out.println("이미지2");
 			+ "        SELECT ps.pd_code "
 			+ "        FROM product_stock ps JOIN product_detail pd ON ps.pd_code = pd.pd_code ";
 	
-		if(cateGrpCode.equals("K")) {//아동
-			sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
-		}else {//성인
-			sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+		if(searchWord == "") {
+			if(cateGrpCode.equals("K")) {//아동
+				sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
+			}else {//성인
+				sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+			}
+		}else {
+				sql += "  WHERE REGEXP_LIKE( p.pd_code , ? , 'i' ) or  REGEXP_LIKE( p.pd_name , ? , 'i' )";
 		}
 	
 		if(sizeCode != "null") {//사이즈
@@ -379,7 +401,12 @@ System.out.println("이미지2");
 		}
 		try {
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, cateGrpCode);
+			if(searchWord == "") {
+				pstmt.setString(1, cateGrpCode); // "M"
+			}else {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}
 			rs=pstmt.executeQuery();
 System.out.println("재고1");				
 			if(rs.next()) {
@@ -438,7 +465,7 @@ System.out.println("sql재고 : " +sql);
 	@Override
 	public LinkedHashMap<String, ArrayList<ProductReviewDTO>> productReviewAjax(Connection conn, String soldOutYn,
 			String sizeCode, String feetWidth, String colorCode, String subCateIdx, String[][] priceRange,
-			String sortProducts, String cateGrpCode, String cIdx) throws SQLException {
+			String sortProducts, String cateGrpCode, String cIdx, String searchWord) throws SQLException {
 		
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -460,10 +487,14 @@ System.out.println("sql재고 : " +sql);
 			+ "        SELECT ps.pd_code "
 			+ "        FROM product_stock ps JOIN product_detail pd ON ps.pd_code = pd.pd_code ";
 	
-		if(cateGrpCode.equals("K")) {//아동
-			sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
-		}else {//성인
-			sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+		if(searchWord == "") {
+			if(cateGrpCode.equals("K")) {//아동
+				sql += " WHERE ( substr(ps.pd_code,1,1) = ? ";
+			}else {//성인
+				sql += " WHERE ( substr(ps.pd_code,1,1) = 'U' OR substr(ps.pd_code,1,1) = ? )";
+			}
+		}else {
+				sql += "  WHERE REGEXP_LIKE( p.pd_code , ? , 'i' ) or  REGEXP_LIKE( p.pd_name , ? , 'i' )";
 		}
 	
 		if(sizeCode != "null") {//사이즈
@@ -509,7 +540,12 @@ System.out.println("sql재고 : " +sql);
 		}
 		try {
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, cateGrpCode);
+			if(searchWord == "") {
+				pstmt.setString(1, cateGrpCode); // "M"
+			}else {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}
 			rs=pstmt.executeQuery();
 System.out.println("리뷰1");			
 			if(rs.next()) {

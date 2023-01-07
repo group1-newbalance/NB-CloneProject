@@ -52,6 +52,8 @@ public class QuickViewHandler implements CommandHandler {
 				//request.setAttribute("cartCount", cartCount);
 			}
 		}
+		
+		
 	
 		pdDto = productService.selectProductAjax(pdCode); 
 		imgList = productService.selectImage(pdCode); 

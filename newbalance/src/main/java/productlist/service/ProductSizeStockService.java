@@ -24,14 +24,14 @@ public class ProductSizeStockService {
 		return instance;
 	}
 	
-	public LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> seletProductSizeStock(String category_code, String gender ){
+	public LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> seletProductSizeStock(String category_code, String gender,String searchWord  ){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> list = null;
-			list = dao.selectProductSizeStock(con, category_code, gender);
+			list = dao.selectProductSizeStock(con, category_code, gender,searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productstock.service() 에러:" + e.toString());

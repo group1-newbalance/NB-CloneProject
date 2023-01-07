@@ -30,7 +30,7 @@
     <!-- header -->
     <div class="listTop">
         <div class="category_title">            
-            <span data-cidx="1285"><a href="/newbalance/product/subMain.action?cIdx=1285">
+            <span data-cidx="1285"><a href="/product/subMain.action?cIdx=1285">
 	            <c:choose>
 	            	<c:when test="${param.cateGrpCode == 'M'}">
 	            		남자
@@ -38,8 +38,11 @@
 	            	<c:when test="${param.cateGrpCode == 'W'}">
 	            		여자
 	            	</c:when>
-	            	<c:otherwise>
+	            	<c:when test="${param.cateGrpCode == 'K'}">
 	            		KIDs
+	            	</c:when>
+	            	<c:otherwise>
+	            		${param.searchWord}
 	            	</c:otherwise>
 	            </c:choose>
             </a></span>     
@@ -85,11 +88,18 @@
         <div class="inner">
                 <!-- filter에서 남자(신발부분,의류,용품,언더 목록들)-->
                 <div class="allList">
-                    <ul class="allList_list">                    
+                    <ul class="allList_list">
+                    		<c:if test="${not empty param.cateGrpCode}">               
                      				<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=${param.cateGrpCode }&cIdx=F" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">전체보기</a></li>                    		
                      		<c:forEach items="${categoryList}" var="categoryList">
                     				<li><a href="<%=contextPath %>/product/productList.action?cateGrpCode=${param.cateGrpCode }&cIdx=${categoryList.category_code}" data-gtag-idx="fo_common_gbn_1" data-gtag-label="${categoryList.minor_sort }" data-category-name="">${categoryList.minor_sort }</a></li>
                     		</c:forEach>
+                    		</c:if>
+                    		<c:if test="${empty param.cateGrpCode }">
+                    			<li><a href="<%=contextPath %>/product/productList.action?searchWord=${param.searchWord }" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">Men</a></li>
+                    			<li><a href="<%=contextPath %>/product/productList.action?searchWord=${param.searchWord }" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">Women</a></li>
+                    			<li><a href="<%=contextPath %>/product/productList.action?searchWord=${param.searchWord }" data-gtag-idx="fo_common_gbn_1" data-gtag-label="" data-category-name="">Kids</a></li>
+                    		</c:if>
                     </ul>		
                 </div>
                 
@@ -282,6 +292,7 @@ ${ fn:substring(param.cIdx, 0,1) }
 	<div class="dimm_pop" id="layerProductQuickViewPopupDimmed" style="/* position: fixed; *//* display: block; */"></div>
 	<div class="item_detail"><!-- pop_inner background : fff -->
 	  <div class="item_detailTop"><!-- 내용 -->
+	</div>
 </div><!--container  -->
 
 
@@ -324,8 +335,8 @@ $(".btnQuickView").on("click",function(){
 var pdDto = data[0];	//pdDto list			
 var imgList = data[1];	//imgList list			
 var sizeList = data[2];	//sizeList list			
-var relatedPdList = data[3];	//relatedPdList list			
-var diffColorList = data[4];	//diffColorList list	
+//var relatedPdList = data[3];	//relatedPdList list			
+var diffColorList = data[3];	//diffColorList list	
 
 var content= "";
 content+="<div class='item_detailTop'>";
@@ -394,13 +405,14 @@ content+="<ul id='size_list'>";
 for (var i = 0; i < sizeList.length; i++) {
 	if(sizeList[i].stockCount == 0){
 		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList.color+"' onclick='showPrice(this)'>";
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-color='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
 		content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 		content+="</li>";
 		
+
 	}else{
 		content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList.color+"' onclick='showPrice(this)'>";
+		content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-color='"+diffColorList[0].color+"' onclick='showPrice(this)'>";//onclick='showPrice(this)'
 		content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 		content+="</li>";
 	}
@@ -447,7 +459,7 @@ content+="</div>";
 content+="</div>";
 content+="<div class='cart_buy'>";
 content+="<a href='javascript:void(0);' class='cart' id='open_cart'>장바구니</a>";
-content+="<a href='/newbalance/order/orderSheet.action' class='buy'>구매하기</a>";
+content+="<a href='/newbalance/payment/order.action' class='buy'>구매하기</a>";
 content+="</div>";
 content+="<p class='noti'>* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>";
 content+="</div>";
@@ -463,8 +475,7 @@ content+="<div class='item_detailBottom'></div>";
 content+="</div>";
 content+="</div>";
 content+="</div>";
-content+="</div>";			
-				
+	
 $(".item_detail").append(content);				
 	
 
@@ -474,18 +485,6 @@ $(".item_detail").append(content);
 	})//ajax
 })//click
 
-
-
-
-
-	
-/*
-//이미지에 active
-	$(".img_list span").on("click",function(){
-		$(".img_list span.active").removeClass();
-		$(this).addClass("active");
-	})
-*/
 
 function closeClick(self){
 	$(".dimm_pop").css("display","none");
@@ -741,8 +740,15 @@ $(".dropdown_list a").on("click", function(){
 //카테고리 클릭하면 form 태그
 var categoryForm = $('<form name=categoryAjax></form>');
 /* http://localhost/newbalance/product/productList.action?cateGrpCode=W&cIdx=F01 */
+	
+//파라미터로 searchWord라는게 존재 할 때   ?searchWord 가 있다면....
+categoryForm.append($("<input/>", {type:'hidden', name:"searchWord", value:"${param.searchWord}" } ) );
+//파라미터로 cateGrpCode,cIdx 가 존재할 때 ?cateGrpCode="xx"&cIdx="yy"
 categoryForm.append($("<input/>", {type:'hidden', name:"cateGrpCode", value:"${param.cateGrpCode}" } ) );                         
 categoryForm.append($("<input/>", {type:'hidden', name:"cIdx", value:"${param.cIdx}" } ) );
+
+
+
 categoryForm.append($("<input/>", {type:'hidden', name:"sortProducts", value:"Q01" } ) );
 
 if('${param.cIdx}'.length==3){//전체보기가 아니면 카테고리 코드 넣기
@@ -937,8 +943,8 @@ function quickClick(self){
 	var pdDto = data[0];	//pdDto list			
 	var imgList = data[1];	//imgList list			
 	var sizeList = data[2];	//sizeList list			
-	var relatedPdList = data[3];	//relatedPdList list			
-	var diffColorList = data[4];	//diffColorList list	
+	//var relatedPdList = data[3];	//relatedPdList list			
+	var diffColorList = data[3];	//diffColorList list	
 
 	var content= "";
 	content+="<div class='item_detailTop'>";
@@ -980,7 +986,7 @@ function quickClick(self){
 	content+="<b>5</b>/5 <a href='#pd_review'>(1)</a>";
 	content+="</span>";
 	content+="<div class='btn_sns' style='float: right; width: 115px;'>";
-	content+="<a id='like_item' class='like_item' href='javascript::;' data-pdcode='"+pdDto.pdCode +"'></a>";
+	content+="<a id='like_item' class='like_item' href='javascript::;' data-pdcode='"+pdDto.pdCode +"' onclick='wishList(this)'></a>";
 	content+="<p>";
 	content+="<a class='facebook' href='javascript::;'></a>";
 	content+="<a class='twitter' href='javascript::;'></a>";
@@ -1007,13 +1013,13 @@ function quickClick(self){
 	for (var i = 0; i < sizeList.length; i++) {
 		if(sizeList[i].stockCount == 0){
 			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-color='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
 			content+="<label class='soldout' for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 			content+="</li>";
 			
 		}else{
 			content+="<li style='display:inline-block; margin-right:3px; margin-bottom:3px;'>";
-			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-colorcode='"+diffColorList[0].color+"' onclick='showPrice(this)'>";
+			content+="<input type='radio' id='"+sizeList[i].sz+"s' name='sizes' value='"+sizeList[i].sz+"' data-pdcode='"+pdDto.pdCode+"' data-stock='"+sizeList[i].stockCount+"' data-price='"+pdDto.pdPrice+"' data-color='"+diffColorList[0].color+"' data-color='"+diffColorList[0].colorCode+"' onclick='showPrice(this)'>";
 			content+="<label for='"+sizeList[i].sz+"s' title='"+sizeList[i].sz+"'>"+sizeList[i].sz+"</label>";
 			content+="</li>";
 		}
@@ -1060,7 +1066,7 @@ function quickClick(self){
 	content+="</div>";
 	content+="<div class='cart_buy'>";
 	content+="<a href='javascript:void(0);' class='cart' id='open_cart'>장바구니</a>";
-	content+="<a href='/newbalance/order/orderSheet.action' class='buy'>구매하기</a>";
+	content+="<a href='/newbalance/payment/order.action' class='buy' onclick='buy();'>구매하기</a>";
 	content+="</div>";
 	content+="<p class='noti'>* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>";
 	content+="</div>";
@@ -1072,7 +1078,7 @@ function quickClick(self){
 	}
 	content+="</div>";
 	content+="</div>";
-	content+="<div class='item_detailBottom' data-pdCode='"+pdDto.pdCode+"' data-color='"+diffColorList[0].colorCode+"'></div>";
+	content+="<div class='item_detailBottom' data-pdCode='"+pdDto.pdCode+"' data-color='"+diffColorList[0].color+"'></div>";
 	content+="</div>";
 	content+="</div>";
 	content+="</div>";
@@ -1082,8 +1088,7 @@ function quickClick(self){
 		
 
 			}//if data==true
-		}//
-
+		}//success
 			
 	})//ajax
 }
@@ -1091,55 +1096,27 @@ function quickClick(self){
 
 <script>
 
+var payForm = $("<form id='payForm' name='payForm' action='/newbalance/payment/order.action' method='post'></form>")
 
 
-/* $(".buy").on("click",function(){
-	
-	var array = new Array();  //Object를 배열로 저장할 Array
-     
-    
-    $("#selected_size li").each(function(i, element){
-    	
-    	var obj=new Object(); //key, value형태로 저장할 Object
- 		
-		 obj.pdCode = $(element).data("pdCode");
-		 obj.sizeCode = $(".clearfix").eq(i).data("size");
-		 obj.count = $(".pd_amount").eq(i).val();    
-		 obj.color = $(element).data("color");
-		 array.push(obj);
-    })
-    
-    
-    //console.log(array.pdCode);
-    
-    var cartList = JSON.stringify(array);
-    console.log(JSON.stringify(array));
-    $.ajax({
-       url : '/newbalance/product/addCart.ajx',
-       type : 'POST',   
-       async : false,
-       dataType : 'json',
-       cache : false,
-       data : {
-          "cartList" : cartList
-       }, 
-       success : function(data){
-       },
-       error: function(data){
-           alert("에러가 발생했습니다.");
-       }
-	
-	
-	});
+var payInput = $("#size_list input")
+function buy(){
+      if($("#selected_size").html() == ""){
+         alert("사이즈를 선택해주세요.");
+         return;
+      }else{
+    	  payForm.append(  $("<input/>", {type:'hidden', name:'pd_code' , value:$("#size_list input").data("pdcode") } ) );
+    	  payForm.append(  $("<input/>", {type:'hidden', name:'pd_price' , value:$(".won.first").children("strong").html()        } ) );
+    	  payForm.append(  $("<input/>", {type:'hidden', name:'pd_size' , value:$(".clearfix").data("size") } ) );
+    	  payForm.append(  $("<input/>", {type:'hidden', name:'pd_amount' , value:$(".clearfix").data("amount") } ) );
+         $("#payForm").submit();
+      }
+}
 
-
- */
-
-</script>
+    </script>
 
 <script>
 function showPrice(self){
-	console.log("a");
 	//$(".hide_box").css("display","block");
 
 		// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
@@ -1218,7 +1195,7 @@ function showPrice(self){
 				 content  += "<li class='clearfix' data-size='"+$(self).val()+"' data-cartcount='1' data-pdstock='" + stock + "'>"
 	 				+ "<span class='selected_op'>"
 	 				//+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
-	 				+ $(self).data("colorcode") + "/"
+	 				+ $(self).data("color") + "/"
 	 				+ $(this).siblings('input').val();
 	 				
 		 	 		if($('#fwidth').val() != null) {
@@ -1242,37 +1219,6 @@ function showPrice(self){
 				$("#selected_size").append(content); 
 	
 				$(".hide_box").show();
-	
-/* 
-				// 하단 셀렉터
-				var content2  = "<li class='clearfix2'>"
-					+ "<span><img src='" + $("#first_image img").prop("src") + "' alt='대표이미지'></span>"
-	 				+ "<span class='selected_op'>"
-	 				+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
-	 				+ $(this).siblings('input').val();
-	 				 
-	 				  if($('#fwidth').val() != null) {
-	 					content2 += "/" + $('#fwidth').val();
-	 				}
-	 				
-	 				content2 += "</span><div class='plusminus_wrap mini' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength='";
-	 				
-	 				if($("#maximum").html() != null){
-	 					content2 += $("#maximum").html() + "'>";
-	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
-	 					content2 += "10'>";
-					}else{
-						content2 += stock + "'>"
-					}
-	 				
-	 				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
-					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
-					+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
-					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
-					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
-					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'></li>"; 
-					
-				$("#op_quickadd").append(content2);   */ 
 			
 				var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
 				var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
@@ -1389,51 +1335,6 @@ function showPrice(self){
 		}
 	};
 
-	
-	// 관심상품 담기
-	function wishList(pdcode){
-		// if 로그인 X -> true - 로그인 페이지로 이동, false - 창 닫기
-		var usercode = "${ userCode }"; 
-		if(usercode == ""){
-			var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
-			if(result == true){
-				location.replace("<%= contextPath %>/customer/login.action");
-			}else{
-				return;
-			}
-		} else{
-			var array = new Array();
-			array.push(pdcode);
-			console.log(array);
-			console.log(JSON.stringify(array));
-			$.ajax({
-				url : '/newbalance/product/wishList.ajx',
-				type : 'POST',   
-				async : false,
-				dataType : 'json',
-				cache : false,
-				data : {
-					"wishCodeList" : array
-				}, 		 
-				success : function(data){
-					if(data.result == "00"){
-						$("#like_item").addClass("on");
-					}
-					if(data.result == "99"){
-				    	$("#wishListTitle").html("이미 관심상품으로 등록된 상품입니다.");
-				    }
-					$("#wishListModal").css({
-	        			"top": (($(window).height()-$("#wishListModal").outerHeight())/2+$(window).scrollTop())+"px",
-	        			"display" : "block"
-	        		});
-	        		$(".dimm_pop").css("display", "block"); 
-				},
-				error: function(data){
-				    alert("에러가 발생했습니다.");
-				}
-			});
-		}  
-	};
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1513,7 +1414,7 @@ function showPrice(self){
 				 content  += "<li class='clearfix' data-pdcode='${ pdDto.pdCode }' data-cartcount='${ cartCount }' data-pdstock='" + stock + "'>"
 	 				+ "<span class='selected_op'>"
 	 				//+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
-	 				+ $(self).data("colorcode") + "/"
+	 				+ $(self).data("color") + "/"
 	 				+ $(this).siblings('input').val();
 	 				
 		 	 		if($('#fwidth').val() != null) {
@@ -1538,36 +1439,7 @@ function showPrice(self){
 	
 				$(".hide_box").show();
 	
-/* 
-				// 하단 셀렉터
-				var content2  = "<li class='clearfix2'>"
-					+ "<span><img src='" + $("#first_image img").prop("src") + "' alt='대표이미지'></span>"
-	 				+ "<span class='selected_op'>"
-	 				+ $('#color_list li input:checked').siblings('label').prop('title') + "/"
-	 				+ $(this).siblings('input').val();
-	 				 
-	 				  if($('#fwidth').val() != null) {
-	 					content2 += "/" + $('#fwidth').val();
-	 				}
-	 				
-	 				content2 += "</span><div class='plusminus_wrap mini' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength='";
-	 				
-	 				if($("#maximum").html() != null){
-	 					content2 += $("#maximum").html() + "'>";
-	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
-	 					content2 += "10'>";
-					}else{
-						content2 += stock + "'>"
-					}
-	 				
-	 				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
-					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
-					+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
-					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
-					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
-					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'></li>"; 
-					
-				$("#op_quickadd").append(content2);   */ 
+
 			
 				var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
 				var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
@@ -1684,56 +1556,56 @@ function showPrice(self){
 		}
 	};
 
-	
-	// 관심상품 담기
-	function wishList(self){
-		// if 로그인 X -> true - 로그인 페이지로 이동, false - 창 닫기
-		var usercode = "${ userCode }";
-		
-		if(usercode == ""){
-			var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
-			if(result == true){
-				location.replace("<%= contextPath %>/customer/login.action");
-			}else{
-				return;
-			}
-		} else{
-			var array = new Array();
-			array.push(  $(self).data("pdcode")  );
-			console.log(array);
-			console.log(JSON.stringify(array));
-			$.ajax({
-				url : '/newbalance/product/wishList.ajx',
-				type : 'POST',   
-				async : false,
-				dataType : 'json',
-				cache : false,
-				data : {
-					"wishCodeList" : array
-				}, 		 
-				success : function(data){
-					if(data.result == "00"){
-						$("#like_item").addClass("on");
-					}
-					if(data.result == "99"){
-				    	$("#wishListTitle").html("이미 관심상품으로 등록된 상품입니다.");
-				    }
-					$("#wishListModal").css({
-	        			"top": (($(window).height()-$("#wishListModal").outerHeight())/2+$(window).scrollTop())+"px",
-	        			"display" : "block"
-	        		});
-	        		$(".dimm_pop").css("display", "block"); 
-				},
-				error: function(data){
-				    alert("에러가 발생했습니다.");
-				}
-			});
-		}  
-	};
+// 관심상품 담기
+   function wishList(self){
+      // if 로그인 X -> true - 로그인 페이지로 이동, false - 창 닫기
+      var usercode = "${ userCode }"; 
+      if(usercode == ""){
+         var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+         if(result == true){
+            location.replace("<%=contextPath%>/customer/login.action");
+         }else{
+            return;
+         }
+      } else{
+         var array = new Array();
+         array.push($(self).data("pdcode"));
+         console.log(array);
+         console.log(JSON.stringify(array));
+         $.ajax({
+            url : '/newbalance/product/wishList.ajx',
+            type : 'POST',   
+            async : false,
+            dataType : 'json',
+            cache : false,
+            data : {
+               "wishCodeList" : array
+            },        
+            success : function(data){
+               if(data.result == "00"){
+                  $("#like_item").addClass("on");
+               }
+               if(data.result == "99"){
+                   $("#wishListTitle").html("이미 관심상품으로 등록된 상품입니다.");
+                }9
+               $("#wishListModal").css({
+                    "top": (($(window).height()-$("#wishListModal").outerHeight())/2+$(window).scrollTop())+"px",
+                    "display" : "block"
+                 });
+                 $(".dimm_pop").css("display", "block"); 
+            },
+            error: function(data){
+                alert("에러가 발생했습니다.");
+            }
+         });
+      }  
+   };
+
 
 
 
 </script>
+ 
 
  
  <jsp:include page="/common/footer.jsp" flush="false" />

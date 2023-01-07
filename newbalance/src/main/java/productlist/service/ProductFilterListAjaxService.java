@@ -30,14 +30,15 @@ public class ProductFilterListAjaxService {
 													, String[][] priceRange
 													, String sortProducts
 													, String cateGrpCode
-													, String cIdx		){
+													, String cIdx		
+													, String searchWord){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductFilterAjaxDAO dao = ProductFilterAjaxDAO.getInstance();
 			LinkedHashMap<String, ProductListDTO> list = null;
-			list = dao.productInfoAjax(con, soldOutYn ,sizeCode, feetWidth,colorCode,subCateIdx,priceRange,sortProducts,cateGrpCode,cIdx);
+			list = dao.productInfoAjax(con, soldOutYn ,sizeCode, feetWidth,colorCode,subCateIdx,priceRange,sortProducts,cateGrpCode,cIdx,searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productListAjaxService.service() 에러:" + e.toString());

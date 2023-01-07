@@ -26,6 +26,8 @@ public class ProductFilterHandler implements CommandHandler{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
 		
+		
+		
 		//.replace("[", "'").replace("]","'").replaceAll(", ","', '");
 		//품절상품제외
 		String soldOutYn = request.getParameter("soldOutYn");// "Y"
@@ -56,13 +58,15 @@ public class ProductFilterHandler implements CommandHandler{
 			System.out.print("\n");
 		}
 	*/
+		
+		String searchWord= request.getParameter("searchWord")==null?"":request.getParameter("searchWord");
 		//정렬 신상품순,베스트상품순, 가격순
 		String sortProducts = request.getParameter("sortProducts");
 		//카테고리 그룹코드
 		String cateGrpCode = request.getParameter("cateGrpCode");
 		String cIdx = request.getParameter("cIdx");
 		
-		
+		System.out.println("검색어 :" +  searchWord);
 		System.out.println("성별 :"  + cateGrpCode);
 		System.out.println("상품카테고리 :"  + cIdx);
 		System.out.println("정렬 : " + sortProducts);
@@ -80,23 +84,23 @@ public class ProductFilterHandler implements CommandHandler{
 		ProductFilterListAjaxService productListAjaxService
 			= ProductFilterListAjaxService.getInstance();
 		LinkedHashMap<String, ProductListDTO> productListAjax 
-			= productListAjaxService.productListAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx);
+			= productListAjaxService.productListAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx,searchWord);
 		//상품이미지
 		ProductFilterPImgAjaxService productFilterPImgAjaxService
 			= ProductFilterPImgAjaxService.getInstance();
 		LinkedHashMap<String, ArrayList<ProductImgDTO>> productImgAjax 
-			= productFilterPImgAjaxService.productImgAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx);
+			= productFilterPImgAjaxService.productImgAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx,searchWord);
 		 
 		//상품재고
 		ProductFilterSizeStockAjaxService productFilterSizeStockAjaxService
 			= ProductFilterSizeStockAjaxService.getInstance();
 		LinkedHashMap< String, ArrayList<ProductSizeStockDTO> > productSizeAjax
-			= productFilterSizeStockAjaxService.productFilterSizeStockAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx);
+			= productFilterSizeStockAjaxService.productFilterSizeStockAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx,searchWord);
 		//리뷰
 		ProductFilterReviewService productFilterReviewAjaxService
 			= ProductFilterReviewService.getInstance();
 		LinkedHashMap< String, ArrayList<ProductReviewDTO> > productReviewAjax
-			= productFilterReviewAjaxService.productReviewAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx);
+			= productFilterReviewAjaxService.productReviewAjaxService(soldOutYn, sizeCode, feetWidth, colorCode, subCateIdx, priceRange, sortProducts, cateGrpCode, cIdx,searchWord);
 
 		//ArrayList list = new ArrayList();
 		ArrayList list = new ArrayList();

@@ -21,17 +21,17 @@ public class CategoryFeetService {
 		return instance;
 	}
 	
-	public List<ProductListDTO> selectFeet(String cIdx, String gender){
+	public List<ProductListDTO> selectFeet(String cIdx, String gender,String searchWord ){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			List<ProductListDTO> list = null;
-			list = dao.selectFeet(con, cIdx, gender);
+			list = dao.selectFeet(con, cIdx, gender,searchWord);
 			return list;
 		} catch (Exception e) {
-			System.out.println(">categorySize.service() 에러:" + e.toString());
+			System.out.println(">categoryFeet.service() 에러:" + e.toString());
 		}finally {
 			JdbcUtil.close(con);
 		}

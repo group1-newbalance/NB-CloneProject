@@ -20,14 +20,14 @@ public class ProductReivewService {
 		return instance;
 	}
 	
-	public LinkedHashMap<String, ProductReviewDTO> selectProductReview(String category_code, String gender ){
+	public LinkedHashMap<String, ProductReviewDTO> selectProductReview(String category_code, String gender,String searchWord  ){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			LinkedHashMap<String, ProductReviewDTO> list = null;
-			list = dao.selectProductReview(con, category_code, gender);
+			list = dao.selectProductReview(con, category_code, gender, searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productreview.service() 에러:" + e.toString());
