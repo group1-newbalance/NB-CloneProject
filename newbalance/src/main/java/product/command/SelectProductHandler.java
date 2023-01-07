@@ -1,5 +1,6 @@
 package product.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -24,6 +25,15 @@ public class SelectProductHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		if(request.getMethod().equalsIgnoreCase("GET")) {
+			return processGet(request, response);
+		} else if (request.getMethod().equalsIgnoreCase("POST")) {
+			return processPOST(request, response);
+		}
+		return null;
+	}
+	
+	public String processGet(HttpServletRequest request, HttpServletResponse response) {
 		String pdCode = request.getParameter("pdCode");
 
 		// 서비스 객체 생성
@@ -73,5 +83,30 @@ public class SelectProductHandler implements CommandHandler {
 		return "/product/productDetail.jsp";
 
 	}
+	
+	
+	public String processPOST(HttpServletRequest request, HttpServletResponse response) {
+	
+		HttpSession session = request.getSession();
+		UserDTO member = (UserDTO) session.getAttribute("member");
+		String userCode = member.getUserCode();
+				
+		String pdCode = request.getParameter("pd_code");
+		int pdPrice = Integer.parseInt(request.getParameter("pd_price").replaceAll(",", ""));
+		String pdSize = request.getParameter("pd_size");
+		int pdAmount = Integer.parseInt(request.getParameter("pd_amount"));
+		
+		System.out.println(userCode + "/" + pdCode + "/" + pdPrice + "/" + pdSize + "/" + pdAmount);
 
+		String location = "/newbalance/payment/order.action?pdCode=" 
+					+ pdCode + "&pdPrice=" + pdPrice + "&pdSize=" + pdSize + "&pdAmount=" + pdAmount;
+		try {
+			response.sendRedirect(location);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+		return null;
+
+	}
 }
