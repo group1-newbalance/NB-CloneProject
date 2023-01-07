@@ -387,7 +387,7 @@ a.delete2 {
 				</div>
 
 				<div class="item_option">
-					<h2 class="pd_name">${ pdDto.pdName }</h2>
+					<h2 class="pd_name" id="pdName">${ pdDto.pdName }</h2>
 					<div class="icon">
 						<!-- 베스트 상품인 경우 -->
 						<img
@@ -443,8 +443,7 @@ a.delete2 {
 					<c:if test="${ pdDto.pdMemberonly eq 1}">
 						<div class="buy_limit">
 							<p>
-								해당 상품은 <strong>ID</strong>당 색상별<br>최대 <b id="maximum">${ pdDto.pdMincount }</b>pcs까지
-								구매가능합니다.
+								해당 상품은 <strong>ID</strong>당 색상별<br>최대 <b id="maximum">${ pdDto.pdMincount }</b>pcs까지 구매가능합니다.
 							</p>
 						</div>
 					</c:if>
@@ -531,6 +530,7 @@ a.delete2 {
 														value="${ dto.sz }" data-pdcode="${ pdDto.pdCode }"
 														data-stock="${ dto.stockCount }"
 														data-colorcode="${ colorDto.colorCode }"
+														data-color="${ colorDto.color }"
 														data-sizecode="${ dto.sizeCode }"> 
 														<label class="soldout" for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
 													</li>
@@ -540,6 +540,7 @@ a.delete2 {
 														value="${ dto.sz }" data-pdcode="${ pdDto.pdCode }"
 														data-stock="${ dto.stockCount }"
 														data-colorcode="${ colorDto.colorCode }"
+														data-color="${ colorDto.color }"
 														data-sizecode="${ dto.sizeCode }"> 
 														<label for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
 													</li>
@@ -723,7 +724,7 @@ a.delete2 {
 										</select>
 										</span> <span class="select_box"> <!-- 사이즈 전달 --> <!-- 재고 0인 사이즈는 disabled -->
 											<select name="size_code" id="size_code" title="사이즈"
-											data-pdcode="${pdDto.pdCode}" data-colorcode="${colorDto.colorCode}">
+											data-pdcode="${pdDto.pdCode}" data-colorcode="${colorDto.colorCode}" data-color="${ colorDto.color }">
 												<option selected>사이즈</option>
 												<c:choose>
 													<c:when test="${ not empty sizeList }">
@@ -1819,7 +1820,10 @@ a.delete2 {
 					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
 					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
 					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'>"
-					+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'></form></li>"
+					+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'>"
+					+ "<input name='pd_color' id='pd_color' type='hidden' value='" + $(this).siblings('input').data("color") + "'>"
+					+ "<input name='pd_image' id='pd_image' type='hidden' value='" + $("#main_img").prop("src") + "'>"
+					+ "<input name='pd_name' id='pd_name' type='hidden' value='" + $("#pdName").html() + "'></form></li>"
 					
 					$("#op_quickadd").append(content2);
 
@@ -1884,7 +1888,11 @@ a.delete2 {
 				+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).data("pdcode") + "'>"
 				+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).data("colorcode") + "'>"
 				+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).val() + "'>"
-				+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'></form></li>"
+				+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'>"
+				+ "<input name='pd_color' id='pd_color' type='hidden' value='" + $(this).data("color") + "'>"
+				+ "<input name='pd_image' id='pd_image' type='hidden' value='" + $("#main_img").prop("src") + "'>"
+				+ "<input name='pd_name' id='pd_name' type='hidden' value='" + $("#pdName").html() + "'></form></li>"
+				
 				
 				$("#op_quickadd").append(content2);    
 			
@@ -2085,12 +2093,22 @@ a.delete2 {
 
 <script>
 	$(".buy").click(function(){
-		if($("#selected_size").html() == ""){
-			alert("사이즈를 선택해주세요.");
-			return;
+		var usercode = "${ userCode }"; 
+		if(usercode == ""){
+			var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+			if(result == true){
+				location.replace("<%=contextPath%>/customer/login.action");
+			}else{
+				return;
+			}
 		}else{
-			$("form").attr("action", "/newbalance/payment/order.action");
-			$("#buy_form").submit();
+			if($("#selected_size").html() == ""){
+				alert("사이즈를 선택해주세요.");
+				return;
+			}else{
+				$("form").attr("action", "/newbalance/payment/order.action");
+				$("#buy_form").submit();
+			}
 		}
 	});
 </script>
@@ -2121,7 +2139,8 @@ a.delete2 {
 	// else 장바구니 담기 성공(모달창, 장바구니 테이블에 추가)				
 							
 	// 장바구니 담기    
-	/*function addCart(pdcode){
+	/*
+	function addCart(pdcode){
 		let array = new Array();  //Object를 배열로 저장할 Array
 		var usercode = "${ userCode }"; 
 		if($("#selected_size").html() == ""){

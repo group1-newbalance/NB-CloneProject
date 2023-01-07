@@ -55,22 +55,20 @@ public class OrderHandler implements CommandHandler{
 		UserDTO member = (UserDTO) session.getAttribute("member");
 		String userCode = member.getUserCode();
 		
-
 		String pdCode = request.getParameter("pd_code");
 		int pdPrice = Integer.parseInt(request.getParameter("pd_price").replaceAll(",", ""));
 		String pdSize = request.getParameter("pd_size");
 		int pdAmount = Integer.parseInt(request.getParameter("pd_amount"));
+		String pdColor = request.getParameter("pd_color");
+		int colorCode = Integer.parseInt(request.getParameter("color_code"));
+		String pdImage = request.getParameter("pd_image");
+		String pdName = request.getParameter("pd_name");
 		
-		SelectProductService productService = SelectProductService.getInstance();
-	    
-	    ProductDTO pdDto = productService.selectProduct(pdCode);
-		ProductColorDTO colorDto = productService.getPdColor(pdCode);
-		BuyProductDTO buyDto = new BuyProductDTO(pdCode, pdPrice, pdSize, pdAmount);
+		BuyProductDTO buyDto = new BuyProductDTO(pdCode, pdPrice, pdSize, pdAmount, pdColor, colorCode, pdImage, pdName);
 		
-		System.out.println(userCode + "/" + pdCode + "/" + pdPrice + "/" + pdSize + "/" + pdAmount);
+		System.out.println(userCode + "/" + pdCode + "/" + pdPrice + "/" + pdSize + "/" + pdAmount 
+				+ "/" + pdColor + "/" + colorCode + "/" + pdImage + "/" + pdName);
 
-		request.setAttribute("pdDto", pdDto);   // 상품정보
-	    request.setAttribute("colorDto", colorDto);  // 상품 색상 정보
 		request.setAttribute("buyDto", buyDto);  // 구매 옵션 정보
 
 		return "/payment/order.jsp";
