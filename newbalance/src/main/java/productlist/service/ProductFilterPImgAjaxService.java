@@ -34,14 +34,15 @@ public class ProductFilterPImgAjaxService {
 													, String[][] priceRange
 													, String sortProducts
 													, String cateGrpCode
-													, String cIdx		){
+													, String cIdx		
+													, String searchWord){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductFilterAjaxDAO dao = ProductFilterAjaxDAO.getInstance();
 			LinkedHashMap<String, ArrayList<ProductImgDTO>> list = null;
-			list = dao.productImgAjax(con, soldOutYn ,sizeCode, feetWidth,colorCode,subCateIdx,priceRange,sortProducts,cateGrpCode,cIdx);
+			list = dao.productImgAjax(con, soldOutYn ,sizeCode, feetWidth,colorCode,subCateIdx,priceRange,sortProducts,cateGrpCode,cIdx,searchWord);
 			return list;
 		} catch (Exception e) {
 			System.out.println(">productImgAjaxService.service() 에러:" + e.toString());

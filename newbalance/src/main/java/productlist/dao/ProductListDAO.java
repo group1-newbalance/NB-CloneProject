@@ -59,6 +59,11 @@ public class ProductListDAO implements IProductList {
 				}else {
 					productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
 				}
+				
+				
+				
+				
+				
 		try {
 			pstmt = conn.prepareStatement(productSQL);
 			
@@ -141,6 +146,10 @@ public class ProductListDAO implements IProductList {
 				}else {
 					productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
 				}
+				
+				
+				
+				
 		try {
 			pstmt = conn.prepareStatement(productSQL);
 			
@@ -223,7 +232,7 @@ public class ProductListDAO implements IProductList {
 	//상품 사이즈에 대한 재고
 	@Override
 	public LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> selectProductSizeStock(Connection conn,
-			String category_code, String gender) throws SQLException {
+			String category_code, String gender,String searchWord ) throws SQLException {
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
@@ -232,7 +241,7 @@ public class ProductListDAO implements IProductList {
 		// 상품 dto : key
 		String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
 				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
-		
+		if(searchWord == "") {
 				if(gender.equals("K")) {//아동
 						if(category_code.length() == 1 ) {
 							productSQL += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = ? ) ";
@@ -247,14 +256,23 @@ public class ProductListDAO implements IProductList {
 							productSQL += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
 						}
 				}
+		}else {
+			productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+		}
+		
 		LinkedHashMap<String, ArrayList<ProductSizeStockDTO>> sizeStockMap = null;
 		ArrayList<ProductSizeStockDTO> sizestockList = null;
 		ProductSizeStockDTO psizestock = null;
 		
 		try {
 			pstmt = conn.prepareStatement(productSQL);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -310,20 +328,22 @@ public class ProductListDAO implements IProductList {
 	
 	//왼쪽 카테고리 목록
 	@Override
-	public List<CategoryDTO> category(Connection conn, String category_code, String gender) throws SQLException {
+	public List<CategoryDTO> category(Connection conn, String category_code, String gender,String searchWord ) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT DISTINCT(Minor_sort) categoryName,  category.category_code categoryCode "
-				+ " FROM category join product on product.category_code = category.category_code ";	
-				
-				if(gender.equals("K")) {
-					sql += " WHERE substr(category.category_code,1,1) = substr( ? , 1,1) AND ( substr(pd_code,1,1) = ? )";
-				}else {
-					sql += " WHERE substr(category.category_code,1,1) = substr( ? , 1,1) AND ( substr(pd_code,1,1) = 'U' OR substr(pd_code,1,1) = ? ) ";
-				}
-				
-				
+			
+			String sql = "SELECT DISTINCT(Minor_sort) categoryName,  category.category_code categoryCode "
+					+ " FROM category join product on product.category_code = category.category_code ";	
+		if(searchWord == "") {	
+					if(gender.equals("K")) {
+						sql += " WHERE substr(category.category_code,1,1) = substr( ? , 1,1) AND ( substr(pd_code,1,1) = ? )";
+					}else {
+						sql += " WHERE substr(category.category_code,1,1) = substr( ? , 1,1) AND ( substr(pd_code,1,1) = 'U' OR substr(pd_code,1,1) = ? ) ";
+					}
+		}else {
+			sql += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+		}			
 				sql += " ORDER BY category.category_code ";
 		
 		List<CategoryDTO> categoryList = null;
@@ -358,7 +378,7 @@ public class ProductListDAO implements IProductList {
 	
 		//평점
 		@Override
-		public LinkedHashMap<String, ProductReviewDTO> selectProductReview(Connection conn, String category_code, String gender) throws SQLException {
+		public LinkedHashMap<String, ProductReviewDTO> selectProductReview(Connection conn, String category_code, String gender,String searchWord ) throws SQLException {
 			PreparedStatement pstmt = null;
 			PreparedStatement pstmt2 = null;
 			ResultSet rs = null;
@@ -367,7 +387,7 @@ public class ProductListDAO implements IProductList {
 			// 상품 dto : key
 			String productSQL = " SELECT product.pd_code pdcode, substr(product.pd_code,9,2) color , category_code , pd_name , pd_price , pd_memberonly , pd_mincount ,pd_feet"
 					+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
-			
+			if(searchWord == "") {
 				if(gender.equals("K")) {
 							if(category_code.length() == 1 ) {
 								productSQL += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = ?) ";
@@ -382,14 +402,22 @@ public class ProductListDAO implements IProductList {
 								productSQL += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
 							}
 				}
+			}else {
+				productSQL += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+			}
 			
 			LinkedHashMap<String, ProductReviewDTO> reviewMap = null;
 			ProductReviewDTO previewdto = null;
 			
 			try {
 				pstmt = conn.prepareStatement(productSQL);
-				pstmt.setString(1, category_code);
-				pstmt.setString(2, gender);
+				if(searchWord != "") {
+					pstmt.setString(1, searchWord);
+					pstmt.setString(2, searchWord);
+				}else {
+					pstmt.setString(1, category_code);
+					pstmt.setString(2, gender);
+				}
 				rs = pstmt.executeQuery();
 
 				if (rs.next()) {
@@ -446,14 +474,14 @@ public class ProductListDAO implements IProductList {
 	
 	//6. 왼쪽 카테고리 사이즈
 	@Override
-	public List<ProductSizeStockDTO> selectSizeCategory(Connection conn, String category_code, String gender)throws SQLException {
+	public List<ProductSizeStockDTO> selectSizeCategory(Connection conn, String category_code, String gender,String searchWord )throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = "SELECT DISTINCT(sz) sz "
 				+ "FROM  product join product_stock on product.pd_code = product_stock.pd_code "
 				+ "            join size_list on product_stock.size_code = size_list.size_code ";
-		
+		if(searchWord == "") {
 			if(gender.equals("K")) {
 						if(category_code.length() == 1 ) {
 							sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = ?) ";
@@ -467,6 +495,10 @@ public class ProductListDAO implements IProductList {
 							sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
 						}
 			}
+		}else {
+			sql += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+		}
+			
 				sql +=  "ORDER BY sz ";
 		
 		List<ProductSizeStockDTO> sizeList = null;
@@ -474,8 +506,13 @@ public class ProductListDAO implements IProductList {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -499,12 +536,13 @@ public class ProductListDAO implements IProductList {
 
 	//7. 발볼
 	@Override
-	public List<ProductListDTO> selectFeet(Connection conn, String category_code, String gender) throws SQLException {
+	public List<ProductListDTO> selectFeet(Connection conn, String category_code, String gender,String searchWord ) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = "SELECT Distinct(pd_feet) "
 				+ " FROM product join product_detail on product.pd_code = product_detail.pd_code ";
+		if(searchWord == "") {
 				if(gender.equals("K")) {
 							if(category_code.length() == 1 ) {
 								sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = ?) ";
@@ -519,13 +557,22 @@ public class ProductListDAO implements IProductList {
 								sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
 							}
 				}
+		}else {
+			sql += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+		}		
+			
 		List<ProductListDTO> feetList = null;
 		ProductListDTO dto =null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -551,14 +598,14 @@ public class ProductListDAO implements IProductList {
 	
 	//8. 카테고리 컬러
 	@Override
-	public List<ProductColorDTO> selectColor(Connection conn, String category_code, String gender) throws SQLException {
+	public List<ProductColorDTO> selectColor(Connection conn, String category_code, String gender,String searchWord ) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = " SELECT DISTINCT( TO_NUMBER(substr(product.pd_code,9,2))) color_code, color_url "
 				+ " FROM product join product_image on product.pd_code = product_image.pd_code "
 				+ "            join color on product_image.color_code = color.color_code ";
-		
+		if(searchWord == "") {
 			if(gender.equals("K")) {
 							if(category_code.length() == 1 ) {
 								sql += " WHERE substr(product.pd_code,2,1) = ? AND ( substr(product.pd_code,1,1) = ?) ";
@@ -572,6 +619,9 @@ public class ProductListDAO implements IProductList {
 								sql += " WHERE substr(product.pd_code,2,3) = ? AND ( substr(product.pd_code,1,1) = 'U' OR substr(product.pd_code,1,1) = ?) ";
 							}
 			}
+		}else {
+			sql += "  WHERE REGEXP_LIKE( product.pd_code , ? , 'i' ) or  REGEXP_LIKE( product.pd_name , ? , 'i' )";
+		}	
 			sql += " ORDER BY color_code";
 		
 		List<ProductColorDTO> colorList = null;
@@ -579,8 +629,13 @@ public class ProductListDAO implements IProductList {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, category_code);
-			pstmt.setString(2, gender);
+			if(searchWord != "") {
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+			}else {
+				pstmt.setString(1, category_code);
+				pstmt.setString(2, gender);
+			}
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

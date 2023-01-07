@@ -22,17 +22,17 @@ public class CategorColorService {
 		return instance;
 	}
 	
-	public List<ProductColorDTO> selectColor(String cIdx, String gender){
+	public List<ProductColorDTO> selectColor(String cIdx, String gender,String searchWord ){
 		Connection con = null;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductListDAO dao = ProductListDAO.getInstance();
 			List<ProductColorDTO> list = null;
-			list = dao.selectColor(con, cIdx, gender);
+			list = dao.selectColor(con, cIdx, gender,searchWord);
 			return list;
 		} catch (Exception e) {
-			System.out.println(">categorySize.service() 에러:" + e.toString());
+			System.out.println(">categorycolor.service() 에러:" + e.toString());
 		}finally {
 			JdbcUtil.close(con);
 		}
