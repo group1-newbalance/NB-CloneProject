@@ -463,31 +463,37 @@ a.delete2 {
 											<c:choose>
 												<c:when
 													test="${ (not loop_flag) and (dto.pdCode eq pdDto.pdCode) }">
-													<li><input class="disabled" checked="checked"
+													<li>
+														<input class="disabled" checked="checked"
 														type="radio" name="pd_color" value="${ dto.colorCode }"
 														data-pdcode="${ dto.pdCode }" data-pdname=${ dto.pdName }
-														data-pdprice="${ dto.pdPrice }"> <label
-														for="pd_color" title="(${ dto.colorCode })${ dto.color }">
+														data-pdprice="${ dto.pdPrice }"> 
+														<label for="pd_color" title="(${ dto.colorCode })${ dto.color }">
 															<img src="${ dto.imgUrl }" alt="${ dto.color }" />
-													</label></li>
+														</label>
+													</li>
 												</c:when>
 												<c:when test="${ loop_flag and dto.pdCode eq pdDto.pdCode }">
-													<li><input type="radio" checked="checked"
+													<li>
+														<input type="radio" checked="checked"
 														name="pd_color" value="${ dto.colorCode }"
 														data-pdcode="${ dto.pdCode }" data-pdname=${ dto.pdName }
-														data-pdprice="${ dto.pdPrice }"> <label
-														for="pd_color" title="(${ dto.colorCode })${ dto.color }">
+														data-pdprice="${ dto.pdPrice }"> 
+														<label for="pd_color" title="(${ dto.colorCode })${ dto.color }">
 															<img src="${ dto.imgUrl }" alt="${ dto.color }" />
-													</label></li>
+														</label>
+													</li>
 												</c:when>
 												<c:otherwise>
-													<li><input type="radio" name="pd_color"
+													<li>
+														<input type="radio" name="pd_color"
 														value="${ dto.colorCode }" data-pdcode="${ dto.pdCode }"
 														data-pdname=${ dto.pdName }
-														data-pdprice="${ dto.pdPrice }"> <label
-														for="pd_color" title="(${ dto.colorCode })${ dto.color }">
+														data-pdprice="${ dto.pdPrice }"> 
+														<label for="pd_color" title="(${ dto.colorCode })${ dto.color }">
 															<img src="${ dto.imgUrl }" alt="${ dto.color }" />
-													</label></li>
+														</label>
+													</li>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
@@ -525,8 +531,8 @@ a.delete2 {
 														value="${ dto.sz }" data-pdcode="${ pdDto.pdCode }"
 														data-stock="${ dto.stockCount }"
 														data-colorcode="${ colorDto.colorCode }"
-														data-sizecode="${ dto.sizeCode }"> <label
-														class="soldout" for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
+														data-sizecode="${ dto.sizeCode }"> 
+														<label class="soldout" for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
 													</li>
 												</c:when>
 												<c:otherwise>
@@ -534,8 +540,8 @@ a.delete2 {
 														value="${ dto.sz }" data-pdcode="${ pdDto.pdCode }"
 														data-stock="${ dto.stockCount }"
 														data-colorcode="${ colorDto.colorCode }"
-														data-sizecode="${ dto.sizeCode }"> <label
-														for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
+														data-sizecode="${ dto.sizeCode }"> 
+														<label for="${ dto.sz }" title="${ dto.sz }">${ dto.sz }</label>
 													</li>
 												</c:otherwise>
 											</c:choose>
@@ -625,7 +631,7 @@ a.delete2 {
 							<div class="cart_buy">
 								<a href="javascript:void(0);" class="cart" id="open_cart"
 									onclick="addCart('${ pdDto.pdCode}')">장바구니</a>
-								<a href="<%=contextPath%>/order/orderSheet.action" class="buy">구매하기</a>
+								<a href="#" class="buy" onclick="buy();">구매하기</a>
 							</div>
 							<p class="noti">* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>
 
@@ -633,8 +639,7 @@ a.delete2 {
 								<p>원하는 옵션이 없으신가요?</p>
 								<!-- ?상품코드=&컬러코드= 매개변수로 보내기 -->
 								<a href="javascript:void(0);" class="ring"
-									onclick="warehousingAlarmApply()"><span class="ring_text">입고
-										알림 신청하기</span></a>
+									onclick="warehousingAlarmApply()"><span class="ring_text">입고 알림 신청하기</span></a>
 							</div>
 						</div>
 
@@ -650,8 +655,7 @@ a.delete2 {
 												href="<%= contextPath %>/product/productDetail.action?pdCode=${ dto.pdCode }"><img
 													src="${ dto.imgUrl }" alt="연관상품" /> <span class="ri_text"><span>${ dto.pdName }</span><br>
 														<fmt:formatNumber type="currency" value="${ dto.pdPrice }"
-															pattern="###,###,###" var="price" /> <span><c:out
-																value="${ price }" /></span></span></a></li>
+															pattern="###,###,###" var="price" /> <span><c:out value="${ price }" /></span></span></a></li>
 										</c:forEach>
 									</c:when>
 								</c:choose>
@@ -677,11 +681,13 @@ a.delete2 {
 							<ul>
 								<li class="active"><a href="#pd_details">상품정보</a></li>
 								<li>
-									<!-- 상품별 리뷰 개수 계산 --> <a href="#pd_review">상품리뷰<span>(${ rDto.count })</span></a>
+									<!-- 상품별 리뷰 개수 계산 --> 
+									<a href="#pd_review">상품리뷰<span>(${ rDto.count })</span></a>
 								</li>
 								<li>
-									<!-- 상품별 문의 개수 계산 --> <!-- 공개글(답변O, 답변X), 비밀글 --> <a
-									href="#pd_qna">상품문의<span>(3)</span></a>
+									<!-- 상품별 문의 개수 계산 --> 
+									<!-- 공개글(답변O, 답변X), 비밀글 --> 
+									<a href="#pd_qna">상품문의<span>(3)</span></a>
 								</li>
 							</ul>
 						</div>
@@ -761,7 +767,7 @@ a.delete2 {
 								</p>
 								<div class="total_btn">
 									<a href="<%=contextPath%>/my/cartList.action" class="cart md">장바구니</a>
-									<a href="<%=contextPath%>/order/orderSheet.action"
+									<a href="#" onlcick="buy();"
 										class="buy md">구매하기</a>
 								</div>
 							</div>
@@ -1769,7 +1775,7 @@ a.delete2 {
 	 				content += "</span><div class='plusminus_wrap' style='width:94px;'><input type='text' class='pd_amount' name='pd_amout' title='수량설정' value='1' maxlength=";
 	 				
 	 				if($("#maximum").html() != null){
-	 					content += $("#maximum").html() + "'>";
+	 					content += $("#maximum").html() + ">";
 	 				}else if($("#maximum").html() == null && stock >= 10){  // 구매제한 수량 없는 경우(재고로 관리)
 	 					content += "10'>";
 					}else{
@@ -1807,14 +1813,16 @@ a.delete2 {
 					}
 	 				
 	 				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
-					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
+					+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>"
+					+ "<form method='post' name='buy_form' id='buy_form'>"
 					+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
 					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
 					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
-					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'></li>"; 
+					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'>"
+					+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'></form></li>"
 					
-				$("#op_quickadd").append(content2);   
-			
+					$("#op_quickadd").append(content2);
+
 				var eachPrice = Number($("#item_price").html().replaceAll(",", ""));
 				var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
 				tp_money += eachPrice;
@@ -1870,11 +1878,13 @@ a.delete2 {
 				}
  				
  				content2 += "<button type='button' class='btn_minus2' onclick='minus(this)'></button><button type='button' class='btn_plus2' data-stock='" + stock + "' onclick='plus(this)'></button></div>"
-				+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>";
+				+ "<a class='delete2' href='javascript:void(0);' onclick='delete_op(this)'></a>"
+				+ "<form method='post' name='buy_form' id='buy_form'>"
 				+ "<input name='pd_price' id='pd_price' type='hidden' value='" + $('.box .price span b').html() + "'>"
 				+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).data("pdcode") + "'>"
 				+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).data("colorcode") + "'>"
-				+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).val() + "'></li>"; 
+				+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).val() + "'>"
+				+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'></form></li>"
 				
 				$("#op_quickadd").append(content2);    
 			
@@ -1951,6 +1961,9 @@ a.delete2 {
 			tp_money -= eachPrice;
 			$(".tp_money strong").html(tp_money.format());
 			
+			$("#pd_amout").val(value - 1);
+			$("#pd_price").val($(".tp_money strong").html());
+			
 			if($("#maximum").html() != null){
 				total -= 1;
 				// console.log("total : " + total);
@@ -1975,6 +1988,9 @@ a.delete2 {
 		var tp_money = Number($("#tp_money strong").html().replaceAll(",", ""));
 		tp_money += eachPrice;
 		$(".tp_money strong").html(tp_money.format());
+		
+		$("#pd_amout").val(value + 1);
+		$("#pd_price").val($(".tp_money strong").html());
 		
 		if($("#maximum").html() != null){
 			total += 1;
@@ -2067,6 +2083,17 @@ a.delete2 {
 	
 </script>
 
+<script>
+	$(".buy").click(function(){
+		if($("#selected_size").html() == ""){
+			alert("사이즈를 선택해주세요.");
+			return;
+		}else{
+			$("form").attr("action", "/newbalance/product/productDetail.action");
+			$("#buy_form").submit();
+		}
+	});
+</script>
 <script>
 	// if 사이즈를 선택하지 않은 경우
 	// alert("사이즈를 선택해주세요.");
