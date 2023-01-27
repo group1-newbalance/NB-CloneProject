@@ -69,6 +69,9 @@
 		       	  								 		<input type="hidden" name="userCode" value="${ userCode }">
 		       	  								 		<input type="hidden" name="pdCode" value="${ pdDto.pdCode }">
 		       	  								 		<input type="hidden" name="color" value="${ colorDto.color }">
+		       	  								 		<input type="hidden" name="colorCode" value="${ colorDto.colorCode }">
+		       	  								 		<input type="hidden" name="imgUrl" value="${ pdDto.imgUrl }">
+		       	  								 		<input type="hidden" name="pdName" value="${ pdDto.pdName }">
 		         										<input type="radio" id="${ dto.sz }" name="size" value="${ dto.sz }">
 		         										<label for="${ dto.sz }">${ dto.sz }</label>
 		         										<input type="hidden" name="sizeValue" value="${ dto.sz }">
@@ -77,14 +80,8 @@
 		       	  							</c:when>
 		       	  							<c:otherwise>
 		       	  								<li>
-		       	  									<form method="post" name="alarm">
-		       	  										<input type="hidden" name="userCode" value="${ userCode }">
-		       	  										<input type="hidden" name="pdCode" value="${ pdDto.pdCode }">
-		       	  										<input type="hidden" name="color" value="${ colorDto.color }">
-		         										<input type="radio" id="${ dto.sz }" name="size" value="${ dto.sz }" disabled="disabled">
-		         										<label for="${ dto.sz }">${ dto.sz }</label>
-		         										<input type="hidden" name="sizeValue" value="${ dto.sz }">
-		         									</form>
+		         									<input type="radio" id="${ dto.sz }" name="size" value="${ dto.sz }" disabled="disabled">
+		         									<label for="${ dto.sz }">${ dto.sz }</label>
 		         								</li>
 		       	  							</c:otherwise>
 		       	  						</c:choose>
@@ -111,33 +108,27 @@
 </div>
 
 <script>
-
 	$("#apllyCancel").click(function() {
 	    window.open('', '_self').close();
 	});
 	
 	var size = "";
-	var index = 0;
 	$("form label").click(function(){
 		$(this).prev().prop("checked", true);
 		size = $(this).html();
-		index = $(this).index();
 		$("form").children("input[name=sizeValue]").val(size);
 	});
 	
 	$("#alarmApply").click(function(){
-		// alert(size);
 		if(size == ""){
 			alert("사이즈를 입력해 주세요.");
 			return;
 		}else{
 			alert("신청 되었습니다.");
-			$("form").attr("action", "/newbalance/product/warehousingAlarmApply.action");
-			$("form")[index].submit();
+			$("form").attr("action", "/newbalance/product/warehousingAlarmComplete.action");
+			$("form").submit();
 		}
 	});
-	
-	
 </script>
 </body>
 </html>

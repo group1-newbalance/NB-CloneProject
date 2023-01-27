@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,12 +134,12 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
         </div>
         
           <div class="products_reviews_summary_v2__score_percentage">
-            <b>100%</b>의 구매자가 이 상품을 좋아합니다.
+            <!-- <b>100%</b>의 구매자가 이 상품을 좋아합니다. -->
           </div>
         
         
       </div>
-      <div class="products_reviews_summary_v2__rcontent">
+      <!-- <div class="products_reviews_summary_v2__rcontent">
         <ul class="products_reviews_summary_v2__score_filters">
           
             <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted">
@@ -182,7 +183,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
             </li>
             
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -194,7 +195,19 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
         포토&amp;동영상
       </span>
       <span class="products_reviews_media_summary__media_count">
-        (2)  <!-- 사진 개수 count -->
+      <c:set var="i" value="0" />
+      <c:forEach items="${ revMap }" var="entry">
+      		<c:choose>
+	      		<c:when test="${ not empty entry.value}">
+	      			 <c:forEach items="${ entry.value }" var="dto">
+	      			 	<c:set var="i" value="${ i + 1 }"/> 	
+	      			</c:forEach> 
+					<c:out value="(${ i })"/>
+	      		</c:when>
+	      		</c:choose>
+	      </c:forEach>
+	      
+        <%-- (${ revMap.value.size() eq null ? 0 : revMap.value.size() })  --%> <!-- 사진 개수 count -->
       </span>
       <a data-url="/nbkorea.com/products/media?media_summary=true&amp;parent_widget_id=2&amp;parent_widget_type=100&amp;per=100&amp;product_id=25302&amp;sort=10&amp;widget_env=100" class="js-link-fullscreen-popup">
         <div class="products_reviews_media_summary__show_all">
@@ -291,97 +304,6 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 
 </div>
 
-  <script type="text/x-jquery-tmpl" class="js-dropdown-box-script">
-    <div
-  class="
-    dropdown_box_component
-    filter_sort_basic__sort_dropdown
-    js-dropdown-box
-    hidden
-  "
-  data-dropdown-type="radio"
->
-  <div class="dropdown_box_component__item_wrapper">
-    
-  <div
-    data-value="10"
-    class="
-      dropdown_box_component__radio_select_item
-      js-dropdown-box-radio-select-item
-      notranslate
-      
-    "
-  >
-    추천순
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__radio_button">
-    <rect width="14" height="14" x="2" y="2" rx="7.5"></rect>
-    <rect width="6" height="6" x="6" y="6" stroke="none" fill="#fff" rx="3"></rect>
-</svg>
-
-  </div>
-
-  <div
-    data-value="20"
-    class="
-      dropdown_box_component__radio_select_item
-      js-dropdown-box-radio-select-item
-      notranslate
-      dropdown_box_component__radio_select_item--selected
-    "
-  >
-    최신순
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__radio_button">
-    <rect width="14" height="14" x="2" y="2" rx="7.5"></rect>
-    <rect width="6" height="6" x="6" y="6" stroke="none" fill="#fff" rx="3"></rect>
-</svg>
-
-  </div>
-
-  <div
-    data-value="30"
-    class="
-      dropdown_box_component__radio_select_item
-      js-dropdown-box-radio-select-item
-      notranslate
-      
-    "
-  >
-    평점순
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__radio_button">
-    <rect width="14" height="14" x="2" y="2" rx="7.5"></rect>
-    <rect width="6" height="6" x="6" y="6" stroke="none" fill="#fff" rx="3"></rect>
-</svg>
-
-  </div>
-
-
-    
-  </div>
-  
-  
-    <div class="
-      dropdown_box_component__radio_select_item
-      dropdown_box_component__radio_select_item--custom
-      js-dropdown-box-radio-select-item
-    ">
-      
-  <div class="review_sort_description js-review-sort-description" data-url="/nbkorea.com/review_sort_descriptions?media_reviews_first=true&amp;widget_env=100&amp;widget_id=2">
-    <div class="review_sort_description__description_container">
-      <a>
-        <span class="review_sort_description__description">
-          리뷰 정렬 기준
-        </span>
-        <span class="review_sort_description__icon"></span>
-      </a>
-    </div>
-  </div>
-
-
-    </div>
-  
-</div>
-
-  </script>
 </div>
 
     </li>
@@ -457,308 +379,6 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 
 </div>
 
-  <script type="text/x-jquery-tmpl" class="js-dropdown-box-script">
-    <div
-  class="
-    dropdown_box_component
-    
-    js-dropdown-box
-    hidden
-  "
-  data-dropdown-type="score"
->
-  <div class="dropdown_box_component__item_wrapper">
-    
-      <div class="
-        dropdown_box_component__title
-        
-      ">
-        별점
-      </div>
-      <div class="
-        dropdown_box_component__reset_button
-        js-dropdown-box-reset
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" class="dropdown_box_component__reset_icon">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M14.667 7.667L12.56 9.792l-2.105-2.125"></path>
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6.948 13.333c-3.101 0-5.615-2.537-5.615-5.666C1.333 4.537 3.847 2 6.949 2c3.1 0 5.614 2.537 5.614 5.667v1.416"></path>
-</svg>
-
-        <span class="dropdown_box_component__reset_text">
-          초기화
-        </span>
-      </div>
-    
-    
-    
-      
-  <div
-    data-value="5"
-    data-selected="false"
-    class="
-      dropdown_box_component__score_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    <div class="dropdown_box_component__svg_score">
-      <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div>
-    </div>
-    아주 좋아요
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__checkbox">
-    <rect width="15" height="15" x="1.5" y="1.5" rx="2"></rect>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25l3 3L12.75 6"></path>
-</svg>
-
-  </div>
-
-  <div
-    data-value="4"
-    data-selected="false"
-    class="
-      dropdown_box_component__score_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    <div class="dropdown_box_component__svg_score">
-      <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div>
-    </div>
-    맘에 들어요
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__checkbox">
-    <rect width="15" height="15" x="1.5" y="1.5" rx="2"></rect>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25l3 3L12.75 6"></path>
-</svg>
-
-  </div>
-
-  <div
-    data-value="3"
-    data-selected="false"
-    class="
-      dropdown_box_component__score_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    <div class="dropdown_box_component__svg_score">
-      <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div>
-    </div>
-    보통이에요
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__checkbox">
-    <rect width="15" height="15" x="1.5" y="1.5" rx="2"></rect>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25l3 3L12.75 6"></path>
-</svg>
-
-  </div>
-
-  <div
-    data-value="2"
-    data-selected="false"
-    class="
-      dropdown_box_component__score_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    <div class="dropdown_box_component__svg_score">
-      <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div>
-    </div>
-    그냥 그래요
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__checkbox">
-    <rect width="15" height="15" x="1.5" y="1.5" rx="2"></rect>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25l3 3L12.75 6"></path>
-</svg>
-
-  </div>
-
-  <div
-    data-value="1"
-    data-selected="false"
-    class="
-      dropdown_box_component__score_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    <div class="dropdown_box_component__svg_score">
-      <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--blank review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-empty" fill="#E8E8E8" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-empty"></use>
-</svg>
-</div>
-    </div>
-    별로에요
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__checkbox">
-    <rect width="15" height="15" x="1.5" y="1.5" rx="2"></rect>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25l3 3L12.75 6"></path>
-</svg>
-
-  </div>
-
-
-    
-  </div>
-  
-    <div class="dropdown_box_component__footer">
-      <div class="
-        dropdown_box_component__complete_button
-        js-dropdown-box-complete-button
-      ">
-        <span class="dropdown_box_component__complete_text">완료</span>
-      </div>
-    </div>
-  
-  
-</div>
-
-  </script>
 </div>
 
 </div>
@@ -781,304 +401,15 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
   dropdown_button_component
   js-dropdown-button
 ">
-  
-  
-    
       발 사이즈
-    
-  
+
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="dropdown_button_component__arrow js-dropdown-button-arrow">
     <path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
 </svg>
 
 </div>
 
-  <script type="text/x-jquery-tmpl" class="js-dropdown-box-script">
-    <div
-  class="
-    dropdown_box_component
-    
-    js-dropdown-box
-    hidden
-  "
-  data-dropdown-type="button_multiple"
->
-  <div class="dropdown_box_component__item_wrapper">
-    
-      <div class="
-        dropdown_box_component__title
-        
-      ">
-        발 사이즈
-      </div>
-      <div class="
-        dropdown_box_component__reset_button
-        js-dropdown-box-reset
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" class="dropdown_box_component__reset_icon">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M14.667 7.667L12.56 9.792l-2.105-2.125"></path>
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6.948 13.333c-3.101 0-5.615-2.537-5.615-5.666C1.333 4.537 3.847 2 6.949 2c3.1 0 5.614 2.537 5.614 5.667v1.416"></path>
-</svg>
 
-        <span class="dropdown_box_component__reset_text">
-          초기화
-        </span>
-      </div>
-    
-    
-    
-      
-  <button
-    data-value="215"
-    data-selected=""
-    data-index="0"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    215 mm
-  </button>
-
-  <button
-    data-value="220"
-    data-selected=""
-    data-index="1"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    220 mm
-  </button>
-
-  <button
-    data-value="225"
-    data-selected=""
-    data-index="2"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    225 mm
-  </button>
-
-  <button
-    data-value="230"
-    data-selected=""
-    data-index="3"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    230 mm
-  </button>
-
-  <button
-    data-value="235"
-    data-selected=""
-    data-index="4"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    235 mm
-  </button>
-
-  <button
-    data-value="240"
-    data-selected=""
-    data-index="5"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    240 mm
-  </button>
-
-  <button
-    data-value="245"
-    data-selected=""
-    data-index="6"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    245 mm
-  </button>
-
-  <button
-    data-value="250"
-    data-selected=""
-    data-index="7"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    250 mm
-  </button>
-
-  <button
-    data-value="255"
-    data-selected=""
-    data-index="8"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    255 mm
-  </button>
-
-  <button
-    data-value="260"
-    data-selected=""
-    data-index="9"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    260 mm
-  </button>
-
-  <button
-    data-value="265"
-    data-selected=""
-    data-index="10"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    265 mm
-  </button>
-
-  <button
-    data-value="270"
-    data-selected=""
-    data-index="11"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    270 mm
-  </button>
-
-  <button
-    data-value="275"
-    data-selected=""
-    data-index="12"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    275 mm
-  </button>
-
-  <button
-    data-value="280"
-    data-selected=""
-    data-index="13"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    280 mm
-  </button>
-
-  <button
-    data-value="285"
-    data-selected=""
-    data-index="14"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    285 mm
-  </button>
-
-  <button
-    data-value="290"
-    data-selected=""
-    data-index="15"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    290 mm
-  </button>
-
-  <button
-    data-value="295"
-    data-selected=""
-    data-index="16"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    295 mm
-  </button>
-
-  <button
-    data-value="300"
-    data-selected=""
-    data-index="17"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    300 mm
-  </button>
-
-
-    
-  </div>
-  
-    <div class="dropdown_box_component__footer">
-      <div class="
-        dropdown_box_component__complete_button
-        js-dropdown-box-complete-button
-      ">
-        <span class="dropdown_box_component__complete_text">완료</span>
-      </div>
-    </div>
-  
-  
-</div>
-
-  </script>
 </div>
 
 </div>
@@ -1110,97 +441,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 
 </div>
 
-  <script type="text/x-jquery-tmpl" class="js-dropdown-box-script">
-    <div
-  class="
-    dropdown_box_component
-    
-    js-dropdown-box
-    hidden
-  "
-  data-dropdown-type="button_multiple"
->
-  <div class="dropdown_box_component__item_wrapper">
-    
-      <div class="
-        dropdown_box_component__title
-        
-      ">
-        발볼
-      </div>
-      <div class="
-        dropdown_box_component__reset_button
-        js-dropdown-box-reset
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" class="dropdown_box_component__reset_icon">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M14.667 7.667L12.56 9.792l-2.105-2.125"></path>
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6.948 13.333c-3.101 0-5.615-2.537-5.615-5.666C1.333 4.537 3.847 2 6.949 2c3.1 0 5.614 2.537 5.614 5.667v1.416"></path>
-</svg>
 
-        <span class="dropdown_box_component__reset_text">
-          초기화
-        </span>
-      </div>
-    
-    
-    
-      
-  <button
-    data-value="좁음"
-    data-selected=""
-    data-index="0"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    좁음
-  </button>
-
-  <button
-    data-value="보통"
-    data-selected=""
-    data-index="1"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    보통
-  </button>
-
-  <button
-    data-value="넓음"
-    data-selected=""
-    data-index="2"
-    class="
-      dropdown_box_component__button_select_item
-      
-      js-dropdown-box-button-select-item
-    "
-  >
-    넓음
-  </button>
-
-
-    
-  </div>
-  
-    <div class="dropdown_box_component__footer">
-      <div class="
-        dropdown_box_component__complete_button
-        js-dropdown-box-complete-button
-      ">
-        <span class="dropdown_box_component__complete_text">완료</span>
-      </div>
-    </div>
-  
-  
-</div>
-
-  </script>
 </div>
 
 </div>
@@ -1328,17 +569,21 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 </style>
 
 
-      <div class="widget_reviews__body products_reviews_list__body">
-        <div class="page">
-  <div class="products_reviews__no_data_message js-renewed-no-data-content hidden">
-    <div class="no_reviews_message_v2">
-  <div class="no_reviews_message_v2__text">리뷰가 없습니다.<br><b>리뷰를 작성해 보세요!</b></div>
-
-  
-</div>
-
-  </div>
+<div class="widget_reviews__body products_reviews_list__body">
+    <div class="page">
+        <c:choose>
+		<c:when test="${ rDto.count eq 0 }">
+	  		<div class="products_reviews__no_data_message js-renewed-no-data-content">
+	   			<div class="no_reviews_message_v2">
+	  				<div class="no_reviews_message_v2__text">리뷰가 없습니다.<br><b>리뷰를 작성해 보세요!</b></div>
+	  			</div>
+	  		</div>
+  		</c:when>
+	<c:otherwise>
+	
+	
   <ul class="products_reviews__reviews reviews">
+    <c:forEach items="${ revMap }" var="entry">
     <li class="review_list_v2 review_list_v2--collapsed renewed_review  js-review-container" data-message-initial-rows="3" data-review-content-height="54" data-nonmember-review-check-edit-url="/nbkorea.com/nonmember_reviews/edit_popup?id=269794&amp;widget_env=100&amp;widget_id=2" data-nonmember-review-check-delete-url="/nbkorea.com/nonmember_reviews/delete_popup?id=269794&amp;widget_env=100" id="review_269794">
   <div class="review_list_v2__review_lcontent">
     <div class="review_list_v2__review_container">
@@ -1385,7 +630,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
     <use xlink:href="#star-full"></use>
 </svg>
 </div>
-              <span class="visually-hidden">별점: 5점</span>
+              <span class="visually-hidden">별점: ${ entry.key.revStarScore }점</span>
             </div>
             <div class="review_list_v2__score_text">아주 좋아요</div>
           </div>
@@ -1393,7 +638,10 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 
         <div class="review_list_v2__edit_container">
           
-            <div class="review_list_v2__date">${ rDto.revDate }</div>
+            <div class="review_list_v2__date">
+				<fmt:parseDate value="${ entry.key.revDate }" var="parseDateValue" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<fmt:formatDate value="${ parseDateValue }" pattern="yyyy.MM.dd"/>
+			</div>
           
           
         </div>
@@ -1409,7 +657,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
               <div class="review_list_v2__message_container">
                 <div class="review_list_v2__expand_link js-renewal-review-message-link js-renewal-link-expand disabled">
                   <div class="review_list_v2__message js-collapsed-review-content js-translate-text" style="max-height: 54px">
-                    ${ rDto.revContent }
+                    <%-- 리뷰 내용 --%>${ entry.key.revContent }
                   </div>
                   <div class="mall-link-color review_list_v2__message_link_button">
                     <span class="review_list_v2__expand_link_text">리뷰 더보기</span>
@@ -1428,7 +676,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
               <div class="review_list_v2__message_container">
                 <div class="review_list_v2__collapse_link js-renewal-review-message-link js-renewal-link-collapse disabled">
                   <div class="review_list_v2__message js-translate-text">
-                    ${ rDto.revContent }
+                    <%-- 리뷰 내용 --%>${ entry.key.revContent }
                   </div>
                   <div class="mall-link-color review_list_v2__message_link_button">
                     <span class="review_list_v2__collapse_link_text">리뷰 접기</span>
@@ -1442,7 +690,6 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
             </div>
           </div>
         </div>
-      
 
       
         <div class="review_list_v2__image_section">
@@ -1450,7 +697,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
   <ul class="review_media_v2__media">
     
     
-    <c:forEach items="${ revMap }" var="entry">
+    
       		<c:choose>
 	      		<c:when test="${ not empty entry.value}">
 	      			 <c:forEach items="${ entry.value }" var="dto"> 
@@ -1469,7 +716,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 	      			</c:forEach> 
 	      		</c:when>
 	      		</c:choose>
-	      </c:forEach>
+	      
    
   </ul>
 </div>
@@ -1489,10 +736,10 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
     <a class="review_like_action_v2__like_link js-link-like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="review_like_action_v2__like_icon">
     <path stroke-linecap="round" stroke-linejoin="round" d="M8.725 6.2c-.051.152-.026.32.068.45s.245.207.406.207h3.477c.061 0 .121.006.181.017.55.1.914.626.814 1.175l-.962 5.288c-.087.48-.505.83-.994.83H6.177c-.558 0-1.01-.453-1.01-1.011v-6.24c0-.241.086-.474.243-.657l3.619-4.223c.174-.202.463-.26.702-.141.21.105.312.35.237.573L8.725 6.2zM2.333 14V7.333"></path>
 </svg>
-<span class="review_like_action_v2__like_text">도움돼요</span><span class="review_like_action_v2__like_count js-like-score-plus">0</span><span class="review_like_action_v2__like_count_text js-like-score-text" style="display: none;">0</span></a><a class="review_like_action_v2__unlike_link js-link-unlike"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="review_like_action_v2__unlike_link_icon">
+<span class="review_like_action_v2__like_text">도움돼요</span><span class="review_like_action_v2__like_count js-like-score-plus">${ entry.key.revGood }</span><span class="review_like_action_v2__like_count_text js-like-score-text">${ entry.key.revGood }</span></a><a class="review_like_action_v2__unlike_link js-link-unlike"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="review_like_action_v2__unlike_link_icon">
     <path stroke-linecap="round" stroke-linejoin="round" d="M8.725 6.2c-.051.152-.026.32.068.45s.245.207.406.207h3.477c.061 0 .121.006.181.017.55.1.914.626.814 1.175l-.962 5.288c-.087.48-.505.83-.994.83H6.177c-.558 0-1.01-.453-1.01-1.011v-6.24c0-.241.086-.474.243-.657l3.619-4.223c.174-.202.463-.26.702-.141.21.105.312.35.237.573L8.725 6.2zM2.333 14V7.333"></path>
 </svg>
-<span class="review_like_action_v2__unlike_link_text">도움안돼요</span><span class="review_like_action_v2__unlike_link_count js-like-score-minus hidden">0</span><span class="review_like_action_v2__unlike_link_count_text js-like-score-text" style="display: none;">0</span></a>
+<span class="review_like_action_v2__unlike_link_text">도움안돼요</span><span class="review_like_action_v2__unlike_link_count js-like-score-minus">${ entry.key.revBad }</span><span class="review_like_action_v2__unlike_link_count_text js-like-score-text" >${ entry.key.revBad }</span></a>
   </div>
 
 
@@ -1547,7 +794,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
   <div class="review_list_v2__review_rcontent">
     <div class="review_list_v2__user_name_message">
       
-      <b>현****</b>님의 리뷰입니다.
+      <b>${ entry.key.userName }</b>님의 리뷰입니다.
     </div>
     <div class="review_list_v2__options_section">
       
@@ -1561,7 +808,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
     
       <div class="review_options_v2__option">
         <span class="review_options_v2__name">발볼</span>
-        <span class="review_options_v2__value">넓음</span>
+        <span class="review_options_v2__value">보통</span>
       </div>
     
   </div>
@@ -1574,7 +821,7 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
     
       <div class="review_options_v2__option">
         <span class="review_options_v2__name">회원 등급</span>
-        <span class="review_options_v2__value">BRONZE</span>
+        <span class="review_options_v2__value">${ entry.key.level }</span>
       </div>
     
   </div>
@@ -1604,11 +851,17 @@ div, span, ul, li, a, strong, input, textarea, b, strong, table, tr, td {
 
   <div class="review_list_v2__review_separator"></div>
 </li>
-
+</c:forEach>
   </ul>
+  
+  </c:otherwise>
+  </c:choose>
 </div>
 
-</div>      <div class="products_reviews__footer">
+</div>      
+
+
+<div class="products_reviews__footer">
         <div class="
     widget_reviews__footer
   ">

@@ -17,22 +17,16 @@ pageContext.setAttribute("newLineChar", "\n");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>뉴발란스 공식 온라인스토어</title>
-<link rel="icon" type="image/x-icon"
-	href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/64abd09342.js"
-	crossorigin="anonymous"></script>
-<link href="/newbalance/css/product/productDetail.css" rel="stylesheet"
-	type="text/css">
-
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet"
-	href="https://jqueryui.com/resources/demos/style.css">
+<link rel="icon" type="image/x-icon" href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/64abd09342.js" crossorigin="anonymous"></script>
+<link href="/newbalance/css/product/productDetail.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="/newbalance/common/header.css">
 <link rel="stylesheet" href="/newbalance/common/footer.css">
+<link rel="stylesheet" type="text/css" href="/newbalance/css/main/swiper.css">
 
 <style>
 a {
@@ -273,6 +267,7 @@ a.delete2 {
 .info_list li .info_value p {
 	margin-bottom: 10px;
 	line-height: 35px;
+	margin-top: -7px;
 }
 
 .clothes {
@@ -688,7 +683,7 @@ a.delete2 {
 								<li>
 									<!-- 상품별 문의 개수 계산 --> 
 									<!-- 공개글(답변O, 답변X), 비밀글 --> 
-									<a href="#pd_qna">상품문의<span>(3)</span></a>
+									<a href="#pd_qna">상품문의<span>(${ qnaList.size() eq null ? 0 : qnaList.size() })</span></a>
 								</li>
 							</ul>
 						</div>
@@ -698,7 +693,7 @@ a.delete2 {
 								<div class="box">
 									<div class="select">
 										<span class="select_box"> <!-- 상품코드, 상품명, 가격, *컬러코드or컬러명* 전달 -->
-											<select name="color_code" id="color_code" title="색상">
+											<select name="color_code" id="colorCode_select" title="색상">
 												<option>색상</option>
 												<c:choose>
 													<c:when test="${ not empty diffColorList }">
@@ -732,10 +727,10 @@ a.delete2 {
 															varStatus="status">
 															<c:choose>
 																<c:when test="${ dto.stockCount eq 0 }">
-																	<option value="${ dto.sz }" disabled="disabled">${ dto.sz }</option>
+																	<option value="${ dto.sz }" data-sizecode="${ dto.sizeCode }" disabled="disabled" >${ dto.sz }</option>
 																</c:when>
 																<c:otherwise>
-																	<option value="${ dto.sz }">${ dto.sz }</option>
+																	<option value="${ dto.sz }" data-sizecode="${ dto.sizeCode }">${ dto.sz }</option>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
@@ -767,9 +762,8 @@ a.delete2 {
 									<span class="tp_text">합계</span> <span class="tp_money"><strong>0</strong>원</span>
 								</p>
 								<div class="total_btn">
-									<a href="<%=contextPath%>/my/cartList.action" class="cart md">장바구니</a>
-									<a href="#" onlcick="buy();"
-										class="buy md">구매하기</a>
+									<a href="javascript:void(0);" class="cart md" onclick="addCart('${ pdDto.pdCode}')">장바구니</a>
+									<a href="#" onlcick="buy();" class="buy md">구매하기</a>
 								</div>
 							</div>
 
@@ -1307,15 +1301,17 @@ a.delete2 {
 						<!-- 상품문의 -->
 						<div id="pd_qna" class="section" style="min-height: 850px;">
 							<h4>
-								상품문의 (<span>3</span>)
+								상품문의 (<span>${ qnaList.size() eq null ? 0 : qnaList.size() }</span>)
 							</h4>
 							<span class="check_box"> <input type="checkbox"
 								id="secret_view" name="secret_view" class="qna_checkbox">
 								<label for="secret_view">비밀글 제외</label>
 							</span>
-
+							
 							<!-- 문의글 0개일 경우에만 출력 -->
-							<div class="qna_none" style="display: none;">
+							<c:choose>
+							<c:when test="${ qnaList.size() eq null }">
+							<div class="qna_none">
 								<strong>상품 관련 <span>궁금한 점</span>이 있으신가요?
 								</strong>
 								<ul>
@@ -1324,84 +1320,90 @@ a.delete2 {
 									<li>상품에 대한 허위 정보, 광고성 글은 사전 통보 없이 임의로 삭제될 수 있습니다.</li>
 								</ul>
 								<div class="btn_area">
-									<a href="<%=contextPath%>/support/searchFaqList.action"
+									<a href="/newbalance/support/faq.action"
 										class="btn_faq sm">자주 묻는 질문 찾기</a> <a
-										href="<%=contextPath%>/my/qna/searchQuestionList.action"
+										href="/newbalance/my/qna/searchQuestionList.action"
 										class="btn_qna sm">1:1 문의하기</a>
 								</div>
 							</div>
-
+							</c:when>
+							<c:otherwise>
 							<!-- 문의글 1개 이상일 경우에만 출력 -->
 							<div class="qna_list">
 								<ul>
-									<li>
-										<div class="row_q">
-											<div class="col_status">
-												<span class="text">접수</span>
-											</div>
-											<div class="col_title">
-												<a href="#none" class="ttl">환불</a>
-											</div>
-											<div class="col_author">
-												<span class="text">avs******</span>
-											</div>
-											<div class="col_date">
-												<span class="text">2022-12-22</span>
-											</div>
-										</div>
-										<div class="row_a" id="answer" style="display: none;">
-											<div class="board_q">환불 가능한가요?</div>
-										</div>
-									</li>
-									<li>
-										<div class="row_q">
-											<div class="col_status">
-												<span class="text">답변완료</span>
-											</div>
-											<div class="col_title">
-												<a href="#none" class="ttl">사이즈 교환</a>
-											</div>
-											<div class="col_author">
-												<span class="text">dkfm***************</span>
-											</div>
-											<div class="col_date">
-												<span class="text">2022-12-20</span>
-											</div>
-										</div>
-										<div class="row_a" id="answer" style="display: none;">
-											<div class="board_q">온라인으로 상품을 주문했는데 오프라인 매장에서 사이즈 교환이
-												가능한가요??</div>
-											<div class="board_a">
-												안녕하세요. 뉴발란스 온라인스토어입니다. <br> <br>온라인주문건 교환은 배송일로부터
-												7일 이내 간단한 구매이력 확인되는 경우 재고 있는 오프라인 매장에서 동일금액 이상 상품으로 가능하십니다.<br>
-												<br>고객님께서 가져가시는 상품이 매장에 판매 되고 있어야 하는 점 참고 부탁드립니다.<br>매장마다
-												재고현황이 다르며 결제 확인 방법이 다를 수 있어 방문 전 매장 연락 부탁 드립니다. <br> <br>**
-												오프라인 매장에서 교환 진행 시, 추후 온라인 스토어에서 교환/환불이 불가합니다. 이 점 참고
-												부탁드리겠습니다.<br> <br>감사합니다.
-											</div>
-										</div>
-									</li>
-									<li class="qna_secret">
-										<div class="row_q">
-											<div class="col_status">
-												<span class="text">답변완료</span>
-											</div>
-											<div class="col_title">
-												<a href="#none" class="ttl">재입고</a>
-											</div>
-											<div class="col_author">
-												<span class="text">awkf********</span>
-											</div>
-											<div class="col_date">
-												<span class="text">2022-12-18</span>
-											</div>
-										</div>
-										<div class="row_a" id="answer" style="display: none;">
-											<div>비공개글은 작성자 본인만 확인할 수 있습니다.</div>
-										</div>
-									</li>
+								<c:choose>
+									<c:when test="${ not empty qnaList }">
+										<c:forEach var="dto" items="${ qnaList }">
+											<c:choose>
+												<c:when test="${ dto.qnaPrivate eq 1 }">
+													<li class="qna_secret">
+														<div class="row_q">
+														<div class="col_status">
+															<span class="text">${ dto.qnaStatus }</span>
+														</div>
+														<div class="col_title">
+															<a href="#none" class="ttl">${ dto.qnaTitle }</a>
+														</div>
+														<div class="col_author">
+															<span class="text">${ dto.userId }</span>
+														</div>
+														<div class="col_date">
+															<span class="text">
+																<fmt:parseDate value="${ dto.qnaWritedate }" var="parseDateValue" pattern="yyyy-MM-dd HH:mm:ss"/>
+																<fmt:formatDate value="${ parseDateValue }" pattern="yyyy-MM-dd"/>
+															</span>
+														</div>
+													</div>
+													<div class="row_a" id="answer" style="display: none;">
+														<c:choose>
+															<c:when test="${ dto.userCode eq userCode }">
+																<div class="board_q">${ fn:replace(dto.qnaContent, newLineChar, '<br>')}</div>
+																<c:if test="${ not empty dto.qnaReply }">
+																	<div class="board_a">${ fn:replace(dto.qnaReply, newLineChar, '<br>')}</div>
+																</c:if>
+															</c:when>
+															<c:otherwise>
+																<div>비공개글은 작성자 본인만 확인할 수 있습니다.</div>
+															</c:otherwise>
+														</c:choose>
+													</div>
+												</li>
+												</c:when>
+												<c:otherwise>
+													<li>
+														<div class="row_q">
+															<div class="col_status">
+																<span class="text">${ dto.qnaStatus }</span>
+															</div>
+															<div class="col_title">
+																<a href="#none" class="ttl">${ dto.qnaTitle }</a>
+															</div>
+															<div class="col_author">
+																<span class="text">${ dto.userId }</span>
+															</div>
+															<div class="col_date">
+																<span class="text">
+																	<fmt:parseDate value="${ dto.qnaWritedate }" var="parseDateValue" pattern="yyyy-MM-dd HH:mm:ss"/>
+																	<fmt:formatDate value="${ parseDateValue }" pattern="yyyy-MM-dd"/>
+																</span>
+															</div>
+														</div>
+														<div class="row_a" id="answer" style="display: none;">
+															<div class="board_q">${ fn:replace(dto.qnaContent, newLineChar, '<br>')}</div>
+															<c:if test="${ not empty dto.qnaReply }">
+																<div class="board_a">${ fn:replace(dto.qnaReply, newLineChar, '<br>')}</div>
+															</c:if>
+														</div>
+													</li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</c:when>
+								</c:choose>
 								</ul>
 							</div>
+							</c:otherwise>
+							</c:choose>
 							<div class="btn_area">
 								<p class="noti">* 주문/배송/반품 등 일반 문의는 1:1 문의를 이용해 주시기 바랍니다.</p>
 								<a href="javascript:void(0);" class="write_qna"
@@ -1456,7 +1458,7 @@ a.delete2 {
 			<div class="completion">
 				<div class="scroll">
 					<!-- point_r : .selected_op li 태그의 개수 -->
-					<strong class="txt1">총 <span class="point_r"></span>개의 상품이
+					<strong class="txt1">총 <span class="point_r" id="point_r">1</span>개의 상품이
 						장바구니에 추가 되었습니다.
 					</strong>
 					<div class="result">
@@ -1546,8 +1548,8 @@ a.delete2 {
 				</div>
 				<form name="formQna" id="formQna" enctype="multipart/form-data"
 					method="post">
-					<input type="hidden" name="pd_code" id="pd_code" value="NBPDDS164G">
-					<input type="hidden" name="color_code" id="color_code" value="15">
+					<input type="hidden" name="pd_code" id="pdCode_qna" value="NBPDDS164G">
+					<input type="hidden" name="color_code" id="colorCode_qna" value="15">
 					<input type="hidden" name="customer" id="customer" value="">
 					<div class="form_area">
 						<fieldset>
@@ -1581,32 +1583,32 @@ a.delete2 {
 											for="attachFile">파일찾기</label>
 										</span>
 									</div>
-									<span class="info_file">파일 크기 1MB 이하 / jpg, gif 파일만 등록
-										가능합니다.</span>
+									<span class="info_file">파일 크기 1MB 이하 / jpg, gif 파일만 등록 가능합니다.</span>
 								</div>
 							</div>
 							<div class="row type_low">
 								<strong class="ftit">공개 여부</strong>
 								<div class="fdata">
-									<span class="chk"><input type="radio" id="open_yes"
-										name="dispYn" class="ip_radio" value="Y" checked="checked"><label
-										for="open_yes">공개</label></span> <span class="chk"><input
-										type="radio" id="open_no" name="dispYn" class="ip_radio"
-										value="N"><label for="oepn_no">비공개</label></span>
+									<span class="chk">
+										<input type="radio" id="open_yes" name="qnaPrivate" class="ip_radio" value="0" checked="checked">
+										<label for="open_yes">공개</label>
+									</span>
+									<span class="chk">
+										<input type="radio" id="open_no" name="qnaPrivate" class="ip_radio" value="1">
+										<label for="oepn_no">비공개</label>
+									</span>
 								</div>
 							</div>
 						</fieldset>
 					</div>
 					<div class="btn_area">
-						<a href="#none" class="btn_qna" id="btnWriteQna">문의하기</a> <a
+						<a href="javascript:void(0);" class="btn_qna" id="btnWriteQna">문의하기</a> <a
 							href="javascript:void(0);" class="btn_cancel" id="btnCancelQna">취소하기</a>
 					</div>
 				</form>
 			</div>
 			<button type="button" class="close" id="btnCloseQnaModal">
-				<img
-					src="https://image.nbkorea.com/NBRB_PC/common/btn_pop_close.png"
-					alt="팝업 닫기">
+				<img src="https://image.nbkorea.com/NBRB_PC/common/btn_pop_close.png" alt="팝업 닫기">
 			</button>
 		</div>
 	</div>
@@ -1820,6 +1822,7 @@ a.delete2 {
 					+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).siblings('input').data("pdcode") + "'>"
 					+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).siblings('input').data("colorcode") + "'>"
 					+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).siblings('input').val() + "'>"
+					+ "<input name='sizeCode' id='sizeCode' type='hidden' value='" + $(this).siblings('input').data("sizecode") + "'>"
 					+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'>"
 					+ "<input name='pd_color' id='pd_color' type='hidden' value='" + $(this).siblings('input').data("color") + "'>"
 					+ "<input name='pd_image' id='pd_image' type='hidden' value='" + $("#main_img").prop("src") + "'>"
@@ -1888,6 +1891,7 @@ a.delete2 {
 				+ "<input name='pd_code' id='pd_code' type='hidden' value='" + $(this).data("pdcode") + "'>"
 				+ "<input name='color_code' id='color_code' type='hidden' value='" + $(this).data("colorcode") + "'>"
 				+ "<input name='pd_size' id='pd_size' type='hidden' value='" + $(this).val() + "'>"
+				+ "<input name='sizeCode' id='sizeCode' type='hidden' value=''>"
 				+ "<input name='pd_amount' id='pd_amout' type='hidden' value='1'>"
 				+ "<input name='pd_color' id='pd_color' type='hidden' value='" + $(this).data("color") + "'>"
 				+ "<input name='pd_image' id='pd_image' type='hidden' value='" + $("#main_img").prop("src") + "'>"
@@ -2092,6 +2096,7 @@ a.delete2 {
 </script>
 
 <script>
+	// 구매하기
 	$(".buy").click(function(){
 		var usercode = "${ userCode }"; 
 		if(usercode == ""){
@@ -2112,18 +2117,8 @@ a.delete2 {
 		}
 	});
 </script>
-<script>
-	// if 사이즈를 선택하지 않은 경우
-	// alert("사이즈를 선택해주세요.");
 
-	// if 회원전용 상품 O
-	// if 로그인 X
-	// var result = confirm("로그인 이후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?");
-	// return result;   // true - 로그인 페이지로 이동, false - 창 닫기
-	// if 로그인 O
-	// if 추가하려는 상품 개수 + 장바구니에 담긴 상품 개수가 구매제한 개수 초과
-	// alert("장바구니에 이미 해당 구매제한 상품이 존재합니다.");
-	// else 장바구니 담기 성공(모달창)
+<script>
 
 	// if 회원전용 상품 X (일반상품)
 	// if 재고수량 10개 이상
@@ -2139,9 +2134,9 @@ a.delete2 {
 	// else 장바구니 담기 성공(모달창, 장바구니 테이블에 추가)				
 							
 	// 장바구니 담기    
-	/*
 	function addCart(pdcode){
-		let array = new Array();  //Object를 배열로 저장할 Array
+		// let array = new Array();  //Object를 배열로 저장할 Array
+		var sizecode;
 		var usercode = "${ userCode }"; 
 		if($("#selected_size").html() == ""){
 			alert("사이즈를 선택해 주세요.");
@@ -2150,43 +2145,32 @@ a.delete2 {
 			color = "${colorDto.color}";
 			pdImage = $("#main_img").prop("src");
 			
-			
 			$("#selected_size li").each(function(i, element){
 				var content = "<li>"
 							+ $(element).children(".selected_op").html() + " "
 							+ $(element).children("div").children("input").val() + "개 "
 							+ $(element).children("span.each_price").children("strong").html() + "원</li>";
 				$("#cartInfo").append(content);
-				//console.log(content);
 				
 				var size = $(element).children(".selected_op").html().split("/")[1];
 				console.log(size);
-				var sizecode;
-				$("#size_list li").each(function(i, element) {
-					if($(element).children('input').data('sizecode').toString() == size){
-						sizecode = $(element).children('input').data("sizecode").toString();
+				$("#size_code option").each(function(i, element) {
+					if($(element).val() == size){
+						sizecode = $(element).data("sizecode");
 					}
 				});
-				sizeCode = sizecode;			
-				//cartCount = $(element).children("div").children("input").val();
-				array.push(sizeCode);
+				console.log(sizecode);
+				$("#sizeCode").val(sizecode);			
+				//array.push(sizeCode);
 			});
 			//console.log(array.pdCode);
-			console.log(array);
 			$.ajax({
 				url : '/newbalance/product/addCart.ajx',
 				type : 'POST',   
 				async : false,
 				dataType : 'json',
 				cache : false,
-				data : {
-					"userCode" : usercode,
-					"pdCode" : pdcode,
-					"sizeCodeList" : array,
-					"color" : color,
-					//"cartCount" : cartcount,
-					"pdImage" : pdImage
-				}, 
+				data : $("#buy_form").serialize(), 
 				success : function(data){
 					if(data.result == "00"){
 						$("#cartListModal").css({
@@ -2204,7 +2188,7 @@ a.delete2 {
 				}
 			});
 		}
-	}*/
+	}
 	
 	
 /////////////////////////////////////////////////////////////////////////////////

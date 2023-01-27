@@ -12,16 +12,41 @@ public class RestockAlarmDTO {
 	private String pdCode;
 	private String color;
 	private String size;
+	private String colorCode;
+	private String pdName;
+	private String imgUrl;
 	
-	
-	public RestockAlarmDTO(String userCode, String pdCode, String color, String size) {
+
+	public RestockAlarmDTO(String userCode, String pdCode, String color, String size
+			, String colorCode, String pdName, String imgUrl) {
 		super();
 		this.userCode = userCode;
 		this.pdCode = pdCode;
 		this.color = color;
 		this.size = size;
+		this.colorCode = colorCode;
+		this.pdName = pdName;
+		this.imgUrl = imgUrl;
 	}
 	
+	public String getColorCode() {
+		return colorCode;
+	}
+	public void setColorCode(String colorCode) {
+		this.colorCode = colorCode;
+	}
+	public String getPdName() {
+		return pdName;
+	}
+	public void setPdName(String pdName) {
+		this.pdName = pdName;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	public int getRsCode() {
 		return rsCode;
 	}

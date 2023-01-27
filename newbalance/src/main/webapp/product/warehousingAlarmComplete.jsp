@@ -111,10 +111,10 @@
 			<p class="comp_txt2">신청 내역은 <span class="point_b">‘마이페이지 &gt; 상품내역 &gt; 재입고 알림 관리’</span>에서도<br>확인하실 수 있습니다.</p>
 			<div class="result">
 				<div class="prod">
-					<div class="img"><img src="${ pdDto.imgUrl }" alt=""></div>
+					<div class="img"><img src="${ alarmDto.imgUrl }" alt=""></div>
 					<div class="txt">
-						<p class="p_name">${ pdDto.pdName }</p>
-						<p class="p_option">(${colorDto.colorCode })${ colorDto.color }, ${ size }</p>
+						<p class="p_name">${ alarmDto.pdName }</p>
+						<p class="p_option">(${alarmDto.colorCode })${ alarmDto.color }, ${ alarmDto.size }</p>
 					</div>
 				</div>
 			</div>

@@ -19,8 +19,10 @@ public class ReviewDTO {
 	private int topSize;
 	private int count;
 	private double avg;
+	private String userName;
+	private String level;  // lv
 	
-	
+
 	public ReviewDTO(int count, double avg) {
 		this.count = count;
 		this.avg = avg;
@@ -28,7 +30,7 @@ public class ReviewDTO {
 
 
 	public ReviewDTO(int revSeq, String userCode, String ordCode, String size, String color, String revDate,
-			String revContent, int revGood, int revBad, double revStarScore) {
+			String revContent, int revGood, int revBad, double revStarScore, String userName, String level) {
 		super();
 		this.revSeq = revSeq;
 		this.userCode = userCode;
@@ -40,9 +42,16 @@ public class ReviewDTO {
 		this.revGood = revGood;
 		this.revBad = revBad;
 		this.revStarScore = revStarScore;
+		this.userName = userName;
+		this.level = level;
 	}
 	
-	
+	public String getUserName() {
+		return userName;
+	}
+	public String getLevel() {
+		return level;
+	}
 	public int getRevSeq() {
 		return revSeq;
 	}

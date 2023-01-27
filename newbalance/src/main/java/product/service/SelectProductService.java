@@ -10,11 +10,12 @@ import javax.naming.NamingException;
 import jdbc.connection.ConnectionProvider;
 import jdbc.connection.JdbcUtil;
 import product.dao.ProductDAO;
-import product.domain.AddCartDTO;
+import product.domain.BuyProductDTO;
 import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
+import product.domain.ProductQnaDTO;
 import product.domain.ProductSizeDTO;
 import product.domain.RestockAlarmDTO;
 import product.domain.ReviewDTO;
@@ -94,14 +95,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false); 
 			ArrayList<ProductColorDTO> diffColorList = null;
 			diffColorList = dao.diffColorProduct(conn, pdCode);
-			conn.commit();         
 			return diffColorList;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -116,14 +114,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false); 
 			ArrayList<ProductImageDTO> imgList = null;
-			imgList = dao.selectImage(conn, pdCode);
-			conn.commit();         
+			imgList = dao.selectImage(conn, pdCode);     
 			return imgList;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -138,14 +133,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false);  
 			ArrayList<ProductDTO> relatedPdList = null;
-			relatedPdList = dao.selectRelatedProduct(conn, pdCode);
-			conn.commit();         
+			relatedPdList = dao.selectRelatedProduct(conn, pdCode);     
 			return relatedPdList;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -160,14 +152,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false);  // 트랜잭션 처리
 			ArrayList<ProductSizeDTO> sizeList = null;
-			sizeList = dao.selectSize(conn, pdCode);
-			conn.commit();         
+			sizeList = dao.selectSize(conn, pdCode); 
 			return sizeList;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -177,19 +166,15 @@ public class SelectProductService {
 	
 
 	public int addWishlist(WishlistDTO dto){
-		// System.out.println("서비스 호출됨");
 		Connection conn = null;
 		int rowCount = 0;
 		try {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false); 
 			rowCount = dao.addWishlist(conn, dto);
 
-			conn.commit();
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -205,12 +190,9 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false); 
 			rowCount = dao.applyAlarm(conn, dto);
 
-			conn.commit();
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -231,14 +213,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false);
 			LinkedHashMap<ReviewDTO, ArrayList<ReviewImgDTO>> revMap = null;
-			revMap = dao.selectReview(conn, pdCode);
-			conn.commit();         
+			revMap = dao.selectReview(conn, pdCode);        
 			return revMap;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -253,14 +232,11 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false);
 			ReviewDTO rDto = null;
-			rDto = dao.totalReview(conn, pdCode);
-			conn.commit();         
+			rDto = dao.totalReview(conn, pdCode);     
 			return rDto;
 			
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
@@ -269,7 +245,7 @@ public class SelectProductService {
 	}
 	
 	
-	public int addCartList(AddCartDTO dto){
+	public int addCartList(BuyProductDTO dto, String userCode){
 		System.out.println("카트 서비스 호출됨");
 		Connection conn = null;
 		int rowCount = 0;
@@ -277,17 +253,33 @@ public class SelectProductService {
 			conn = ConnectionProvider.getConnection();
 			ProductDAO dao = ProductDAO.getInstance();
 
-			conn.setAutoCommit(false); 
-			rowCount = dao.addCartList(conn, dto);
+			rowCount = dao.addCartList(conn, dto, userCode);
 
-			conn.commit();
 		} catch (NamingException | SQLException e) {
-			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn); 
 		}
 		return rowCount;
+	}
+	
+	
+	public ArrayList<ProductQnaDTO> selectProductQna(String pdCode){
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			ProductDAO dao = ProductDAO.getInstance();
+
+			ArrayList<ProductQnaDTO> qnaList = null;
+			qnaList = dao.selectProductQna(conn, pdCode);
+			return qnaList;
+			
+		} catch (NamingException | SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn); 
+		}
+		
 	}
 	
 }

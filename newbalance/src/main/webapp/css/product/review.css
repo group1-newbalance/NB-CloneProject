@@ -57,9 +57,7 @@
 }
 .products_reviews_summary_v2__lcontent {
     display: inline-block;
-    width: 399px;
-    min-height: 122px;
-    border-right: solid 1px #d8dde5;
+    width: 100%;
 }
 .products_reviews_summary_v2__score {
     text-align: center;

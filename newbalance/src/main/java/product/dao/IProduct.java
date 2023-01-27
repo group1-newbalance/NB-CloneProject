@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import product.domain.AddCartDTO;
+import product.domain.BuyProductDTO;
 import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
+import product.domain.ProductQnaDTO;
 import product.domain.ProductSizeDTO;
 import product.domain.RestockAlarmDTO;
 import product.domain.ReviewDTO;
@@ -43,13 +44,16 @@ public interface IProduct {
 	int applyAlarm(Connection conn, RestockAlarmDTO dto) throws SQLException;
 
 	// 장바구니 추가
-	int addCartList(Connection conn, AddCartDTO cartDto) throws SQLException;
+	int addCartList(Connection conn, BuyProductDTO cartDto, String userCode) throws SQLException;
 	
 	// 상품별 리뷰 리스트
 	LinkedHashMap<ReviewDTO, ArrayList<ReviewImgDTO>> selectReview(Connection conn, String pdCode) throws SQLException;
 
 	// 리뷰 집계(count, 별점 평균)
 	ReviewDTO totalReview(Connection conn, String pdCode) throws SQLException;
+	
+	// 상품별 문의 리스트
+	ArrayList<ProductQnaDTO> selectProductQna(Connection conn, String pdCode) throws SQLException;
 
 	ProductAjaxDTO selectProductAjax(Connection conn, String pdCode) throws SQLException;
 }

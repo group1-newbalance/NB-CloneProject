@@ -5,28 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.catalina.startup.RealmRuleSet;
 
 import jdbc.connection.JdbcUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import product.domain.AddCartDTO;
+import product.domain.BuyProductDTO;
 import product.domain.ProductAjaxDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
+import product.domain.ProductQnaDTO;
 import product.domain.ProductSizeDTO;
 import product.domain.RestockAlarmDTO;
 import product.domain.ReviewDTO;
 import product.domain.ReviewImgDTO;
 import product.domain.WishlistDTO;
-import productlist.domain.ProductImgDTO;
-import productlist.domain.ProductListDTO;
 
 public class ProductDAO implements IProduct {
 
@@ -476,7 +468,7 @@ public class ProductDAO implements IProduct {
 
 	// 장바구니 추가
 	@Override
-	public int addCartList(Connection conn, AddCartDTO cartDto) throws SQLException {
+	public int addCartList(Connection conn, BuyProductDTO cartDto, String userCode) throws SQLException {
 		PreparedStatement pstmt = null, pstmt2 = null;
 		ResultSet rs = null;
 		int rowCount = 0;
@@ -484,21 +476,24 @@ public class ProductDAO implements IProduct {
 		
 		String sql = "SELECT COUNT(*) count "
 				+ " FROM cart "
-				+ " WHERE user_code = ? and pd_code = ? and size_code in ( ";
+				+ " WHERE user_code = ? and pd_code = ? and size_code = ? ";
 
+		/*
 		int[] sizeCodeList = cartDto.getSizeCode();
 		String str = "";
 		for (int i = 0; i < sizeCodeList.length; i++) {
 			str += String.format("%d", sizeCodeList[i]) + (i != sizeCodeList.length - 1? ", " : ") ");		
 		}
 		sql += str;
-
 		System.out.println(sql);
+		 */
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, cartDto.getUserCode());
+			pstmt.setString(1, userCode);
 			pstmt.setString(2, cartDto.getPdCode());
+			pstmt.setInt(3, cartDto.getSizeCode());			
 			rs = pstmt.executeQuery();
 
 			int count = 0;
@@ -506,29 +501,45 @@ public class ProductDAO implements IProduct {
 				count = rs.getInt("count");
 			}
 
+			System.out.println(count);
 			if(count == 0) {
+				String sql2 = "INSERT INTO cart VALUES ( "
+						+ " cart_num.nextval, ?, ?, ?, ?, ?, SYSDATE, ADD_MONTHS(SYSDATE, 1), ?, ?, ? ) ";
 
-				for(int j = 0; j < sizeCodeList.length;j++) {
-					String sql2 = "INSERT INTO cart VALUES ( "
-							+ " cart_num.nextval, ?, ?, ?, ?, 1, SYSDATE, ADD_MONTHS(SYSDATE, 1), ? ";
-									
-					try {
-						pstmt2 = conn.prepareStatement(sql2);
-						pstmt2.setString(1, cartDto.getUserCode());
-						pstmt2.setString(2, cartDto.getPdCode());
-						pstmt2.setInt(3, sizeCodeList[j]);
-						pstmt2.setString(4, cartDto.getColor());
-						//pstmt2.setInt(5, 담을 수량);
-						pstmt2.setString(5, cartDto.getPdImage());
+				try {
+					pstmt2 = conn.prepareStatement(sql2);
+					pstmt2.setString(1, userCode);
+					pstmt2.setString(2, cartDto.getPdCode());
+					pstmt2.setInt(3, cartDto.getSizeCode());
+					pstmt2.setString(4, cartDto.getPdColor());
+					pstmt2.setInt(5, cartDto.getPdAmount());
+					pstmt2.setString(6, cartDto.getPdImage());
+					pstmt2.setString(7, cartDto.getPdName());
+					pstmt2.setInt(8, cartDto.getPdPrice());
 
-						rowCount = pstmt2.executeUpdate();
-					}catch (Exception e) {
-						e.printStackTrace();
-					}
+					rowCount = pstmt2.executeUpdate();
+				}catch (Exception e) {
+					e.printStackTrace();
 				}
-
 			}else {
-				rowCount = 0;
+				String sql2 = "UPDATE cart "
+						+ "SET cart_count = cart_count + ? "
+						+ "    , cart_insertdate = SYSDATE "
+						+ "    , cart_expiredate = ADD_MONTHS(SYSDATE, 1) "
+						+ "WHERE user_code = ? and pd_code = ? and size_code = ? ";
+				
+				try {
+					pstmt2 = conn.prepareStatement(sql2);
+					pstmt2.setInt(1, cartDto.getPdAmount());
+					pstmt2.setString(2, userCode);
+					pstmt2.setString(3, cartDto.getPdCode());
+					pstmt2.setInt(4, cartDto.getSizeCode());
+
+					rowCount = pstmt2.executeUpdate();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -539,7 +550,7 @@ public class ProductDAO implements IProduct {
 		return rowCount;
 	}
 
-
+	// 상품리뷰
 	@Override
 	public LinkedHashMap<ReviewDTO, ArrayList<ReviewImgDTO>> selectReview(Connection conn, String pdCode) throws SQLException {
 
@@ -550,8 +561,9 @@ public class ProductDAO implements IProduct {
 		ReviewDTO revDto = null;
 		ArrayList<ReviewImgDTO> imgList = null;
 
-		String  sql = "SELECT rev_seq, user_code, ord_code, sz, color, rev_date, rev_content, rev_good, rev_bad, rev_starscore "
-				+ "FROM review "
+		String  sql = "SELECT rev_seq, r.user_code, ord_code, sz, color, rev_date, rev_content, rev_good, rev_bad, rev_starscore "
+				+ ", RPAD(SUBSTR(user_name, 0, 1), 6, '****') userName, UPPER(lv) lv  "
+				+ "FROM review r join user_info u on r.user_code = u.user_code "
 				+ "WHERE pd_code = ? ";
 
 		try {
@@ -572,15 +584,17 @@ public class ProductDAO implements IProduct {
 							rs.getString("rev_content"),
 							rs.getInt("rev_good"),
 							rs.getInt("rev_bad"),
-							rs.getDouble("rev_starscore")
+							rs.getDouble("rev_starscore"),
+							rs.getString("userName"),
+							rs.getString("lv")
 							);
 
 					String sql2 = " SELECT r.rev_seq rev_seq, rev_img "
 							+ "FROM review r join review_image i on r.rev_seq = i.rev_seq "
-							+ "WHERE pd_code = ? ";
+							+ "WHERE r.rev_seq = ? ";
 
 					pstmt2 = conn.prepareStatement(sql2);
-					pstmt2.setString(1, pdCode);
+					pstmt2.setInt(1, revDto.getRevSeq());
 					rs2 = pstmt2.executeQuery();
 
 					if (rs2.next()) {
@@ -608,6 +622,7 @@ public class ProductDAO implements IProduct {
 
 	}
 
+	// 상품리뷰 개수, 평균
 	@Override
 	public ReviewDTO totalReview(Connection conn, String pdCode) throws SQLException {
 
@@ -639,7 +654,54 @@ public class ProductDAO implements IProduct {
 		return rDto;
 	}
 
+	
+	// 상품문의 리스트
+	@Override
+	public ArrayList<ProductQnaDTO> selectProductQna(Connection conn, String pdCode) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		String sql = "SELECT RPAD(SUBSTR(user_id, 0, 4), LENGTH(SUBSTR(user_id, 4)) + 3, '*') user_id,  "
+				+ "q.user_code user_code, qna_writedate, qna_status, qna_title, qna_content, qna_file, qna_private, qna_reply "
+				+ "FROM qna q JOIN user_info u ON q.user_code = u.user_code "
+				+ "WHERE pd_code = ? and qt_seq = 3 "
+				+ "ORDER BY qna_writedate DESC ";
 
+		ProductQnaDTO qnaDto = null;
+		ArrayList<ProductQnaDTO> qnaList = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);   
+			pstmt.setString(1, pdCode);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				qnaList = new ArrayList<ProductQnaDTO>();
+				do {
+					qnaDto = new ProductQnaDTO(
+							rs.getString("user_id"),
+							rs.getString("user_code"),
+							rs.getString("qna_writedate"),
+							rs.getString("qna_status"),
+							rs.getString("qna_title"),
+							rs.getString("qna_content"),
+							rs.getString("qna_file"),
+							rs.getInt("qna_private"),
+							rs.getString("qna_reply")
+							);
+
+					qnaList.add(qnaDto);
+				}while(rs.next());
+			} 
+
+		} finally {
+			try {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}catch(Exception e) {            
+			}
+		}   
+
+		return qnaList;
+	}
 
 }

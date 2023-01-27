@@ -15,6 +15,7 @@ import product.domain.CartCountDTO;
 import product.domain.ProductColorDTO;
 import product.domain.ProductDTO;
 import product.domain.ProductImageDTO;
+import product.domain.ProductQnaDTO;
 import product.domain.ProductSizeDTO;
 import product.domain.ReviewDTO;
 import product.domain.ReviewImgDTO;
@@ -37,9 +38,10 @@ public class SelectProductHandler implements CommandHandler {
 		ArrayList<ProductDTO> relatedPdList = null;
 		ArrayList<ProductColorDTO> diffColorList = null;
 		ProductColorDTO colorDto = null;
-		ArrayList<CartCountDTO> cartCntList = null;
+		//ArrayList<CartCountDTO> cartCntList = null;
 		LinkedHashMap<ReviewDTO, ArrayList<ReviewImgDTO>> revMap = null;
 		ReviewDTO rDto = null;
+		ArrayList<ProductQnaDTO> qnaList = null;
 
 		HttpSession session = request.getSession(false);
 		if(session != null) {
@@ -60,6 +62,7 @@ public class SelectProductHandler implements CommandHandler {
 		colorDto = productService.getPdColor(pdCode);
 		revMap = productService.selectReview(pdCode);
 		rDto = productService.totalReview(pdCode);
+		qnaList = productService.selectProductQna(pdCode);
 		
 		// request 객체에 저장;
 		request.setAttribute("pdDto", pdDto);
@@ -70,6 +73,7 @@ public class SelectProductHandler implements CommandHandler {
 		request.setAttribute("colorDto", colorDto);
 		request.setAttribute("revMap", revMap);
 		request.setAttribute("rDto", rDto);
+		request.setAttribute("qnaList", qnaList);
 
 		return "/product/productDetail.jsp";
 
