@@ -5,12 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.apache.catalina.tribes.util.Arrays;
 
 import jdbc.connection.JdbcUtil;
 import manager.service.MemberView;
@@ -163,21 +158,21 @@ public class MemberDAO implements IMember {
 	      PreparedStatement pstmt = null;
 
 	      String sql="update user_info "
-	            + "set  user_pwd = ? , user_phone=?,user_tel = ?, user_recelveinfo = ?,user_spacialdate = ?, user_email = ? , "
+	            + "set user_tel = ?, user_receiveinfo = ?,user_specialdate = ?, user_email = ? , "
 	            + "user_zipcode= ?,user_address1 = ?, user_address2 = ? where user_code = ?";
-	          
+	      
 	      try {
 	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1, myInfo.getUserPwd());
-	         pstmt.setString(2, myInfo.getUserPhone());
-	         pstmt.setString(3, myInfo.getUserTel());
-	         pstmt.setInt   (4, myInfo.getUserReceiveinfo());
-	         pstmt.setString(5, myInfo.getUserSpecialdate());
-	         pstmt.setString(6, myInfo.getUserEmail());
-	         pstmt.setInt(7, myInfo.getUserZipcode());
-	         pstmt.setString(8, myInfo.getUserAddress1());
-	         pstmt.setString(9, myInfo.getUserAddress2());
-	         pstmt.setString(10, myInfo.getUserCode());
+	       
+	        
+	         pstmt.setString(1, myInfo.getUserTel());
+	         pstmt.setInt   (2, myInfo.getUserReceiveinfo());
+	         pstmt.setString(3, myInfo.getUserSpecialdate());
+	         pstmt.setString(4, myInfo.getUserEmail());
+	         pstmt.setInt(5, myInfo.getUserZipcode());
+	         pstmt.setString(6, myInfo.getUserAddress1());
+	         pstmt.setString(7, myInfo.getUserAddress2());
+	         pstmt.setString(8, myInfo.getUserCode());
 	         int rowCount = pstmt.executeUpdate();
 				System.out.println("안녕"+rowCount);
 				return rowCount;
@@ -477,4 +472,61 @@ public class MemberDAO implements IMember {
 		return null;
 	}
 
+	
+	//회원탈퇴
+	@Override
+	public int deleteUpd(Connection conn, String userCode) throws SQLException {
+		String sql = "UPDATE user_info "
+				+ " set user_state = -1"
+				+ "WHERE user_code = ?";
+	
+
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userCode);
+			
+			
+			
+			
+			
+			int rowCount = pstmt.executeUpdate();
+			
+
+			return rowCount;
+		} finally {
+			JdbcUtil.close(pstmt);
+		
+
+		}
+	}
+	
+//호ㅣ원탈퇴
+	@Override
+	public int deleteIns(Connection conn, String userCode) throws SQLException {
+	
+	String sql = "insert into delete_user "
+			+ "VALUES (del_seq.nextval, ?, sysdate)";
+	
+	PreparedStatement pstmt = null;
+	
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userCode);
+				
+				
+			
+				
+				
+				int rowCount = pstmt.executeUpdate();
+			
+
+				return rowCount;
+			} finally {
+				JdbcUtil.close(pstmt);
+			
+			}
+	}
 }

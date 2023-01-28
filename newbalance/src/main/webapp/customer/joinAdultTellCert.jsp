@@ -144,7 +144,7 @@
 						"custName": $("input[name='custName']").val()
 						, "cellNo": $("select[name='cellNo01']").val() + $("input[name='cellNo02']").val() + $("input[name='cellNo03']").val()
 						, "birthday": $("select[name='birthYear']").val() + $("select[name='birthMonth']").val() + $("select[name='birthDate']").val()
-						, "nation": $("select[name='nation']").val()
+						, "nation": $("sbtnRequestsmsCertelect[name='nation']").val()
 						, "custSex": $("select[name='custSex']").val()
 						, "telecom": $("select[name='telecom']").val()
 						, "oknameRequestType": $("input[name='oknameRequestType']").val()
@@ -2173,12 +2173,12 @@
                                 <span class="select_box">
                                     <select id="telecom" name="telecom" title="통신사">
                                         <option value="">선택</option>
-                                        <option value="01">SKT</option>
-                                        <option value="02">KT</option>
-                                        <option value="03">LG U+</option>
-                                        <option value="04">SKT 알뜰폰</option>
-                                        <option value="05">KT 알뜰폰</option>
-                                        <option value="06">LG U+ 알뜰폰 </option>
+                                        <option value="SKT">SKT</option>
+                                        <option value="KT">KT</option>
+                                        <option value="LG U+">LG U+</option>
+                                        <option value="SKT 알뜰폰">SKT 알뜰폰</option>
+                                        <option value="KT 알뜰폰">KT 알뜰폰</option>
+                                        <option value="LG U+ 알뜰폰">LG U+ 알뜰폰 </option>
                                     </select>
                                 </span>
                                 <a href="javascript:;" id="btnLayerPopup05" class="btn_line">알뜰폰 사업자 보기</a>

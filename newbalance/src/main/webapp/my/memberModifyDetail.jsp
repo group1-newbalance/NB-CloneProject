@@ -10,7 +10,7 @@
 <title>뉴발란스 공식 온라인스토어</title>
 <link rel="icon" type="image/x-icon"
    href="https://image.nbkorea.com/NBRB_Favicon/favicon.ico">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com0xz/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/newbalance/css/my/memberModifyDetail.css" /> 
 
 <link rel="stylesheet" href="/newbalance/common/header.css">
@@ -21,898 +21,414 @@
 		div#smsCertInputArea{display: none;}
 		
 	</style>
-	<script type="text/javascript">
-		var remainingSecond = 180;
-		var intervalObject = null;
-		var requestsmsCertProcess = false;
-		var ajaxProcessing = false;
-		$(window.document).ready(function(){
-			
-			
-		
-				
-				$.ajax({
-					url: "/newbalance/sms/registSendAuthNo.ajx",
-					type: "POST",
-					async: false,
-					data: { 
-						"custName": $("input[name='custName']").val()
-						, "cellNo": $("select[name='cellNo01']").val() + $("input[name='cellNo02']").val() + $("input[name='cellNo03']").val()
-						, "birthday": $("select[name='birthYear']").val() + $("select[name='birthMonth']").val() + $("select[name='birthDate']").val()
-						, "nation": $("select[name='nation']").val()
-						, "custSex": $("select[name='custSex']").val()
-						, "telecom": $("select[name='telecom']").val()
-						, "oknameRequestType": $("input[name='oknameRequestType']").val()
-					},
-					dataType: 'json',
-					success: function (data) {
-						
-						countDown();
-						
-						$("#btnRequestsmsCertAgain").show();
-						$("div#smsCertInputArea").show();
-						$("input[name='svcTxSeqno']").val(data.svcTxSeqno);
-						$("input[name='sendTime']").val(data.sendTime);
-						$("input[name='smsCertNumber']").focus();
-						
-						requestsmsCertProcess = false;
-						
-					}, beforeSend: function(){
-						requestsmsCertProcess = true;
-					}, error: function(request, status, error){
-						requestsmsCertProcess = false;
-						window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-					}
-				});
-			});
-			
-			
-			$("#btnRequestsmsCertAgain").click(function(){
-				
-				if(requestsmsCertProcess == true)
-				{
-					window.alert("이미 처리 중입니다.");
-					return;
-				}
-				
-				if(checkValidation() == false)
-				{
-					return;				
-				}
-				
-				if($("input[name='svcTxSeqno']").val().trim() == "")
-				{
-					window.alert("인증번호를 재전송할 수 없습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-					return;
-				}
-				
-				$.ajax({
-					url: "/newbalance/sms/registSendAuthNo.ajx",
-					type: "POST",
-					async: false,
-					data: { 
-						"custName": $("input[name='custName']").val()
-						, "cellNo": $("select[name='cellNo01']").val() + $("input[name='cellNo02']").val() + $("input[name='cellNo03']").val()
-						, "birthday": $("select[name='birthYear']").val() + $("select[name='birthMonth']").val() + $("select[name='birthDate']").val()
-						, "nation": $("select[name='nation']").val()
-						, "custSex": $("select[name='custSex']").val()
-						, "telecom": $("select[name='telecom']").val()
-						, "svcTxSeqno": $("input[name='svcTxSeqno']").val()
-						, "oknameRequestType": $("input[name='oknameRequestType']").val()
-					},
-					dataType: 'json',
-					success: function (data) {
-						
-						resetCountDown();
-						$("input[name='sendTime']").val(data.sendTime);
-						$("input[name='smsCertNumber']").focus();
-						window.alert("인증번호를 재요청하였습니다.");
-						
-						requestsmsCertProcess = false;
-						
-					}, beforeSend: function(){
-						requestsmsCertProcess = true;
-					}, error: function(request, status, error){
-						requestsmsCertProcess = false;
-						console.log(request.resultMessage);
-						window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-					}
-				});
-			});
-			
-			
-		
-			
-			
-			$("#btnConfirmsmsCert").click(function(){
-				
-				if(requestsmsCertProcess == true)
-				{
-					window.alert("이미 처리 중입니다.");
-					return;
-				}
-				
-				if(checkValidation() == false)
-				{
-					return;				
-				}
-				
-				if($("input[name='svcTxSeqno']").val().trim() == "")
-				{
-					window.alert("인증번호를 확인할 수 없습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-					return;
-				}
-				
-				if($("input[name='sendTime']").val().trim() == "")
-				{
-					window.alert("인증번호를 확인할 수 없습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-					return;
-				}
-				
-				if(remainingSecond <= 0)
-				{
-					window.alert("인증번호 입력 시간이 초과했습니다. 인증번호 재전송 후 이용해주세요.");
-					return;
-				}
-				
-				if($("input[name='smsCertNumber']").val().trim() == "")
-				{
-					window.alert("인증번호를 입력해주세요.");
-					return;
-				}
-				
-				$.ajax({
-					url: "/newbalance/sms/checkSmsAuthCode.ajx",
-					type: "POST",
-					async: false,
-					data: { 
-						"cellNo": $("select[name='cellNo01']").val() + $("input[name='cellNo02']").val() + $("input[name='cellNo03']").val()
-						, "svcTxSeqno": $("input[name='svcTxSeqno']").val()
-						, "smsCertNumber": $("input[name='smsCertNumber']").val()
-						, "sendTime": $("input[name='sendTime']").val()
-					},
-					dataType: 'json',
-					success: function (data) {
-						
-						$("input[name='ci']").val(data.ci);
-						$("input[name='di']").val(data.di);
-						$("input[name='hpOK']").val("Y");
-						$("input[name='cellNo']").val($("select[name='cellNo01']").val() + $("input[name='cellNo02']").val() + $("input[name='cellNo03']").val());
-						$("input[name='birthDay']").val($("select[name='birthYear']").val() + $("select[name='birthMonth']").val() + $("select[name='birthDate']").val());
-				    	if($("select[name='nation'] option:selected").val() == "1") {
-				    		$("select[name='nation'] option:selected").val("0");
-						}								
-				    	if($("select[name='nation'] option:selected").val() == "2") {
-				    		$("select[name='nation'] option:selected").val("1");
-						}							
-						$("form[name='joinForm']").attr("action", "/customer/joinAdultOverCheck.action").submit();
+<script>
 
-						window.clearInterval(intervalObject);
-						
-						requestsmsCertProcess = false;
-						
-					}, beforeSend: function(){
-						requestsmsCertProcess = true;
-					}, error: function(request, status, error){
-						requestsmsCertProcess = false;
-						window.alert("인증번호 확인을 실패하였습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-					}
-				});
-			});
-		
-		
-		function OnlyNumberEtcRemove(obj) {
-			return $(obj).val($(obj).val().replace(/[^0-9]/gi,""));
-		};
-		function checkValidation()
-		{
-			
-			var custName = $("input[name='custName']");
-			var cellNo01 = $("select[name='cellNo01']");
-			var cellNo02 = $("input[name='cellNo02']");
-			var cellNo03 = $("input[name='cellNo03']");
-			var custSex = $("select[name='custSex']");
-			var telecom = $("select[name='telecom']");
-			var oknameRequestType = $("input[name='oknameRequestType']");
-			var birthYear = $("select[name='birthYear']");
-			var birthMonth = $("select[name='birthMonth']");
-			var birthDate = $("select[name='birthDate']");			
-			
-			if(oknameRequestType.val() == "")
-			{
-				window.alert("인증번호를 재전송할 수 없습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-				return false;
-			}
-			
-		
-			
-			
-			cellNo = cellNo01.val() + cellNo02.val()
-			+ cellNo03.val();
-	$("input[name='cellNo']").val(cellNo01.val()+"-"+cellNo02.val()+"-"+cellNo03.val());
-	console.log(cellNo);
-	//인증번호 요청을 날리면
-	$.ajax({
-				url : "/newbalance/sms/registSendAuthNo.ajx",
-				type : "POST",
-				async : false,
-				data : {
-					"receiveNumber" : cellNo
-				},
-				dataType : 'json',
-				success : function(data) {
-					console.log("Data : ", data);
-					if (data.result == "00") {
-						countDown();
-						$("input[name='authCode']")
-								.val(data.authCode);
-						$("#btnRequestsmsCert")
-								.hide();
-						$(
-								"#btnRequestsmsCertAgain")
-								.show();
-						$("div#smsCertInputArea")
-								.show();
-						$(
-								"input[name='smsCertNumber']")
-								.focus();
-						smsRequestAgain = true;
-					} else {
-						window
-								.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-					}
 
-					ajaxProcessing = false;
 
-				},
-				beforeSend : function() {
-					ajaxProcessing = true;
-				},
-				error : function(request, status,
-						error) {
-					console.log("error : ", error);
-					ajaxProcessing = false;
-					window
-							.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-				}
-			});
 
-			return true;
-		}
-		
-		function countDown() {
-			
-			var minute = LPad(Math.floor(remainingSecond / 60), 2, "0");
-			var second = LPad(remainingSecond % 60, 2, "0");
+var ajaxProcessing = false;	
 
-			$("div#remainingSecond").text(minute + ":" + second);
+var remainingSecond = 180;
+var intervalObject = null;	
 
-			remainingSecond--;
+var smsRequestAgain = false;
 
-			if (intervalObject == null) {
-				intervalObject = window.setInterval("countDown()", 1000);
-			}
-
-			if (remainingSecond < 0) {
-				window.clearInterval(intervalObject);
-				intervalObject = null;
-				window.alert("인증번호 입력 시간이 초과했습니다.");
-			}
-		}
-		function LPad(digit, size, attatch) {
-			var add = "";
-			digit = digit.toString();
-
-			if (digit.length < size) {
-				var len = size - digit.length;
-				for (i = 0; i < len; i++) {
-					add += attatch;
-				}
-			}
-			return add + digit;
-		}
-		
-		function resetCountDown()
-		{
-			window.clearInterval(intervalObject);
-			intervalObject = null;
-			remainingSecond = 180;
-			countDown();
-		}
-		
-		function layerCenter(val){
-			val.css("position","absolute");
-			val.css("top", Math.max(0, (($(window).height() - $(val).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-			val.css("left", Math.max(0, (($(window).width() - $(val).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-
-			return val;
-		}		
-		
-	</script>
-<script type="text/javascript">
+$(window.document).ready(function(){
 	
+	
+	$("#postFind").click(function(){
+		popupDaumPost($("#txtOrderZipCode"), $("#txtOrderAddr1"), $("#txtOrderAddr2"));
+	});
+	
+	
+	$("select[name='newCellNo01']").change(function(){
+		$("#cellText01").hide();
+	});	
+	
+	
+	$("input[name='newCellNo02']").keyup(function(){
+		$("#cellText02").hide();
+		NbUtil.OnlyNumberEtcRemove(this);	
+	});	
+	
+	$("input[name='newCellNo03']").keyup(function(){
+		$("#cellText03").hide();
+		NbUtil.OnlyNumberEtcRemove(this);
+	});
+	
+	
+	$("#btnLayerPopupPwChange").click(function(){
 		
-		var ajaxProcessing = false;	
+		if(checkPwValidation() == false)
+		{
+			return;				
+		}
 		
-		var remainingSecond = 180;
-		var intervalObject = null;	
-		
-		var smsRequestAgain = false;
-		
-		$(window.document).ready(function(){
-			
-			
-			$("#postFind").click(function(){
-				popupDaumPost($("#txtOrderZipCode"), $("#txtOrderAddr1"), $("#txtOrderAddr2"));
-			});
-			
-			
-			$("select[name='newCellNo01']").change(function(){
-				$("#cellText01").hide();
-			});	
-			
-			
-			$("input[name='newCellNo02']").keyup(function(){
-				$("#cellText02").hide();
-				NbUtil.OnlyNumberEtcRemove(this);	
-			});	
-			
-			$("input[name='newCellNo03']").keyup(function(){
-				$("#cellText03").hide();
-				NbUtil.OnlyNumberEtcRemove(this);
-			});
-			
-			
-			$("#btnLayerPopupPwChange").click(function(){
+		$.ajax({
+			url: "/my/customer/memberModifyPwCheck.action",
+			type: "POST",
+			async: false,
+			data: { 
+				"custId": $("input[name='custId']").val()
+				,"custPw": $("input[name='custPw']").val()
+			},
+			dataType: 'json',
+			success: function (data) {
 				
-				if(checkPwValidation() == false)
+				if(data.result == "Y")
 				{
-					return;				
+					updateMemberPwChange();
 				}
-				
-				$.ajax({
-					url: "/my/customer/memberModifyPwCheck.action",
-					type: "POST",
-					async: false,
-					data: { 
-						"custId": $("input[name='custId']").val()
-						,"custPw": $("input[name='custPw']").val()
-					},
-					dataType: 'json',
-					success: function (data) {
-						
-						if(data.result == "Y")
-						{
-							updateMemberPwChange();
-						}
-						else
-						{
-							window.alert(data.resultMessage);
-						}
-						
-					}, error: function(request, status, error){
-						window.alert("비밀번호 연장을 실패하였습니다.");
-					}
-				});				
-			});
-			
-			
-			$("#btnLayerPopupPwSetting").click(function(){
-				
-				if(checkPwSettingValidation() == false)
+				else
 				{
-					return;				
+					window.alert(data.resultMessage);
 				}
 				
-				$.ajax({
-					url: "/my/customer/memberModifyPwSetting.action",
-					type: "POST",
-					async: false,
-					data: { 
-						"settingCustPw": $("input[name='settingCustPw']").val()
-					},
-					dataType: 'json',
-					success: function (data) {
-						if(data.result == "Y")
-						{
-							$("#layerPopupDimmed").hide();
-							$("#pwSettingLayer").hide();
-							$("#pwChange").text("비밀번호 설정을 완료하였습니다.").show();
-						}
-						else
-						{
-							window.alert(data.resultMessage);
-						}
-						
-					}, error: function(request, status, error){
-						window.alert("비밀번호 설정을 실패하였습니다.");
-					}
-				});		
-			});
-			
-			
-			$("input#homeTel").click(function(){
-				if($("input:checkbox[name='homeTel']").is(":checked")){
-					$("#phoneNum1").val("");
-					$("#phoneNum1").attr("disabled",true);
-					$("#phoneNum2").val("");
-					$("#phoneNum2").attr("readonly",true);
-					$("#phoneNum3").val("");
-					$("#phoneNum3").attr("readonly",true);
-				}else{
-					$("#phoneNum1").attr("disabled",false);
-					$("#phoneNum2").val("");
-					$("#phoneNum2").attr("readonly",false);
-					$("#phoneNum3").val("");
-					$("#phoneNum3").attr("readonly",false);
-				}				
-			});
-			
-			$("#btnCellChange").click(function(){
-				$("#cellChangeForm").show();
-			});	
-			
-			$("#btnCellChange").click(function(){
-				$("#cellChangeForm").show();
-			});	
-			
-			
-			
-			
-			$("#btnCellChangeCancel").click(function(){
-				$("#cellChangeForm").hide();
-			});	
-			
-			
-			$("#btnCellChange").click(function(){
-				$("#cellChangeForm").show();
-			});	
-			
-			
-			
-			$("#btnPwChange").click(function(){
-				$("#layerPopupDimmed").show();
-				$("#pwChangeLayer").show();
-				layerCenter($("#pwChangeLayer"));
-			});
-			
-			
-			$("#btnPwSetting").click(function(){
-				$("#layerPopupDimmed").show();
-				$("#pwSettingLayer").show();
-				layerCenter($("#pwSettingLayer"));
-			});
-			
-			
-			$("#btnLayerPopupPwChangeClose").click(function(){
-				$("#layerPopupDimmed").hide();
-				$("#pwChangeLayer").hide();
-				$("input[name='custPw']").val("");
-				$("input[name='newCustPw']").val("");
-				$("input[name='newCustPWConfirm']").val("");
-			});
-			
-			
-			$("#btnLayerPopupPwSettingClose").click(function(){
-				$("#layerPopupDimmed").hide();
-				$("#pwSettingLayer").hide();
-				$("input[name='settingCustPw']").val("");
-				$("input[name='settingCustPwConfirm']").val("");				
-			});
-			
-			
+			}, error: function(request, status, error){
+				window.alert("비밀번호 연장을 실패하였습니다.");
+			}
+		});				
+	});
+	
+	
+	$("#btnLayerPopupPwSetting").click(function(){
 		
-			
-			$("select#emailDomain").change(function(){
-				if(this.selectedIndex == 0) {
-					$("input[name='txtOrderEmail2']").attr("disabled", false);
-					$("input[name='txtOrderEmail2']").focus();
-				} else {
-					$("input[name='txtOrderEmail2']").attr("disabled", true);
-					$("input[name='txtOrderEmail2']").val($(this).val());
-				}
-			});	
-			
-			
-			$("#btnAuthNumberRequest").click(function(){
-				
-				var newCellNo01 = $("select[name='newCellNo01']");
-				var newCellNo02 = $("input[name='newCellNo02']");
-				var newCellNo03 = $("input[name='newCellNo03']");
-				var newCellNo = "";
-				
-				if(ajaxProcessing == true)
+		if(checkPwSettingValidation() == false)
+		{
+			return;				
+		}
+		
+		$.ajax({
+			url: "/my/customer/memberModifyPwSetting.action",
+			type: "POST",
+			async: false,
+			data: { 
+				"settingCustPw": $("input[name='settingCustPw']").val()
+			},
+			dataType: 'json',
+			success: function (data) {
+				if(data.result == "Y")
 				{
-					window.alert("이미 처리 중입니다.");
-					return;
+					$("#layerPopupDimmed").hide();
+					$("#pwSettingLayer").hide();
+					$("#pwChange").text("비밀번호 설정을 완료하였습니다.").show();
 				}
+				else
+				{
+					window.alert(data.resultMessage);
+				}
+				
+			}, error: function(request, status, error){
+				window.alert("비밀번호 설정을 실패하였습니다.");
+			}
+		});		
+	});
+	
+	
+	$("input#homeTel").click(function(){
+		if($("input:checkbox[name='homeTel']").is(":checked")){
+			$("#phoneNum1").val("");
+			$("#phoneNum1").attr("disabled",true);
+			$("#phoneNum2").val("");
+			$("#phoneNum2").attr("readonly",true);
+			$("#phoneNum3").val("");
+			$("#phoneNum3").attr("readonly",true);
+		}else{
+			$("#phoneNum1").attr("disabled",false);
+			$("#phoneNum2").val("");
+			$("#phoneNum2").attr("readonly",false);
+			$("#phoneNum3").val("");
+			$("#phoneNum3").attr("readonly",false);
+		}				
+	});
+	
+	
+	$("#btnPwChange").click(function(){
+		$("#layerPopupDimmed").show();
+		$("#pwChangeLayer").show();
+		layerCenter($("#pwChangeLayer"));
+	});
+	
+	
+	$("#btnPwSetting").click(function(){
+		$("#layerPopupDimmed").show();
+		$("#pwSettingLayer").show();
+		layerCenter($("#pwSettingLayer"));
+	});
+	
+	
+	$("#btnLayerPopupPwChangeClose").click(function(){
+		$("#layerPopupDimmed").hide();
+		$("#pwChangeLayer").hide();
+		$("input[name='custPw']").val("");
+		$("input[name='newCustPw']").val("");
+		$("input[name='newCustPWConfirm']").val("");
+	});
+	
+	
+	$("#btnLayerPopupPwSettingClose").click(function(){
+		$("#layerPopupDimmed").hide();
+		$("#pwSettingLayer").hide();
+		$("input[name='settingCustPw']").val("");
+		$("input[name='settingCustPwConfirm']").val("");				
+	});
+	
+	
+	$("#btnCellChange").click(function(){
+		$("#cellChangeForm").show();
+	});	
+	
+	
+	$("#btnCellChangeCancel").click(function(){
+		$("#cellChangeForm").hide();
+	});	
+	
+	
+	$("select#emailDomain").change(function(){
+		if(this.selectedIndex == 0) {
+			$("input[name='txtOrderEmail2']").attr("disabled", false);
+			$("input[name='txtOrderEmail2']").focus();
+		} else {
+			$("input[name='txtOrderEmail2']").attr("disabled", true);
+			$("input[name='txtOrderEmail2']").val($(this).val());
+		}
+	});	
+	
+	
+	$("#btnAuthNumberRequest").click(function(){
+		
+		var newCellNo01 = $("select[name='newCellNo01']");
+		var newCellNo02 = $("input[name='newCellNo02']");
+		var newCellNo03 = $("input[name='newCellNo03']");
+		var newCellNo = "";
+		
+		if(ajaxProcessing == true)
+		{
+			window.alert("이미 처리 중입니다.");
+			return;
+		}
 
-				if(checkHpValidation() == false)
+		if(checkHpValidation() == false)
+		{
+			return;				
+		}
+		
+		newCellNo = newCellNo01.val() + newCellNo02.val() + newCellNo03.val();
+		
+		$("#cellText01").hide();
+		$("#cellText02").hide();
+		$("#cellText03").hide();
+		
+		$.ajax({
+			url: "/sms/registSendAuthNo.action",
+			type: "POST",
+			async: false,
+			data: {"receiveNumber" : newCellNo},
+			dataType: 'json',
+			success: function (data) {
+				if(data.result == "00")
 				{
-					return;				
+					$("#smsMessage").text(data.message);
+					countDown();
+					$("input[name='authCode']").val(data.authCode);
+					$("#btnAuthNumberRequest").hide();
+					$("#btnAuthNumberRequestAgain").show();
+					$("div#smsCertInputArea").show();
+					$("input[name='smsCertNumber']").focus();
+					smsRequestAgain = true;
 				}
-				
-				newCellNo = newCellNo01.val() + newCellNo02.val() + newCellNo03.val();
-				
-				$("#cellText01").hide();
-				$("#cellText02").hide();
-				$("#cellText03").hide();
-				
-				$.ajax({
-					url: "/sms/registSendAuthNo.action",
-					type: "POST",
-					async: false,
-					data: {"receiveNumber" : newCellNo},
-					dataType: 'json',
-					success: function (data) {
-						if(data.result == "00")
-						{
-							$("#smsMessage").text(data.message);
-							countDown();
-							$("input[name='authCode']").val(data.authCode);
-							$("#btnAuthNumberRequest").hide();
-							$("#btnAuthNumberRequestAgain").show();
-							$("div#smsCertInputArea").show();
-							$("input[name='smsCertNumber']").focus();
-							smsRequestAgain = true;
-						}
-						else
-						{
-							window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-						}
-						
-						ajaxProcessing = false;
-						
-					}, beforeSend: function(){
-						ajaxProcessing = true;
-					}, error: function(request, status, error){
-						ajaxProcessing = false;
-						window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-					}
-				});
-			});	
-			
-			
-			
-			
-			$("#btnAuthNumberRequestAgain").click(function(){
-				window.clearInterval(intervalObject);
-				intervalObject = null;
-				remainingSecond = 180;
-				smsRequestAgain = false;
-				
-				$("#btnAuthNumberRequest").click();
-				if(smsRequestAgain == true) {
-					window.alert("인증번호를 재요청하였습니다.");
-				}
-			});	
-			
-			
-			$("#btnAuthNumberConfirm").click(function(){
-				
-				var sendAuthCode = $("input[name='authCode']").val().trim();
-				var inputAuthCode = $("input[name='smsCertNumber']").val().trim();
-				
-				if(inputAuthCode == "")
-				{
-					window.alert("인증번호를 입력해주세요.");
-					return false;
-				}
-				
-				if(sendAuthCode == "")
+				else
 				{
 					window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
-					return false;
 				}
 				
-				if(remainingSecond <= 0)
-				{
-					window.alert("인증번호 입력 시간이 초과했습니다. 인증번호 재전송 후 이용해주세요.");
-					return;
-				}				
+				ajaxProcessing = false;
 				
-				$.ajax({
-					url: "/sms/checkSmsAuthCode.action",
-					type: "POST",
-					async: false,
-					data: {"sendAuthCode" : sendAuthCode, "inputAuthCode" : inputAuthCode},
-					dataType: 'json',
-					success: function (data) {
-						if(data.result == "00")
-						{
-							var newCellNo01 = $("select[name='newCellNo01']").val();
-							var newCellNo02 = $("input[name='newCellNo02']").val();
-							var newCellNo03 = $("input[name='newCellNo03']").val();
-							$("input[name='cellNo']").val(newCellNo01 + newCellNo02 + newCellNo03);
-							$("select[name='cellNo01']").val(newCellNo01).prop("selected", true);
-							$("input[name='cellNo02']").val(newCellNo02);
-							$("input[name='cellNo03']").val(newCellNo03);
-							$("div#smsCertInputArea").hide();
-							$("#cellChangeForm").hide();
-							
-							window.clearInterval(intervalObject);
-						}
-						else
-						{
-							window.alert("인증번호가 일치하지 않습니다.다시 한번 확인 후 입력해주세요.");
-						}
-						
-						ajaxProcessing = false;
-						
-					}, beforeSend: function(){
-						ajaxProcessing = true;
-					}, error: function(request, status, error){
-						ajaxProcessing = false;
-						window.alert("인증번호 확인을 실패하였습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
-					}
-				});
-				
-			});		
-			
-			$("#btnCancel").click(function(){
-				if(confirm("회원정보 수정을 종료하시겠습니까?")) {
-					$("form[name='myForm']").attr("action", "/my/main.action").attr("target", "_self").submit();
-				}
-			});			
-			
-			$("#btnMemberModify").click(function(){
-				if(checkValidation() == false)
-				{
-					return;				
-				}
-				
-				$("form[name='myForm']").attr("action", "/newbalance/my/customer/memberModifyProc.action").attr("target", "_self").submit();
-			});				
-			
-		});	
-		
-		
-		function updateMemberPwChange()	{
-			$.ajax({
-				url: "/my/customer/memberModifyPwChange.action",
-				type: "POST",
-				async: false,
-				data: { 
-					"custPw": $("input[name='custPw']").val()
-					,"newCustPw": $("input[name='newCustPw']").val()
-				},
-				dataType: 'json',
-				success: function (data) {
-					if(data.result == "Y")
-					{
-						$("#layerPopupDimmed").hide();
-						$("#pwChangeLayer").hide();
-						$("#pwChange").text("비밀번호가 변경되었습니다.").show();
-						$("input[name='custPw']").val($("input[name='newCustPw']").val());
-					}
-					else
-					{
-						window.alert(data.resultMessage);
-					}
-					
-				}, error: function(request, status, error){
-					window.alert("비밀번호 연장을 실패하였습니다.");
-				}
-			});	 
-		}
-		
-		
-		function checkPwValidation()
-		{
-			var custPw = $("input[name='custPw']");
-			var newCustPw = $("input[name='newCustPw']");
-			var newCustPWConfirm = $("input[name='newCustPWConfirm']");
-			
-			if(custPw.val().trim() == "")
-			{
-				window.alert("비밀번호를 입력해 주세요.");
-				custPw.focus();
-				return false;
+			}, beforeSend: function(){
+				ajaxProcessing = true;
+			}, error: function(request, status, error){
+				ajaxProcessing = false;
+				window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
 			}
-			
-			if(newCustPw.val().trim() == "")
-			{
-				window.alert("변경할 비밀번호를 입력해 주세요.");
-				newCustPw.focus();
-				return false;
-			}			
-			
-			if(newCustPWConfirm.val().trim() == "")
-			{
-				window.alert("비밀번호를 다시 한번 입력해주세요.");
-				newCustPWConfirm.focus();
-				return false;
-			}
-						
-			if(!isValidPwd2(newCustPw.val().trim()))
-			{
-				window.alert("비밀번호는 8~12자 이내 영문,숫자,특수문자 조합으로 입력하셔야 합니다.");
-				newCustPw.focus();
-				return false;
-			}
-
-			if(!isValidPwdChk(newCustPw.val().trim()))
-			{
-				window.alert("연속된 혹은 알기 쉬운 방식의 비밀번호는 사용하실 수 없습니다.");
-				newCustPw.focus();
-				return false;
-			}
-			
-			if(newCustPw.val().trim() != newCustPWConfirm.val().trim())
-			{
-				window.alert("입력하신 두 개의 비밀번호가 일치하지 않습니다.");
-				newCustPWConfirm.focus();
-				return false;
-			}
-			
-			if(custPw.val().trim() == newCustPw.val().trim())
-			{
-				window.alert("이전과 다른 비밀번호를 입력해주세요.");
-				newCustPw.focus();
-				return false;
-			}
-			
-			return true;
-		}
-		
-		
-		function checkPwSettingValidation()
-		{
-			var settingCustPw = $("input[name='settingCustPw']");
-			var settingCustPwConfirm = $("input[name='settingCustPwConfirm']");
-			
-			if(settingCustPw.val().trim() == "")
-			{
-				window.alert("설정할 비밀번호를 입력해 주세요.");
-				settingCustPw.focus();
-				return false;
-			}
-			
-			if(settingCustPwConfirm.val().trim() == "")
-			{
-				window.alert("설정할 비밀번호를 한번 더 입력해 주세요.");
-				settingCustPwConfirm.focus();
-				return false;
-			}
-						
-			if(!isValidPwd2(settingCustPw.val().trim()))
-			{
-				window.alert("비밀번호는 8~12자 이내 영문,숫자,특수문자 조합으로 입력하셔야 합니다.");
-				settingCustPw.focus();
-				return false;
-			}
-
-			if(!isValidPwdChk(settingCustPw.val().trim()))
-			{
-				window.alert("연속된 혹은 알기 쉬운 방식의 비밀번호는 사용하실 수 없습니다.");
-				settingCustPw.focus();
-				return false;
-			}
-			
-			if(settingCustPw.val().trim() != settingCustPwConfirm.val().trim())
-			{
-				window.alert("입력하신 두 개의 비밀번호가 일치하지 않습니다.");
-				settingCustPwConfirm.focus();
-				return false;
-			}
-			
-			return true;
-		}
-		
-		
-		function checkHpValidation()
-		{
-			
-			var cellNo01 = $("select[name='newCellNo01']");
-			var cellNo02 = $("input[name='newCellNo02']");
-			var cellNo03 = $("input[name='newCellNo03']");
-			
-			if(cellNo01.val().trim() == "") 
-			{
-				cellNo01.focus();
-				$("#cellText01").text("* 휴대폰 번호를 입력하세요.").show();
-				return false;
-			}
-			
-			if(cellNo02.val().trim() == "")
-			{
-				cellNo02.focus();
-				$("#cellText02").text("* 휴대폰 가운데 자리를 입력해 주세요.").show();
-				return false;
-			}
-			
-			if(cellNo02.val().length < 3)
-			{
-				cellNo02.focus();
-				$("#cellText02").text("* 휴대폰 가운데 자리를 입력해 주세요.").show();
-				return false;
-			}			
-			
-			if(cellNo03.val().trim() == "")
-			{
-				cellNo03.focus();
-				$("#cellText03").text("* 휴대폰 뒷 자리를 입력해 주세요.").show();
-				return false;
-			}
-			
-			if(cellNo03.val().length < 4)
-			{
-				cellNo03.focus();
-				$("#cellText03").text("* 휴대폰 뒷 자리를 입력해 주세요.").show();
-				return false;
-			}			
-
-			return true;
-		}		
-		
-		
-		function countDown()
-		{
-			var minute = NbUtil.LPad(Math.floor(remainingSecond / 60), 2, "0");
-			var second = NbUtil.LPad(remainingSecond % 60, 2, "0");
-			
-			$("div#remainingSecond").text(minute + ":" + second);
-			
-			remainingSecond--;
-			
-			if(intervalObject == null)
-			{
-				intervalObject = window.setInterval("countDown()", 1000);
-			}
-			
-			if(remainingSecond < 0)
-			{
-				window.clearInterval(intervalObject);
-				intervalObject = null;
-				window.alert("인증번호 입력 시간이 초과했습니다. 인증번호 재전송 후 이용해주세요.");
-			}
-		}
-		
-		
-		
-		
-		
-		function popupDaumPost(zipcodeObj, addr1Obj, addr2Obj) {
-			var top = 0;
-	        var left = 0;
-	        var width = 500;
-	        var height = 520;
-	        var borderWidth = 5;
-
-	        left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth);
-	        top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth);
-
-	        new daum.Postcode({
-	            theme: { searchBgColor: "#000000", queryTextColor: "#FFFFFF" },
-	            oncomplete: function (data) {
-	                var fullAddr = data.address;
-	                var extraAddr = '';
-
-	                if (data.addressType === 'R') {
-	                    if (data.bname !== '') {
-	                        extraAddr += data.bname;
-	                    }
-	                    if (data.buildingName !== '') {
-	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                    }
-	                    fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
-	                }
-	                zipcodeObj.val(data.zonecode);
-	                addr1Obj.val(fullAddr);
-	                addr2Obj.focus();
-	            }
-	        }).open({ top: top, left: left });
-		}
-		
-		function layerCenter(val){
-			val.css("position","absolute");
-			val.css("top", Math.max(0, (($(window).height() - $(val).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-			val.css("left", Math.max(0, (($(window).width() - $(val).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-
-			return val;
-		}			
-	</script>
+		});
+	});	
 	
+	
+	$("#btnAuthNumberRequestAgain").click(function(){
+		window.clearInterval(intervalObject);
+		intervalObject = null;
+		remainingSecond = 180;
+		smsRequestAgain = false;
+		
+		$("#btnAuthNumberRequest").click();
+		if(smsRequestAgain == true) {
+			window.alert("인증번호를 재요청하였습니다.");
+		}
+	});	
+	
+	
+	$("#btnAuthNumberConfirm").click(function(){
+		
+		var sendAuthCode = $("input[name='authCode']").val().trim();
+		var inputAuthCode = $("input[name='smsCertNumber']").val().trim();
+		
+		if(inputAuthCode == "")
+		{
+			window.alert("인증번호를 입력해주세요.");
+			return false;
+		}
+		
+		if(sendAuthCode == "")
+		{
+			window.alert("인증번호를 발송하는데 실패하였습니다. 다시 시도해주시기 바랍니다.");
+			return false;
+		}
+		
+		if(remainingSecond <= 0)
+		{
+			window.alert("인증번호 입력 시간이 초과했습니다. 인증번호 재전송 후 이용해주세요.");
+			return;
+		}				
+		
+		$.ajax({
+			url: "/sms/checkSmsAuthCode.action",
+			type: "POST",
+			async: false,
+			data: {"sendAuthCode" : sendAuthCode, "inputAuthCode" : inputAuthCode},
+			dataType: 'json',
+			success: function (data) {
+				if(data.result == "00")
+				{
+					var newCellNo01 = $("select[name='newCellNo01']").val();
+					var newCellNo02 = $("input[name='newCellNo02']").val();
+					var newCellNo03 = $("input[name='newCellNo03']").val();
+					$("input[name='cellNo']").val(newCellNo01 + newCellNo02 + newCellNo03);
+					$("select[name='cellNo01']").val(newCellNo01).prop("selected", true);
+					$("input[name='cellNo02']").val(newCellNo02);
+					$("input[name='cellNo03']").val(newCellNo03);
+					$("div#smsCertInputArea").hide();
+					$("#cellChangeForm").hide();
+					
+					window.clearInterval(intervalObject);
+				}
+				else
+				{
+					window.alert("인증번호가 일치하지 않습니다.다시 한번 확인 후 입력해주세요.");
+				}
+				
+				ajaxProcessing = false;
+				
+			}, beforeSend: function(){
+				ajaxProcessing = true;
+			}, error: function(request, status, error){
+				ajaxProcessing = false;
+				window.alert("인증번호 확인을 실패하였습니다. 새로고침 후 다시 시도해주시기 바랍니다.");
+			}
+		});
+		
+	});		
+	
+	$("#btnCancel").click(function(){
+		if(confirm("회원정보 수정을 종료하시겠습니까?")) {
+			$("form[name='myForm']").attr("action", "/my/main.action").attr("target", "_self").submit();
+		}
+	});			
+	
+	$("#btnMemberModify").click(function(){
+		if(checkValidation() == false)
+		{
+			return;				
+		}
+		
+		$("form[name='myForm']").attr("action", "/newbalance/my/memberModifyProc.action").attr("target", "_self").submit();
+	});				
+	
+});	
+
+
+function updateMemberPwChange()	{
+	$.ajax({
+		url: "/my/customer/memberModifyPwChange.action",
+		type: "POST",
+		async: false,
+		data: { 
+			"custPw": $("input[name='custPw']").val()
+			,"newCustPw": $("input[name='newCustPw']").val()
+		},
+		dataType: 'json',
+		success: function (data) {
+			if(data.result == "Y")
+			{
+				$("#layerPopupDimmed").hide();
+				$("#pwChangeLayer").hide();
+				$("#pwChange").text("비밀번호가 변경되었습니다.").show();
+				$("input[name='custPw']").val($("input[name='newCustPw']").val());
+			}
+			else
+			{
+				window.alert(data.resultMessage);
+			}
+			
+		}, error: function(request, status, error){
+			window.alert("비밀번호 연장을 실패하였습니다.");
+		}
+	});	 
+}
+
+
+function checkPwValidation()
+{
+	var custPw = $("input[name='custPw']");
+	var newCustPw = $("input[name='newCustPw']");
+	var newCustPWConfirm = $("input[name='newCustPWConfirm']");
+	
+	if(custPw.val().trim() == "")
+	{
+		window.alert("비밀번호를 입력해 주세요.");
+		custPw.focus();
+		return false;
+	}
+	
+	if(newCustPw.val().trim() == "")
+	{
+		window.alert("변경할 비밀번호를 입력해 주세요.");
+		newCustPw.focus();
+		return false;
+	}			
+	
+	if(newCustPWConfirm.val().trim() == "")
+	{
+		window.alert("비밀번호를 다시 한번 입력해주세요.");
+		newCustPWConfirm.focus();
+		return false;
+	}
+				
+	if(!isValidPwd2(newCustPw.val().trim()))
+	{
+		window.alert("비밀번호는 8~12자 이내 영문,숫자,특수문자 조합으로 입력하셔야 합니다.");
+		newCustPw.focus();
+		return false;
+	}
+
+	if(!isValidPwdChk(newCustPw.val().trim()))
+	{
+		window.alert("연속된 혹은 알기 쉬운 방식의 비밀번호는 사용하실 수 없습니다.");
+		newCustPw.focus();
+		return false;
+	}
+	
+	if(newCustPw.val().trim() != newCustPWConfirm.val().trim())
+	{
+		window.alert("입력하신 두 개의 비밀번호가 일치하지 않습니다.");
+		newCustPWConfirm.focus();
+		return false;
+	}
+	
+	if(custPw.val().trim() == newCustPw.val().trim())
+	{
+		window.alert("이전과 다른 비밀번호를 입력해주세요.");
+		newCu…
+</script>
 	
 </head>
 <body>
@@ -983,10 +499,7 @@
 		<div class="contents">
 			<!-- FormArea -->
 			<div class="form_area change_pw">
-				<ul class="sub_info">
-					<li>회원님은 카카오 <span>${myInfo.userPwd}</span> 아이디로 가입한 회원입니다.</li>
-					<li>뉴발란스의 편리한 이용과 안전한 정보보호를 위해 비밀번호 설정 후 이용해주세요.</li>
-				</ul>
+				
 				<fieldset>
 					<legend>비밀번호 설정 입력 양식</legend>					
 					<div class="row t_line">
@@ -1424,7 +937,7 @@
 	
 </div>
 <!-- // lnb -->
-<form method="post" name="myForm" action="" data-gtm-form-interact-id="0">
+<form method="post" name="myForm" action="/newbalance/my/memberModifyProc.jsp" data-gtm-form-interact-id="0">
 	<input type="hidden" id="email" name="custId" value="${param.custId}">
 	<input type="hidden" id="spacialDay" name="spacialDay" value="${param.spacialDay}">
 	<input type="hidden" id="custName" name="custName" value="${param.custName}">
@@ -1514,56 +1027,11 @@
                                       
                                         <input type="text" id="cellNo03" name="cellNo03" class="ip_text sm" disabled="disabled" title="휴대전화 마지막 번호" value="${fn:substring(myInfo.userPhone,9,13)}">
                                         
-                                        <a href="javascript:;" id="btnCellChange" class="btn_ty_form">변경하기</a>
+                                    
                                     </div>
                                   
                                     
-                                    <!--// [D] default-->
-                                    <!-- [D] 변경하기 클릭시-->
-                                    <div class="fdata input_letdown" id="cellChangeForm" style="display:none;margin-top: 20px">
-                                        <span class="select_box">
-		                                    <select id="newCellNo01" name="newCellNo01" title="휴대전화 앞 번호" onchange="$('input[name=success]').val('');">
-		                                        <option value="">선택</option>
-		                                        <option value="010">010</option>
-		                                        <option value="011">011</option>
-		                                        <option value="016">016</option>
-		                                        <option value="017">017</option>
-		                                        <option value="019">019</option>
-		                                    </select>
-                                        </span>
-		                                <input type="text" id="newCellNo02" name="newCellNo02" value="" class="ip_text sm" title="휴대전화 가운데 번호" maxlength="4">
-		                                <input type="text" id="newCellNo03" name="newCellNo03" value="" class="ip_text sm" title="휴대전화 마지막 번호" maxlength="4">
-                                        <a href="javascript:;" class="btn_ty_form" id="btnRequestsmsCert">인증번호 요청</a>
-                                        <a href="javascript:;" class="btn_ty_form" id="btnRequestsmsCertAgain" >인증번호 재요청</a> <!-- 인증번호 요청 후 -->
-                                        <a href="javascript:;" class="btn_ty_bline1 sm" id="btnCellChangeCancel">변경취소</a>
-                                        
-                                        
-                                        <em class="ip_info point_r" id="cellText01" style="display: none;"></em>
-										<em class="ip_info point_r" id="cellText02" style="display: none;"></em>
-										<em class="ip_info point_r" id="cellText03" style="display: none;"></em>
-                                    </div>
-                                    <!--// [D] 변경하기 클릭시 -->
-                                </div>
-                                <!-- 인증번호 요청 후 -->
-								<!-- 20210331 인증번호입력 추가 :: S -->
-								
-								<div class="roww con_find" id="smsCertInputArea" style="display:none; margin-top: 20px ">
-									<label for="smsCertNumber" class="findFormName">인증번호 입력</label>
-									<div class="findFormNameDiv">
-										<div class="auth_timer">
-											<input type="text" id="smsCertNumber" name="smsCertNumber" value="" class="ip_text md">
-											<div class="remainNum" id="remainingSecond">03:00</div>
-										</div>
-										<a href="javascript:;" class="btn_ty_bface sm" id="btnAuthNumberConfirm">인증번호 확인</a>
-									</div>
-									<div class="findFormNameDiv">
-										<p class="authNumInfo">
-											<span id="smsMessage" class="point_r"></span><br>
-											3분 이내에 인증번호 6자리를 입력하셔야 합니다. 입력하신 휴대폰번호로 전송된 인증번호를 입력해주세요.<br>
-											인증번호가 오지 않을 경우 재요청을 선택해주세요.<br>
-										</p>
-									</div>
-								</div>
+                                
 								
 								
 								<script>
@@ -1603,7 +1071,7 @@
 		                            <label for="phone_num" class="ftit">자택 전화번호</label>
 		                            <div class="fdata">
 		                                <span class="select_box">
-		                                    <select id="phoneNum1" name="phoneNum1" title="자택 앞 번호" disabled="disabled">
+		                                    <select id="phoneNum1" name="phoneNum1" title="자택 앞 번호">
 		                                        <option value="">${fn:split(myInfo.userTel,'-')[0]}</option>
 												
 													
@@ -1778,13 +1246,13 @@
 		                                </span>
 										
 											
-												<input type="text" id="phoneNum2" name="phoneNum2" value="${fn:split(myInfo.userTel,'-')[1]}" class="ip_text sm" title="자택 가운데 번호" maxlength="4" readonly="">
+												<input type="text" id="phoneNum2" name="phoneNum2" value="${fn:split(myInfo.userTel,'-')[1]}" class="ip_text sm" title="자택 가운데 번호" maxlength="4" >
 																								
 											
 												                                
 										
 											
-												<input type="text" id="phoneNum3" name="phoneNum3" value="${fn:split(myInfo.userTel,'-')[2]}" class="ip_text sm" title="자택 마지막 번호" maxlength="4" readonly="">
+												<input type="text" id="phoneNum3" name="phoneNum3" value="${fn:split(myInfo.userTel,'-')[2]}" class="ip_text sm" title="자택 마지막 번호" maxlength="4" >
 																								
 											
 													                                
@@ -2987,7 +2455,7 @@
                                 </div>
                             </div>
 							<!-- //부가정보 -->
-                            <div class="txt_secession">탈퇴를 원하실 경우 우측 회원탈퇴를 눌러주세요.&nbsp;&nbsp;&nbsp;<a href="/my/customer/memberOutInfo.action" class="btn_line">회원탈퇴</a></div>
+                            <div class="txt_secession">탈퇴를 원하실 경우 우측 회원탈퇴를 눌러주세요.&nbsp;&nbsp;&nbsp;<a href="/newbalance/my/memberOutInfo.action" class="btn_line">회원탈퇴</a></div>
                             <div class="btn_area">
                             <button type="submit" class="btn_ty_bface lg" id="btnMemberModify">변경사항 저장</button>
                                 <!-- <a href="javascript:;" class="btn_ty_bface lg" id="btnMemberModify">변경사항 저장</a> -->

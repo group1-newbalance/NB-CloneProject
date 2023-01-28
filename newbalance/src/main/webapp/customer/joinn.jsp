@@ -327,7 +327,7 @@
 				} 
 				
  				joinFlag++;
-
+ 				
 				$.ajax({
 					url: "/customer/joinRegisterProc.action",
 					type: "POST",

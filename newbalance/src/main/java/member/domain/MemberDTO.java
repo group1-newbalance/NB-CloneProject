@@ -70,9 +70,10 @@ public class MemberDTO {
 		this.userAddress2 = userAddress2;
 		this.lv = lv;
 	}
-	public MemberDTO(String userCode, String pwd,String tel, int zipcode, String address1, String address2, String email,
+	public MemberDTO(String userCode, String tel, int zipcode, String address1, String address2, String email,
 			String specialdate, int receiveinfo) {
 		this.userCode = userCode;
+		
 		this.userTel =  tel;
 		this.userZipcode = zipcode;
 		this.userAddress1 = address1;
@@ -104,6 +105,15 @@ public class MemberDTO {
 		this.lv = lv;
 	}
 
+
+	public MemberDTO(String userCode) {
+		this.userCode = userCode;
+		
+	}
+
+
+
+	
 
 	public boolean matchPassword(String userPwd) {
 		return this.userPwd.equals(userPwd);

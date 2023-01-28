@@ -15,7 +15,7 @@ import mvc.command.CommandHandler;
 
 
 public class JoinUpupdateHandler implements CommandHandler {
-	private static final String FORM_VIEW ="/newbalance/my/memberModifyDetail.jsp";
+	private static final String FORM_VIEW ="/newbalance/my/memberModifyProc.jsp";
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -39,7 +39,7 @@ public class JoinUpupdateHandler implements CommandHandler {
 			UserDTO member = (UserDTO) session.getAttribute("member");
 			if (member != null) {
 				try {
-					String pwd = req.getParameter("pwd");					
+									
 					String tel1 =  req.getParameter("phoneNum1");
 					String tel2 =  req.getParameter("phoneNum2");
 					String tel3 =  req.getParameter("phoneNum3");
@@ -52,15 +52,19 @@ public class JoinUpupdateHandler implements CommandHandler {
 					String email2 = req.getParameter("txtOrderEmail2");
 					String email = email1 + "@" + email2;
 					
-					String specialdate1 = req.getParameter("spacialYear");
-					String specialdate2 = req.getParameter("spacialMonth");
-					String specialdate3 = req.getParameter("spacialDate");
+					String specialdate1 = req.getParameter("specialYear");
+					String specialdate2 = req.getParameter("specialMonth");
+					String specialdate3 = req.getParameter("specialDate");
 					String specialdate = specialdate1 + "/" +specialdate2 + "/" + specialdate3;
+					specialdate = req.getParameter("specialdate") == null ? "" :req.getParameter("specialdate");
 					int receiveinfo = req.getParameter("receiveinfo") ==null ? -1:Integer.parseInt(req.getParameter("receiveinfo"));
 					
-					MemberDTO dto = new MemberDTO(member.getUserCode(),pwd,tel,zipcode,address1,address2,email, specialdate,receiveinfo);
+					MemberDTO dto = new MemberDTO(member.getUserCode(),tel,zipcode,address1,address2,email, specialdate,receiveinfo);
 					
 					rowCount = joinService.update(dto);
+					
+					
+					System.out.println("handler : "+member.toString());
 				} catch (NamingException e) {
 					e.printStackTrace();
 				}

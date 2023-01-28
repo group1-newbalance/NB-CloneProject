@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import manager.service.MemberView;
 import member.domain.CartOptionDTO;
 import member.domain.CartProductDTO;
 import member.domain.MemberDTO;
+import my.domain.MyDeleteDTO;
 
 public interface IMember {
 	
@@ -35,4 +37,16 @@ public interface IMember {
 	public List<CartProductDTO> getCartList(Connection conn, String userCode) throws SQLException;
 	
 	public int updateCartOption(Connection conn, int cartNum, String pdCode, int sizeCode, String color) throws SQLException;
+	public  MemberView getMemberList( int pageNumber ) ;
+
+
+	
+
+	
+	
+	
+
+	int deleteUpd(Connection conn, String userCode) throws SQLException;
+
+	int deleteIns(Connection conn, String userCode) throws SQLException;
 }

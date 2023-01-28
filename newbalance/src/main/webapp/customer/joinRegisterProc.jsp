@@ -37,7 +37,7 @@
                     <dl>
                         <dt>5,000원 할인 쿠폰 안내</dt>
                         <dd>온라인 스토어 및 오프라인 로드샵, 직영점에서 사용하실 수 있는 5,000원 할인 쿠폰이 발행되었습니다.<br>뉴발란스의 다양한 Lifestyle 상품과 Performance 상품을 만나보세요.</dd>
-                        <dd><a href="/index.action" class="btn_ty_bface md">메인 이동</a></dd>
+                        <dd><a href="/newbalance/index.jsp" class="btn_ty_bface md">메인 이동</a></dd>
                     </dl>
                     <dl>
                         <dt>온오프 마일리지 통합 안내</dt>

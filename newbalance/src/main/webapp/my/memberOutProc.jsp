@@ -18,8 +18,8 @@
 <script>
 
 $(window).on('load', function(){
-    alert("회원 수정이 완료되었습니다");
-    location.href = "/newbalance/my/main.action";
+    alert("회원 탈퇴가 완료되었습니다");
+    location.href = "/newbalance/index.jsp";
     
 });
 

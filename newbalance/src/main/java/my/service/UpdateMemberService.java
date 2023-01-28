@@ -33,5 +33,7 @@ public class UpdateMemberService {
 		return myInfo;
 		
 	}
-}
+
 	
+
+}
