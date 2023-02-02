@@ -212,6 +212,9 @@ public class MemberDAO implements IMember {
 }
 
 
+	   
+	  
+
 	// 장바구니 갯수 가져오기
 	public int getCartCount(Connection conn, String userCode) throws SQLException {
 		String sql = " SELECT count(*) cart_count " + " FROM cart " + " WHERE user_code = ? ";
